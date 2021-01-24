@@ -58,8 +58,6 @@ class DeviceController extends Controller
                 'icon'    => 'check',
             ]);
         }
-      
-
         
     }
 

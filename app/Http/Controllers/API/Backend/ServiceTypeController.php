@@ -3,15 +3,12 @@
 namespace App\Http\Controllers\API\Backend;
 
 use Helper;
-use Illuminate\Http\Request;
-use App\Models\Backend\Brand;
 use App\Http\Controllers\Controller;
-use App\Models\Backend\ServiceCategory;
-use App\Http\Requests\Backend\BrandRequest;
-use App\Http\Resources\Backend\BrandResource;
-use App\Models\Backend\Device;
+use App\Http\Resources\Backend\ServiceTypeResource;
+use App\Models\Backend\ServiceType;
+use Illuminate\Http\Request;
 
-class BrandController extends Controller
+class ServiceTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,21 +19,13 @@ class BrandController extends Controller
     {
         $search = $request->search;
         $dataSorting = $request->sorting == 'false'?10:$request->sorting;
-        // if($request->search != 'undefined'){
-            $data =$search == 'false'?Brand::orderBy('id', 'desc')->paginate($dataSorting):Brand::where(function($query) use($search){
-            $query->orWhere('brand_name', 'LIKE', "%{$search}%");
+        
+            $data =$search == 'false'?ServiceType::orderBy('id', 'desc')->paginate($dataSorting):ServiceType::where(function($query) use($search){
+            $query->orWhere('name', 'LIKE', "%{$search}%");
         })->orderBy('id', 'desc')->paginate($dataSorting);
 
-        // } else {
+        return  ServiceTypeResource::collection($data);
 
-        //     $data = Brand::orderBy('id', 'desc')->paginate(10);
-
-        // }
-        $devices = Device::where('status',1)->get();
-
-        return  BrandResource::collection($data)->additional([
-                'devices' => $devices
-            ]);
     }
 
     /**
@@ -45,27 +34,24 @@ class BrandController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(BrandRequest $request)
+    public function store(Request $request)
     {
-        $validated = $request->validated();
-        
-        $fileName = Helper::imgProcess($request,'image',$request->brand_name, '', 'images/brands', 'store', Brand::class);  
-
-        $data = $request->all();
-
-        $data['image'] = $fileName;
-        if($validated){
-            Brand::create($data);
-
-        return response()->json([
-            'status'  => 'success',
-            'message' => 'Brand has been created!',
-            'icon'    => 'check',
+        $validated = $request->validate([
+            'name' => 'required|max:255',
+            'description' => 'required',
         ]);
 
+        $fileName = Helper::imgProcess($request,'image',$request->name, '', 'images/service-type', 'store', ServiceType::class);  
+        $data = $request->all();
+        $data['image'] = $fileName;
+        if($validated){
+            ServiceType::create($data);
+            return response()->json([
+                'status'  => 'success',
+                'message' => 'ServiceType has been created!',
+                'icon'    => 'check',
+            ]);
         }
-
-        
     }
 
     /**
@@ -76,8 +62,8 @@ class BrandController extends Controller
      */
     public function show($id)
     {
-        $brands = Brand::find($id);
-        return new BrandResource($brands);
+        $service_type = ServiceType::find($id);
+        return new ServiceTypeResource($service_type);
     }
 
     /**
@@ -89,14 +75,15 @@ class BrandController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $fileName = Helper::imgProcess($request,'image',$request->brand_name, $id, 'images/brands', 'update', Brand::class);  
+        $fileName = Helper::imgProcess($request,'image',$request->name, $id, 'images/service-type', 'update', ServiceType::class); 
         $data = $request->all();
         $data['image'] = $fileName;
-        $data = Brand::find($id)->update($data);
+
+        $data = ServiceType::find($id)->update($data);
         
         return response()->json([
             'status'  => 'success',
-            'message' => 'Brand has been updated!',
+            'message' => 'ServiceType has been updated!',
             'icon'    => 'check',
         ]);
     }
@@ -109,11 +96,11 @@ class BrandController extends Controller
      */
     public function destroy($id)
     {
-        $delete = Brand::find($id)->delete();
+        $delete = ServiceType::find($id)->delete();
         if($delete){
             return response()->json([
                 'status'  => 'danger',
-                'message' => 'Brand has been deleted!',
+                'message' => 'ServiceType has been deleted!',
                 'icon'    => 'times',
             ]);   
         }

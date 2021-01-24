@@ -33,9 +33,13 @@ class DeviceModelController extends Controller
         //     $data = DeviceModel::orderBy('id', 'desc')->paginate(10);
 
         // }
+
+        $brands = Brand::where('status',1)->get();
         
 
-        return  DeviceModelResource::collection($data);
+        return  DeviceModelResource::collection($data)->additional([
+            'brands' => $brands
+        ]);
     }
 
     /**
@@ -53,14 +57,16 @@ class DeviceModelController extends Controller
         $data = $request->all();
 
         $data['image'] = $fileName;
-
-        Brand::insert($data);
+        if($validated){     
+        Brand::create($data);
 
         return response()->json([
             'status'  => 'success',
             'message' => 'Model has been created!',
             'icon'    => 'check',
         ]);
+        }
+
     }
 
     /**
@@ -84,7 +90,7 @@ class DeviceModelController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $fileName = Helper::imgProcess($request,'image',$request->model_name, $id, 'images/brand', 'update', DeviceModel::class); 
+        $fileName = Helper::imgProcess($request,'image',$request->model_name, $id, 'images/device-model', 'update', DeviceModel::class); 
         $data = $request->all();
         $data['image'] = $fileName;
 

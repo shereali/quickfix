@@ -15,9 +15,9 @@
                 <ul class="dropdown">
                     <li><router-link to="/device-types">Device Type</router-link></li>
                     <li><router-link to="/device">Device</router-link></li>
-                    <li><router-link to="/permissions">Device Functional Type</router-link></li>
-                    <li><router-link to="/assign-roles">Service Type</router-link></li>
-                    <li><router-link to="/assign-permissions">Problem Type</router-link></li>
+                    <li><router-link to="/device-functional-type">Device Functional Type</router-link></li>
+                    <li><router-link to="/service-type">Service Type</router-link></li>
+                    <li><router-link to="/problem-type">Problem Type</router-link></li>
                 </ul>
             </li>
             <li><i class="fa fa-product-hunt" aria-hidden="true"></i> <router-link to="/brands">Brands</router-link></li>

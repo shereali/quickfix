@@ -7,18 +7,16 @@ export default {
     mixins:[mixin],
 
     created(){
-        this.generalApi = "brands" 
+        this.generalApi = "problem-type" 
 
-        this.dataSearchingApi="search-brand-data"
+        this.dataSearchingApi="search-service-data"
 
-        this.cardTitle ="Brand List" 
-        this.isFile = true
-        this.isImage = 'image'
+        this.cardTitle ="Problem Type List" 
 
-        this.columnsHead.push('Sn','Device Name','Brand Name', 'Description', 'image', 'status', 'Action')
-        this.columnsBody.push('device_name','brand_name', 'description', 'image', 'statusText')
+        this.columnsHead.push('Sn','Device Model',' Name', 'Description', 'Photo','Status', 'Action')
+        this.columnsBody.push('model_name', 'name', 'description','image','statusText')
         // this.columnsBodyExtra = 
-        this.isDownload=false;
+        this.isDownload = false; 
 
        
         

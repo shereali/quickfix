@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDeviceModelsTable extends Migration
+class CreateDeviceFunctionalTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateDeviceModelsTable extends Migration
      */
     public function up()
     {
-        Schema::create('device_models', function (Blueprint $table) {
+        Schema::create('device_functional_types', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('brand_id')->nullable()->comment('FK: brands.id');
-            $table->foreign('brand_id')->references('id')->on('brands');
-            $table->string('model_name')->nullable();
-            $table->string('model_number')->nullable();
+            $table->string('name')->nullable();
             $table->text('description')->nullable();
             $table->string('image')->nullable();
             $table->tinyInteger('status')->comment('status 1=active;0=inactive');
@@ -39,6 +36,6 @@ class CreateDeviceModelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('device_models');
+        Schema::dropIfExists('device_functional_types');
     }
 }

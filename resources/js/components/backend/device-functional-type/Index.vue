@@ -7,18 +7,16 @@ export default {
     mixins:[mixin],
 
     created(){
-        this.generalApi = "brands" 
+        this.generalApi = "device-functional-type" 
 
-        this.dataSearchingApi="search-brand-data"
+        this.dataSearchingApi="search-service-data"
 
-        this.cardTitle ="Brand List" 
-        this.isFile = true
-        this.isImage = 'image'
+        this.cardTitle ="Device Function Type List" 
 
-        this.columnsHead.push('Sn','Device Name','Brand Name', 'Description', 'image', 'status', 'Action')
-        this.columnsBody.push('device_name','brand_name', 'description', 'image', 'statusText')
+        this.columnsHead.push('Sn',' Name', 'Description', 'Photo','Status', 'Action')
+        this.columnsBody.push('name', 'description','image','statusText')
         // this.columnsBodyExtra = 
-        this.isDownload=false;
+        this.isDownload = false; 
 
        
         

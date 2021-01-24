@@ -5,19 +5,19 @@ namespace App\Models\Backend;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Brand extends Model
+class ProblemType extends Model
 {
     use HasFactory;
     protected $fillable = [
         'id',
-        'device_id',
-        'brand_name',
+        'device_model_id',
+        'name',
         'description',
         'image',
         'status',
     ];
-    public function device()
+    public function deviceModel()
     {
-        return $this->belongsTo(Device::class,'device_id','id');
+        return $this->belongsTo(DeviceModel::class,'device_model_id','id');
     }
 }
