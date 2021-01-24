@@ -24,7 +24,8 @@ class DeviceModelRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'model_name' => 'required|string|max:255',
+            'model_number' => 'required|string|max:255',
         ];
     }
 }

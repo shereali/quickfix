@@ -14,8 +14,8 @@ export default {
         this.cardTitle ="Device Model List"  
         this.isFile = true
 
-        this.columnsHead.push('Sn','Name', 'Model No.', 'Description','Photo', 'Status', 'Action')
-        this.columnsBody.push('model_name', 'model_number', 'model_description', 'image', 'status')
+        this.columnsHead.push('Sn','Brand Name','Model Name', 'Model No.', 'Description','Photo', 'Status', 'Action')
+        this.columnsBody.push('brand_name', 'model_name','model_number', 'model_description', 'image', 'statusText')
         // this.columnsBodyExtra = 
         this.isDownload=false;
 

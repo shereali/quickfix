@@ -1,6 +1,6 @@
 <template>
     <section>  
-        <div class="hero-area v1 pad-bot-150 pt-160 pb-100" :style="{'background-image': 'url(public/frontend/images/header/mask_group.png)'}">
+        <div class="hero-area v1 pad-bot-150 pt-160 pb-100" :style="{'background-image': 'url(frontend/images/header/mask_group.png)'}">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-md-12">
@@ -297,7 +297,7 @@
                         <a href="">
                         <div class="work-process-content v1 text-center">
                             <div class="process-icon v1">
-                                <img :src="'public/frontend/images/others/1.png'" alt="...">
+                                <img :src="'frontend/images/others/1.png'" alt="...">
                                 <span></span>
                             </div>
                             <h4 class="title"> Pick & Drop Service</h4>
@@ -311,7 +311,7 @@
                         <a href="">
                         <div class="work-process-content v1 text-center">
                             <div class="process-icon v1">
-                                <img :src="'public/frontend/images/others/2.png'" alt="...">
+                                <img :src="'frontend/images/others/2.png'" alt="...">
 
                                 <span></span>
 
@@ -327,7 +327,7 @@
                         <a href="">
                         <div class="work-process-content v1 text-center">
                             <div class="process-icon v1">
-                                <img :src="'public/frontend/images/others/3.png'" alt="...">
+                                <img :src="'frontend/images/others/3.png'" alt="...">
 
                                 <span></span>
                             </div>
@@ -557,7 +557,7 @@
                     </div>
                      <div class="col-md-6 p-0">
                         <div class="app-img-vendor text-center">
-                           <img :src="'/public/frontend/images/why_choose_us.png'" alt="..." style="height: 380px; width:100%;">
+                           <img :src="'/frontend/images/why_choose_us.png'" alt="..." style="height: 380px; width:100%;">
                         </div>
                     </div>
                 </div>
@@ -566,7 +566,7 @@
         <!--mobile app ends-->
        
          <!--Counter section starts-->
-         <div class="counter-section bg-xs pt-35 counter_div" :style="{'background-image': 'url('+url+'/public/frontend/images/category/11.jpg)'}">
+         <div class="counter-section bg-xs pt-35 counter_div" :style="{'background-image': 'url('+url+'frontend/images/category/11.jpg)'}">
             <div class="overlay op-7"></div>
             <div class="container">
                 <div class="row pad-tb-30">
@@ -628,7 +628,7 @@
                     </div>
                      <div class="col-md-6 p-0">
                         <div class="app-img-vendor text-center">
-                           <img :src="'/public/frontend/images/looking-partner.png'" alt="..." style="height: 370px;width: 100%;">
+                           <img :src="'/frontend/images/looking-partner.png'" alt="..." style="height: 370px;width: 100%;">
                         </div>
                     </div>
                 </div>
@@ -671,46 +671,46 @@
                                 </div>
                                 <div class="swiper-slide single-partner" style="text-align:right;">
                                     <div class="text-center">
-                                        <img :src="'/public/frontend/images/clients/hbr.png'" alt="..." style="height: 40px;" >
+                                        <img :src="'/frontend/images/clients/hbr.png'" alt="..." style="height: 40px;" >
                                     </div>
                                     <div class="text-center">
-                                        <img :src="'/public/frontend/images/clients/hbr.png'" alt="..."  style="height: 40px;margin-top: 35px;">
+                                        <img :src="'/frontend/images/clients/hbr.png'" alt="..."  style="height: 40px;margin-top: 35px;">
                                     </div>
                                     <div class="text-center">
-                                        <img :src="'/public/frontend/images/clients/hbr.png'" alt="..."  style="height: 40px;margin-top: 35px;">
+                                        <img :src="'/frontend/images/clients/hbr.png'" alt="..."  style="height: 40px;margin-top: 35px;">
                                     </div>
                                 </div>
                                 <div class="swiper-slide single-partner" style="text-align:right;">
                                     <div class="text-center">
-                                        <img :src="'/public/frontend/images/clients/forbes.png'" alt="..." style="height: 40px;">
+                                        <img :src="'/frontend/images/clients/forbes.png'" alt="..." style="height: 40px;">
                                     </div>
                                     <div class="text-center">
-                                        <img :src="'/public/frontend/images/clients/forbes.png'" alt="..."  style="height: 40px;margin-top: 35px;">
+                                        <img :src="'/frontend/images/clients/forbes.png'" alt="..."  style="height: 40px;margin-top: 35px;">
                                     </div>
                                     <div class="text-center">
-                                        <img :src="'/public/frontend/images/clients/forbes.png'" alt="..."  style="height: 40px;margin-top: 35px;">
+                                        <img :src="'/frontend/images/clients/forbes.png'" alt="..."  style="height: 40px;margin-top: 35px;">
                                     </div>
                                 </div>
                                 <div class="swiper-slide single-partner" style="text-align:right;">
                                     <div class="text-center">
-                                        <img :src="'/public/frontend/images/clients/hbr.png'" alt="..." style="height: 40px;">
+                                        <img :src="'/frontend/images/clients/hbr.png'" alt="..." style="height: 40px;">
                                     </div>
                                     <div class="text-center">
-                                        <img :src="'/public/frontend/images/clients/forbes.png'" alt="..."  style="height: 40px;margin-top: 35px;">
+                                        <img :src="'/frontend/images/clients/forbes.png'" alt="..."  style="height: 40px;margin-top: 35px;">
                                     </div>
                                     <div class="text-center">
-                                        <img :src="'/public/frontend/images/clients/forbes.png'" alt="..."  style="height: 40px;margin-top: 35px;">
+                                        <img :src="'/frontend/images/clients/forbes.png'" alt="..."  style="height: 40px;margin-top: 35px;">
                                     </div>
                                 </div>
                                 <div class="swiper-slide single-partner" style="text-align:right;">
                                     <div>
-                                        <img :src="'/public/frontend/images/clients/wsi.png'" alt="..." style="height: 40px;">
+                                        <img :src="'/frontend/images/clients/wsi.png'" alt="..." style="height: 40px;">
                                     </div>
                                     <div>
-                                        <img :src="'/public/frontend/images/clients/wsi.png'" alt="..."  style="height: 40px;margin-top: 35px;">
+                                        <img :src="'/frontend/images/clients/wsi.png'" alt="..."  style="height: 40px;margin-top: 35px;">
                                     </div>
                                     <div>
-                                        <img :src="'/public/frontend/images/clients/wsi.png'" alt="..."  style="height: 40px;margin-top: 35px;">
+                                        <img :src="'/frontend/images/clients/wsi.png'" alt="..."  style="height: 40px;margin-top: 35px;">
                                     </div>
                                 </div>
                             </div>
@@ -732,7 +732,7 @@
                     <div class="col-lg-4">
                         <div class="card single-blog-item v1">
                             <a target="_blank" href="https://www.facebook.com/quickfixbd/photos/a.1787620248163046/2798697017055359/">
-                                <img :src="'/public/frontend/images/blog/news_7.jpg'" alt="...">
+                                <img :src="'/frontend/images/blog/news_7.jpg'" alt="...">
                                 <!-- <a href="#" class="blog-cat btn v6 red">Hotel</a> -->
                                 <div class="card-body">
                                     <h4 class="card-title text-center"><a target="_blank" href="https://www.facebook.com/quickfixbd/photos/a.1787620248163046/2798697017055359/">বাসা বা অফিসে বসেই পিক এন্ড ড্রপ বা হোম সার্ভিস নিতে এখনি ভিজিট করুন-</a></h4>
@@ -747,7 +747,7 @@
                     <div class="col-lg-4">
                         <div class="card single-blog-item v1">
                             <a target="_blank" href="https://www.facebook.com/quickfixbd/photos/a.1787620248163046/2795726900685704/">
-                                <img :src="'/public/frontend/images/blog/news_8.jpg'" alt="...">
+                                <img :src="'/frontend/images/blog/news_8.jpg'" alt="...">
                                 <!-- <a href="#" class="blog-cat btn v6 red">Restaurant</a> -->
                                 <div class="card-body">
                                     <h4 class="card-title text-center"><a target="_blank" href="https://www.facebook.com/quickfixbd/photos/a.1787620248163046/2795726900685704/">রিপেয়ার সার্ভিস নিতে আর কোথাও যেতে হবেনা। এখন বাসা বা অফিসে বসেই হোম সার্ভিস নিন।</a></h4>
@@ -759,7 +759,7 @@
                     <div class="col-lg-4">
                         <div class="card single-blog-item v1">
                             <a target="_blank" href="https://www.facebook.com/quickfixbd/photos/a.1787620248163046/2787028314888896">
-                                <img :src="'/public/frontend/images/blog/news_9.jpg'" alt="...">
+                                <img :src="'/frontend/images/blog/news_9.jpg'" alt="...">
                                     <div class="card-body">
                                         <h4 class="card-title text-center"><a target="_blank" href="https://www.facebook.com/quickfixbd/photos/a.1787620248163046/2787028314888896">iPhone ইউজারদের জন্য সুখবর !!
         ব্যাটারি রিপ্লেস্মেন্টে আজীবন গ্যারান্টি। একবার রিপ্লেস করলে পরবর্তী ব্যাটারি ফ্রি</a></h4>

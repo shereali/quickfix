@@ -61580,8 +61580,7 @@ var render = function() {
       {
         staticClass: "hero-area v1 pad-bot-150 pt-160 pb-100",
         style: {
-          "background-image":
-            "url(public/frontend/images/header/mask_group.png)"
+          "background-image": "url(frontend/images/header/mask_group.png)"
         }
       },
       [
@@ -62355,10 +62354,7 @@ var render = function() {
                 [
                   _c("div", { staticClass: "process-icon v1" }, [
                     _c("img", {
-                      attrs: {
-                        src: "public/frontend/images/others/1.png",
-                        alt: "..."
-                      }
+                      attrs: { src: "frontend/images/others/1.png", alt: "..." }
                     }),
                     _vm._v(" "),
                     _c("span")
@@ -62386,10 +62382,7 @@ var render = function() {
                 [
                   _c("div", { staticClass: "process-icon v1" }, [
                     _c("img", {
-                      attrs: {
-                        src: "public/frontend/images/others/2.png",
-                        alt: "..."
-                      }
+                      attrs: { src: "frontend/images/others/2.png", alt: "..." }
                     }),
                     _vm._v(" "),
                     _c("span")
@@ -62415,10 +62408,7 @@ var render = function() {
                 [
                   _c("div", { staticClass: "process-icon v1" }, [
                     _c("img", {
-                      attrs: {
-                        src: "public/frontend/images/others/3.png",
-                        alt: "..."
-                      }
+                      attrs: { src: "frontend/images/others/3.png", alt: "..." }
                     }),
                     _vm._v(" "),
                     _c("span")
@@ -62461,7 +62451,7 @@ var render = function() {
                 _c("img", {
                   staticStyle: { height: "380px", width: "100%" },
                   attrs: {
-                    src: "/public/frontend/images/why_choose_us.png",
+                    src: "/frontend/images/why_choose_us.png",
                     alt: "..."
                   }
                 })
@@ -62478,7 +62468,7 @@ var render = function() {
         staticClass: "counter-section bg-xs pt-35 counter_div",
         style: {
           "background-image":
-            "url(" + _vm.url + "/public/frontend/images/category/11.jpg)"
+            "url(" + _vm.url + "frontend/images/category/11.jpg)"
         }
       },
       [_c("div", { staticClass: "overlay op-7" }), _vm._v(" "), _vm._m(12)]
@@ -62499,7 +62489,7 @@ var render = function() {
                 _c("img", {
                   staticStyle: { height: "370px", width: "100%" },
                   attrs: {
-                    src: "/public/frontend/images/looking-partner.png",
+                    src: "/frontend/images/looking-partner.png",
                     alt: "..."
                   }
                 })
@@ -62591,7 +62581,7 @@ var render = function() {
                           _c("img", {
                             staticStyle: { height: "40px" },
                             attrs: {
-                              src: "/public/frontend/images/clients/hbr.png",
+                              src: "/frontend/images/clients/hbr.png",
                               alt: "..."
                             }
                           })
@@ -62604,7 +62594,7 @@ var render = function() {
                               "margin-top": "35px"
                             },
                             attrs: {
-                              src: "/public/frontend/images/clients/hbr.png",
+                              src: "/frontend/images/clients/hbr.png",
                               alt: "..."
                             }
                           })
@@ -62617,7 +62607,7 @@ var render = function() {
                               "margin-top": "35px"
                             },
                             attrs: {
-                              src: "/public/frontend/images/clients/hbr.png",
+                              src: "/frontend/images/clients/hbr.png",
                               alt: "..."
                             }
                           })
@@ -62636,7 +62626,7 @@ var render = function() {
                           _c("img", {
                             staticStyle: { height: "40px" },
                             attrs: {
-                              src: "/public/frontend/images/clients/forbes.png",
+                              src: "/frontend/images/clients/forbes.png",
                               alt: "..."
                             }
                           })
@@ -62649,7 +62639,7 @@ var render = function() {
                               "margin-top": "35px"
                             },
                             attrs: {
-                              src: "/public/frontend/images/clients/forbes.png",
+                              src: "/frontend/images/clients/forbes.png",
                               alt: "..."
                             }
                           })
@@ -62662,7 +62652,7 @@ var render = function() {
                               "margin-top": "35px"
                             },
                             attrs: {
-                              src: "/public/frontend/images/clients/forbes.png",
+                              src: "/frontend/images/clients/forbes.png",
                               alt: "..."
                             }
                           })
@@ -62681,7 +62671,7 @@ var render = function() {
                           _c("img", {
                             staticStyle: { height: "40px" },
                             attrs: {
-                              src: "/public/frontend/images/clients/hbr.png",
+                              src: "/frontend/images/clients/hbr.png",
                               alt: "..."
                             }
                           })
@@ -62694,7 +62684,7 @@ var render = function() {
                               "margin-top": "35px"
                             },
                             attrs: {
-                              src: "/public/frontend/images/clients/forbes.png",
+                              src: "/frontend/images/clients/forbes.png",
                               alt: "..."
                             }
                           })
@@ -62707,7 +62697,7 @@ var render = function() {
                               "margin-top": "35px"
                             },
                             attrs: {
-                              src: "/public/frontend/images/clients/forbes.png",
+                              src: "/frontend/images/clients/forbes.png",
                               alt: "..."
                             }
                           })
@@ -62726,7 +62716,7 @@ var render = function() {
                           _c("img", {
                             staticStyle: { height: "40px" },
                             attrs: {
-                              src: "/public/frontend/images/clients/wsi.png",
+                              src: "/frontend/images/clients/wsi.png",
                               alt: "..."
                             }
                           })
@@ -62739,7 +62729,7 @@ var render = function() {
                               "margin-top": "35px"
                             },
                             attrs: {
-                              src: "/public/frontend/images/clients/wsi.png",
+                              src: "/frontend/images/clients/wsi.png",
                               alt: "..."
                             }
                           })
@@ -62752,7 +62742,7 @@ var render = function() {
                               "margin-top": "35px"
                             },
                             attrs: {
-                              src: "/public/frontend/images/clients/wsi.png",
+                              src: "/frontend/images/clients/wsi.png",
                               alt: "..."
                             }
                           })
@@ -62787,7 +62777,7 @@ var render = function() {
                 [
                   _c("img", {
                     attrs: {
-                      src: "/public/frontend/images/blog/news_7.jpg",
+                      src: "/frontend/images/blog/news_7.jpg",
                       alt: "..."
                     }
                   }),
@@ -62812,7 +62802,7 @@ var render = function() {
                 [
                   _c("img", {
                     attrs: {
-                      src: "/public/frontend/images/blog/news_8.jpg",
+                      src: "/frontend/images/blog/news_8.jpg",
                       alt: "..."
                     }
                   }),
@@ -62837,7 +62827,7 @@ var render = function() {
                 [
                   _c("img", {
                     attrs: {
-                      src: "/public/frontend/images/blog/news_9.jpg",
+                      src: "/frontend/images/blog/news_9.jpg",
                       alt: "..."
                     }
                   }),
@@ -82763,7 +82753,7 @@ axios__WEBPACK_IMPORTED_MODULE_2___default.a.defaults.baseURL = window.location.
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\Server\www\quickfix_web\resources\js\src\apps\frontend\app_frontend.js */"./resources/js/src/apps/frontend/app_frontend.js");
+module.exports = __webpack_require__(/*! G:\laragon\www\quickfix_web_v1\resources\js\src\apps\frontend\app_frontend.js */"./resources/js/src/apps/frontend/app_frontend.js");
 
 
 /***/ })

@@ -15,8 +15,8 @@ export default {
         this.isFile = true
         this.isImage = 'image'
 
-        this.columnsHead.push('Sn','Name', 'Description', 'image', 'status', 'Action')
-        this.columnsBody.push('brand_name', 'brand_description', 'image', 'status')
+        this.columnsHead.push('Sn','Device Name','Brand Name', 'Description', 'image', 'status', 'Action')
+        this.columnsBody.push('device_name','brand_name', 'description', 'image', 'statusText')
         // this.columnsBodyExtra = 
         this.isDownload=false;
 

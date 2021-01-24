@@ -16,13 +16,18 @@ class BrandResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id'                  => $this->id,
-            'service_category_id' => $this->service_category_id,
-            'brand_name'          => $this->brand_name,
-            'brand_description'   => $this->brand_description,
-            'status'              => $this->status,
-            'image'               => '<img src="'.Helper::publicUrl('/images/service').'/'.$this->image.'">',
-            'image_path'          => Helper::publicUrl('/images/service').'/'.$this->image
+
+            'id'          => $this->id,
+            'device_id'   => $this->device_id,
+            'device_name' => $this->device_name,
+            'brand_name'  => $this->brand_name,
+            'description' => $this->description,
+            'image'       => $this->image,
+            'device_name' => $this->device->device_name,
+            'status'      => $this->status,
+            'statusText'  => $this->status == 1?'Active':'Inactive',
+            'image'       => '<img style="width:60px; height:60px;" class="img-fluid" src="'.Helper::publicUrl('/images/brands').'/'.$this->image.'">',
+            'image_path'  => Helper::publicUrl('/images/brands').'/'.$this->image
         ];
     }
 }

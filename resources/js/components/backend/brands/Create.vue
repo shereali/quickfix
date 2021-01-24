@@ -1,7 +1,7 @@
 <template>
 <div>
 <form class="form" @submit.prevent="processData()">
-            <div class="row" style="margin-top:-20px;">
+            <div class="row" style="margin-top:5%;">
                 <div class="col-md-12 col-lg-12">
                     <div class="card">
                         <div class="card-header">
@@ -11,29 +11,34 @@
                            <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="">Service Category</label>
-                                    <v-select :options="service_categories" :reduce="category => category.id"  label="name" v-model="inputData.name"></v-select>
-                                    <input type="hidden" name="name" v-model="inputData.name">
+                                    <label for="">Device</label>
+                                    <v-select :options="devices" :reduce="device => device.id"  label="device_name" v-model="inputData.device_id" placeholder="Select Device"></v-select>
+                                    <input type="hidden" name="device_id" v-model="inputData.device_id">
                                 </div>
                                 <div class="form-group">
-                                    <label for="">Name {{ inputData.brand_name }}</label>
-                                    <input type="text" name="brand_name" v-model="inputData.brand_name" class="form-control" placeholder="e.g. Shere Ali">  
+                                    <label for="">Brand Name </label>
+                                    <input type="text" name="brand_name" v-model="inputData.brand_name" class="form-control" placeholder="Enter Brand Name">  
                                 </div>
+                                <div class="form-group">
+                                <label for="">Description</label>
+                                <textarea name="description" v-model="inputData.description" id="" class="form-control" cols="4" rows="4"></textarea>
+                            </div>
                             
                             </div>
                             <div class="col-md-6">
-                                <div class="form-group">
-                                <label for="">Description</label>
-                                <textarea name="brand_description" v-model="inputData.brand_description" id="" class="form-control" cols="5" rows="10"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="">Photo</label>
-                                <input type="file" name="image" class="form-control">
-                                 <div v-if="isEdit" class="m-4">
-                                            <img :src="inputData.image_path" alt="">
-                                        </div> 
                                 
-                            </div>
+                            <div class="form-group"> 
+                                        <label for="">Photo</label>
+                                        <input type="file" name="image" class="form-control"> 
+                                         <div v-if="isEdit" class="m-4">
+                                            <img :src="inputData.image_path" style="width:80px; height:80px;" class="img-fluid" alt="">
+                                        </div> 
+                             </div>
+                            <div class="form-group">
+                                        <label for="">Status</label>
+                                        <input type="hidden" name="status" v-model="inputData.status">
+                                       <v-select :options="status" :reduce="statu => statu.value" label="name" v-model="inputData.status" placeholder="Select Status"></v-select>
+                             </div>
                             </div>
                            </div>
                         </div>
@@ -54,7 +59,11 @@ export default {
 mixins:[mixin], 
 data(){
     return {
-        service_categories:[],
+        status:[
+                    {name:'Active',value:1},
+                    {name:'Inactive',value:0}
+                ],
+        devices:[],
     }
 },
 created(){
@@ -62,11 +71,13 @@ created(){
     this.generalApi = 'brands'
     this.backUrl = '/brands'
     this.cardTitle = this.isEdit?'Edit Brand':'Add New Brand'   
+     this.isFile = true 
+    this.isImage = 'image'
     
     axios.get(this.url+'/api/'+this.generalApi)
     .then(res => {
-        console.log(res.data.service_categories);
-        this.service_categories = res.data.service_categories
+        console.log(res.data.devices);
+        this.devices = res.data.devices
     })
 
 },

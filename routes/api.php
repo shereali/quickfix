@@ -41,11 +41,15 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
 
         Route::apiResources([
 
-            'brands'             => 'BrandController',
-            'services'           => 'ServiceController', 
-            'service-categories' => 'ServiceCategoryController', 
-            'device-models'      => 'DeviceModelController', 
-            'discounts'          => 'DiscountController', 
+            'brands'                 => 'BrandController',
+            'services'               => 'ServiceController', 
+            'device-models'          => 'DeviceModelController', 
+            'discounts'              => 'DiscountController', 
+            'device-types'           => 'DeviceTypecontroller', 
+            'device'                 => 'DeviceController', 
+            'device-functional-type' => 'DeviceFunctionalTypeController', 
+            'service-type'           => 'ServiceTypeController', 
+            'problem-type'           => 'ProblemTypeController', 
 
             ]);
     });

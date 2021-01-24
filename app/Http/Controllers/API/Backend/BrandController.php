@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Backend\ServiceCategory;
 use App\Http\Requests\Backend\BrandRequest;
 use App\Http\Resources\Backend\BrandResource;
+use App\Models\Backend\Device;
 
 class BrandController extends Controller
 {
@@ -31,10 +32,10 @@ class BrandController extends Controller
         //     $data = Brand::orderBy('id', 'desc')->paginate(10);
 
         // }
-        $service_category = ServiceCategory::all();
+        $devices = Device::where('status',1)->get();
 
         return  BrandResource::collection($data)->additional([
-                'service_categories' => $service_category
+                'devices' => $devices
             ]);
     }
 
@@ -48,19 +49,23 @@ class BrandController extends Controller
     {
         $validated = $request->validated();
         
-        $fileName = Helper::imgProcess($request,'image',$request->brand_name, '', 'images/brand', 'store', Brand::class);  
+        $fileName = Helper::imgProcess($request,'image',$request->brand_name, '', 'images/brands', 'store', Brand::class);  
 
         $data = $request->all();
 
         $data['image'] = $fileName;
-
-        Brand::insert($data);
+        if($validated){
+            Brand::create($data);
 
         return response()->json([
             'status'  => 'success',
             'message' => 'Brand has been created!',
             'icon'    => 'check',
         ]);
+
+        }
+
+        
     }
 
     /**
@@ -71,8 +76,8 @@ class BrandController extends Controller
      */
     public function show($id)
     {
-        $rsmProfile = Brand::find($id);
-        return new BrandResource($rsmProfile);
+        $brands = Brand::find($id);
+        return new BrandResource($brands);
     }
 
     /**
@@ -84,13 +89,10 @@ class BrandController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $fileName = Helper::imgProcess($request,'image',$request->brand_name, $id, 'images/brand', 'update', Brand::class);  
+        $fileName = Helper::imgProcess($request,'image',$request->brand_name, $id, 'images/brands', 'update', Brand::class);  
         $data = $request->all();
         $data['image'] = $fileName;
-        $service_category = ServiceCategory::all();
-        $data = Brand::find($id)->update($data)->additional([
-            'service_categories' => $service_category
-        ]);
+        $data = Brand::find($id)->update($data);
         
         return response()->json([
             'status'  => 'success',

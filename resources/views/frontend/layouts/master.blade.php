@@ -11,14 +11,14 @@
     <!-- google fonts-->
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800" rel="stylesheet">
     <!-- Plugins CSS -->
-    <link href="{{ asset('public/frontend/css/plugin.css') }}" rel="stylesheet" />
+    <link href="{{ asset('frontend/css/plugin.css') }}" rel="stylesheet" />
     <!-- style CSS -->
-    <link href="{{ asset('public/frontend/css/style.css') }}" rel="stylesheet" />
+    <link href="{{ asset('frontend/css/style.css') }}" rel="stylesheet" />
     <!--color switcher css-->
-    <link rel="stylesheet" href="{{ asset('public/frontend/css/switcher/skin-aqua.css') }}" media="screen" id="style-colors" />
+    <link rel="stylesheet" href="{{ asset('frontend/css/switcher/skin-aqua.css') }}" media="screen" id="style-colors" />
     <!-- Document Title -->
     <title>Quickfix - repair service assistant</title>
-    <link rel="shortcut icon" href="{{ asset('public/frontend/images/web-logo-icon-01.png') }}" type="image/png">
+    <link rel="shortcut icon" href="{{ asset('frontend/images/web-logo-icon-01.png') }}" type="image/png">
     <!-- CKEditor link -->
     <!-- process -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -28,7 +28,7 @@
 
 <body style="padding-right: 0px !important;">
     <div class="preloader js-preloader">
-        <img src="{{ asset('public/frontend/images/loader.gif')}}">
+        <img src="{{ asset('frontend/images/loader.gif')}}">
     </div>
     <!--Preloader ends-->
     <!--Page Wrapper starts-->
@@ -41,7 +41,7 @@
                     <div class="site-navbar">
                         <div class="row align-items-center">
                             <div class="col-md-4 col-6">
-                                <a class="navbar-brand" href="#"><img src="{{ asset('public/frontend/images/logo/logo_dark.png') }}" alt="logo" class="img-fluid"></a>
+                                <a class="navbar-brand" href="#"><img src="{{ asset('frontend/images/logo/logo_dark.png') }}" alt="logo" class="img-fluid"></a>
                             </div>
                             <div class="col-md-8 col-6">
                                  <nav class="site-navigation float-right">
@@ -95,7 +95,7 @@
                 <div class="row nav-folderized">
                     <div class="col-lg-4 col-md-12">
                         <div class="footer-logo">
-                            <a href="index.html"> <img src="{{ asset('public/frontend/images/footer_logo.png') }}" alt="logo"></a>
+                            <a href="index.html"> <img src="{{ asset('frontend/images/footer_logo.png') }}" alt="logo"></a>
                             <div class="company-desc">
                                 <p>
                                 We provide quick service process at our Store. Quickfix is one of the best reasonable mobile phone and electronic gadget service platform, we are fixing all models of smartphones, laptops and other electronic gadgets.
@@ -281,13 +281,13 @@
         <!--Scripts starts-->
         <!--plugin js-->
         
-        <script src="{{ asset('public/frontend/js/plugin.js') }}"></script>
+        <script src="{{ asset('frontend/js/plugin.js') }}"></script>
         <!--google maps-->
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_8C7p0Ws2gUu7wo0b6pK9Qu7LuzX2iWY&amp;libraries=places&amp;callback=initAutocomplete"></script>
         <!--Main js-->
-        <script src="{{ asset('public/frontend/js/main.js') }}"></script>
+        <script src="{{ asset('frontend/js/main.js') }}"></script>
         <!--Scripts ends-->
     
-        <script src="{{ asset('public/js/app_frontend.js') }}" defer></script>
+        <script src="{{ asset('js/app_frontend.js') }}" defer></script>
 </body>
 </html>

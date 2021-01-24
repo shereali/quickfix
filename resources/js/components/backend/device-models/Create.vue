@@ -1,7 +1,7 @@
 <template>
     <div>
         <form class="form" @submit.prevent="processData()">
-            <div class="row" style="margin-top:-20px;">
+            <div class="row" style="margin-top:5%">
                 <div class="col-md-12 col-lg-12">
                     <div class="card">
                         <div class="card-header">
@@ -11,16 +11,30 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="">Name</label>
+                                        <label for="">Brand</label>
+                                        <v-select :options="brands" :reduce="brand => brand.id" label="brand_name" v-model="inputData.brand_id" placeholder="Select Brand"></v-select>
+                                        <input type="hidden" name="brand_id" v-model="inputData.brand_id">
+                                       
+                                   </div>
+                                    <div class="form-group">
+                                        <label for="">Model Name</label>
                                         <input type="text" name="model_name" v-model="inputData.model_name"
-                                            class="form-control" placeholder="">
+                                            class="form-control" placeholder="Enter Model Name">
 
                                     </div>
                                     <div class="form-group">
                                         <label for="">Model Number</label>
                                         <input type="text" name="model_number" v-model="inputData.model_number"
-                                            class="form-control" placeholder="">
+                                            class="form-control" placeholder="Enter Model Number">
 
+                                    </div>
+                                    
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="">Description</label>
+                                        <textarea name="description" v-model="inputData.description"
+                                            class="form-control" cols="4" rows="4"></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="">Photo</label>
@@ -29,13 +43,11 @@
                                             <img :src="inputData.image_path" alt="">
                                         </div> 
                                     </div>
-                                </div>
-                                <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="">Description</label>
-                                        <textarea name="model_description" v-model="inputData.model_description"
-                                            class="form-control" cols="10" rows="5"></textarea>
-                                    </div>
+                                        <label for="">Status</label>
+                                        <input type="hidden" name="status" v-model="inputData.status">
+                                       <v-select :options="status" :reduce="statu => statu.value" label="name" v-model="inputData.status" placeholder="Select Status"></v-select>
+                                   </div>
                                 </div>
                             </div>
                         </div>
@@ -54,16 +66,27 @@
     import mixin from '../../../src/mixin';
     export default {
         mixins: [mixin],
+     data(){
+            return {
+                status:[
+                            {name:'Active',value:1},
+                            {name:'Inactive',value:0}
+                        ],
+                brands:[],
+            }
+         },
         created() {
 
             this.generalApi = 'device-models'
             this.backUrl = '/device-models'
             this.cardTitle = this.isEdit ? 'Edit Device Model' : 'Add New Device Model'
+             this.isFile = true 
+             this.isImage = 'image'
 
             axios.get(this.url + '/api/' + this.generalApi)
                 .then(res => {
-                    console.log(res.data.user_id);
-                    this.inputData.user_id = res.data.user_id
+                    console.log(res.data.brands);
+                    this.inputData.brands = res.data.brands
                 })
 
         },

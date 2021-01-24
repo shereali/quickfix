@@ -20,8 +20,8 @@ class ServiceCategoryResource extends JsonResource
             'name'        => $this->name,
             'description' => $this->description,
             'status'      => $this->status,
-            'image'               => '<img src="'.Helper::publicUrl('/images/service-category').'/'.$this->image.'">',
-            'image_path'          => Helper::publicUrl('/images/service-category').'/'.$this->image
+            'image'       => '<img src="'.Helper::publicUrl('/images/service-category').'/'.$this->image.'">',
+            'image_path'  => Helper::publicUrl('/images/service-category').'/'.$this->image
         ];
     }
 }
