@@ -29,6 +29,10 @@ import ServiceType from '../../../components/backend/service-type/Index'
 import CreateServiceType from '../../../components/backend/service-type/Create'
 import ProblemType from '../../../components/backend/problem-type/Index'
 import CreateProblemType from '../../../components/backend/problem-type/Create'
+import Zone from '../../../components/backend/zone/Index'
+import CreateZone from '../../../components/backend/zone/Create'
+import DeviceProblem from '../../../components/backend/device-problem/Index'
+import CreateDeviceProblem from '../../../components/backend/device-problem/Create'
 
 
 let routeBackend = [
@@ -274,14 +278,14 @@ let routeBackend = [
     },
 
     {
-        name:'CreateService',
+        name:'CreateDeviceModel',
         path:'/device-models/:id',
-        component:CreateService,
+        component:CreateDeviceModel,
         
         meta: {
             auth: true,
             breadcrumb: {
-                label: 'CreateService',
+                label: 'CreateDeviceModel',
                 
               }
           }
@@ -620,6 +624,94 @@ let routeBackend = [
             auth: true,
             breadcrumb: {
                 label: 'CreateProblemType',
+                
+              }
+          }
+
+    },
+    {
+        name:'Zone',
+        path:'/zone',
+        component:Zone,
+        
+        meta: {
+            auth: true,
+            breadcrumb: {
+                label: 'Zone',
+                
+              }
+          }
+
+    },
+
+    {
+        name:'CreateZone',
+        path:'/zone/create',
+        component:CreateZone,
+        
+        meta: {
+            auth: true,
+            breadcrumb: {
+                label: 'CreateZone',
+                
+              }
+          }
+
+    },
+
+    {
+        name:'CreateZone',
+        path:'/zone/:id',
+        component:CreateZone,
+        
+        meta: {
+            auth: true,
+            breadcrumb: {
+                label: 'CreateZone',
+                
+              }
+          }
+
+    },
+    {
+        name:'DeviceProblem',
+        path:'/device-problems',
+        component:DeviceProblem,
+        
+        meta: {
+            auth: true,
+            breadcrumb: {
+                label: 'DeviceProblem',
+                
+              }
+          }
+
+    },
+
+    {
+        name:'CreateDeviceProblem',
+        path:'/device-problems/create',
+        component:CreateDeviceProblem,
+        
+        meta: {
+            auth: true,
+            breadcrumb: {
+                label: 'CreateDeviceProblem',
+                
+              }
+          }
+
+    },
+
+    {
+        name:'CreateDeviceProblem',
+        path:'/device-problems/:id',
+        component:CreateDeviceProblem,
+        
+        meta: {
+            auth: true,
+            breadcrumb: {
+                label: 'CreateDeviceProblem',
                 
               }
           }

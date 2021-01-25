@@ -12,8 +12,8 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="">Device Type</label>
-                                        <input type="hidden" name="device_type_id" v-model="inputData.device_type_id">
-                                       <v-select :options="deviceTypes" :reduce="deviceType => deviceType.id" label="type_name" v-model="inputData.device_type_id" placeholder="Select Device Type"></v-select>
+                                        <input type="hidden" name="device_model_id" v-model="inputData.device_model_id">
+                                       <v-select :options="device_models" :reduce="device_model => device_model.id" label="model_name" v-model="inputData.device_model_id" placeholder="Select Device Model"></v-select>
                                     </div>
                                     <div class="form-group">
                                         <label for="">Problem Type Name</label>
@@ -63,7 +63,7 @@ mixins:[mixin],
                     {name:'Active',value:1},
                     {name:'Inactive',value:0}
                 ],
-                // deviceTypes: [],
+                device_models: [],
             }
         },
 created(){
@@ -74,11 +74,11 @@ created(){
     this.isFile = true 
     this.isImage = 'image'
     
-    // axios.get(this.url+'/api/'+this.generalApi)
-    // .then(res => {
-    //     console.log(res.data.deviceTypes);
-    //     this.deviceTypes = res.data.deviceTypes
-    // })
+    axios.get(this.url+'/api/'+this.generalApi)
+    .then(res => {
+        console.log(res.data.device_models);
+        this.device_models = res.data.device_models
+    })
 
 },
 

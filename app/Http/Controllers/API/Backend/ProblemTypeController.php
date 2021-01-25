@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API\Backend;
 use Helper;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Backend\ProblemTypeResource;
+use App\Models\Backend\DeviceModel;
 use App\Models\Backend\ProblemType;
 use Illuminate\Http\Request;
 
@@ -20,14 +21,14 @@ class ProblemTypeController extends Controller
         $search = $request->search;
         $dataSorting = $request->sorting == 'false'?10:$request->sorting;
         
-            $data =$search == 'false'?ProblemType::orderBy('id', 'desc')->paginate($dataSorting):ProblemType::where(function($query) use($search){
-            $query->orWhere('device_name', 'LIKE', "%{$search}%");
+          $data =$search == 'false'?ProblemType::orderBy('id', 'desc')->paginate($dataSorting):ProblemType::where(function($query) use($search){
+            $query->orWhere('name', 'LIKE', "%{$search}%");
         })->orderBy('id', 'desc')->paginate($dataSorting);
 
-        // $deviceTypes = DeviceType::where('status',1)->get();
+        $device_models = DeviceModel::where('status',1)->get();
 
         return  ProblemTypeResource::collection($data)->additional([
-            // 'deviceTypes' => $deviceTypes
+            'device_models' => $device_models
 
         ]);
 

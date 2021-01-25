@@ -11,10 +11,9 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="">Brand</label>
-                                        <v-select :options="brands" :reduce="brand => brand.id" label="brand_name" v-model="inputData.brand_id" placeholder="Select Brand"></v-select>
+                                        <label for="">Brands </label>
                                         <input type="hidden" name="brand_id" v-model="inputData.brand_id">
-                                       
+                                       <v-select :options="brands" :reduce="brand => brand.id" label="brand_name" v-model="inputData.brand_id" placeholder="Select Brands"></v-select>
                                    </div>
                                     <div class="form-group">
                                         <label for="">Model Name</label>
@@ -40,7 +39,7 @@
                                         <label for="">Photo</label>
                                         <input type="file" name="image" class="form-control">
                                          <div v-if="isEdit" class="m-4">
-                                            <img :src="inputData.image_path" alt="">
+                                            <img :src="inputData.image_path" style="width:80px; height:80px;" class="img-fluid" alt="">
                                         </div> 
                                     </div>
                                     <div class="form-group">
@@ -83,10 +82,11 @@
              this.isFile = true 
              this.isImage = 'image'
 
-            axios.get(this.url + '/api/' + this.generalApi)
+            axios.get(this.url + '/api/'+this.generalApi)
                 .then(res => {
-                    console.log(res.data.brands);
-                    this.inputData.brands = res.data.brands
+                    // console.log(res.data.brands);
+                    this.brands = res.data.brands
+                    
                 })
 
         },

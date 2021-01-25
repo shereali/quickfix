@@ -22,8 +22,8 @@
             </li>
             <li><i class="fa fa-product-hunt" aria-hidden="true"></i> <router-link to="/brands">Brands</router-link></li>
             <li><i class="fa fa-product-hunt" aria-hidden="true"></i> <router-link to="/device-models">Device Model</router-link></li>
-            <li><i class="fa fa-product-hunt" aria-hidden="true"></i> <router-link to="/device-models">Device Problem</router-link></li>
-            <li><i class="fa fa-product-hunt" aria-hidden="true"></i> <router-link to="/device-models">Zone</router-link></li>
+            <li><i class="fa fa-product-hunt" aria-hidden="true"></i> <router-link to="/device-problems">Device Problem</router-link></li>
+            <li><i class="fa fa-product-hunt" aria-hidden="true"></i> <router-link to="/zone">Zone</router-link></li>
             <li><i class="fa fa-call"></i> <router-link to="/instant-call">Instant Call</router-link></li>
             <li><i class="fa fa-quotation"></i> <router-link to="/quotation">Quotation</router-link></li>
             <li><i class="fa fa-shopping-cart"></i> <router-link to="">Merchants</router-link></li>
