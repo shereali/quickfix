@@ -7,15 +7,15 @@ export default {
     mixins:[mixin],
 
     created(){
-        this.generalApi = "zone" 
+        this.generalApi = "device-problems" 
 
         this.dataSearchingApi="search-device-models-data"
 
-        this.cardTitle ="Zone List"  
+        this.cardTitle ="Device Problem List"  
         this.isFile = true
 
-        this.columnsHead.push('Sn','Name', 'Charge', 'Description','Photo', 'Status', 'Action')
-        this.columnsBody.push('name','charge', 'description', 'image', 'statusText')
+        this.columnsHead.push('Sn','Problem', 'Description', 'Original price','Master copy price', 'Status', 'Action')
+        this.columnsBody.push('problem','description', 'original_price','master_copy_price', 'statusText')
         // this.columnsBodyExtra = 
         this.isDownload=false;
 

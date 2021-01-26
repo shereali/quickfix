@@ -10,50 +10,60 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-6">
-                                    
-                                    <div class="form-group">
-                                        <label for="">Zone Name</label>
-                                        <input type="text" name="name" v-model="inputData.name"
-                                            class="form-control" placeholder="Enter Zone Name">
-
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="">Division</label>
-                                        <input type="hidden" name="division_id" v-model="inputData.division_id">
-                                       <v-select :options="divisions" :reduce="division => division.id" label="name" v-model="inputData.division_id" placeholder="Select Division"></v-select>
+                                     <div class="form-group">
+                                        <label for="">Device</label>
+                                        <input type="hidden" name="device_id" v-model="inputData.device_id">
+                                       <v-select :options="devices" :reduce="device => device.id" label="device_name" v-model="inputData.device_id" placeholder="Select Device"></v-select>
                                    </div>
-                                    
+                                    <div class="form-group">
+                                        <label for="">Device Functional Type</label>
+                                        <input type="hidden" name="device_functional_type_id" v-model="inputData.device_functional_type_id">
+                                       <v-select :options="device_functional_types" :reduce="device_functional_type => device_functional_type.id" label="name" v-model="inputData.device_functional_type_id" placeholder="Select Functional Type"></v-select>
+                                   </div>
                                     <div class="form-group">
                                         <label for="">Service Type</label>
                                         <input type="hidden" name="service_type_id" v-model="inputData.service_type_id">
                                        <v-select :options="service_types" :reduce="service_type => service_type.id" label="name" v-model="inputData.service_type_id" placeholder="Select Service Type"></v-select>
                                    </div>
-                                   <div class="form-group">
-                                        <label for="">Photo</label>
-                                        <input type="file" name="image" class="form-control">
-                                         <div v-if="isEdit" class="m-4">
-                                            <img :src="inputData.image_path" style="width:80px; height:80px;" class="img-fluid" alt="">
-                                        </div> 
-                                    </div>
-                                    
-                                    
+                                    <div class="form-group">
+                                        <label for="">Brands</label>
+                                        <input type="hidden" name="brand_id" v-model="inputData.brand_id">
+                                       <v-select :options="brands" :reduce="brand => brand.id" label="brand_name" v-model="inputData.brand_id" placeholder="Select Brand"></v-select>
+                                   </div>
+                                    <div class="form-group">
+                                        <label for="">Device Models</label>
+                                        <input type="hidden" name="device_model_id" v-model="inputData.device_model_id">
+                                       <v-select :options="device_models" :reduce="device_model => device_model.id" label="model_number" v-model="inputData.device_model_id" placeholder="Select Device Model"></v-select>
+                                   </div>
+                                    <div class="form-group">
+                                        <label for="">Problem Type</label>
+                                        <input type="hidden" name="problem_type_id" v-model="inputData.problem_type_id">
+                                       <v-select :options="problem_types" :reduce="problem_type => problem_type.id" label="name" v-model="inputData.problem_type_id" placeholder="Select Problem"></v-select>
+                                   </div>        
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="">Charge</label>
-                                        <input type="number" name="charge" v-model="inputData.charge"
-                                            class="form-control" >
+                                        <label for="">Problem</label>
+                                        <input type="text" name="problem" v-model="inputData.problem"
+                                            class="form-control" placeholder="Enter Problem">
 
-                                    </div>
+                                    </div> 
                                     <div class="form-group">
-                                        <label for="">Districts</label>
-                                        <input type="hidden" name="district_id" v-model="inputData.district_id">
-                                       <v-select :options="districts" :reduce="district => district.id" label="name" v-model="inputData.district_id" placeholder="Select District"></v-select>
-                                   </div>
+                                        <label for="">Original Price</label>
+                                        <input type="number" name="original_price" v-model="inputData.original_price"
+                                            class="form-control" placeholder="">
+
+                                    </div> 
+                                    <div class="form-group">
+                                        <label for="">Master Copy Price</label>
+                                        <input type="number" name="master_copy_price" v-model="inputData.master_copy_price"
+                                            class="form-control" placeholder="">
+
+                                    </div> 
                                     <div class="form-group">
                                         <label for="">Description</label>
                                         <textarea name="description" v-model="inputData.description"
-                                            class="form-control" cols="4" rows="4"></textarea>
+                                            class="form-control" cols="2" rows="2"></textarea>
                                     </div>
                                     
                                     <div class="form-group">
@@ -85,25 +95,31 @@
                             {name:'Active',value:1},
                             {name:'Inactive',value:0}
                         ],
-                divisions:[],
-                districts:[],
+                devices:[],
+                device_functional_types:[],
                 service_types:[],
+                brands:[],
+                device_models:[],
+                problem_types:[],
             }
          },
         created() {
 
-            this.generalApi = 'zone'
-            this.backUrl = '/zone'
-            this.cardTitle = this.isEdit ? 'Edit zone' : 'Add New zone'
+            this.generalApi = 'device-problems'
+            this.backUrl = '/device-problems'
+            this.cardTitle = this.isEdit ? 'Edit Device Problem' : 'Add New Device Problem'
              this.isFile = true 
              this.isImage = 'image'
 
             axios.get(this.url + '/api/'+this.generalApi)
                 .then(res => {
                     // console.log(res.data.brands);
-                    this.divisions = res.data.divisions
-                    this.districts = res.data.districts
-                    this.service_types = res.data.service_types
+                    this.devices                 = res.data.devices
+                    this.device_functional_types = res.data.device_functional_types
+                    this.service_types           = res.data.service_types
+                    this.brands                  = res.data.brands
+                    this.device_models           = res.data.device_models
+                    this.problem_types           = res.data.problem_types
                     
                 })
 

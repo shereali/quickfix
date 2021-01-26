@@ -18,6 +18,7 @@
                     <li><router-link to="/device-functional-type">Device Functional Type</router-link></li>
                     <li><router-link to="/service-type">Service Type</router-link></li>
                     <li><router-link to="/problem-type">Problem Type</router-link></li>
+                    <li><router-link to="/experience-category">Experience Category</router-link></li>
                 </ul>
             </li>
             <li><i class="fa fa-product-hunt" aria-hidden="true"></i> <router-link to="/brands">Brands</router-link></li>
@@ -27,7 +28,7 @@
             <li><i class="fa fa-call"></i> <router-link to="/instant-call">Instant Call</router-link></li>
             <li><i class="fa fa-quotation"></i> <router-link to="/quotation">Quotation</router-link></li>
             <li><i class="fa fa-shopping-cart"></i> <router-link to="">Merchants</router-link></li>
-            <li><i class="fa fa-music" aria-hidden="true"></i> <router-link to="">Customer</router-link></li>
+            <li><i class="fa fa-music" aria-hidden="true"></i> <router-link to="/customers">Customer</router-link></li>
             <li><i class="fa fa-list"></i> <router-link to="/services">Service</router-link></li>
             <li><i class="fa fa-list"></i> <router-link to="/service-categories">Service Category</router-link></li>            
             <li><i class="fa fa-product-hunt" aria-hidden="true"></i> <router-link to="/discounts">Discount</router-link></li>

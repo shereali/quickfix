@@ -3,9 +3,16 @@
 namespace App\Http\Controllers\API\Backend;
 
 use Helper;
+use Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Backend\DeviceProblemResource;
+use App\Models\Backend\Brand;
+use App\Models\Backend\Device;
+use App\Models\Backend\DeviceFunctionalType;
+use App\Models\Backend\DeviceModel;
 use App\Models\Backend\DeviceProblem;
+use App\Models\Backend\ProblemType;
+use App\Models\Backend\ServiceType;
 use Illuminate\Http\Request;
 
 class DeviceProblemController extends Controller
@@ -15,9 +22,31 @@ class DeviceProblemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $search = $request->search;
+        $dataSorting = $request->sorting == 'false'?10:$request->sorting;
+        
+            $data =$search == 'false'?DeviceProblem::orderBy('id', 'desc')->paginate($dataSorting):DeviceProblem::where(function($query) use($search){
+            $query->orWhere('problem', 'LIKE', "%{$search}%");
+        })->orderBy('id', 'desc')->paginate($dataSorting);
+
+        $devices                 = Device::where('status',1)->get();
+        $device_functional_types = DeviceFunctionalType::where('status',1)->get();
+        $service_types           = ServiceType::where('status',1)->get();
+        $brands                  = Brand::where('status',1)->get();
+        $device_models           = DeviceModel::where('status',1)->get();
+        $problem_types           = ProblemType::where('status',1)->get();
+
+        return  DeviceProblemResource::collection($data)->additional([
+            'devices'                =>$devices,
+            'device_functional_types'=>$device_functional_types,
+            'service_types'          =>$service_types,
+            'brands'                 =>$brands,
+            'device_models'          =>$device_models,
+            'problem_types'          =>$problem_types,
+        ]);
+
     }
 
     /**
@@ -35,6 +64,8 @@ class DeviceProblemController extends Controller
 
         $fileName = Helper::imgProcess($request,'image',$request->name, '', 'images/device-problem', 'store', DeviceProblem::class);  
         $data = $request->all();
+        // $data['created_by'] = Auth::user()->id;
+        $data['created_by_type'] = '1';
         $data['image'] = $fileName;
         if($validated){
             DeviceProblem::create($data);
@@ -69,6 +100,8 @@ class DeviceProblemController extends Controller
     {
         $fileName = Helper::imgProcess($request,'image',$request->name, $id, 'images/device-problem', 'update', DeviceProblem::class); 
         $data = $request->all();
+        // $data['updated_by'] = Auth::user()->id;
+        $data['updated_by_type'] = '1';
         $data['image'] = $fileName;
 
         $data = DeviceProblem::find($id)->update($data);

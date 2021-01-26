@@ -33,6 +33,10 @@ import Zone from '../../../components/backend/zone/Index'
 import CreateZone from '../../../components/backend/zone/Create'
 import DeviceProblem from '../../../components/backend/device-problem/Index'
 import CreateDeviceProblem from '../../../components/backend/device-problem/Create'
+import ExperienceCategory from '../../../components/backend/experience-category/Index'
+import CreateExperienceCategory from '../../../components/backend/experience-category/Create'
+import Customer from '../../../components/backend/customer/Index'
+import CreateCustomer from '../../../components/backend/customer/Create'
 
 
 let routeBackend = [
@@ -712,6 +716,94 @@ let routeBackend = [
             auth: true,
             breadcrumb: {
                 label: 'CreateDeviceProblem',
+                
+              }
+          }
+
+    },
+    {
+        name:'ExperienceCategory',
+        path:'/experience-category',
+        component:ExperienceCategory,
+        
+        meta: {
+            auth: true,
+            breadcrumb: {
+                label: 'ExperienceCategory',
+                
+              }
+          }
+
+    },
+
+    {
+        name:'CreateExperienceCategory',
+        path:'/experience-category/create',
+        component:CreateExperienceCategory,
+        
+        meta: {
+            auth: true,
+            breadcrumb: {
+                label: 'CreateExperienceCategory',
+                
+              }
+          }
+
+    },
+
+    {
+        name:'CreateExperienceCategory',
+        path:'/experience-category/:id',
+        component:CreateExperienceCategory,
+        
+        meta: {
+            auth: true,
+            breadcrumb: {
+                label: 'CreateExperienceCategory',
+                
+              }
+          }
+
+    },
+    {
+        name:'Customer',
+        path:'/customers',
+        component:Customer,
+        
+        meta: {
+            auth: true,
+            breadcrumb: {
+                label: 'Customer',
+                
+              }
+          }
+
+    },
+
+    {
+        name:'CreateCustomer',
+        path:'/customers/create',
+        component:CreateCustomer,
+        
+        meta: {
+            auth: true,
+            breadcrumb: {
+                label: 'CreateCustomer',
+                
+              }
+          }
+
+    },
+
+    {
+        name:'CreateCustomer',
+        path:'/customers/:id',
+        component:CreateCustomer,
+        
+        meta: {
+            auth: true,
+            breadcrumb: {
+                label: 'CreateCustomer',
                 
               }
           }

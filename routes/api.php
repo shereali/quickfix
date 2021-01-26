@@ -39,7 +39,7 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
             ]);
         });
 
-        Route                        :: apiResources([
+        Route::apiResources([
 
             'brands'                 => 'BrandController',
             'services'               => 'ServiceController', 
@@ -51,6 +51,9 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
             'service-type'           => 'ServiceTypeController', 
             'problem-type'           => 'ProblemTypeController', 
             'zone'                   => 'ZoneController', 
+            'device-problems'        => 'DeviceProblemController', 
+            'experience-category'    => 'ExprienceCategoryController', 
+            'customers'              => 'CustomerController', 
 
             ]);
     });
