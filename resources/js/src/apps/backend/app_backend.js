@@ -9,7 +9,7 @@ require('../../bootstrap');
 window.Vue = require('vue');
 import master from '../../../components/backend/layouts/Master.vue'
 import router from '../../routes/backend/router'
-import store from '../../../src/store'
+import store from '../../store/backend/store-backend'
 import moment from 'moment'
 import VModal from 'vue-js-modal'
 import Toasted from 'vue-toasted';

@@ -27,6 +27,13 @@ Route::group(['namespace' => 'Backend'], function(){
 
 });
 
+Route::group(['namespace' => 'Backend\CustomerSupport'], function(){
+
+    Route::get('/customer-support', 'HomeController@index');
+    Route::get('/customer-support/{anycustomer}', 'HomeController@index')->where('anycustomer', '.*');
+
+});
+
 
 Route::group(['namespace' => 'Frontend'], function(){
 
