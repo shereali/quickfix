@@ -28,8 +28,17 @@ class CreateCustomerDetailsTable extends Migration
             $table->foreign('referral_id')->references('id')->on('customers');
             $table->float('coins')->nullable();
             $table->float('bonus_amounts')->nullable();
-            
-
+            $table->float('withdraw_amounts')->nullable();
+            $table->unsignedBigInteger('created_by_type')->nullable()->comment('1=Admin;2=Customer;3=Customer support');
+            $table->unsignedBigInteger('created_by')->nullable()->comment('FK: users.id/Customers.id');
+            $table->foreign('created_by')->references('id')->on('users');
+            $table->unsignedBigInteger('updated_by_type')->nullable()->comment('1=Admin;2=Customer;3=Customer support');
+            $table->unsignedBigInteger('updated_by')->nullable()->comment('FK: users.id/Customers.id');
+            $table->foreign('updated_by')->references('id')->on('users');
+            $table->timestamp('deleted_at')->useCurrent();
+            $table->unsignedBigInteger('deleted_by_type')->nullable()->comment('1=Admin;2=Customer;3=Customer support');
+            $table->unsignedBigInteger('deleted_by')->nullable()->comment('FK: users.id/Customers.id');
+            $table->foreign('deleted_by')->references('id')->on('users');        
             $table->timestamps();
         });
     }

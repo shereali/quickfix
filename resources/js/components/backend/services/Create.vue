@@ -1,9 +1,9 @@
 <template>
     <div>
         <form class="form" @submit.prevent="processData()">
-            <div class="row" style="margin-top:-20px;">
+            <div class="row">
                 <div class="col-md-12 col-lg-12">
-                    <div class="card">
+                    <div class="card" style="margin-top:2%;">
                         <div class="card-header">
                             <h3 class="card-title">{{ cardTitle }}</h3>
                         </div>
