@@ -86,5 +86,14 @@
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('backend/dist/js/demo.js')}}"></script>
 <script src="{{ asset('js/app-customer-support.js') }}" defer></script>
+
+<script>
+  @auth
+    window.Permissions = {!! json_encode(Auth::user()->allPermissions, true) !!};
+  @else
+    window.Permissions = [];
+  @endauth
+</script>
+
 </body>
 </html>

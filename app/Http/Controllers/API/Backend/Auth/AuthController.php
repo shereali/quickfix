@@ -17,13 +17,14 @@ class AuthController extends Controller
     public function signIn(Request $request)
     {
         
+         $request->all();
         $user = $request->validate([
             'email'             => 'required|email',
             'password'          => 'required'
         ]);
 
 
-       $credential = Auth::attempt($request->only('email', 'password'));
+         $credential = Auth::attempt($request->only('email', 'password'));
 
        if($credential){
 

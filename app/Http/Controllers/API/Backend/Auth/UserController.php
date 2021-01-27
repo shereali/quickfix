@@ -15,10 +15,19 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = User::orderBy('id','DESC')->paginate(5);
-        return UserResource::collection($data);
+       
+        $search = $request->search;
+        $dataSorting = $request->sorting == 'false'?10:$request->sorting;
+
+        // return User::paginate(10);
+        
+            $data =$search == 'false'?User::orderBy('id', 'desc')->paginate($dataSorting):User::where(function($query) use($search){
+            $query->orWhere('name', 'LIKE', "%{$search}%");
+        })->orderBy('id', 'desc')->paginate($dataSorting);
+
+        return  UserResource::collection($data);
     }
 
     /**
@@ -52,8 +61,9 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-        $roles = Role::pluck('name','name')->all();
-        $userRole = $user->roles->pluck('name','name')->all();
+        // $roles = Role::pluck('name','name')->all();
+        // $userRole = $user->roles->pluck('name','name')->all();
+        return new UserResource($user);
     }
 
     /**
