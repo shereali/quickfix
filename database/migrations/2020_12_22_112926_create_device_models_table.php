@@ -16,18 +16,18 @@ class CreateDeviceModelsTable extends Migration
         Schema::create('device_models', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('brand_id')->nullable()->comment('FK: brands.id');
-            $table->foreign('brand_id')->references('id')->on('brands');
+            // $table->foreign('brand_id')->references('id')->on('brands');
             $table->string('model_name')->nullable();
             $table->string('model_number')->nullable();
             $table->text('description')->nullable();
             $table->string('image')->nullable();
             $table->tinyInteger('status')->comment('status 1=active;0=inactive');
             $table->unsignedBigInteger('created_by')->nullable()->comment('FK: users.id');
-            $table->foreign('created_by')->references('id')->on('users');
+            // $table->foreign('created_by')->references('id')->on('users');
             $table->unsignedBigInteger('updated_by')->nullable()->comment('FK: users.id');
-            $table->foreign('updated_by')->references('id')->on('users');
+            // $table->foreign('updated_by')->references('id')->on('users');
             $table->unsignedBigInteger('deleted_by')->nullable()->comment('FK: users.id');
-            $table->foreign('deleted_by')->references('id')->on('users');
+            // $table->foreign('deleted_by')->references('id')->on('users');
             $table->timestamps();
         });
     }
