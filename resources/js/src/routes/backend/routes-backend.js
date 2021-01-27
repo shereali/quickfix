@@ -29,6 +29,14 @@ import ServiceType from '../../../components/backend/service-type/Index'
 import CreateServiceType from '../../../components/backend/service-type/Create'
 import ProblemType from '../../../components/backend/problem-type/Index'
 import CreateProblemType from '../../../components/backend/problem-type/Create'
+import Zone from '../../../components/backend/zone/Index'
+import CreateZone from '../../../components/backend/zone/Create'
+import DeviceProblem from '../../../components/backend/device-problem/Index'
+import CreateDeviceProblem from '../../../components/backend/device-problem/Create'
+import ExperienceCategory from '../../../components/backend/experience-category/Index'
+import CreateExperienceCategory from '../../../components/backend/experience-category/Create'
+import Customer from '../../../components/backend/customer/Index'
+import CreateCustomer from '../../../components/backend/customer/Create'
 
 
 let routeBackend = [
@@ -274,14 +282,14 @@ let routeBackend = [
     },
 
     {
-        name:'CreateService',
+        name:'CreateDeviceModel',
         path:'/device-models/:id',
-        component:CreateService,
+        component:CreateDeviceModel,
         
         meta: {
             auth: true,
             breadcrumb: {
-                label: 'CreateService',
+                label: 'CreateDeviceModel',
                 
               }
           }
@@ -620,6 +628,182 @@ let routeBackend = [
             auth: true,
             breadcrumb: {
                 label: 'CreateProblemType',
+                
+              }
+          }
+
+    },
+    {
+        name:'Zone',
+        path:'/zone',
+        component:Zone,
+        
+        meta: {
+            auth: true,
+            breadcrumb: {
+                label: 'Zone',
+                
+              }
+          }
+
+    },
+
+    {
+        name:'CreateZone',
+        path:'/zone/create',
+        component:CreateZone,
+        
+        meta: {
+            auth: true,
+            breadcrumb: {
+                label: 'CreateZone',
+                
+              }
+          }
+
+    },
+
+    {
+        name:'CreateZone',
+        path:'/zone/:id',
+        component:CreateZone,
+        
+        meta: {
+            auth: true,
+            breadcrumb: {
+                label: 'CreateZone',
+                
+              }
+          }
+
+    },
+    {
+        name:'DeviceProblem',
+        path:'/device-problems',
+        component:DeviceProblem,
+        
+        meta: {
+            auth: true,
+            breadcrumb: {
+                label: 'DeviceProblem',
+                
+              }
+          }
+
+    },
+
+    {
+        name:'CreateDeviceProblem',
+        path:'/device-problems/create',
+        component:CreateDeviceProblem,
+        
+        meta: {
+            auth: true,
+            breadcrumb: {
+                label: 'CreateDeviceProblem',
+                
+              }
+          }
+
+    },
+
+    {
+        name:'CreateDeviceProblem',
+        path:'/device-problems/:id',
+        component:CreateDeviceProblem,
+        
+        meta: {
+            auth: true,
+            breadcrumb: {
+                label: 'CreateDeviceProblem',
+                
+              }
+          }
+
+    },
+    {
+        name:'ExperienceCategory',
+        path:'/experience-category',
+        component:ExperienceCategory,
+        
+        meta: {
+            auth: true,
+            breadcrumb: {
+                label: 'ExperienceCategory',
+                
+              }
+          }
+
+    },
+
+    {
+        name:'CreateExperienceCategory',
+        path:'/experience-category/create',
+        component:CreateExperienceCategory,
+        
+        meta: {
+            auth: true,
+            breadcrumb: {
+                label: 'CreateExperienceCategory',
+                
+              }
+          }
+
+    },
+
+    {
+        name:'CreateExperienceCategory',
+        path:'/experience-category/:id',
+        component:CreateExperienceCategory,
+        
+        meta: {
+            auth: true,
+            breadcrumb: {
+                label: 'CreateExperienceCategory',
+                
+              }
+          }
+
+    },
+    {
+        name:'Customer',
+        path:'/customers',
+        component:Customer,
+        
+        meta: {
+            auth: true,
+            breadcrumb: {
+                label: 'Customer',
+                
+              }
+          }
+
+    },
+
+    {
+        name:'CreateCustomer',
+        path:'/customers/create',
+        component:CreateCustomer,
+        
+        meta: {
+            auth: true,
+            breadcrumb: {
+                label: 'CreateCustomer',
+                
+              }
+          }
+
+    },
+
+    {
+        name:'CreateCustomer',
+        path:'/customers/:id',
+        component:CreateCustomer,
+        
+        meta: {
+            auth: true,
+            breadcrumb: {
+                label: 'CreateCustomer',
                 
               }
           }

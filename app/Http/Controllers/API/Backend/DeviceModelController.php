@@ -58,7 +58,7 @@ class DeviceModelController extends Controller
 
         $data['image'] = $fileName;
         if($validated){     
-        Brand::create($data);
+        DeviceModel::create($data);
 
         return response()->json([
             'status'  => 'success',

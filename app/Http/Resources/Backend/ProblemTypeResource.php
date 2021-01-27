@@ -23,7 +23,7 @@ class ProblemTypeResource extends JsonResource
             'model_name'      => $this->model_name,
             'description'     => $this->description,
             'image'           => $this->image,
-            'model_name'      => $this->deviceModel->model_name,
+            'model_number'      => $this->deviceModel->model_number,
             'status'          => $this->status,
             'statusText'      => $this->status == 1?'Active':'Inactive',
             'image'           => '<img style="width:60px; height:60px;" class="img-fluid" src="'.Helper::publicUrl('/images/problem-type').'/'.$this->image.'">',

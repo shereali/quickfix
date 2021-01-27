@@ -1,4 +1,15 @@
 <?php return array (
+  'devfaysal/laravel-bangladesh-geocode' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Devfaysal\\BangladeshGeocode\\BangladeshGeocodeServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'BangladeshGeocode' => 'Devfaysal\\BangladeshGeocode\\BangladeshGeocodeFacade',
+    ),
+  ),
   'facade/ignition' => 
   array (
     'providers' => 
