@@ -200,7 +200,7 @@
             <p>Discount</p></router-link></li>
 
           <li class="nav-item">
-                <router-link to="javascript:void(0)" class="nav-link" @click.prevent="signOut">
+                <router-link to="#" class="nav-link" @click.native="signOut">
                   <i class="fa fa-sign-out-alt nav-icon"></i>
                   <p>Sign Out</p>
                 </router-link>
@@ -212,3 +212,8 @@
     <!-- /.sidebar -->
   </aside>
 </template>
+<script>
+export default {
+  props:['signOut']
+}
+</script>
