@@ -601,6 +601,7 @@ class ComposerStaticInitb07b9e7951e8543fa9dbea7aeb776f29
         'App\\Http\\Resources\\Backend\\ZoneResource' => __DIR__ . '/../..' . '/app/Http/Resources/Backend/ZoneResource.php',
         'App\\Models\\Backend\\Brand' => __DIR__ . '/../..' . '/app/Models/Backend/Brand.php',
         'App\\Models\\Backend\\Customer' => __DIR__ . '/../..' . '/app/Models/Backend/Customer.php',
+        'App\\Models\\Backend\\CustomerDetail' => __DIR__ . '/../..' . '/app/Models/Backend/CustomerDetail.php',
         'App\\Models\\Backend\\CustomerRegistrationBonus' => __DIR__ . '/../..' . '/app/Models/Backend/CustomerRegistrationBonus.php',
         'App\\Models\\Backend\\Device' => __DIR__ . '/../..' . '/app/Models/Backend/Device.php',
         'App\\Models\\Backend\\DeviceFunctionalType' => __DIR__ . '/../..' . '/app/Models/Backend/DeviceFunctionalType.php',

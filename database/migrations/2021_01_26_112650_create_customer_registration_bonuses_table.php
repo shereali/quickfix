@@ -22,6 +22,7 @@ class CreateCustomerRegistrationBonusesTable extends Migration
             $table->float('amount')->nullable();
             $table->integer('user_type')->nullable()->comment('1=customer,2=vendor,3=both');
             $table->string('image')->nullable();
+            $table->tinyInteger('bonus_type')->nullable()->comment('1=Registration;1=Referal');
             $table->tinyInteger('status')->comment('status 1=active;0=inactive');
             $table->unsignedBigInteger('created_by')->nullable()->comment('FK: users.id');
             $table->foreign('created_by')->references('id')->on('users');

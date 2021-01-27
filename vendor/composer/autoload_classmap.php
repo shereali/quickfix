@@ -77,6 +77,7 @@ return array(
     'App\\Http\\Resources\\Backend\\ZoneResource' => $baseDir . '/app/Http/Resources/Backend/ZoneResource.php',
     'App\\Models\\Backend\\Brand' => $baseDir . '/app/Models/Backend/Brand.php',
     'App\\Models\\Backend\\Customer' => $baseDir . '/app/Models/Backend/Customer.php',
+    'App\\Models\\Backend\\CustomerDetail' => $baseDir . '/app/Models/Backend/CustomerDetail.php',
     'App\\Models\\Backend\\CustomerRegistrationBonus' => $baseDir . '/app/Models/Backend/CustomerRegistrationBonus.php',
     'App\\Models\\Backend\\Device' => $baseDir . '/app/Models/Backend/Device.php',
     'App\\Models\\Backend\\DeviceFunctionalType' => $baseDir . '/app/Models/Backend/DeviceFunctionalType.php',
