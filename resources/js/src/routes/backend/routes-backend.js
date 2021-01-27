@@ -37,6 +37,8 @@ import ExperienceCategory from '../../../components/backend/experience-category/
 import CreateExperienceCategory from '../../../components/backend/experience-category/Create'
 import Customer from '../../../components/backend/customer/Index'
 import CreateCustomer from '../../../components/backend/customer/Create'
+import RegistrationBonus from '../../../components/backend/registration-bonus/Index'
+import CreateRegistrationBonus from '../../../components/backend/registration-bonus/Create'
 
 
 let routeBackend = [
@@ -804,6 +806,50 @@ let routeBackend = [
             auth: true,
             breadcrumb: {
                 label: 'CreateCustomer',
+                
+              }
+          }
+
+    },
+    {
+        name:'RegistrationBonus',
+        path:'/registration-bonus',
+        component:RegistrationBonus,
+        
+        meta: {
+            auth: true,
+            breadcrumb: {
+                label: 'RegistrationBonus',
+                
+              }
+          }
+
+    },
+
+    {
+        name:'CreateRegistrationBonus',
+        path:'/registration-bonus/create',
+        component:CreateRegistrationBonus,
+        
+        meta: {
+            auth: true,
+            breadcrumb: {
+                label: 'CreateRegistrationBonus',
+                
+              }
+          }
+
+    },
+
+    {
+        name:'CreateRegistrationBonus',
+        path:'/registration-bonus/:id',
+        component:CreateRegistrationBonus,
+        
+        meta: {
+            auth: true,
+            breadcrumb: {
+                label: 'CreateRegistrationBonus',
                 
               }
           }

@@ -171,25 +171,46 @@
           </li> -->
 
             <li class="nav-item"><router-link class="nav-link" to="/brands">
-            <i class="nav-icon fa fa-product-hunt" aria-hidden="true"></i>
+            <i class="nav-icon fab fa-bandcamp" aria-hidden="true"></i>
             <p>Brands</p></router-link></li>
             <li class="nav-item"><router-link class="nav-link" to="/device-models">
-            <i class="nav-icon fa fa-product-hunt" aria-hidden="true"></i>
+            <i class="nav-icon fab fa-apple" aria-hidden="true"></i>
             <p>Device Model</p></router-link></li>
             <li class="nav-item"><router-link class="nav-link" to="/device-problems">
-            <i class="nav-icon fa fa-product-hunt" aria-hidden="true"></i>
+            <i class="nav-icon fas fa-exclamation-triangle" aria-hidden="true"></i>
             <p>Device Problem</p></router-link></li>
             <li class="nav-item"><router-link class="nav-link" to="/zone">
-            <i class="nav-icon fa fa-product-hunt" aria-hidden="true"></i>
+            <i class="nav-icon fas fa-chart-area" aria-hidden="true"></i>
             <p>Zone</p></router-link></li>
-            <li class="nav-item"> <router-link class="nav-link" to="/instant-call"><i class="fa fa-call nav-icon"></i>
+            <li class="nav-item"> <router-link class="nav-link" to="/instant-call"><i class="fas fa-headset nav-icon"></i>
             <p>Instant Call</p></router-link></li>
-            <li class="nav-item"> <router-link class="nav-link" to="/quotation"><i class="fa fa-quotation nav-icon"></i>
+            <li class="nav-item"> <router-link class="nav-link" to="/quotation"><i class="far fa-question-circle nav-icon"></i>
             <p>Quotation</p></router-link></li>
             <li class="nav-item"> <router-link class="nav-link" to=""><i class="fa fa-shopping-cart nav-icon"></i>
             <p>Merchants</p></router-link></li>
-            <li class="nav-item"> <router-link class="nav-link" to=""><i class="fa fa-music nav-icon" aria-hidden="true"></i>
+            <li class="nav-item"> <router-link class="nav-link" to="/customers"><i class="fab fa-intercom nav-icon" aria-hidden="true"></i>
             <p>Customer</p></router-link></li>
+
+            <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-tag"></i>
+              <p>
+                Discounts & Bonus
+                <i class="fas fa-angle-left right"></i>
+                <!-- <span class="badge badge-info right">6</span> -->
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <router-link to="/registration-bonus" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Registration Bonus</p>
+                </router-link>
+              </li>              
+            </ul>
+          </li>
+
+
             <li class="nav-item"> <router-link class="nav-link" to="/services">
             <i class="fa fa-list nav-icon"></i><p>Service</p></router-link></li>
             <li class="nav-item"> <router-link class="nav-link" to="/service-categories">
