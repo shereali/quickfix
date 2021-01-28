@@ -4,11 +4,11 @@ namespace App\Http\Controllers\API\Backend;
 
 use Helper;
 use App\Http\Controllers\Controller;
-use App\Http\Resources\Backend\CustomerRegistrationBonusResource;
-use App\Models\Backend\CustomerRegistrationBonus;
+use App\Http\Resources\Backend\BonusResource;
+use App\Models\Backend\Bonus;
 use Illuminate\Http\Request;
 
-class CustomerRegistrationBonusController extends Controller
+class BonusController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,13 +20,13 @@ class CustomerRegistrationBonusController extends Controller
         $search = $request->search;
         $dataSorting = $request->sorting == 'false'?10:$request->sorting;
         
-            $data =$search == 'false'?CustomerRegistrationBonus::orderBy('id', 'desc')->paginate($dataSorting):CustomerRegistrationBonus::where(function($query) use($search){
+            $data =$search == 'false'?Bonus::orderBy('id', 'desc')->paginate($dataSorting):Bonus::where(function($query) use($search){
             $query->orWhere('title', 'LIKE', "%{$search}%");
         })->orderBy('id', 'desc')->paginate($dataSorting);
 
  
 
-        return  CustomerRegistrationBonusResource::collection($data);
+        return  BonusResource::collection($data);
 
     }
 
@@ -46,16 +46,16 @@ class CustomerRegistrationBonusController extends Controller
             
         ]);
 
-        $fileName = Helper::imgProcess($request,'image',$request->name, '', 'images/customer-registration', 'store', CustomerRegistrationBonus::class);  
+        $fileName = Helper::imgProcess($request,'image',$request->name, '', 'images/customer-registration', 'store', Bonus::class);  
         $data = $request->all();
         // $data['created_by'] = Auth::user()->id;
         $data['user_type'] = 1;
         $data['image'] = $fileName;
         if($validated){
-            CustomerRegistrationBonus::create($data);
+            Bonus::create($data);
             return response()->json([
                 'status'  => 'success',
-                'message' => 'CustomerRegistrationBonus has been created!',
+                'message' => 'Bonus has been created!',
                 'icon'    => 'check',
             ]);
         }
@@ -69,8 +69,8 @@ class CustomerRegistrationBonusController extends Controller
      */
     public function show($id)
     {
-        $customer_registration_bonus = CustomerRegistrationBonus::find($id);
-        return new CustomerRegistrationBonusResource($customer_registration_bonus);
+        $Bonus = Bonus::find($id);
+        return new BonusResource($Bonus);
     }
 
     /**
@@ -82,17 +82,17 @@ class CustomerRegistrationBonusController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $fileName = Helper::imgProcess($request,'image',$request->name, $id, 'images/customer-registration', 'update', CustomerRegistrationBonus::class); 
+        $fileName = Helper::imgProcess($request,'image',$request->name, $id, 'images/customer-registration', 'update', Bonus::class); 
         $data = $request->all();
         // $data['updated_by'] = Auth::user()->id;
         $data['updated_by_type'] = '1';
         $data['image'] = $fileName;
 
-        $data = CustomerRegistrationBonus::find($id)->update($data);
+        $data = Bonus::find($id)->update($data);
         
         return response()->json([
             'status'  => 'success',
-            'message' => 'CustomerRegistrationBonus has been updated!',
+            'message' => 'Bonus has been updated!',
             'icon'    => 'check',
         ]);
     }
@@ -105,11 +105,11 @@ class CustomerRegistrationBonusController extends Controller
      */
     public function destroy($id)
     {
-        $delete = CustomerRegistrationBonus::find($id)->delete();
+        $delete = Bonus::find($id)->delete();
         if($delete){
             return response()->json([
                 'status'  => 'danger',
-                'message' => 'CustomerRegistrationBonus has been deleted!',
+                'message' => 'Bonus has been deleted!',
                 'icon'    => 'times',
             ]);   
         }

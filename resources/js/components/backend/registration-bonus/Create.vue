@@ -96,8 +96,8 @@
          },
         created() {
 
-            this.generalApi = 'registration-bonus'
-            this.backUrl = '/registration-bonus'
+            this.generalApi = 'bonus'
+            this.backUrl = '/bonus'
             this.cardTitle = this.isEdit ? 'Edit Registration Bonus' : 'Add New Registration Bonus'
              this.isFile = true 
              this.isImage = 'image'

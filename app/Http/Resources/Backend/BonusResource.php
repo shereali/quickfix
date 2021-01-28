@@ -5,7 +5,7 @@ namespace App\Http\Resources\Backend;
 use Helper;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class CustomerRegistrationBonusResource extends JsonResource
+class BonusResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -30,6 +30,6 @@ class CustomerRegistrationBonusResource extends JsonResource
             'statusText'  => $this->status == 1?'Active':'Inactive',
             'image'       => '<img style="width:60px; height:60px;" class="img-fluid" src="'.Helper::publicUrl('/images/customer-registration').'/'.$this->image.'">',
             'image_path'  => Helper::publicUrl('/images/customer-registration').'/'.$this->image
-        ];
+            ];
     }
 }
