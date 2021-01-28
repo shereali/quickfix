@@ -102,3 +102,9 @@
     <!-- /.sidebar -->
   </aside>
 </template>
+
+<script>
+export default {
+  props:['signOut']
+}
+</script>

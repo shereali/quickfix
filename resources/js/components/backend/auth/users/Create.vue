@@ -29,7 +29,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                 <label for="">Role</label>
-                                <v-select :options="inputData.roles" :reduce="role => role.id" label="name"  name="role_name" v-model="inputData.role_name" placeholder="Select Role"></v-select>
+                                <v-select :options="roles" :reduce="role => role.id" label="name"  name="role_name" v-model="inputData.role_name" placeholder="Select Role"></v-select>
                                 <input type="hidden" name="role_name" v-model="inputData.role_name">
                             </div>
                             <!-- <div class="form-group">
@@ -58,6 +58,11 @@
 import mixin from '../../../../src/mixin';
 export default {
 mixins:[mixin], 
+data(){
+    return {
+        roles:[]
+    }
+},
 created(){
 
     this.generalApi = 'users'
@@ -67,8 +72,8 @@ created(){
     
     axios.get(this.url+'/api/'+this.generalApi)
     .then(res => {
-        console.log(res.data.user_id);
-        this.inputData.user_id = res.data.user_id
+        this.roles = res.data.roles
+       
     })
 
 },

@@ -10,15 +10,15 @@ window.Vue = require('vue');
 import master from '../../../../components/backend/customer-support/layouts/Master.vue'
 import router from '../../../routes/backend/customer-support/router'
 import store from '../../../store/backend/store-customer-support'
-import Permissions from '../../../../components/backend/customer-support/auth/Permission.vue'
+// import Permissions from '../../../../components/backend/customer-support/auth/Permission.vue'
 import moment from 'moment'
 import VModal from 'vue-js-modal'
 import Toasted from 'vue-toasted';
 import VuejsDialog from 'vuejs-dialog';
 import VuejsDialogMixin from 'vuejs-dialog/dist/vuejs-dialog-mixin.min.js'; // only needed in custom components
 
-Vue.mixin(Permissions)
-// include the default style
+// Vue.mixin(Permissions)
+// // include the default style
 import 'vuejs-dialog/dist/vuejs-dialog.min.css';
 Vue.use(VModal)
 Vue.use(Toasted)
@@ -36,10 +36,10 @@ Vue.component("downloadExcel", JsonExcel);
 
 Vue.component('pagination', require('laravel-vue-pagination'));
 Vue.component('Navbar', require('../../../../components/backend/customer-support/layouts/Navbar.vue').default);
-Vue.component('PageHeader', require('../../../../components/backend/customer-support/layouts/PageHeader').default);
-Vue.component('TableContent', require('../../../../components/backend/customer-support/layouts/TableContent').default);
-Vue.component('FormButton', require('../../../../components/backend/customer-support/layouts/FormButton').default);
-Vue.component('Sidebar', require('../../../../components/backend/customer-support/layouts/Sidebar').default);
+Vue.component('PageHeader', require('../../../../components/backend/customer-support/layouts/PageHeader.vue').default);
+Vue.component('TableContent', require('../../../../components/backend/customer-support/layouts/TableContent.vue').default);
+Vue.component('FormButton', require('../../../../components/backend/customer-support/layouts/FormButton.vue').default);
+Vue.component('Sidebar', require('../../../../components/backend/customer-support/layouts/Sidebar.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

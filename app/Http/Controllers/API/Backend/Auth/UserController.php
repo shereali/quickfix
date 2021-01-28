@@ -27,7 +27,9 @@ class UserController extends Controller
             $query->orWhere('name', 'LIKE', "%{$search}%");
         })->orderBy('id', 'desc')->paginate($dataSorting);
 
-        return  UserResource::collection($data);
+        $roles = Role::all();
+
+        return  UserResource::collection($data)->additional(['roles' => $roles]);
     }
 
     /**

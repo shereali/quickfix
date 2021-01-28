@@ -1,7 +1,7 @@
 <template>
     <div>
-        <navbar></navbar>
-        <sidebar v-if="showSidebar" :signOut="signOut"></sidebar>
+        <navbar v-if="isNavbar"></navbar>
+        <sidebar v-if="isSidebar" :signOut="signOut"></sidebar>
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
           <section class="content">
@@ -18,13 +18,18 @@
 export default {
   data(){
     return {
-      showSidebar:true
+      isSidebar:true,
+      isNavbar:true,
     }
   },
 
   created(){
     if(this.$route.name == 'SignIn'){
-      this.showSidebar = false
+      this.isSidebar = false
+      this.isNavbar = false
+      // this.$elm('.content-wrapper').css({'background':'#F4F6F9'})
+      // console.log(this.$el);
+      $(document).find('body').css('background', '#F4F6F9')
     }
   },
     methods:{
