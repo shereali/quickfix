@@ -55,8 +55,13 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
             'experience-category'    => 'ExprienceCategoryController', 
             'customers'              => 'CustomerController', 
             'bonus'                  => 'BonusController', 
+            'work-experience'        => 'WorkExperienceController', 
+            'corporate-clients'       => 'CorporateClientController', 
 
             ]);
+            Route::post('divisions-wise-districts', 'AdminCommonController@divisionWiseDistrict');
+            Route::post('districts-wise-zone', 'AdminCommonController@districtWiseZone');
+
     });
 
 });

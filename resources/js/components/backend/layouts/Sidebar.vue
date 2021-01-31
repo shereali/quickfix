@@ -122,7 +122,13 @@
                <router-link class="nav-link" to="/zone">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Zone</p>
-            </router-link>
+               </router-link>
+            </li>
+             <li class="nav-item">
+               <router-link class="nav-link" to="/work-experience">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Work Experience</p>
+               </router-link>
             </li>
             </ul>
           </li>
@@ -194,6 +200,10 @@
             <li class="nav-item"><router-link class="nav-link" to="/device-problems">
             <i class="nav-icon fas fa-exclamation-triangle" aria-hidden="true"></i>
             <p>Device Problem</p></router-link></li>
+            <li class="nav-item"><router-link class="nav-link" to="/experience-category">
+            <i class="nav-icon fas fa-flask" aria-hidden="true"></i>
+            <p>Experience Category</p></router-link></li>
+            
 
             <li class="nav-item"> <router-link class="nav-link" to="/instant-call"><i class="fas fa-headset nav-icon"></i>
             <p>Instant Call</p></router-link></li>
@@ -203,6 +213,9 @@
             <p>Merchants</p></router-link></li> -->
             <li class="nav-item"> <router-link class="nav-link" to="/customers"><i class="fab fa-intercom nav-icon" aria-hidden="true"></i>
             <p>Customer</p></router-link></li>
+            
+            <li class="nav-item"> <router-link class="nav-link" to="/corporate-clients"><i class="far fa-user-circle nav-icon" aria-hidden="true"></i>
+            <p>Corporate Client</p></router-link></li>
 
             <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
