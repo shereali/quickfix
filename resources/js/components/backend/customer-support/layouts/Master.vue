@@ -30,6 +30,7 @@ export default {
       // this.$elm('.content-wrapper').css({'background':'#F4F6F9'})
       // console.log(this.$el);
       $(document).find('body').css('background', '#F4F6F9')
+      
     }
   },
     methods:{

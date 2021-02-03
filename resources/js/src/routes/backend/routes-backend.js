@@ -2,6 +2,7 @@ import Home from '../../../components/backend/Home'
 import SignIn from '../../../components/backend/auth/SignIn'
 import User from '../../../components/backend/auth/users/Index'
 import UserCreate from '../../../components/backend/auth/users/Create'
+import RoleCreate from '../../../components/backend/auth/roles/Create.vue'
 import Role from '../../../components/backend/auth/roles/Index'
 import Permission from '../../../components/backend/auth/Permission'
 import AssignRoleModel from '../../../components/backend/auth/AssignRoleModel'
@@ -99,8 +100,36 @@ let routeBackend = [
 
     {
         name:'Role',
-        path:'/role',
+        path:'/roles',
         component:Role,
+        
+        meta: {
+            auth: true,
+            // breadcrumb: {
+            //     label: 'Role',
+                
+            //   }
+          }
+
+    },
+    {
+        name:'RoleCreate',
+        path:'/roles/create',
+        component:RoleCreate,
+        
+        meta: {
+            auth: true,
+            // breadcrumb: {
+            //     label: 'Role',
+                
+            //   }
+          }
+
+    },
+    {
+        name:'RoleCreate',
+        path:'/roles/:id',
+        component:RoleCreate,
         
         meta: {
             auth: true,

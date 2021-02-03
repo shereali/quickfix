@@ -3,7 +3,7 @@
         <form class="form" @submit.prevent="processData()">
             <div class="row" style="margin-top:-20px;">
                 <div class="col-md-12 col-lg-12">
-                    <div class="card">
+                    <div class="card m-5">
                         <div class="card-header">
                             <h3 class="card-title">{{ cardTitle }}</h3>
                         </div>
@@ -16,10 +16,15 @@
                                 
                             </div>
                             <div class="form-group">
-                                <label for="">Email</label>
-                                <input type="text" name="email" v-model="inputData.email" class="form-control" placeholder="e.g. mohammadali@mail.com">
-                                
+                                <label for="">Password</label>
+                                <input type="password" name="password" v-model="inputData.password" class="form-control" placeholder="********">
                             </div>
+                            <div class="form-group">
+                                <label for="">Role</label>
+                                <v-select :options="roles" :reduce="role => role.id" label="name"  name="roles" v-model="inputData.roles" placeholder="Select Role"></v-select>
+                                <input type="hidden" name="roles" v-model="inputData.roles">
+                            </div>
+                           
                             <!-- <div class="form-group">
                                 <label for="">Mobile Number</label>
                                 <input type="text" name="mobile_no" v-model="inputData.mobile_no" class="form-control" placeholder="e.g. 01749xxxxxx">
@@ -27,19 +32,16 @@
                             </div> -->
                             </div>
                             <div class="col-md-6">
-                                <div class="form-group">
-                                <label for="">Role</label>
-                                <v-select :options="roles" :reduce="role => role.id" label="name"  name="role_name" v-model="inputData.role_name" placeholder="Select Role"></v-select>
-                                <input type="hidden" name="role_name" v-model="inputData.role_name">
+                            <div class="form-group">
+                                <label for="">Email</label>
+                                <input type="text" name="email" v-model="inputData.email" class="form-control" placeholder="e.g. mohammadali@mail.com">    
                             </div>
-                            <!-- <div class="form-group">
-                                <label for="">User ID</label>
-                                <input type="text" name="user_id" v-model="inputData.user_id" class="form-control" placeholder="e.g. RX-ADMIN-1" readonly>
-                            </div> -->
-                            <!-- <div class="form-group">
+                            
+
+                            <div class="form-group">
                                 <label for="">Password</label>
-                                <input type="text" name="password" v-model="inputData.password" class="form-control" placeholder="********">
-                            </div> -->
+                                <input type="password" name="confirm_password" v-model="inputData.confirm_password" class="form-control" placeholder="********">
+                            </div>
                             </div>
                            </div>
                         </div>
