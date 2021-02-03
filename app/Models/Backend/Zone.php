@@ -14,7 +14,7 @@ class Zone extends Model
         'district_id',
         'service_type_id',
         'charge',
-        'name',
+        'zone_name',
         'description',
         'image',
         'status',

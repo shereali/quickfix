@@ -43,6 +43,8 @@ import WorkExperience from '../../../components/backend/work-experience/Index'
 import CreateWorkExperience from '../../../components/backend/work-experience/Create'
 import CorporateClient from '../../../components/backend/corporate-client/Index'
 import CreateCorporateClient from '../../../components/backend/corporate-client/Create'
+import BusinessPartner from '../../../components/backend/business-partner/Index'
+import CreateBusinessPartner from '../../../components/backend/business-partner/Create'
 
 
 let routeBackend = [
@@ -942,6 +944,50 @@ let routeBackend = [
             auth: true,
             breadcrumb: {
                 label: 'CreateCorporateClient',
+                
+              }
+          }
+
+    },
+    {
+        name:'BusinessPartner',
+        path:'/business-partners',
+        component:BusinessPartner,
+        
+        meta: {
+            auth: true,
+            breadcrumb: {
+                label: 'BusinessPartner',
+                
+              }
+          }
+
+    },
+
+    {
+        name:'CreateBusinessPartner',
+        path:'/business-partners/create',
+        component:CreateBusinessPartner,
+        
+        meta: {
+            auth: true,
+            breadcrumb: {
+                label: 'CreateBusinessPartner',
+                
+              }
+          }
+
+    },
+
+    {
+        name:'CreateBusinessPartner',
+        path:'/business-partners/:id',
+        component:CreateBusinessPartner,
+        
+        meta: {
+            auth: true,
+            breadcrumb: {
+                label: 'CreateBusinessPartner',
                 
               }
           }

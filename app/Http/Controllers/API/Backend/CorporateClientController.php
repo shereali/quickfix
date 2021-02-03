@@ -7,6 +7,7 @@ use DB;
 use Illuminate\Http\Request;
 use App\Models\Backend\Customer;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Backend\CorporateClientResource;
 use App\Http\Resources\Backend\CustomerResource;
 use App\Models\Backend\Bonus;
 use App\Models\Backend\CorporateClient;
@@ -31,7 +32,7 @@ class CorporateClientController extends Controller
         $divisions = Division::all();
       
 
-        return  CustomerResource::collection($data)->additional([
+        return  CorporateClientResource::collection($data)->additional([
             'divisions' => $divisions,
         ]);
 
@@ -57,7 +58,7 @@ class CorporateClientController extends Controller
 
         $fileName = Helper::imgProcess($request,'image',$request->name, '', 'images/customer', 'store', Customer::class);  
         $data = $request->all();
-        $data['customer_type'] = 1;
+        $data['customer_type'] = 2;
         $data['created_by_type'] = 1;
         
         $data['image'] = $fileName;
@@ -65,21 +66,21 @@ class CorporateClientController extends Controller
         $customer = Customer::create($data);           
         
         $corporate_clients = CorporateClient::create([
-            'customer_id' => $customer['id'],
-            'contact_person_name' => $data['contact_person_name'],
+            'customer_id'           => $customer['id'],
+            'contact_person_name'   => $data['contact_person_name'],
             'contact_person_number' => $data['contact_person_number'],
-            'designation' => $data['designation'],
-            'division_id' => $data['division_id'],
-            'district_id' => $data['district_id'],
-            'zone_id' => $data['zone_id'],
-            'address' => $data['address'],
-            'web_address' => $data['web_address'],
-            'no_of_employee' => $data['no_of_employee'],
-            'support_type' => $data['support_type'],
-            'referral_id' => $customer['id'],
-            'coins' => 0,
-            'bonus_amounts' => !empty($get_bonus->amount)? $get_bonus->amount:0,
-            'withdraw_amounts' => 0,
+            'designation'           => $data['designation'],
+            'division_id'           => $data['division_id'],
+            'district_id'           => $data['district_id'],
+            'zone_id'               => $data['zone_id'],
+            'address'               => $data['address'],
+            'web_address'           => $data['web_address'],
+            'no_of_employee'        => $data['no_of_employee'],
+            'support_type'          => $data['support_type'],
+            'referral_id'           => $customer['id'],
+            'coins'                 => 0,
+            'bonus_amounts'         => !empty($get_bonus->amount)? $get_bonus->amount:0,
+            'withdraw_amounts'      => 0,
         ]);
         DB::commit();
         return response()->json([
@@ -107,7 +108,7 @@ class CorporateClientController extends Controller
     public function show($id)
     {
         $corporate_clients = CorporateClient::find($id);
-        return new CustomerResource($corporate_clients);
+        return new CorporateClientResource($corporate_clients);
     }
 
     /**
@@ -125,7 +126,7 @@ class CorporateClientController extends Controller
         $data['updated_by_type'] = '1';
         $data['image'] = $fileName;
 
-        $data = Customer::find($id)->update($data);
+        $data = CorporateClient::find($id)->update($data);
         
         return response()->json([
             'status'  => 'success',
@@ -142,8 +143,12 @@ class CorporateClientController extends Controller
      */
     public function destroy($id)
     {
-        $delete = CorporateClient::find($id)->delete();
-        if($delete){
+        $corporate_clients  = CorporateClient::find($id);
+       $corporate_clients->delete();
+        // $delete_corporate = CorporateClient::find($id)->delete();
+        $customer = Customer::where('id',$corporate_clients->customer_id)->first();
+        $customer->delete();
+        if($customer){
             return response()->json([
                 'status'  => 'danger',
                 'message' => 'CorporateClient has been deleted!',

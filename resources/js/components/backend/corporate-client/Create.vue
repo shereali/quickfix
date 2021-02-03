@@ -40,14 +40,14 @@
                                 <div class="form-group">
                                         <label for="">Zone</label>
                                         <input type="hidden" name="zone_id" v-model="inputData.zone_id">
-                                       <v-select :options="zones" :reduce="zone => zone.id" label="name" v-model="inputData.zone_id" placeholder="Select Zone"></v-select>
+                                       <v-select :options="zones" :reduce="zone => zone.id" label="zone_name" v-model="inputData.zone_id" placeholder="Select Zone"></v-select>
                                    </div>
                                    <div class="form-group"> 
-                                        <label for="">Photo</label>
+                                        <label for="">Logo</label>
                                         <input type="file" name="image" class="form-control"> 
                                          <div v-if="isEdit" class="m-4">
                                             <img :src="inputData.image_path" style="width:80px; height:80px;" class="img-fluid" alt="">
-                                        </div> 
+                                   </div> 
                              </div>
                                                         
                             </div>
@@ -127,14 +127,18 @@ created(){
     this.cardTitle = this.isEdit?'Edit Corporate Client':'Add New Corporate Client'   
      this.isFile = true 
     this.isImage = 'image'
+   
     
     axios.get(this.url+'/api/'+this.generalApi)
     .then(res => {
         this.divisions = res.data.divisions
         // this.districts = res.data.districts
         // this.zones     = res.data.zones
+        console.log(res.data);
+    
        
     })
+
 
 },
  methods:{

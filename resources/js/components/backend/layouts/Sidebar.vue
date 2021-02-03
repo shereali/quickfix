@@ -213,6 +213,9 @@
             <p>Merchants</p></router-link></li> -->
             <li class="nav-item"> <router-link class="nav-link" to="/customers"><i class="fab fa-intercom nav-icon" aria-hidden="true"></i>
             <p>Customer</p></router-link></li>
+           
+            <li class="nav-item"> <router-link class="nav-link" to="/business-partners"><i class="far fa-handshake nav-icon" aria-hidden="true"></i>
+            <p>Business Partner</p></router-link></li>
             
             <li class="nav-item"> <router-link class="nav-link" to="/corporate-clients"><i class="far fa-user-circle nav-icon" aria-hidden="true"></i>
             <p>Corporate Client</p></router-link></li>
@@ -255,7 +258,7 @@
                   <i class="fa fa-sign-out-alt nav-icon"></i>
                   <p>Sign Out</p>
                 </router-link>
-              </li>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

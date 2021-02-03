@@ -16,7 +16,7 @@ class CreateCorporateClientsTable extends Migration
         Schema::create('corporate_clients', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('customer_id')->nullable()->comment('FK: customers.id');
-            $table->foreign('customer_id')->references('id')->on('customers');
+            $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
             $table->string('contact_person_name')->nullable();
             $table->string('contact_person_number')->nullable();
             $table->string('designation')->nullable();

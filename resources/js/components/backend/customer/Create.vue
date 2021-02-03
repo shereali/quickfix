@@ -22,12 +22,12 @@
                                 <div class="form-group">
                                         <label for="">Division</label>
                                         <input type="hidden" name="division_id" v-model="inputData.division_id">
-                                       <v-select :options="divisions" :reduce="division => division.id" label="name" v-model="inputData.division_id" placeholder="Select Division"></v-select>
+                                       <v-select :options="divisions" :reduce="division => division.id" label="name" @input="onChangeDivision($event)" v-model="inputData.division_id" placeholder="Select Division"></v-select>
                                    </div>
                                 <div class="form-group">
                                         <label for="">Zone</label>
                                         <input type="hidden" name="zone_id" v-model="inputData.zone_id">
-                                       <v-select :options="zones" :reduce="zone => zone.id" label="name" v-model="inputData.zone_id" placeholder="Select Zone"></v-select>
+                                       <v-select :options="zones" :reduce="zone => zone.id" label="zone_name" v-model="inputData.zone_id" placeholder="Select Zone"></v-select>
                                    </div>
                                    <div class="form-group"> 
                                         <label for="">Photo</label>
@@ -44,13 +44,13 @@
                                     <input type="text" name="mobile_number" v-model="inputData.mobile_number" class="form-control" placeholder="Enter Mobile Number">  
                                 </div>
                                 <div class="form-group">
-                                    <label for=""> Address</label>
+                                    <label for="">Address</label>
                                     <input type="text" name="address" v-model="inputData.address" class="form-control" placeholder="Enter Address">  
                                 </div>
                                 <div class="form-group">
                                         <label for="">Districts</label>
                                         <input type="hidden" name="district_id" v-model="inputData.district_id">
-                                       <v-select :options="districts" :reduce="district => district.id" label="name" v-model="inputData.district_id" placeholder="Select District"></v-select>
+                                       <v-select :options="districts" :reduce="district => district.id" label="name" @input="onChangeDistrict($event)" v-model="inputData.district_id" placeholder="Select District"></v-select>
                                    </div>
                                  <div class="form-group">
                                     <label for="">Verify Status</label>
@@ -101,12 +101,28 @@ created(){
     axios.get(this.url+'/api/'+this.generalApi)
     .then(res => {
         this.divisions = res.data.divisions
-        this.districts = res.data.districts
-        this.zones     = res.data.zones
+        // this.districts = res.data.districts
+        // this.zones     = res.data.zones
        
     })
 
 },
+ methods:{
+            onChangeDivision(name){
+               
+               axios.post(this.url+'/api/divisions-wise-districts', {name:name})
+               .then(res => {
+                   console.log(res.data);
+                   this.districts = res.data
+               })
+            },
+            onChangeDistrict(name){
+                axios.post(this.url+'/api/districts-wise-zone', {name:name})
+               .then(res => {
+                   this.zones = res.data
+               })
+            }
+        }
 
 
 }

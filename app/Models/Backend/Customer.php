@@ -13,6 +13,7 @@ class Customer extends Model
         'id',
         'customer_type',
         'name',
+        'mobile_number',
         'email',
         'verify_status',
         'verfied_code',
@@ -40,4 +41,12 @@ class Customer extends Model
            $model->updated_by = $user->id;
        });
    }
+
+   public function customerDetail()
+   {
+       return $this->hasOne(CustomerDetail::class,'customer_id','id');
+   }
+  
+
+
 }

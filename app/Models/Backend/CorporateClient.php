@@ -3,6 +3,8 @@
 namespace App\Models\Backend;
 
 use Auth;
+use Devfaysal\BangladeshGeocode\Models\District;
+use Devfaysal\BangladeshGeocode\Models\Division;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -47,4 +49,20 @@ class CorporateClient extends Model
            $model->deleted_by = $user->id;
        });
    }
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class, 'customer_id','id');
+    }
+    public function division()
+    {
+        return $this->belongsTo(Division::class, 'division_id','id');
+    }
+    public function district()
+    {
+        return $this->belongsTo(District::class, 'district_id','id');
+    }
+    public function zone()
+    {
+        return $this->belongsTo(Zone::class, 'zone_id','id');
+    }
 }
