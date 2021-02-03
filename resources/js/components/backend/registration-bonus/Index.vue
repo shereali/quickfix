@@ -7,7 +7,7 @@ export default {
     mixins:[mixin],
 
     created(){
-        this.generalApi = "registration-bonus" 
+        this.generalApi = "bonus" 
 
         this.dataSearchingApi="search-device-models-data"
 
