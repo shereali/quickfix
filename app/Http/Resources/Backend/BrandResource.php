@@ -19,7 +19,7 @@ class BrandResource extends JsonResource
 
             'id'          => $this->id,
             'device_id'   => $this->device_id,
-            'device_name' => $this->device_name,
+            // 'device_name' => $this->device_name,
             'brand_name'  => $this->brand_name,
             'description' => $this->description,
             'image'       => $this->image,

@@ -50,6 +50,11 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
             'device-functional-type' => 'DeviceFunctionalTypeController', 
             'service-type'           => 'ServiceTypeController', 
             'problem-type'           => 'ProblemTypeController', 
+            'zone'                   => 'ZoneController', 
+            'device-problems'        => 'DeviceProblemController', 
+            'experience-category'    => 'ExprienceCategoryController', 
+            'customers'              => 'CustomerController', 
+            'registration-bonus'     => 'CustomerRegistrationBonusController', 
 
             ]);
     });

@@ -14,7 +14,7 @@ export default {
         this.cardTitle ="Problem Type List" 
 
         this.columnsHead.push('Sn','Device Model',' Name', 'Description', 'Photo','Status', 'Action')
-        this.columnsBody.push('model_name', 'name', 'description','image','statusText')
+        this.columnsBody.push('model_number', 'name', 'description','image','statusText')
         // this.columnsBodyExtra = 
         this.isDownload = false; 
 

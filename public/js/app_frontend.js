@@ -81485,7 +81485,7 @@ var routeFrontend = [{
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! E:\laragon\www\quickfix\resources\js\src\apps\frontend\app_frontend.js */"./resources/js/src/apps/frontend/app_frontend.js");
+module.exports = __webpack_require__(/*! G:\laragon\www\quickfix_web_v1\resources\js\src\apps\frontend\app_frontend.js */"./resources/js/src/apps/frontend/app_frontend.js");
 
 
 /***/ })
