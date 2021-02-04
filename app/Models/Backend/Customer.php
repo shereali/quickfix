@@ -46,6 +46,14 @@ class Customer extends Model
    {
        return $this->hasOne(CustomerDetail::class,'customer_id','id');
    }
+   public function businessPartner()
+   {
+       return $this->hasOne(BusinessPartner::class,'customer_id','id');
+   }
+   public function corporateClient()
+   {
+       return $this->hasOne(CorporateClient::class,'customer_id','id');
+   }
   
 
 

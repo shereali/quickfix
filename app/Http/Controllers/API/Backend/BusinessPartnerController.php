@@ -15,6 +15,7 @@ use App\Models\Backend\CustomerOtherImage;
 use App\Models\Backend\DeviceFunctionalType;
 use Devfaysal\BangladeshGeocode\Models\Division;
 use App\Http\Resources\Backend\BusinessPartnerResource;
+use App\Http\Resources\Backend\CustomerResource;
 
 class BusinessPartnerController extends Controller
 {
@@ -28,9 +29,9 @@ class BusinessPartnerController extends Controller
         $search      = $request->search;
         $dataSorting = $request->sorting == 'false'?10:$request->sorting;
         
-            $data    = $search == 'false'?BusinessPartner::orderBy('id', 'desc')->paginate($dataSorting):BusinessPartner::where(function($query) use($search){
-            $query->orWhere('contact_person_name', 'LIKE', "%{$search}%");
-        })->orderBy('id', 'desc')->paginate($dataSorting);
+            $data    = $search == 'false'?Customer::where('customer_type',3)->paginate($dataSorting):Customer::where(function($query) use($search){
+            $query->orWhere('name', 'LIKE', "%{$search}%");
+        })->where('customer_type',3)->paginate($dataSorting);
 
         $divisions               = Division::all();
         $device_types            = DeviceType::where('status',1)->get();
@@ -39,7 +40,7 @@ class BusinessPartnerController extends Controller
         $experience_category     = ExprienceCategory::where('status',1)->get();
       
 
-        return  BusinessPartnerResource::collection($data)->additional([
+        return  CustomerResource::collection($data)->additional([
             'divisions'               => $divisions,
             'device_types'            => $device_types,
             'device_functional_types' => $device_functional_types,
@@ -57,6 +58,7 @@ class BusinessPartnerController extends Controller
      */
     public function store(Request $request)
     {
+        // return $request->work_experience_id;
         $validated = $request->validate([
             'name'          => 'required|max:255',
             'email'         => 'required|max:255',
@@ -85,21 +87,21 @@ class BusinessPartnerController extends Controller
         
         $business_partner = BusinessPartner::create([
             'customer_id'               => $customer['id'],
-            'contact_person_name'       => $data['contact_person_name'],
-            'contact_person_number'     => $data['contact_person_number'],
-            'designation'               => $data['designation'],
-            'division_id'               => $data['division_id'],
-            'district_id'               => $data['district_id'],
-            'zone_id'                   => $data['zone_id'],
-            'address'                   => $data['address'],
-            'web_address'               => $data['web_address'],
-            'no_of_employee'            => $data['no_of_employee'],
-            'device_type_id'            => $data['device_type_id'],
-            'device_functional_type_id' => $data['device_functional_type_id'],
-            'work_experience_id'        => $data['work_experience_id'],
-            'nid_no'                    => $data['nid_no'],
+            'contact_person_name'       => $data['b_contact_person_name'],
+            'contact_person_number'     => $data['b_contact_person_number'],
+            'designation'               => $data['b_designation'],
+            'division_id'               => $data['b_division_id'],
+            'district_id'               => $data['b_district_id'],
+            'zone_id'                   => $data['b_zone_id'],
+            'address'                   => $data['b_address'],
+            'web_address'               => $data['b_web_address'],
+            'no_of_employee'            => $data['b_no_of_employee'],
+            'device_type_id'            => $data['b_device_type_id'],
+            'device_functional_type_id' => $data['b_device_functional_type_id'],
+            'work_experience_id'        => $data['b_work_experience_id'],
+            'nid_no'                    => $data['b_nid_no'],
             'nid_image'                 => $fileNameNid,
-            'experience_category_id'    => $data['experience_category_id'],
+            'experience_category_id'    => $data['b_experience_category_id'],
             'tradelicense_image'        => $fileNameTrade,
             'created_by_type'           => 1,
             
@@ -120,8 +122,8 @@ class BusinessPartnerController extends Controller
      */
     public function show($id)
     {
-        $business_partner = BusinessPartner::find($id);
-        return new BusinessPartnerResource($business_partner);
+        $customer = Customer::find($id);
+        return new CustomerResource($customer);
     }
 
     /**
@@ -129,7 +131,7 @@ class BusinessPartnerController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Responses
      */
     public function update(Request $request, $id)
     {
@@ -140,33 +142,31 @@ class BusinessPartnerController extends Controller
 
         $data['updated_by_type'] = 1;
         DB::beginTransaction();
-        // $customer = Customer::where('id',$request->customer_id)->update($data); 
-        $get_customer_id = BusinessPartner::find($id);
-        // return $get_customer_id->customer->id;
-        $business_partner = BusinessPartner::find($id)->update([
+        $customer = Customer::find($id)->update($data);
+        
+        $business_partner = BusinessPartner::where('customer_id',$id)->update([
             // 'customer_id'               => $data['customer_id'],
-            'contact_person_name'       => $data['contact_person_name'],
-            'contact_person_number'     => $data['contact_person_number'],
-            'designation'               => $data['designation'],
-            'division_id'               => $data['division_id'],
-            'district_id'               => $data['district_id'],
-            'zone_id'                   => $data['zone_id'],
-            'address'                   => $data['address'],
-            'web_address'               => $data['web_address'],
-            'no_of_employee'            => $data['no_of_employee'],
-            'device_type_id'            => $data['device_type_id'],
-            'device_functional_type_id' => $data['device_functional_type_id'],
-            'work_experience_id'        => $data['work_experience_id'],
-            'nid_no'                    => $data['nid_no'],
+            'contact_person_name'       => $data['b_contact_person_name'],
+            'contact_person_number'     => $data['b_contact_person_number'],
+            'designation'               => $data['b_designation'],
+            'division_id'               => $data['b_division_id'],
+            'district_id'               => $data['b_district_id'],
+            'zone_id'                   => $data['b_zone_id'],
+            'address'                   => $data['b_address'],
+            'web_address'               => $data['b_web_address'],
+            'no_of_employee'            => $data['b_no_of_employee'],
+            'device_type_id'            => $data['b_device_type_id'],
+            'device_functional_type_id' => $data['b_device_functional_type_id'],
+            'work_experience_id'        => $data['b_work_experience_id'],
+            'nid_no'                    => $data['b_nid_no'],
             'nid_image'                 => $fileNameNid,
-            'experience_category_id'    => $data['experience_category_id'],
+            'experience_category_id'    => $data['b_experience_category_id'],
             'tradelicense_image'        => $fileNameTrade,
             'updated_by_type'           => 1,
             
         ]);
-         $customer = Customer::where('id',$get_customer_id->customer_id)->update($data);
-        $customer_others_images = CustomerOtherImage::where('customer_id',$customer->id)->update([
-            'customer_id'               => $customer['id'],
+        $customer_others_images = CustomerOtherImage::where('customer_id',$id)->update([
+            'customer_id'               => $id,
             'image'                     => $fileNameWork,
             'status'                    => 1,
             'updated_by_type'           => 1,
@@ -189,6 +189,20 @@ class BusinessPartnerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::beginTransaction();
+        $business_partner = BusinessPartner::where('customer_id',$id)->first();
+        $business_partner->delete();
+        $customer_others_images = CustomerOtherImage::where('customer_id',$id)->first();
+        $customer_others_images->delete();
+
+        $delete = Customer::find($id)->delete();
+        DB::commit();
+        if($delete){
+            return response()->json([
+                'status'  => 'danger',
+                'message' => 'BusinessPartner has been deleted!',
+                'icon'    => 'times',
+            ]);   
+        }
     }
 }

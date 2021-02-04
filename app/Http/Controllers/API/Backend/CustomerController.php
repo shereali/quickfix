@@ -66,7 +66,7 @@ class CustomerController extends Controller
         $data = $request->all();
         $data['customer_type'] = 1;
         $data['created_by_type'] = 1;
-        
+        DB::beginTransaction();
         $data['image'] = $fileName;
         $customer = Customer::create($data);
         
@@ -84,6 +84,7 @@ class CustomerController extends Controller
             'bonus_amounts' =>!empty($get_bonus->amount)? $get_bonus->amount:0,
             'withdraw_amounts' => 0,
         ]);
+        DB::commit();
         return response()->json([
             'status'  => 'success',
             'message' => 'Customer has been created!',
@@ -126,20 +127,20 @@ class CustomerController extends Controller
         $fileName = Helper::imgProcess($request,'image',$request->name, $id, 'images/customer', 'update', Customer::class); 
         $data = $request->all();
         // $data['updated_by'] = Auth::user()->id;
-        $data['updated_by_type'] = '1';
+        $data['updated_by_type'] = 1;
         $data['image'] = $fileName;
         DB::beginTransaction();
         $customer = Customer::find($id)->update($data);
         $Customer_detail = CustomerDetail::where('customer_id',$id)->update([
-            'customer_id' => $id,
-            'division_id' => $data['division_id'],
-            'district_id' => $data['district_id'],
-            'zone_id' => $data['zone_id'],
-            'address' => $data['address'],
-            'referral_id' => $id,
-            'coins' => 0,
-            'bonus_amounts' =>!empty($get_bonus->amount)? $get_bonus->amount:0,
-            'withdraw_amounts' => 0,
+            'customer_id'      => $id,
+            'division_id'      => $data['division_id'],
+            'district_id'      => $data['district_id'],
+            'zone_id'          => $data['zone_id'],
+            'address'          => $data['address'],
+            'referral_id'      => $id,
+            'coins'            => 0,
+            'bonus_amounts'    => !empty($get_bonus->amount)? $get_bonus->amount:0,
+            'withdraw_amounts' =>  0,
         ]);
         DB::commit();
         return response()->json([
@@ -157,6 +158,9 @@ class CustomerController extends Controller
      */
     public function destroy($id)
     {
+        $customer_details = CustomerDetail::where('customer_id',$id)->first();
+        $customer_details->delete();
+
         $delete = Customer::find($id)->delete();
         if($delete){
             return response()->json([

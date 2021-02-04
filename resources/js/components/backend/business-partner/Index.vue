@@ -16,7 +16,7 @@ export default {
         this.isImage = 'image'
 
         this.columnsHead.push('Sn','Contact Person Name','Number', 'Designation', 'Address', 'Number of Employee','Action')
-        this.columnsBody.push('contact_person_name','contact_person_number', 'designation', 'address','no_of_employee')
+        this.columnsBody.push('b_contact_person_name','b_contact_person_number', 'b_designation', 'b_address','b_no_of_employee')
         // this.columnsBodyExtra = 
         this.isDownload=false;
 

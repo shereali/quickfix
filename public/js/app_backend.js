@@ -2857,7 +2857,7 @@ __webpack_require__.r(__webpack_exports__);
     this.isFile = true;
     this.isImage = 'image';
     this.columnsHead.push('Sn', 'Contact Person Name', 'Number', 'Designation', 'Address', 'Number of Employee', 'Action');
-    this.columnsBody.push('contact_person_name', 'contact_person_number', 'designation', 'address', 'no_of_employee'); // this.columnsBodyExtra = 
+    this.columnsBody.push('b_contact_person_name', 'b_contact_person_number', 'b_designation', 'b_address', 'b_no_of_employee'); // this.columnsBodyExtra = 
 
     this.isDownload = false;
   }
@@ -3068,7 +3068,7 @@ __webpack_require__.r(__webpack_exports__);
     this.isFile = true;
     this.isImage = 'image';
     this.columnsHead.push('Sn', 'Contact Person Name', 'Number', 'Designation', 'Address', 'Number of Employee', 'Action');
-    this.columnsBody.push('contact_person_name', 'contact_person_number', 'designation', 'address', 'no_of_employee'); // this.columnsBodyExtra = 
+    this.columnsBody.push('c_contact_person_name', 'c_contact_person_number', 'c_designation', 'c_address', 'c_no_of_employee'); // this.columnsBodyExtra = 
 
     this.isDownload = false;
   }
@@ -3243,7 +3243,7 @@ __webpack_require__.r(__webpack_exports__);
     this.cardTitle = "Customers List";
     this.isFile = true;
     this.isImage = 'image';
-    this.columnsHead.push('Sn', 'Name', 'Email', 'Mobile', 'image', 'Action');
+    this.columnsHead.push('Sn', 'Name', 'Email', 'Mobile', 'Image', 'Action');
     this.columnsBody.push('name', 'email', 'mobile_number', 'image'); // this.columnsBodyExtra = 
 
     this.isDownload = false;
@@ -67190,17 +67190,17 @@ var render = function() {
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: _vm.inputData.address,
-                              expression: "inputData.address"
+                              value: _vm.inputData.b_address,
+                              expression: "inputData.b_address"
                             }
                           ],
                           staticClass: "form-control",
                           attrs: {
                             type: "text",
-                            name: "address",
+                            name: "b_address",
                             placeholder: "Enter Address"
                           },
-                          domProps: { value: _vm.inputData.address },
+                          domProps: { value: _vm.inputData.b_address },
                           on: {
                             input: function($event) {
                               if ($event.target.composing) {
@@ -67208,7 +67208,7 @@ var render = function() {
                               }
                               _vm.$set(
                                 _vm.inputData,
-                                "address",
+                                "b_address",
                                 $event.target.value
                               )
                             }
@@ -67239,11 +67239,11 @@ var render = function() {
                               }
                             },
                             model: {
-                              value: _vm.inputData.division_id,
+                              value: _vm.inputData.b_division_id,
                               callback: function($$v) {
-                                _vm.$set(_vm.inputData, "division_id", $$v)
+                                _vm.$set(_vm.inputData, "b_division_id", $$v)
                               },
-                              expression: "inputData.division_id"
+                              expression: "inputData.b_division_id"
                             }
                           }),
                           _vm._v(" "),
@@ -67252,12 +67252,12 @@ var render = function() {
                               {
                                 name: "model",
                                 rawName: "v-model",
-                                value: _vm.inputData.division_id,
-                                expression: "inputData.division_id"
+                                value: _vm.inputData.b_division_id,
+                                expression: "inputData.b_division_id"
                               }
                             ],
-                            attrs: { type: "hidden", name: "division_id" },
-                            domProps: { value: _vm.inputData.division_id },
+                            attrs: { type: "hidden", name: "b_division_id" },
+                            domProps: { value: _vm.inputData.b_division_id },
                             on: {
                               input: function($event) {
                                 if ($event.target.composing) {
@@ -67265,7 +67265,7 @@ var render = function() {
                                 }
                                 _vm.$set(
                                   _vm.inputData,
-                                  "division_id",
+                                  "b_division_id",
                                   $event.target.value
                                 )
                               }
@@ -67298,11 +67298,11 @@ var render = function() {
                               }
                             },
                             model: {
-                              value: _vm.inputData.district_id,
+                              value: _vm.inputData.b_district_id,
                               callback: function($$v) {
-                                _vm.$set(_vm.inputData, "district_id", $$v)
+                                _vm.$set(_vm.inputData, "b_district_id", $$v)
                               },
-                              expression: "inputData.district_id"
+                              expression: "inputData.b_district_id"
                             }
                           }),
                           _vm._v(" "),
@@ -67311,12 +67311,12 @@ var render = function() {
                               {
                                 name: "model",
                                 rawName: "v-model",
-                                value: _vm.inputData.district_id,
-                                expression: "inputData.district_id"
+                                value: _vm.inputData.b_district_id,
+                                expression: "inputData.b_district_id"
                               }
                             ],
-                            attrs: { type: "hidden", name: "district_id" },
-                            domProps: { value: _vm.inputData.district_id },
+                            attrs: { type: "hidden", name: "b_district_id" },
+                            domProps: { value: _vm.inputData.b_district_id },
                             on: {
                               input: function($event) {
                                 if ($event.target.composing) {
@@ -67324,7 +67324,7 @@ var render = function() {
                                 }
                                 _vm.$set(
                                   _vm.inputData,
-                                  "district_id",
+                                  "b_district_id",
                                   $event.target.value
                                 )
                               }
@@ -67350,11 +67350,11 @@ var render = function() {
                               placeholder: "Select Zone"
                             },
                             model: {
-                              value: _vm.inputData.zone_id,
+                              value: _vm.inputData.b_zone_id,
                               callback: function($$v) {
-                                _vm.$set(_vm.inputData, "zone_id", $$v)
+                                _vm.$set(_vm.inputData, "b_zone_id", $$v)
                               },
-                              expression: "inputData.zone_id"
+                              expression: "inputData.b_zone_id"
                             }
                           }),
                           _vm._v(" "),
@@ -67363,12 +67363,12 @@ var render = function() {
                               {
                                 name: "model",
                                 rawName: "v-model",
-                                value: _vm.inputData.zone_id,
-                                expression: "inputData.zone_id"
+                                value: _vm.inputData.b_zone_id,
+                                expression: "inputData.b_zone_id"
                               }
                             ],
-                            attrs: { type: "hidden", name: "zone_id" },
-                            domProps: { value: _vm.inputData.zone_id },
+                            attrs: { type: "hidden", name: "b_zone_id" },
+                            domProps: { value: _vm.inputData.b_zone_id },
                             on: {
                               input: function($event) {
                                 if ($event.target.composing) {
@@ -67376,7 +67376,7 @@ var render = function() {
                                 }
                                 _vm.$set(
                                   _vm.inputData,
-                                  "zone_id",
+                                  "b_zone_id",
                                   $event.target.value
                                 )
                               }
@@ -67404,15 +67404,16 @@ var render = function() {
                               placeholder: "Select Device Functional Type"
                             },
                             model: {
-                              value: _vm.inputData.device_functional_type_id,
+                              value: _vm.inputData.b_device_functional_type_id,
                               callback: function($$v) {
                                 _vm.$set(
                                   _vm.inputData,
-                                  "device_functional_type_id",
+                                  "b_device_functional_type_id",
                                   $$v
                                 )
                               },
-                              expression: "inputData.device_functional_type_id"
+                              expression:
+                                "inputData.b_device_functional_type_id"
                             }
                           }),
                           _vm._v(" "),
@@ -67421,17 +67422,18 @@ var render = function() {
                               {
                                 name: "model",
                                 rawName: "v-model",
-                                value: _vm.inputData.device_functional_type_id,
+                                value:
+                                  _vm.inputData.b_device_functional_type_id,
                                 expression:
-                                  "inputData.device_functional_type_id"
+                                  "inputData.b_device_functional_type_id"
                               }
                             ],
                             attrs: {
                               type: "hidden",
-                              name: "device_functional_type_id"
+                              name: "b_device_functional_type_id"
                             },
                             domProps: {
-                              value: _vm.inputData.device_functional_type_id
+                              value: _vm.inputData.b_device_functional_type_id
                             },
                             on: {
                               input: function($event) {
@@ -67440,7 +67442,7 @@ var render = function() {
                                 }
                                 _vm.$set(
                                   _vm.inputData,
-                                  "device_functional_type_id",
+                                  "b_device_functional_type_id",
                                   $event.target.value
                                 )
                               }
@@ -67468,15 +67470,15 @@ var render = function() {
                               placeholder: "Select Work Experience"
                             },
                             model: {
-                              value: _vm.inputData.work_experience_id,
+                              value: _vm.inputData.b_work_experience_id,
                               callback: function($$v) {
                                 _vm.$set(
                                   _vm.inputData,
-                                  "work_experience_id",
+                                  "b_work_experience_id",
                                   $$v
                                 )
                               },
-                              expression: "inputData.work_experience_id"
+                              expression: "inputData.b_work_experience_id"
                             }
                           }),
                           _vm._v(" "),
@@ -67485,16 +67487,16 @@ var render = function() {
                               {
                                 name: "model",
                                 rawName: "v-model",
-                                value: _vm.inputData.work_experience_id,
-                                expression: "inputData.work_experience_id"
+                                value: _vm.inputData.b_work_experience_id,
+                                expression: "inputData.b_work_experience_id"
                               }
                             ],
                             attrs: {
                               type: "hidden",
-                              name: "work_experience_id"
+                              name: "b_work_experience_id"
                             },
                             domProps: {
-                              value: _vm.inputData.work_experience_id
+                              value: _vm.inputData.b_work_experience_id
                             },
                             on: {
                               input: function($event) {
@@ -67503,7 +67505,7 @@ var render = function() {
                                 }
                                 _vm.$set(
                                   _vm.inputData,
-                                  "work_experience_id",
+                                  "b_work_experience_id",
                                   $event.target.value
                                 )
                               }
@@ -67576,18 +67578,18 @@ var render = function() {
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: _vm.inputData.contact_person_name,
-                              expression: "inputData.contact_person_name"
+                              value: _vm.inputData.b_contact_person_name,
+                              expression: "inputData.b_contact_person_name"
                             }
                           ],
                           staticClass: "form-control",
                           attrs: {
                             type: "text",
-                            name: "contact_person_name",
+                            name: "b_contact_person_name",
                             placeholder: "Enter Contact Person Name"
                           },
                           domProps: {
-                            value: _vm.inputData.contact_person_name
+                            value: _vm.inputData.b_contact_person_name
                           },
                           on: {
                             input: function($event) {
@@ -67596,7 +67598,7 @@ var render = function() {
                               }
                               _vm.$set(
                                 _vm.inputData,
-                                "contact_person_name",
+                                "b_contact_person_name",
                                 $event.target.value
                               )
                             }
@@ -67614,18 +67616,18 @@ var render = function() {
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: _vm.inputData.contact_person_number,
-                              expression: "inputData.contact_person_number"
+                              value: _vm.inputData.b_contact_person_number,
+                              expression: "inputData.b_contact_person_number"
                             }
                           ],
                           staticClass: "form-control",
                           attrs: {
                             type: "text",
-                            name: "contact_person_number",
+                            name: "b_contact_person_number",
                             placeholder: "Enter Contact Person Number"
                           },
                           domProps: {
-                            value: _vm.inputData.contact_person_number
+                            value: _vm.inputData.b_contact_person_number
                           },
                           on: {
                             input: function($event) {
@@ -67634,7 +67636,7 @@ var render = function() {
                               }
                               _vm.$set(
                                 _vm.inputData,
-                                "contact_person_number",
+                                "b_contact_person_number",
                                 $event.target.value
                               )
                             }
@@ -67652,17 +67654,17 @@ var render = function() {
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: _vm.inputData.designation,
-                              expression: "inputData.designation"
+                              value: _vm.inputData.b_designation,
+                              expression: "inputData.b_designation"
                             }
                           ],
                           staticClass: "form-control",
                           attrs: {
                             type: "text",
-                            name: "designation",
+                            name: "b_designation",
                             placeholder: "Enter Designation"
                           },
-                          domProps: { value: _vm.inputData.designation },
+                          domProps: { value: _vm.inputData.b_designation },
                           on: {
                             input: function($event) {
                               if ($event.target.composing) {
@@ -67670,7 +67672,7 @@ var render = function() {
                               }
                               _vm.$set(
                                 _vm.inputData,
-                                "designation",
+                                "b_designation",
                                 $event.target.value
                               )
                             }
@@ -67688,17 +67690,17 @@ var render = function() {
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: _vm.inputData.web_address,
-                              expression: "inputData.web_address"
+                              value: _vm.inputData.b_web_address,
+                              expression: "inputData.b_web_address"
                             }
                           ],
                           staticClass: "form-control",
                           attrs: {
                             type: "text",
-                            name: "web_address",
+                            name: "b_web_address",
                             placeholder: "Enter Web Address"
                           },
-                          domProps: { value: _vm.inputData.web_address },
+                          domProps: { value: _vm.inputData.b_web_address },
                           on: {
                             input: function($event) {
                               if ($event.target.composing) {
@@ -67706,7 +67708,7 @@ var render = function() {
                               }
                               _vm.$set(
                                 _vm.inputData,
-                                "web_address",
+                                "b_web_address",
                                 $event.target.value
                               )
                             }
@@ -67724,17 +67726,17 @@ var render = function() {
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: _vm.inputData.no_of_employee,
-                              expression: "inputData.no_of_employee"
+                              value: _vm.inputData.b_no_of_employee,
+                              expression: "inputData.b_no_of_employee"
                             }
                           ],
                           staticClass: "form-control",
                           attrs: {
                             type: "number",
-                            name: "no_of_employee",
+                            name: "b_no_of_employee",
                             placeholder: ""
                           },
-                          domProps: { value: _vm.inputData.no_of_employee },
+                          domProps: { value: _vm.inputData.b_no_of_employee },
                           on: {
                             input: function($event) {
                               if ($event.target.composing) {
@@ -67742,7 +67744,7 @@ var render = function() {
                               }
                               _vm.$set(
                                 _vm.inputData,
-                                "no_of_employee",
+                                "b_no_of_employee",
                                 $event.target.value
                               )
                             }
@@ -67760,17 +67762,17 @@ var render = function() {
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: _vm.inputData.nid_no,
-                              expression: "inputData.nid_no"
+                              value: _vm.inputData.b_nid_no,
+                              expression: "inputData.b_nid_no"
                             }
                           ],
                           staticClass: "form-control",
                           attrs: {
                             type: "text",
-                            name: "nid_no",
+                            name: "b_nid_no",
                             placeholder: "Enter NID number"
                           },
-                          domProps: { value: _vm.inputData.nid_no },
+                          domProps: { value: _vm.inputData.b_nid_no },
                           on: {
                             input: function($event) {
                               if ($event.target.composing) {
@@ -67778,7 +67780,7 @@ var render = function() {
                               }
                               _vm.$set(
                                 _vm.inputData,
-                                "nid_no",
+                                "b_nid_no",
                                 $event.target.value
                               )
                             }
@@ -67804,11 +67806,11 @@ var render = function() {
                               placeholder: "Select Device Type"
                             },
                             model: {
-                              value: _vm.inputData.device_type_id,
+                              value: _vm.inputData.b_device_type_id,
                               callback: function($$v) {
-                                _vm.$set(_vm.inputData, "device_type_id", $$v)
+                                _vm.$set(_vm.inputData, "b_device_type_id", $$v)
                               },
-                              expression: "inputData.device_type_id"
+                              expression: "inputData.b_device_type_id"
                             }
                           }),
                           _vm._v(" "),
@@ -67817,12 +67819,12 @@ var render = function() {
                               {
                                 name: "model",
                                 rawName: "v-model",
-                                value: _vm.inputData.device_type_id,
-                                expression: "inputData.device_type_id"
+                                value: _vm.inputData.b_device_type_id,
+                                expression: "inputData.b_device_type_id"
                               }
                             ],
-                            attrs: { type: "hidden", name: "device_type_id" },
-                            domProps: { value: _vm.inputData.device_type_id },
+                            attrs: { type: "hidden", name: "b_device_type_id" },
+                            domProps: { value: _vm.inputData.b_device_type_id },
                             on: {
                               input: function($event) {
                                 if ($event.target.composing) {
@@ -67830,7 +67832,7 @@ var render = function() {
                                 }
                                 _vm.$set(
                                   _vm.inputData,
-                                  "device_type_id",
+                                  "b_device_type_id",
                                   $event.target.value
                                 )
                               }
@@ -67858,15 +67860,15 @@ var render = function() {
                               placeholder: "Select Experience Category"
                             },
                             model: {
-                              value: _vm.inputData.experience_category_id,
+                              value: _vm.inputData.b_experience_category_id,
                               callback: function($$v) {
                                 _vm.$set(
                                   _vm.inputData,
-                                  "experience_category_id",
+                                  "b_experience_category_id",
                                   $$v
                                 )
                               },
-                              expression: "inputData.experience_category_id"
+                              expression: "inputData.b_experience_category_id"
                             }
                           }),
                           _vm._v(" "),
@@ -67875,16 +67877,16 @@ var render = function() {
                               {
                                 name: "model",
                                 rawName: "v-model",
-                                value: _vm.inputData.experience_category_id,
-                                expression: "inputData.experience_category_id"
+                                value: _vm.inputData.b_experience_category_id,
+                                expression: "inputData.b_experience_category_id"
                               }
                             ],
                             attrs: {
                               type: "hidden",
-                              name: "experience_category_id"
+                              name: "b_experience_category_id"
                             },
                             domProps: {
-                              value: _vm.inputData.experience_category_id
+                              value: _vm.inputData.b_experience_category_id
                             },
                             on: {
                               input: function($event) {
@@ -67893,7 +67895,7 @@ var render = function() {
                                 }
                                 _vm.$set(
                                   _vm.inputData,
-                                  "experience_category_id",
+                                  "b_experience_category_id",
                                   $event.target.value
                                 )
                               }
@@ -68216,17 +68218,17 @@ var render = function() {
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: _vm.inputData.address,
-                              expression: "inputData.address"
+                              value: _vm.inputData.c_address,
+                              expression: "inputData.c_address"
                             }
                           ],
                           staticClass: "form-control",
                           attrs: {
                             type: "text",
-                            name: "address",
+                            name: "c_address",
                             placeholder: "Enter Address"
                           },
-                          domProps: { value: _vm.inputData.address },
+                          domProps: { value: _vm.inputData.c_address },
                           on: {
                             input: function($event) {
                               if ($event.target.composing) {
@@ -68234,7 +68236,7 @@ var render = function() {
                               }
                               _vm.$set(
                                 _vm.inputData,
-                                "address",
+                                "c_address",
                                 $event.target.value
                               )
                             }
@@ -68255,12 +68257,12 @@ var render = function() {
                               {
                                 name: "model",
                                 rawName: "v-model",
-                                value: _vm.inputData.division_id,
-                                expression: "inputData.division_id"
+                                value: _vm.inputData.c_division_id,
+                                expression: "inputData.c_division_id"
                               }
                             ],
-                            attrs: { type: "hidden", name: "division_id" },
-                            domProps: { value: _vm.inputData.division_id },
+                            attrs: { type: "hidden", name: "c_division_id" },
+                            domProps: { value: _vm.inputData.c_division_id },
                             on: {
                               input: function($event) {
                                 if ($event.target.composing) {
@@ -68268,7 +68270,7 @@ var render = function() {
                                 }
                                 _vm.$set(
                                   _vm.inputData,
-                                  "division_id",
+                                  "c_division_id",
                                   $event.target.value
                                 )
                               }
@@ -68290,11 +68292,11 @@ var render = function() {
                               }
                             },
                             model: {
-                              value: _vm.inputData.division_id,
+                              value: _vm.inputData.c_division_id,
                               callback: function($$v) {
-                                _vm.$set(_vm.inputData, "division_id", $$v)
+                                _vm.$set(_vm.inputData, "c_division_id", $$v)
                               },
-                              expression: "inputData.division_id"
+                              expression: "inputData.c_division_id"
                             }
                           })
                         ],
@@ -68314,12 +68316,12 @@ var render = function() {
                               {
                                 name: "model",
                                 rawName: "v-model",
-                                value: _vm.inputData.district_id,
-                                expression: "inputData.district_id"
+                                value: _vm.inputData.c_district_id,
+                                expression: "inputData.c_district_id"
                               }
                             ],
-                            attrs: { type: "hidden", name: "district_id" },
-                            domProps: { value: _vm.inputData.district_id },
+                            attrs: { type: "hidden", name: "c_district_id" },
+                            domProps: { value: _vm.inputData.c_district_id },
                             on: {
                               input: function($event) {
                                 if ($event.target.composing) {
@@ -68327,7 +68329,7 @@ var render = function() {
                                 }
                                 _vm.$set(
                                   _vm.inputData,
-                                  "district_id",
+                                  "c_district_id",
                                   $event.target.value
                                 )
                               }
@@ -68349,11 +68351,11 @@ var render = function() {
                               }
                             },
                             model: {
-                              value: _vm.inputData.district_id,
+                              value: _vm.inputData.c_district_id,
                               callback: function($$v) {
-                                _vm.$set(_vm.inputData, "district_id", $$v)
+                                _vm.$set(_vm.inputData, "c_district_id", $$v)
                               },
-                              expression: "inputData.district_id"
+                              expression: "inputData.c_district_id"
                             }
                           })
                         ],
@@ -68371,12 +68373,12 @@ var render = function() {
                               {
                                 name: "model",
                                 rawName: "v-model",
-                                value: _vm.inputData.zone_id,
-                                expression: "inputData.zone_id"
+                                value: _vm.inputData.c_zone_id,
+                                expression: "inputData.c_zone_id"
                               }
                             ],
-                            attrs: { type: "hidden", name: "zone_id" },
-                            domProps: { value: _vm.inputData.zone_id },
+                            attrs: { type: "hidden", name: "c_zone_id" },
+                            domProps: { value: _vm.inputData.c_zone_id },
                             on: {
                               input: function($event) {
                                 if ($event.target.composing) {
@@ -68384,7 +68386,7 @@ var render = function() {
                                 }
                                 _vm.$set(
                                   _vm.inputData,
-                                  "zone_id",
+                                  "c_zone_id",
                                   $event.target.value
                                 )
                               }
@@ -68401,11 +68403,11 @@ var render = function() {
                               placeholder: "Select Zone"
                             },
                             model: {
-                              value: _vm.inputData.zone_id,
+                              value: _vm.inputData.c_zone_id,
                               callback: function($$v) {
-                                _vm.$set(_vm.inputData, "zone_id", $$v)
+                                _vm.$set(_vm.inputData, "c_zone_id", $$v)
                               },
-                              expression: "inputData.zone_id"
+                              expression: "inputData.c_zone_id"
                             }
                           })
                         ],
@@ -68446,18 +68448,18 @@ var render = function() {
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: _vm.inputData.contact_person_name,
-                              expression: "inputData.contact_person_name"
+                              value: _vm.inputData.c_contact_person_name,
+                              expression: "inputData.c_contact_person_name"
                             }
                           ],
                           staticClass: "form-control",
                           attrs: {
                             type: "text",
-                            name: "contact_person_name",
+                            name: "c_contact_person_name",
                             placeholder: "Enter Contact Person Name"
                           },
                           domProps: {
-                            value: _vm.inputData.contact_person_name
+                            value: _vm.inputData.c_contact_person_name
                           },
                           on: {
                             input: function($event) {
@@ -68466,7 +68468,7 @@ var render = function() {
                               }
                               _vm.$set(
                                 _vm.inputData,
-                                "contact_person_name",
+                                "c_contact_person_name",
                                 $event.target.value
                               )
                             }
@@ -68484,18 +68486,18 @@ var render = function() {
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: _vm.inputData.contact_person_number,
-                              expression: "inputData.contact_person_number"
+                              value: _vm.inputData.c_contact_person_number,
+                              expression: "inputData.c_contact_person_number"
                             }
                           ],
                           staticClass: "form-control",
                           attrs: {
                             type: "text",
-                            name: "contact_person_number",
+                            name: "c_contact_person_number",
                             placeholder: "Enter Contact Person Number"
                           },
                           domProps: {
-                            value: _vm.inputData.contact_person_number
+                            value: _vm.inputData.c_contact_person_number
                           },
                           on: {
                             input: function($event) {
@@ -68504,7 +68506,7 @@ var render = function() {
                               }
                               _vm.$set(
                                 _vm.inputData,
-                                "contact_person_number",
+                                "c_contact_person_number",
                                 $event.target.value
                               )
                             }
@@ -68522,17 +68524,17 @@ var render = function() {
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: _vm.inputData.designation,
-                              expression: "inputData.designation"
+                              value: _vm.inputData.c_designation,
+                              expression: "inputData.c_designation"
                             }
                           ],
                           staticClass: "form-control",
                           attrs: {
                             type: "text",
-                            name: "designation",
+                            name: "c_designation",
                             placeholder: "Enter Designation"
                           },
-                          domProps: { value: _vm.inputData.designation },
+                          domProps: { value: _vm.inputData.c_designation },
                           on: {
                             input: function($event) {
                               if ($event.target.composing) {
@@ -68540,7 +68542,7 @@ var render = function() {
                               }
                               _vm.$set(
                                 _vm.inputData,
-                                "designation",
+                                "c_designation",
                                 $event.target.value
                               )
                             }
@@ -68558,17 +68560,17 @@ var render = function() {
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: _vm.inputData.web_address,
-                              expression: "inputData.web_address"
+                              value: _vm.inputData.c_web_address,
+                              expression: "inputData.c_web_address"
                             }
                           ],
                           staticClass: "form-control",
                           attrs: {
                             type: "text",
-                            name: "web_address",
+                            name: "c_web_address",
                             placeholder: "Enter Web Address"
                           },
-                          domProps: { value: _vm.inputData.web_address },
+                          domProps: { value: _vm.inputData.c_web_address },
                           on: {
                             input: function($event) {
                               if ($event.target.composing) {
@@ -68576,7 +68578,7 @@ var render = function() {
                               }
                               _vm.$set(
                                 _vm.inputData,
-                                "web_address",
+                                "c_web_address",
                                 $event.target.value
                               )
                             }
@@ -68594,17 +68596,17 @@ var render = function() {
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: _vm.inputData.no_of_employee,
-                              expression: "inputData.no_of_employee"
+                              value: _vm.inputData.c_no_of_employee,
+                              expression: "inputData.c_no_of_employee"
                             }
                           ],
                           staticClass: "form-control",
                           attrs: {
                             type: "number",
-                            name: "no_of_employee",
+                            name: "c_no_of_employee",
                             placeholder: ""
                           },
-                          domProps: { value: _vm.inputData.no_of_employee },
+                          domProps: { value: _vm.inputData.c_no_of_employee },
                           on: {
                             input: function($event) {
                               if ($event.target.composing) {
@@ -68612,7 +68614,7 @@ var render = function() {
                               }
                               _vm.$set(
                                 _vm.inputData,
-                                "no_of_employee",
+                                "c_no_of_employee",
                                 $event.target.value
                               )
                             }
@@ -68638,11 +68640,11 @@ var render = function() {
                               placeholder: "Select Support Type"
                             },
                             model: {
-                              value: _vm.inputData.support_type,
+                              value: _vm.inputData.c_support_type,
                               callback: function($$v) {
-                                _vm.$set(_vm.inputData, "support_type", $$v)
+                                _vm.$set(_vm.inputData, "c_support_type", $$v)
                               },
-                              expression: "inputData.support_type"
+                              expression: "inputData.c_support_type"
                             }
                           }),
                           _vm._v(" "),
@@ -68651,12 +68653,12 @@ var render = function() {
                               {
                                 name: "model",
                                 rawName: "v-model",
-                                value: _vm.inputData.support_type,
-                                expression: "inputData.support_type"
+                                value: _vm.inputData.c_support_type,
+                                expression: "inputData.c_support_type"
                               }
                             ],
-                            attrs: { type: "hidden", name: "support_type" },
-                            domProps: { value: _vm.inputData.support_type },
+                            attrs: { type: "hidden", name: "c_support_type" },
+                            domProps: { value: _vm.inputData.c_support_type },
                             on: {
                               input: function($event) {
                                 if ($event.target.composing) {
@@ -68664,7 +68666,7 @@ var render = function() {
                                 }
                                 _vm.$set(
                                   _vm.inputData,
-                                  "support_type",
+                                  "c_support_type",
                                   $event.target.value
                                 )
                               }
@@ -98244,8 +98246,8 @@ axios__WEBPACK_IMPORTED_MODULE_2___default.a.defaults.baseURL = window.location.
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! G:\laragon\www\quickfix_web_v1\resources\js\src\apps\backend\app_backend.js */"./resources/js/src/apps/backend/app_backend.js");
-module.exports = __webpack_require__(/*! G:\laragon\www\quickfix_web_v1\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! E:\laragon\www\quickfix_web_v1\resources\js\src\apps\backend\app_backend.js */"./resources/js/src/apps/backend/app_backend.js");
+module.exports = __webpack_require__(/*! E:\laragon\www\quickfix_web_v1\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ }),

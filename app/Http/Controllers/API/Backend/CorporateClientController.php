@@ -25,14 +25,14 @@ class CorporateClientController extends Controller
         $search = $request->search;
         $dataSorting = $request->sorting == 'false'?10:$request->sorting;
         
-            $data =$search == 'false'?CorporateClient::orderBy('id', 'desc')->paginate($dataSorting):CorporateClient::where(function($query) use($search){
-            $query->orWhere('contact_person_name', 'LIKE', "%{$search}%");
-        })->orderBy('id', 'desc')->paginate($dataSorting);
+            $data =$search == 'false'?Customer::where('customer_type',2)->paginate($dataSorting):Customer::where(function($query) use($search){
+            $query->orWhere('name', 'LIKE', "%{$search}%");
+        })->where('customer_type',2)->paginate($dataSorting);
 
         $divisions = Division::all();
       
 
-        return  CorporateClientResource::collection($data)->additional([
+        return  CustomerResource::collection($data)->additional([
             'divisions' => $divisions,
         ]);
 
@@ -67,16 +67,16 @@ class CorporateClientController extends Controller
         
         $corporate_clients = CorporateClient::create([
             'customer_id'           => $customer['id'],
-            'contact_person_name'   => $data['contact_person_name'],
-            'contact_person_number' => $data['contact_person_number'],
-            'designation'           => $data['designation'],
-            'division_id'           => $data['division_id'],
-            'district_id'           => $data['district_id'],
-            'zone_id'               => $data['zone_id'],
-            'address'               => $data['address'],
-            'web_address'           => $data['web_address'],
-            'no_of_employee'        => $data['no_of_employee'],
-            'support_type'          => $data['support_type'],
+            'contact_person_name'   => $data['c_contact_person_name'],
+            'contact_person_number' => $data['c_contact_person_number'],
+            'designation'           => $data['c_designation'],
+            'division_id'           => $data['c_division_id'],
+            'district_id'           => $data['c_district_id'],
+            'zone_id'               => $data['c_zone_id'],
+            'address'               => $data['c_address'],
+            'web_address'           => $data['c_web_address'],
+            'no_of_employee'        => $data['c_no_of_employee'],
+            'support_type'          => $data['c_support_type'],
             'referral_id'           => $customer['id'],
             'coins'                 => 0,
             'bonus_amounts'         => !empty($get_bonus->amount)? $get_bonus->amount:0,
@@ -107,8 +107,8 @@ class CorporateClientController extends Controller
      */
     public function show($id)
     {
-        $corporate_clients = CorporateClient::find($id);
-        return new CorporateClientResource($corporate_clients);
+        $customer = Customer::find($id);
+        return new CustomerResource($customer);
     }
 
     /**
@@ -120,17 +120,33 @@ class CorporateClientController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $fileName = Helper::imgProcess($request,'image',$request->name, $id, 'images/customer', 'update', Customer::class); 
+        $fileName   = Helper::imgProcess($request,'image',$request->name, $id, 'images/customer', 'update', Customer::class);          
         $data = $request->all();
-        // $data['updated_by'] = Auth::user()->id;
-        $data['updated_by_type'] = '1';
-        $data['image'] = $fileName;
 
-        $data = CorporateClient::find($id)->update($data);
+        $data['updated_by_type'] = 1;
+        $data['image'] = $fileName;
+        DB::beginTransaction();
+        $customer = Customer::find($id)->update($data);
         
+        $corporate_clients = CorporateClient::where('customer_id',$id)->update([
+            // 'customer_id'               => $data['customer_id'],
+            'contact_person_name'   => $data['c_contact_person_name'],
+            'contact_person_number' => $data['c_contact_person_number'],
+            'designation'           => $data['c_designation'],
+            'division_id'           => $data['c_division_id'],
+            'district_id'           => $data['c_district_id'],
+            'zone_id'               => $data['c_zone_id'],
+            'address'               => $data['c_address'],
+            'web_address'           => $data['c_web_address'],
+            'no_of_employee'        => $data['c_no_of_employee'],
+            'support_type'          => $data['c_support_type'],
+            
+        ]);
+       
+        DB::commit();
         return response()->json([
             'status'  => 'success',
-            'message' => 'Customer has been updated!',
+            'message' => 'BusinessPartner has been updated!',
             'icon'    => 'check',
         ]);
     }
@@ -143,12 +159,14 @@ class CorporateClientController extends Controller
      */
     public function destroy($id)
     {
-        $corporate_clients  = CorporateClient::find($id);
-       $corporate_clients->delete();
-        // $delete_corporate = CorporateClient::find($id)->delete();
-        $customer = Customer::where('id',$corporate_clients->customer_id)->first();
-        $customer->delete();
-        if($customer){
+        DB::beginTransaction();
+        $corporate_clients = CorporateClient::where('customer_id',$id)->first();
+        $corporate_clients->delete();
+        
+
+        $delete = Customer::find($id)->delete();
+        DB::commit();
+        if($delete){
             return response()->json([
                 'status'  => 'danger',
                 'message' => 'CorporateClient has been deleted!',

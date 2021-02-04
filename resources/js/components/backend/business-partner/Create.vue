@@ -26,33 +26,33 @@
                                 </div>
                                 <div class="form-group">
                                     <label for=""> Address</label>
-                                    <input type="text" name="address" v-model="inputData.address" class="form-control" placeholder="Enter Address">  
+                                    <input type="text" name="b_address" v-model="inputData.b_address" class="form-control" placeholder="Enter Address">  
                                 </div>
                                 <div class="form-group">
                                         <label for="">Division</label>
-                                       <v-select :options="divisions" :reduce="division => division.id" label="name" @input="onChangeDivision($event)" v-model="inputData.division_id" placeholder="Select Division"></v-select>
-                                       <input type="hidden" name="division_id" v-model="inputData.division_id">
+                                       <v-select :options="divisions" :reduce="division => division.id" label="name" @input="onChangeDivision($event)" v-model="inputData.b_division_id" placeholder="Select Division"></v-select>
+                                       <input type="hidden" name="b_division_id" v-model="inputData.b_division_id">
                                    </div>
                                     <div class="form-group">
                                         <label for="">Districts</label>            
-                                       <v-select :options="districts" :reduce="district => district.id" label="name" @input="onChangeDistrict($event)" v-model="inputData.district_id" placeholder="Select District"></v-select>
-                                        <input type="hidden" name="district_id" v-model="inputData.district_id">
+                                       <v-select :options="districts" :reduce="district => district.id" label="name" @input="onChangeDistrict($event)" v-model="inputData.b_district_id" placeholder="Select District"></v-select>
+                                        <input type="hidden" name="b_district_id" v-model="inputData.b_district_id">
                                    </div>
                                 <div class="form-group">
                                         <label for="">Zone</label>                                        
-                                       <v-select :options="zones" :reduce="zone => zone.id" label="zone_name" v-model="inputData.zone_id" placeholder="Select Zone"></v-select>
-                                       <input type="hidden" name="zone_id" v-model="inputData.zone_id">
+                                       <v-select :options="zones" :reduce="zone => zone.id" label="zone_name" v-model="inputData.b_zone_id" placeholder="Select Zone"></v-select>
+                                       <input type="hidden" name="b_zone_id" v-model="inputData.b_zone_id">
                                    </div>
                                    <div class="form-group">
                                     <label for="">Device Functional Type</label>
-                                    <v-select :options="device_functional_types" :reduce="device_functional_type => device_functional_type.id"  label="name" v-model="inputData.device_functional_type_id" placeholder="Select Device Functional Type"></v-select>
-                                    <input type="hidden" name="device_functional_type_id" v-model="inputData.device_functional_type_id">
+                                    <v-select :options="device_functional_types" :reduce="device_functional_type => device_functional_type.id"  label="name" v-model="inputData.b_device_functional_type_id" placeholder="Select Device Functional Type"></v-select>
+                                    <input type="hidden" name="b_device_functional_type_id" v-model="inputData.b_device_functional_type_id">
                                 </div>  
 
                                 <div class="form-group">
                                     <label for="">Work Experience</label>
-                                    <v-select :options="work_experience" :reduce="work => work.id"  label="experience" v-model="inputData.work_experience_id" placeholder="Select Work Experience"></v-select>
-                                    <input type="hidden" name="work_experience_id" v-model="inputData.work_experience_id">
+                                    <v-select :options="work_experience" :reduce="work => work.id"  label="experience" v-model="inputData.b_work_experience_id" placeholder="Select Work Experience"></v-select>
+                                    <input type="hidden" name="b_work_experience_id" v-model="inputData.b_work_experience_id">
                                 </div>  
                                    <div class="form-group"> 
                                         <label for="">NID Photo</label>
@@ -74,38 +74,38 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for=""> Contact Person Name </label>
-                                    <input type="text" name="contact_person_name" v-model="inputData.contact_person_name" class="form-control" placeholder="Enter Contact Person Name">  
+                                    <input type="text" name="b_contact_person_name" v-model="inputData.b_contact_person_name" class="form-control" placeholder="Enter Contact Person Name">  
                                 </div>
                                 <div class="form-group">
                                     <label for=""> Contact Person Number </label>
-                                    <input type="text" name="contact_person_number" v-model="inputData.contact_person_number" class="form-control" placeholder="Enter Contact Person Number">  
+                                    <input type="text" name="b_contact_person_number" v-model="inputData.b_contact_person_number" class="form-control" placeholder="Enter Contact Person Number">  
                                 </div>
                                 <div class="form-group">
                                     <label for=""> Designation </label>
-                                    <input type="text" name="designation" v-model="inputData.designation" class="form-control" placeholder="Enter Designation">  
+                                    <input type="text" name="b_designation" v-model="inputData.b_designation" class="form-control" placeholder="Enter Designation">  
                                 </div>
                                 <div class="form-group">
                                     <label for=""> Web Address </label>
-                                    <input type="text" name="web_address" v-model="inputData.web_address" class="form-control" placeholder="Enter Web Address">  
+                                    <input type="text" name="b_web_address" v-model="inputData.b_web_address" class="form-control" placeholder="Enter Web Address">  
                                 </div>
                                 <div class="form-group">
                                     <label for=""> No of Employee </label>
-                                    <input type="number" name="no_of_employee" v-model="inputData.no_of_employee" class="form-control" placeholder="">  
+                                    <input type="number" name="b_no_of_employee" v-model="inputData.b_no_of_employee" class="form-control" placeholder="">  
                                 </div>
                                 <div class="form-group">
                                     <label for=""> NID Number </label>
-                                    <input type="text" name="nid_no" v-model="inputData.nid_no" class="form-control" placeholder="Enter NID number">  
+                                    <input type="text" name="b_nid_no" v-model="inputData.b_nid_no" class="form-control" placeholder="Enter NID number">  
                                 </div>
                                 <div class="form-group">
                                     <label for="">Device Type</label>
-                                    <v-select :options="device_types" :reduce="device_type => device_type.id"  label="type_name" v-model="inputData.device_type_id" placeholder="Select Device Type"></v-select>
-                                    <input type="hidden" name="device_type_id" v-model="inputData.device_type_id">
+                                    <v-select :options="device_types" :reduce="device_type => device_type.id"  label="type_name" v-model="inputData.b_device_type_id" placeholder="Select Device Type"></v-select>
+                                    <input type="hidden" name="b_device_type_id" v-model="inputData.b_device_type_id">
                                 </div>  
                                 
                                 <div class="form-group">
                                     <label for="">Experience Category</label>
-                                    <v-select :options="experience_category" :reduce="ex_category => ex_category.id"  label="title" v-model="inputData.experience_category_id" placeholder="Select Experience Category"></v-select>
-                                    <input type="hidden" name="experience_category_id" v-model="inputData.experience_category_id">
+                                    <v-select :options="experience_category" :reduce="ex_category => ex_category.id"  label="title" v-model="inputData.b_experience_category_id" placeholder="Select Experience Category"></v-select>
+                                    <input type="hidden" name="b_experience_category_id" v-model="inputData.b_experience_category_id">
                                 </div>  
                                 
 

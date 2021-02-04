@@ -25,22 +25,22 @@
                                 </div>
                                 <div class="form-group">
                                     <label for=""> Address</label>
-                                    <input type="text" name="address" v-model="inputData.address" class="form-control" placeholder="Enter Address">  
+                                    <input type="text" name="c_address" v-model="inputData.c_address" class="form-control" placeholder="Enter Address">  
                                 </div>
                                 <div class="form-group">
                                         <label for="">Division</label>
-                                        <input type="hidden" name="division_id" v-model="inputData.division_id">
-                                       <v-select :options="divisions" :reduce="division => division.id" label="name" @input="onChangeDivision($event)" v-model="inputData.division_id" placeholder="Select Division"></v-select>
+                                        <input type="hidden" name="c_division_id" v-model="inputData.c_division_id">
+                                       <v-select :options="divisions" :reduce="division => division.id" label="name" @input="onChangeDivision($event)" v-model="inputData.c_division_id" placeholder="Select Division"></v-select>
                                    </div>
                                     <div class="form-group">
                                         <label for="">Districts</label>
-                                        <input type="hidden" name="district_id" v-model="inputData.district_id">
-                                       <v-select :options="districts" :reduce="district => district.id" label="name" @input="onChangeDistrict($event)" v-model="inputData.district_id" placeholder="Select District"></v-select>
+                                        <input type="hidden" name="c_district_id" v-model="inputData.c_district_id">
+                                       <v-select :options="districts" :reduce="district => district.id" label="name" @input="onChangeDistrict($event)" v-model="inputData.c_district_id" placeholder="Select District"></v-select>
                                    </div>
                                 <div class="form-group">
                                         <label for="">Zone</label>
-                                        <input type="hidden" name="zone_id" v-model="inputData.zone_id">
-                                       <v-select :options="zones" :reduce="zone => zone.id" label="zone_name" v-model="inputData.zone_id" placeholder="Select Zone"></v-select>
+                                        <input type="hidden" name="c_zone_id" v-model="inputData.c_zone_id">
+                                       <v-select :options="zones" :reduce="zone => zone.id" label="zone_name" v-model="inputData.c_zone_id" placeholder="Select Zone"></v-select>
                                    </div>
                                    <div class="form-group"> 
                                         <label for="">Logo</label>
@@ -54,28 +54,28 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for=""> Contact Person Name </label>
-                                    <input type="text" name="contact_person_name" v-model="inputData.contact_person_name" class="form-control" placeholder="Enter Contact Person Name">  
+                                    <input type="text" name="c_contact_person_name" v-model="inputData.c_contact_person_name" class="form-control" placeholder="Enter Contact Person Name">  
                                 </div>
                                 <div class="form-group">
                                     <label for=""> Contact Person Number </label>
-                                    <input type="text" name="contact_person_number" v-model="inputData.contact_person_number" class="form-control" placeholder="Enter Contact Person Number">  
+                                    <input type="text" name="c_contact_person_number" v-model="inputData.c_contact_person_number" class="form-control" placeholder="Enter Contact Person Number">  
                                 </div>
                                 <div class="form-group">
                                     <label for=""> Designation </label>
-                                    <input type="text" name="designation" v-model="inputData.designation" class="form-control" placeholder="Enter Designation">  
+                                    <input type="text" name="c_designation" v-model="inputData.c_designation" class="form-control" placeholder="Enter Designation">  
                                 </div>
                                 <div class="form-group">
                                     <label for=""> Web Address </label>
-                                    <input type="text" name="web_address" v-model="inputData.web_address" class="form-control" placeholder="Enter Web Address">  
+                                    <input type="text" name="c_web_address" v-model="inputData.c_web_address" class="form-control" placeholder="Enter Web Address">  
                                 </div>
                                 <div class="form-group">
                                     <label for=""> No of Employee </label>
-                                    <input type="number" name="no_of_employee" v-model="inputData.no_of_employee" class="form-control" placeholder="">  
+                                    <input type="number" name="c_no_of_employee" v-model="inputData.c_no_of_employee" class="form-control" placeholder="">  
                                 </div>
                                 <div class="form-group">
                                     <label for="">Support Type</label>
-                                    <v-select :options="supports" :reduce="support => support.value"  label="name" v-model="inputData.support_type" placeholder="Select Support Type"></v-select>
-                                    <input type="hidden" name="support_type" v-model="inputData.support_type">
+                                    <v-select :options="supports" :reduce="support => support.value"  label="name" v-model="inputData.c_support_type" placeholder="Select Support Type"></v-select>
+                                    <input type="hidden" name="c_support_type" v-model="inputData.c_support_type">
                                 </div>
 
                                  <div class="form-group">
