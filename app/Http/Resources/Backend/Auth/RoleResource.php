@@ -14,10 +14,18 @@ class RoleResource extends JsonResource
      */
     public function toArray($request)
     {
+        $access = [];
+        foreach($this->permissions as $key => $permission){
+            if($permission){
+                
+                $access[$key] = $permission->pivot->permission_id;
+            }
+        }
+        
         return [
-            'id'          => $this->id,
-            'name'        => $this->name,
-            'permissions' => $this->permissions->pluck('id','name')
+            'id'              => $this->id,
+            'name'            => $this->name,
+            'access'     => $access
         ];
     }
 }

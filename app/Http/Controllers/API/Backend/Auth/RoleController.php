@@ -8,6 +8,7 @@ use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
 use Spatie\Permission\Models\Permission;
 use App\Http\Resources\Backend\Auth\RoleResource;
+use Symfony\Component\Console\Input\Input;
 
 class RoleController extends Controller
 {
@@ -41,13 +42,16 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
+       
+    //    return $request->all();
         $this->validate($request, [
-            'name' => 'required|unique:roles,name',
+            'name'       => 'required|unique:roles,name',
             'permission' => 'required',
         ]);
     
         $role = Role::create(['name' => $request->input('name')]);
         $role->syncPermissions($request->input('permission'));
+        
     }
 
     /**

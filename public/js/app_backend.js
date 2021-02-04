@@ -2469,6 +2469,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   mixins: [_src_mixin__WEBPACK_IMPORTED_MODULE_0__["default"]],
@@ -2483,14 +2484,21 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   created: function created() {
-    var _this = this;
-
     this.generalApi = 'roles';
     this.backUrl = '/roles';
     this.cardTitle = this.isEdit ? 'Edit Role' : 'Add New Role';
-    axios.get(this.url + '/api/' + this.generalApi).then(function (res) {
-      _this.permissions = res.data.permissions;
-    });
+    this.isFile = true;
+    this.getPermission();
+  },
+  methods: {
+    getPermission: function getPermission() {
+      var _this = this;
+
+      axios.get(this.url + '/api/' + this.generalApi).then(function (res) {
+        _this.permissions = res.data.permissions;
+        console.log('res.data.permissions', res.data.permissions);
+      });
+    }
   }
 });
 
@@ -2836,6 +2844,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   mixins: [_src_mixin__WEBPACK_IMPORTED_MODULE_0__["default"]],
@@ -2854,16 +2881,25 @@ __webpack_require__.r(__webpack_exports__);
       }, {
         name: 'Not Verified',
         value: 0
-      }]
+      }],
+      divisions: [],
+      districts: [],
+      zones: []
     };
   },
   created: function created() {
+    var _this = this;
+
     this.generalApi = 'customers';
     this.backUrl = '/customers';
     this.cardTitle = this.isEdit ? 'Edit Customer' : 'Add New Customer';
     this.isFile = true;
     this.isImage = 'image';
-    axios.get(this.url + '/api/' + this.generalApi).then(function (res) {});
+    axios.get(this.url + '/api/' + this.generalApi).then(function (res) {
+      _this.divisions = res.data.divisions;
+      _this.districts = res.data.districts;
+      _this.zones = res.data.zones;
+    });
   }
 });
 
@@ -4257,6 +4293,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['signOut']
 });
@@ -4628,8 +4681,8 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   created: function created() {
-    this.generalApi = 'registration-bonus';
-    this.backUrl = '/registration-bonus';
+    this.generalApi = 'bonus';
+    this.backUrl = '/bonus';
     this.cardTitle = this.isEdit ? 'Edit Registration Bonus' : 'Add New Registration Bonus';
     this.isFile = true;
     this.isImage = 'image';
@@ -4657,7 +4710,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   mixins: [_src_mixin__WEBPACK_IMPORTED_MODULE_0__["default"]],
   created: function created() {
-    this.generalApi = "registration-bonus";
+    this.generalApi = "bonus";
     this.dataSearchingApi = "search-device-models-data";
     this.cardTitle = "Customer Registration Bonus List";
     this.isFile = true;
@@ -65970,7 +66023,39 @@ var render = function() {
                       "div",
                       { staticClass: "col-md-6" },
                       [
-                        _vm._m(0),
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("label", { attrs: { for: "" } }, [_vm._v("Name")]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.inputData.name,
+                                expression: "inputData.name"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              name: "name",
+                              placeholder: "Enter Role"
+                            },
+                            domProps: { value: _vm.inputData.name },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.inputData,
+                                  "name",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ]),
                         _vm._v(" "),
                         _vm._l(_vm.permissions, function(permission, index) {
                           return _c(
@@ -65980,16 +66065,9 @@ var render = function() {
                               _c("input", {
                                 attrs: {
                                   type: "checkbox",
-                                  name: "permissions[]"
+                                  name: "permission[]"
                                 },
-                                domProps: {
-                                  value: permission.id,
-                                  checked:
-                                    _vm.inputData.permissions.name ==
-                                    permission.name
-                                      ? true
-                                      : false
-                                }
+                                domProps: { value: permission.id }
                               }),
                               _vm._v(" "),
                               _c("label", { attrs: { for: "" } }, [
@@ -66022,21 +66100,7 @@ var render = function() {
     )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("label", { attrs: { for: "" } }, [_vm._v("Name")]),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "form-control",
-        attrs: { type: "text", name: "name", placeholder: "Enter Role" }
-      })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -66810,11 +66874,173 @@ var render = function() {
                       _vm._v(" "),
                       _c("div", { staticClass: "form-group" }, [
                         _c("label", { attrs: { for: "" } }, [
-                          _vm._v(
-                            " Mobile " +
-                              _vm._s(_vm.inputData.mobile_number) +
-                              " "
-                          )
+                          _vm._v(" Email ")
+                        ]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.inputData.email,
+                              expression: "inputData.email"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "email",
+                            name: "email",
+                            placeholder: "Enter Email"
+                          },
+                          domProps: { value: _vm.inputData.email },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.inputData,
+                                "email",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "form-group" },
+                        [
+                          _c("label", { attrs: { for: "" } }, [
+                            _vm._v("Division")
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.inputData.division_id,
+                                expression: "inputData.division_id"
+                              }
+                            ],
+                            attrs: { type: "hidden", name: "division_id" },
+                            domProps: { value: _vm.inputData.division_id },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.inputData,
+                                  "division_id",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("v-select", {
+                            attrs: {
+                              options: _vm.divisions,
+                              reduce: function(division) {
+                                return division.id
+                              },
+                              label: "name",
+                              placeholder: "Select Division"
+                            },
+                            model: {
+                              value: _vm.inputData.division_id,
+                              callback: function($$v) {
+                                _vm.$set(_vm.inputData, "division_id", $$v)
+                              },
+                              expression: "inputData.division_id"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "form-group" },
+                        [
+                          _c("label", { attrs: { for: "" } }, [_vm._v("Zone")]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.inputData.zone_id,
+                                expression: "inputData.zone_id"
+                              }
+                            ],
+                            attrs: { type: "hidden", name: "zone_id" },
+                            domProps: { value: _vm.inputData.zone_id },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.inputData,
+                                  "zone_id",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("v-select", {
+                            attrs: {
+                              options: _vm.zones,
+                              reduce: function(zone) {
+                                return zone.id
+                              },
+                              label: "name",
+                              placeholder: "Select Zone"
+                            },
+                            model: {
+                              value: _vm.inputData.zone_id,
+                              callback: function($$v) {
+                                _vm.$set(_vm.inputData, "zone_id", $$v)
+                              },
+                              expression: "inputData.zone_id"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group" }, [
+                        _c("label", { attrs: { for: "" } }, [_vm._v("Photo")]),
+                        _vm._v(" "),
+                        _c("input", {
+                          staticClass: "form-control",
+                          attrs: { type: "file", name: "image" }
+                        }),
+                        _vm._v(" "),
+                        _vm.isEdit
+                          ? _c("div", { staticClass: "m-4" }, [
+                              _c("img", {
+                                staticClass: "img-fluid",
+                                staticStyle: { width: "80px", height: "80px" },
+                                attrs: {
+                                  src: _vm.inputData.image_path,
+                                  alt: ""
+                                }
+                              })
+                            ])
+                          : _vm._e()
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-6" }, [
+                      _c("div", { staticClass: "form-group" }, [
+                        _c("label", { attrs: { for: "" } }, [
+                          _vm._v(" Mobile")
                         ]),
                         _vm._v(" "),
                         _c("input", {
@@ -66850,7 +67076,7 @@ var render = function() {
                       _vm._v(" "),
                       _c("div", { staticClass: "form-group" }, [
                         _c("label", { attrs: { for: "" } }, [
-                          _vm._v(" Email ")
+                          _vm._v(" Address")
                         ]),
                         _vm._v(" "),
                         _c("input", {
@@ -66858,17 +67084,17 @@ var render = function() {
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: _vm.inputData.email,
-                              expression: "inputData.email"
+                              value: _vm.inputData.address,
+                              expression: "inputData.address"
                             }
                           ],
                           staticClass: "form-control",
                           attrs: {
-                            type: "email",
-                            name: "email",
-                            placeholder: "Enter Email"
+                            type: "text",
+                            name: "address",
+                            placeholder: "Enter Address"
                           },
-                          domProps: { value: _vm.inputData.email },
+                          domProps: { value: _vm.inputData.address },
                           on: {
                             input: function($event) {
                               if ($event.target.composing) {
@@ -66876,16 +67102,68 @@ var render = function() {
                               }
                               _vm.$set(
                                 _vm.inputData,
-                                "email",
+                                "address",
                                 $event.target.value
                               )
                             }
                           }
                         })
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-md-6" }, [
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "form-group" },
+                        [
+                          _c("label", { attrs: { for: "" } }, [
+                            _vm._v("Districts")
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.inputData.district_id,
+                                expression: "inputData.district_id"
+                              }
+                            ],
+                            attrs: { type: "hidden", name: "district_id" },
+                            domProps: { value: _vm.inputData.district_id },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.inputData,
+                                  "district_id",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("v-select", {
+                            attrs: {
+                              options: _vm.districts,
+                              reduce: function(district) {
+                                return district.id
+                              },
+                              label: "name",
+                              placeholder: "Select District"
+                            },
+                            model: {
+                              value: _vm.inputData.district_id,
+                              callback: function($$v) {
+                                _vm.$set(_vm.inputData, "district_id", $$v)
+                              },
+                              expression: "inputData.district_id"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
                       _c(
                         "div",
                         { staticClass: "form-group" },
@@ -66938,29 +67216,7 @@ var render = function() {
                           })
                         ],
                         1
-                      ),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "form-group" }, [
-                        _c("label", { attrs: { for: "" } }, [_vm._v("Photo")]),
-                        _vm._v(" "),
-                        _c("input", {
-                          staticClass: "form-control",
-                          attrs: { type: "file", name: "image" }
-                        }),
-                        _vm._v(" "),
-                        _vm.isEdit
-                          ? _c("div", { staticClass: "m-4" }, [
-                              _c("img", {
-                                staticClass: "img-fluid",
-                                staticStyle: { width: "80px", height: "80px" },
-                                attrs: {
-                                  src: _vm.inputData.image_path,
-                                  alt: ""
-                                }
-                              })
-                            ])
-                          : _vm._e()
-                      ])
+                      )
                     ])
                   ])
                 ]),
@@ -70108,6 +70364,43 @@ var render = function() {
                       )
                     ],
                     1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "li",
+                    { staticClass: "nav-item" },
+                    [
+                      _c(
+                        "router-link",
+                        {
+                          staticClass: "nav-link",
+                          attrs: { to: "/problem-type" }
+                        },
+                        [
+                          _c("i", { staticClass: "far fa-circle nav-icon" }),
+                          _vm._v(" "),
+                          _c("p", [_vm._v("Problem Type")])
+                        ]
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "li",
+                    { staticClass: "nav-item" },
+                    [
+                      _c(
+                        "router-link",
+                        { staticClass: "nav-link", attrs: { to: "/zone" } },
+                        [
+                          _c("i", { staticClass: "far fa-circle nav-icon" }),
+                          _vm._v(" "),
+                          _c("p", [_vm._v("Zone")])
+                        ]
+                      )
+                    ],
+                    1
                   )
                 ])
               ]),
@@ -70184,67 +70477,11 @@ var render = function() {
                 [
                   _c(
                     "router-link",
-                    { staticClass: "nav-link", attrs: { to: "/zone" } },
-                    [
-                      _c("i", {
-                        staticClass: "nav-icon fas fa-chart-area",
-                        attrs: { "aria-hidden": "true" }
-                      }),
-                      _vm._v(" "),
-                      _c("p", [_vm._v("Zone")])
-                    ]
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "li",
-                { staticClass: "nav-item" },
-                [
-                  _c(
-                    "router-link",
                     { staticClass: "nav-link", attrs: { to: "/instant-call" } },
                     [
                       _c("i", { staticClass: "fas fa-headset nav-icon" }),
                       _vm._v(" "),
                       _c("p", [_vm._v("Instant Call")])
-                    ]
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "li",
-                { staticClass: "nav-item" },
-                [
-                  _c(
-                    "router-link",
-                    { staticClass: "nav-link", attrs: { to: "/quotation" } },
-                    [
-                      _c("i", {
-                        staticClass: "far fa-question-circle nav-icon"
-                      }),
-                      _vm._v(" "),
-                      _c("p", [_vm._v("Quotation")])
-                    ]
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "li",
-                { staticClass: "nav-item" },
-                [
-                  _c(
-                    "router-link",
-                    { staticClass: "nav-link", attrs: { to: "" } },
-                    [
-                      _c("i", { staticClass: "fa fa-shopping-cart nav-icon" }),
-                      _vm._v(" "),
-                      _c("p", [_vm._v("Merchants")])
                     ]
                   )
                 ],
@@ -70281,14 +70518,31 @@ var render = function() {
                     [
                       _c(
                         "router-link",
+                        { staticClass: "nav-link", attrs: { to: "/bonus" } },
+                        [
+                          _c("i", { staticClass: "far fa-circle nav-icon" }),
+                          _vm._v(" "),
+                          _c("p", [_vm._v(" Bonus")])
+                        ]
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "li",
+                    { staticClass: "nav-item" },
+                    [
+                      _c(
+                        "router-link",
                         {
                           staticClass: "nav-link",
-                          attrs: { to: "/registration-bonus" }
+                          attrs: { to: "/discounts" }
                         },
                         [
                           _c("i", { staticClass: "far fa-circle nav-icon" }),
                           _vm._v(" "),
-                          _c("p", [_vm._v("Registration Bonus")])
+                          _c("p", [_vm._v("Discount")])
                         ]
                       )
                     ],
@@ -70296,62 +70550,6 @@ var render = function() {
                   )
                 ])
               ]),
-              _vm._v(" "),
-              _c(
-                "li",
-                { staticClass: "nav-item" },
-                [
-                  _c(
-                    "router-link",
-                    { staticClass: "nav-link", attrs: { to: "/services" } },
-                    [
-                      _c("i", { staticClass: "fa fa-list nav-icon" }),
-                      _c("p", [_vm._v("Service")])
-                    ]
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "li",
-                { staticClass: "nav-item" },
-                [
-                  _c(
-                    "router-link",
-                    {
-                      staticClass: "nav-link",
-                      attrs: { to: "/service-categories" }
-                    },
-                    [
-                      _c("i", { staticClass: "fa fa-list nav-icon" }),
-                      _vm._v(" "),
-                      _c("p", [_vm._v("Service Category")])
-                    ]
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "li",
-                { staticClass: "nav-item" },
-                [
-                  _c(
-                    "router-link",
-                    { staticClass: "nav-link", attrs: { to: "/discounts" } },
-                    [
-                      _c("i", {
-                        staticClass: "fa fa-product-hunt",
-                        attrs: { "aria-hidden": "true" }
-                      }),
-                      _vm._v(" "),
-                      _c("p", [_vm._v("Discount")])
-                    ]
-                  )
-                ],
-                1
-              ),
               _vm._v(" "),
               _c(
                 "li",
@@ -95153,7 +95351,7 @@ var routeBackend = [{
   }
 }, {
   name: 'RegistrationBonus',
-  path: '/registration-bonus',
+  path: '/bonus',
   component: _components_backend_registration_bonus_Index__WEBPACK_IMPORTED_MODULE_39__["default"],
   meta: {
     auth: true,
@@ -95163,7 +95361,7 @@ var routeBackend = [{
   }
 }, {
   name: 'CreateRegistrationBonus',
-  path: '/registration-bonus/create',
+  path: '/bonus/create',
   component: _components_backend_registration_bonus_Create__WEBPACK_IMPORTED_MODULE_40__["default"],
   meta: {
     auth: true,
@@ -95173,7 +95371,7 @@ var routeBackend = [{
   }
 }, {
   name: 'CreateRegistrationBonus',
-  path: '/registration-bonus/:id',
+  path: '/bonus/:id',
   component: _components_backend_registration_bonus_Create__WEBPACK_IMPORTED_MODULE_40__["default"],
   meta: {
     auth: true,

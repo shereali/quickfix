@@ -12,13 +12,14 @@
                                 <div class="col-md-6">
                                 <div class="form-group">
                                 <label for="">Name</label>
-                                <input type="text" name="name"  class="form-control" placeholder="Enter Role">
+                                <input type="text" name="name"  class="form-control" v-model="inputData.name" placeholder="Enter Role">
                                 
                             </div>
                             <div class="form-group" v-for="(permission, index) in permissions" :key="index">
-                                <input  type="checkbox" name="permissions[]" :value="permission.id" :checked="inputData.permissions.name == permission.name?true:false">
+                                <input  type="checkbox" name="permission[]" :value="permission.id">
                                 <label for="">{{ permission.name }}</label>
-                               
+                                
+                              
                             </div>
                           
                             </div>
@@ -53,16 +54,20 @@ created(){
 
     this.generalApi = 'roles'
     this.backUrl = '/roles'
-    this.cardTitle = this.isEdit?'Edit Role':'Add New Role'   
-    
-    
-    axios.get(this.url+'/api/'+this.generalApi)
-    .then(res => {
-        
-        this.permissions = res.data.permissions  
-    })
-
+    this.cardTitle = this.isEdit?'Edit Role':'Add New Role'  
+    this.isFile = true
+    this.getPermission(); 
 },
+methods:{
+    getPermission(){
+        axios.get(this.url+'/api/'+this.generalApi)
+        .then(res => {
+            
+            this.permissions = res.data.permissions  
+            console.log('res.data.permissions', res.data.permissions);
+        })
+    }
+}
 
 
 }

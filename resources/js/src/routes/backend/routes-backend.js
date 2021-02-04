@@ -842,7 +842,7 @@ let routeBackend = [
     },
     {
         name:'RegistrationBonus',
-        path:'/registration-bonus',
+        path:'/bonus',
         component:RegistrationBonus,
         
         meta: {
@@ -857,7 +857,7 @@ let routeBackend = [
 
     {
         name:'CreateRegistrationBonus',
-        path:'/registration-bonus/create',
+        path:'/bonus/create',
         component:CreateRegistrationBonus,
         
         meta: {
@@ -872,7 +872,7 @@ let routeBackend = [
 
     {
         name:'CreateRegistrationBonus',
-        path:'/registration-bonus/:id',
+        path:'/bonus/:id',
         component:CreateRegistrationBonus,
         
         meta: {
