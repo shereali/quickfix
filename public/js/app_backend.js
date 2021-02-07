@@ -2763,6 +2763,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   mixins: [_src_mixin__WEBPACK_IMPORTED_MODULE_0__["default"]],
@@ -2798,8 +2799,9 @@ __webpack_require__.r(__webpack_exports__);
     this.backUrl = '/business-partners';
     this.cardTitle = this.isEdit ? 'Edit Business Partner' : 'Add New Business Partner';
     this.isFile = true;
-    this.isImage = 'image_nid';
-    this.isImage = 'image_tradelicense';
+    this.isImage = 'nid_image';
+    this.isImage = 'tradelicense_image';
+    this.isImage = 'image';
     axios.get(this.url + '/api/' + this.generalApi).then(function (res) {
       _this.divisions = res.data.divisions;
       _this.device_types = res.data.device_types;
@@ -2807,7 +2809,16 @@ __webpack_require__.r(__webpack_exports__);
       _this.work_experience = res.data.work_experience;
       _this.experience_category = res.data.experience_category;
       console.log(res.data);
-    });
+    }); //    setTimeout(()=>{
+    //           console.log('hello',this.inputData.b_b_device_type_id);
+    //                 // this.inputData. = false;
+    //                 typeof(this.inputData.b_b_device_type_id);
+    //                 console.log(typeof(this.inputData.b_b_device_type_id));
+    //                 this.inputData.b_b_device_type_id.forEach((item, index) => {
+    //                     console.log('wlw',item[index]);
+    //                     this.inputData.b_device_type_id = item[index]
+    //                 });
+    //             }, 3000);
   },
   methods: {
     onChangeDivision: function onChangeDivision(name) {
@@ -67396,6 +67407,7 @@ var render = function() {
                           _vm._v(" "),
                           _c("v-select", {
                             attrs: {
+                              multiple: "",
                               options: _vm.device_functional_types,
                               reduce: function(device_functional_type) {
                                 return device_functional_type.id
@@ -67798,6 +67810,7 @@ var render = function() {
                           _vm._v(" "),
                           _c("v-select", {
                             attrs: {
+                              multiple: "",
                               options: _vm.device_types,
                               reduce: function(device_type) {
                                 return device_type.id

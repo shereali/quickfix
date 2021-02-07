@@ -58,7 +58,8 @@ class BusinessPartnerController extends Controller
      */
     public function store(Request $request)
     {
-        // return $request->work_experience_id;
+        // return $request->all();
+        // return $request->b_device_type_id;
         $validated = $request->validate([
             'name'          => 'required|max:255',
             'email'         => 'required|max:255',
@@ -96,7 +97,9 @@ class BusinessPartnerController extends Controller
             'address'                   => $data['b_address'],
             'web_address'               => $data['b_web_address'],
             'no_of_employee'            => $data['b_no_of_employee'],
-            'device_type_id'            => $data['b_device_type_id'],
+            // $this->attributes['device_type_id'] = json_encode($value);
+            'device_type_id'            => json_encode($data['b_device_type_id']),
+            // 'device_type_id'            => $data['b_device_type_id'],
             'device_functional_type_id' => $data['b_device_functional_type_id'],
             'work_experience_id'        => $data['b_work_experience_id'],
             'nid_no'                    => $data['b_nid_no'],
@@ -135,6 +138,7 @@ class BusinessPartnerController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // return $request->all();
         $fileNameNid   = Helper::imgProcess($request,'nid_image',$request->name, $id, 'images/nid', 'update', BusinessPartner::class);  
         $fileNameTrade = Helper::imgProcess($request,'tradelicense_image',$request->name, $id, 'images/tradelicense', 'update', BusinessPartner::class);  
         $fileNameWork  = Helper::imgProcess($request,'image',$request->name, $id, 'images/work', 'update', CustomerOtherImage::class);  

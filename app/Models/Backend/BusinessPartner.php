@@ -29,6 +29,16 @@ class BusinessPartner extends Model
         'tradelicense_image',
         'name',
     ];
+    public function setCatAttribute($value)
+    {
+        $this->attributes['device_type_id'] = json_encode($value);
+        $this->attributes['device_functional_type_id'] = json_encode($value);
+    }
+    public function getCatAttribute($value)
+    {
+        return $this->attributes['device_type_id'] = json_decode($value);
+        return $this->attributes['device_functional_type_id'] = json_decode($value);
+    }
     public static function boot()
     {
        parent::boot();
@@ -48,5 +58,9 @@ class BusinessPartner extends Model
    {
     return $this->belongsTo(Customer::class,'customer_id','id');
    }
+
+
+   
+   
 
 }

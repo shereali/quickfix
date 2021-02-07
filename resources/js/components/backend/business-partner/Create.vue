@@ -45,13 +45,13 @@
                                    </div>
                                    <div class="form-group">
                                     <label for="">Device Functional Type</label>
-                                    <v-select :options="device_functional_types" :reduce="device_functional_type => device_functional_type.id"  label="name" v-model="inputData.b_device_functional_type_id" placeholder="Select Device Functional Type"></v-select>
+                                    <v-select multiple :options="device_functional_types" :reduce="device_functional_type => device_functional_type.id"  label="name" v-model="inputData.b_device_functional_type_id" placeholder="Select Device Functional Type"></v-select>
                                     <input type="hidden" name="b_device_functional_type_id" v-model="inputData.b_device_functional_type_id">
                                 </div>  
 
                                 <div class="form-group">
                                     <label for="">Work Experience</label>
-                                    <v-select :options="work_experience" :reduce="work => work.id"  label="experience" v-model="inputData.b_work_experience_id" placeholder="Select Work Experience"></v-select>
+                                    <v-select   :options="work_experience" :reduce="work => work.id"  label="experience" v-model="inputData.b_work_experience_id" placeholder="Select Work Experience"></v-select>
                                     <input type="hidden" name="b_work_experience_id" v-model="inputData.b_work_experience_id">
                                 </div>  
                                    <div class="form-group"> 
@@ -98,7 +98,8 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="">Device Type</label>
-                                    <v-select :options="device_types" :reduce="device_type => device_type.id"  label="type_name" v-model="inputData.b_device_type_id" placeholder="Select Device Type"></v-select>
+                                    
+                                    <v-select multiple :options="device_types" :reduce="device_type => device_type.id"  label="type_name" v-model="inputData.b_device_type_id" placeholder="Select Device Type"></v-select>
                                     <input type="hidden" name="b_device_type_id" v-model="inputData.b_device_type_id">
                                 </div>  
                                 
@@ -164,8 +165,9 @@ created(){
     this.backUrl = '/business-partners'
     this.cardTitle = this.isEdit?'Edit Business Partner':'Add New Business Partner'   
     this.isFile = true 
-    this.isImage = 'image_nid'
-    this.isImage = 'image_tradelicense'
+    this.isImage = 'nid_image'
+    this.isImage = 'tradelicense_image'
+    this.isImage = 'image'
    
     
     axios.get(this.url+'/api/'+this.generalApi)
@@ -177,9 +179,24 @@ created(){
         this.experience_category     = res.data.experience_category
      
         console.log(res.data);
+       
     
        
     })
+    //    setTimeout(()=>{
+    //           console.log('hello',this.inputData.b_b_device_type_id);
+    //                 // this.inputData. = false;
+    //                 typeof(this.inputData.b_b_device_type_id);
+    //                 console.log(typeof(this.inputData.b_b_device_type_id));
+    //                 this.inputData.b_b_device_type_id.forEach((item, index) => {
+    //                     console.log('wlw',item[index]);
+    //                     this.inputData.b_device_type_id = item[index]
+                        
+    //                 });
+
+                   
+
+    //             }, 3000);
 
 
 },

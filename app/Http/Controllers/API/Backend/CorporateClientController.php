@@ -146,7 +146,7 @@ class CorporateClientController extends Controller
         DB::commit();
         return response()->json([
             'status'  => 'success',
-            'message' => 'BusinessPartner has been updated!',
+            'message' => 'CorporateClient has been updated!',
             'icon'    => 'check',
         ]);
     }

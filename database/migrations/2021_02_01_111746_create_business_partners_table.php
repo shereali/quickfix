@@ -29,10 +29,8 @@ class CreateBusinessPartnersTable extends Migration
             $table->string('address')->nullable();
             $table->string('web_address')->nullable();
             $table->string('no_of_employee')->nullable();
-            $table->unsignedBigInteger('device_type_id')->nullable()->comment('FK: device_types.id');
-            $table->foreign('device_type_id')->references('id')->on('device_types');
-            $table->unsignedBigInteger('device_functional_type_id')->nullable()->comment('FK: device_functional_types.id');
-            $table->foreign('device_functional_type_id')->references('id')->on('device_functional_types');
+            $table->string('device_type_id')->nullable()->comment('FK: device_types.id');
+            $table->string('device_functional_type_id')->nullable()->comment('FK: device_functional_types.id');
             $table->unsignedBigInteger('work_experience_id')->nullable()->comment('FK: work_experiences.id');
             $table->foreign('work_experience_id')->references('id')->on('work_experiences');
             $table->string('nid_no')->nullable();

@@ -34,7 +34,7 @@ class CustomerResource extends JsonResource
             'b_address'                   => $this->businessPartner->address??'',
             'b_web_address'               => $this->businessPartner->web_address??'',
             'b_no_of_employee'            => $this->businessPartner->no_of_employee??'',
-            'b_device_type_id'            => $this->businessPartner->device_type_id??'',
+            'b_device_type_id'            =>[$this->businessPartner->device_type_id??''] ,
             'b_device_functional_type_id' => $this->businessPartner->device_functional_type_id??'',
             'b_work_experience_id'        => $this->businessPartner->work_experience_id??'',
             'b_experience_category_id'    => $this->businessPartner->experience_category_id??'',
