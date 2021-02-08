@@ -4650,6 +4650,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['signOut']
 });
@@ -66986,7 +66990,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return typeof _vm.dataList == "object"
     ? _c("TableContent", {
-        staticStyle: { "margin-top": "-20px" },
+        staticStyle: { "margin-top": "-30px" },
         attrs: {
           searchForm: _vm.searchForm,
           sortingForm: _vm.sortingForm,
@@ -68041,7 +68045,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return typeof _vm.dataList == "object"
     ? _c("TableContent", {
-        staticStyle: { "margin-top": "-20px" },
+        staticStyle: { "margin-top": "-30px" },
         attrs: {
           searchForm: _vm.searchForm,
           sortingForm: _vm.sortingForm,
@@ -68788,7 +68792,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return typeof _vm.dataList == "object"
     ? _c("TableContent", {
-        staticStyle: { "margin-top": "-20px" },
+        staticStyle: { "margin-top": "-30px" },
         attrs: {
           searchForm: _vm.searchForm,
           sortingForm: _vm.sortingForm,
@@ -69297,7 +69301,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return typeof _vm.dataList == "object"
     ? _c("TableContent", {
-        staticStyle: { "margin-top": "-20px" },
+        staticStyle: { "margin-top": "-30px" },
         attrs: {
           searchForm: _vm.searchForm,
           sortingForm: _vm.sortingForm,
@@ -69562,7 +69566,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return typeof _vm.dataList == "object"
     ? _c("TableContent", {
-        staticStyle: { "margin-top": "-20px" },
+        staticStyle: { "margin-top": "-30px" },
         attrs: {
           searchForm: _vm.searchForm,
           sortingForm: _vm.sortingForm,
@@ -69917,6 +69921,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return typeof _vm.dataList == "object"
     ? _c("TableContent", {
+        staticStyle: { "margin-top": "-30px" },
         attrs: {
           searchForm: _vm.searchForm,
           sortingForm: _vm.sortingForm,
@@ -70565,6 +70570,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return typeof _vm.dataList == "object"
     ? _c("TableContent", {
+        staticStyle: { "margin-top": "-30px" },
         attrs: {
           searchForm: _vm.searchForm,
           sortingForm: _vm.sortingForm,
@@ -70773,6 +70779,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return typeof _vm.dataList == "object"
     ? _c("TableContent", {
+        staticStyle: { "margin-top": "-30px" },
         attrs: {
           searchForm: _vm.searchForm,
           sortingForm: _vm.sortingForm,
@@ -71091,7 +71098,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return typeof _vm.dataList == "object"
     ? _c("TableContent", {
-        staticStyle: { "margin-top": "-20px" },
+        staticStyle: { "margin-top": "-30px" },
         attrs: {
           searchForm: _vm.searchForm,
           sortingForm: _vm.sortingForm,
@@ -71392,7 +71399,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return typeof _vm.dataList == "object"
     ? _c("TableContent", {
-        staticStyle: { "margin-top": "-20px" },
+        staticStyle: { "margin-top": "-30px" },
         attrs: {
           searchForm: _vm.searchForm,
           sortingForm: _vm.sortingForm,
@@ -71660,7 +71667,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return typeof _vm.dataList == "object"
     ? _c("TableContent", {
-        staticStyle: { "margin-top": "-20px" },
+        staticStyle: { "margin-top": "-30px" },
         attrs: {
           searchForm: _vm.searchForm,
           sortingForm: _vm.sortingForm,
@@ -71708,7 +71715,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return typeof _vm.dataList == "object"
     ? _c("TableContent", {
-        staticStyle: { "margin-top": "-20px" },
+        staticStyle: { "margin-top": "-30px" },
         attrs: {
           searchForm: _vm.searchForm,
           sortingForm: _vm.sortingForm,
@@ -72203,7 +72210,20 @@ var render = function() {
       _vm._m(0),
       _vm._v(" "),
       _c("div", { staticClass: "sidebar" }, [
-        _vm._m(1),
+        _c("div", { staticClass: "user-panel mt-3 pb-3 mb-3 d-flex" }, [
+          _vm._m(1),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "info" },
+            [
+              _c("router-link", { attrs: { to: "/" } }, [
+                _vm._v("\n              Admin\n        ")
+              ])
+            ],
+            1
+          )
+        ]),
         _vm._v(" "),
         _c("nav", { staticClass: "mt-2" }, [
           _c(
@@ -72715,14 +72735,21 @@ var staticRenderFns = [
       { staticClass: "brand-link", attrs: { href: "index3.html" } },
       [
         _c("img", {
-          staticClass: "brand-image img-circle elevation-3",
-          staticStyle: { opacity: ".8" },
-          attrs: { src: "dist/img/AdminLTELogo.png", alt: "" }
+          staticClass: "brand-image  elevation-3",
+          attrs: {
+            src: "http://127.0.0.1:8000/dist/img/logo_dark.png",
+            alt: "not found"
+          }
         }),
         _vm._v(" "),
-        _c("span", { staticClass: "brand-text font-weight-light" }, [
-          _vm._v("Admin Panel")
-        ])
+        _c(
+          "span",
+          {
+            staticClass: "brand-text font-weight-light",
+            staticStyle: { color: "#343A40" }
+          },
+          [_vm._v("QuickFix")]
+        )
       ]
     )
   },
@@ -72730,19 +72757,15 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "user-panel mt-3 pb-3 mb-3 d-flex" }, [
-      _c("div", { staticClass: "image" }, [
-        _c("img", {
-          staticClass: "img-circle elevation-2",
-          attrs: { src: "dist/img/user2-160x160.jpg", alt: "" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "info" }, [
-        _c("a", { staticClass: "d-block", attrs: { href: "#" } }, [
-          _vm._v("Mr. Admin")
-        ])
-      ])
+    return _c("div", { staticClass: "image" }, [
+      _c("img", {
+        staticClass: "brand-image img-circle elevation-3",
+        staticStyle: { opacity: ".8" },
+        attrs: {
+          src: "http://127.0.0.1:8000/dist/img/admin.png",
+          alt: "not found"
+        }
+      })
     ])
   },
   function() {
@@ -72914,7 +72937,11 @@ var render = function() {
                 "tr",
                 { staticClass: "table-secondary" },
                 _vm._l(_vm.columnsHead, function(thead, i) {
-                  return _c("td", { key: i }, [_vm._v(_vm._s(thead))])
+                  return _c(
+                    "td",
+                    { key: i, staticStyle: { "text-align": "center" } },
+                    [_vm._v(_vm._s(thead))]
+                  )
                 }),
                 0
               )
@@ -72928,7 +72955,7 @@ var render = function() {
                       "tr",
                       { key: index },
                       [
-                        _c("td", [
+                        _c("td", { staticStyle: { "text-align": "center" } }, [
                           _vm._v(_vm._s(_vm.dataList.meta.from + index))
                         ]),
                         _vm._v(" "),
@@ -72937,6 +72964,7 @@ var render = function() {
                           function(tbody, i) {
                             return _c("td", {
                               key: i,
+                              staticStyle: { "text-align": "center" },
                               domProps: { innerHTML: _vm._s(item[tbody]) }
                             })
                           }
@@ -73311,7 +73339,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return typeof _vm.dataList == "object"
     ? _c("TableContent", {
-        staticStyle: { "margin-top": "-20px" },
+        staticStyle: { "margin-top": "-30px" },
         attrs: {
           searchForm: _vm.searchForm,
           sortingForm: _vm.sortingForm,
@@ -73359,7 +73387,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return typeof _vm.dataList == "object"
     ? _c("TableContent", {
-        staticStyle: { "margin-top": "-20px" },
+        staticStyle: { "margin-top": "-30px" },
         attrs: {
           searchForm: _vm.searchForm,
           sortingForm: _vm.sortingForm,
@@ -73772,6 +73800,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return typeof _vm.dataList == "object"
     ? _c("TableContent", {
+        staticStyle: { "margin-top": "-30px" },
         attrs: {
           searchForm: _vm.searchForm,
           sortingForm: _vm.sortingForm,
@@ -73984,7 +74013,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return typeof _vm.dataList == "object"
     ? _c("TableContent", {
-        staticStyle: { "margin-top": "-20px" },
+        staticStyle: { "margin-top": "-30px" },
         attrs: {
           searchForm: _vm.searchForm,
           sortingForm: _vm.sortingForm,
@@ -74249,7 +74278,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return typeof _vm.dataList == "object"
     ? _c("TableContent", {
-        staticStyle: { "margin-top": "-20px" },
+        staticStyle: { "margin-top": "-30px" },
         attrs: {
           searchForm: _vm.searchForm,
           sortingForm: _vm.sortingForm,
@@ -74464,7 +74493,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return typeof _vm.dataList == "object"
     ? _c("TableContent", {
-        staticStyle: { "margin-top": "-20px" },
+        staticStyle: { "margin-top": "-30px" },
         attrs: {
           searchForm: _vm.searchForm,
           sortingForm: _vm.sortingForm,
@@ -74741,6 +74770,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return typeof _vm.dataList == "object"
     ? _c("TableContent", {
+        staticStyle: { "margin-top": "-30px" },
         attrs: {
           searchForm: _vm.searchForm,
           sortingForm: _vm.sortingForm,
@@ -75202,6 +75232,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return typeof _vm.dataList == "object"
     ? _c("TableContent", {
+        staticStyle: { "margin-top": "-30px" },
         attrs: {
           searchForm: _vm.searchForm,
           sortingForm: _vm.sortingForm,
