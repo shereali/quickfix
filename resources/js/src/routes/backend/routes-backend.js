@@ -39,6 +39,12 @@ import Customer from '../../../components/backend/customer/Index'
 import CreateCustomer from '../../../components/backend/customer/Create'
 import RegistrationBonus from '../../../components/backend/registration-bonus/Index'
 import CreateRegistrationBonus from '../../../components/backend/registration-bonus/Create'
+import WorkExperience from '../../../components/backend/work-experience/Index'
+import CreateWorkExperience from '../../../components/backend/work-experience/Create'
+import CorporateClient from '../../../components/backend/corporate-client/Index'
+import CreateCorporateClient from '../../../components/backend/corporate-client/Create'
+import BusinessPartner from '../../../components/backend/business-partner/Index'
+import CreateBusinessPartner from '../../../components/backend/business-partner/Create'
 
 
 let routeBackend = [
@@ -850,6 +856,138 @@ let routeBackend = [
             auth: true,
             breadcrumb: {
                 label: 'CreateRegistrationBonus',
+                
+              }
+          }
+
+    },
+    {
+        name:'WorkExperience',
+        path:'/work-experience',
+        component:WorkExperience,
+        
+        meta: {
+            auth: true,
+            breadcrumb: {
+                label: 'WorkExperience',
+                
+              }
+          }
+
+    },
+
+    {
+        name:'CreateWorkExperience',
+        path:'/work-experience/create',
+        component:CreateWorkExperience,
+        
+        meta: {
+            auth: true,
+            breadcrumb: {
+                label: 'CreateWorkExperience',
+                
+              }
+          }
+
+    },
+
+    {
+        name:'CreateWorkExperience',
+        path:'/work-experience/:id',
+        component:CreateWorkExperience,
+        
+        meta: {
+            auth: true,
+            breadcrumb: {
+                label: 'CreateWorkExperience',
+                
+              }
+          }
+
+    },
+    {
+        name:'CorporateClient',
+        path:'/corporate-clients',
+        component:CorporateClient,
+        
+        meta: {
+            auth: true,
+            breadcrumb: {
+                label: 'CorporateClient',
+                
+              }
+          }
+
+    },
+
+    {
+        name:'CreateCorporateClient',
+        path:'/corporate-clients/create',
+        component:CreateCorporateClient,
+        
+        meta: {
+            auth: true,
+            breadcrumb: {
+                label: 'CreateCorporateClient',
+                
+              }
+          }
+
+    },
+
+    {
+        name:'CreateCorporateClient',
+        path:'/corporate-clients/:id',
+        component:CreateCorporateClient,
+        
+        meta: {
+            auth: true,
+            breadcrumb: {
+                label: 'CreateCorporateClient',
+                
+              }
+          }
+
+    },
+    {
+        name:'BusinessPartner',
+        path:'/business-partners',
+        component:BusinessPartner,
+        
+        meta: {
+            auth: true,
+            breadcrumb: {
+                label: 'BusinessPartner',
+                
+              }
+          }
+
+    },
+
+    {
+        name:'CreateBusinessPartner',
+        path:'/business-partners/create',
+        component:CreateBusinessPartner,
+        
+        meta: {
+            auth: true,
+            breadcrumb: {
+                label: 'CreateBusinessPartner',
+                
+              }
+          }
+
+    },
+
+    {
+        name:'CreateBusinessPartner',
+        path:'/business-partners/:id',
+        component:CreateBusinessPartner,
+        
+        meta: {
+            auth: true,
+            breadcrumb: {
+                label: 'CreateBusinessPartner',
                 
               }
           }

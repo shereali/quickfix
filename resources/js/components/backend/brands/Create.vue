@@ -71,7 +71,7 @@ created(){
     this.generalApi = 'brands'
     this.backUrl = '/brands'
     this.cardTitle = this.isEdit?'Edit Brand':'Add New Brand'   
-     this.isFile = true 
+    this.isFile = true 
     this.isImage = 'image'
     
     axios.get(this.url+'/api/'+this.generalApi)

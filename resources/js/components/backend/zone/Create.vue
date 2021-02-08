@@ -13,14 +13,14 @@
                                     
                                     <div class="form-group">
                                         <label for="">Zone Name</label>
-                                        <input type="text" name="name" v-model="inputData.name"
+                                        <input type="text" name="zone_name" v-model="inputData.zone_name"
                                             class="form-control" placeholder="Enter Zone Name">
 
                                     </div>
                                     <div class="form-group">
                                         <label for="">Division</label>
                                         <input type="hidden" name="division_id" v-model="inputData.division_id">
-                                       <v-select :options="divisions" :reduce="division => division.id" label="name" v-model="inputData.division_id" placeholder="Select Division"></v-select>
+                                       <v-select :options="divisions" :reduce="division => division.id" label="name" @input="onChangeDivision($event)" v-model="inputData.division_id" placeholder="Select Division"></v-select>
                                    </div>
                                     
                                     <div class="form-group">
@@ -100,14 +100,25 @@
 
             axios.get(this.url + '/api/'+this.generalApi)
                 .then(res => {
-                    // console.log(res.data.brands);
+                    console.log(res.data.divisions);
                     this.divisions = res.data.divisions
-                    this.districts = res.data.districts
+                    // this.districts = res.data.districts
                     this.service_types = res.data.service_types
                     
                 })
 
         },
+         methods:{
+            onChangeDivision(name){
+               
+               axios.post(this.url+'/api/divisions-wise-districts', {name:name})
+               .then(res => {
+                   console.log(res.data);
+                   this.districts = res.data
+               })
+            },
+           
+        }
 
 
     }

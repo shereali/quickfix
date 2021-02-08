@@ -24,7 +24,7 @@ class ZoneController extends Controller
         $dataSorting = $request->sorting == 'false'?10:$request->sorting;
         
             $data =$search == 'false'?Zone::orderBy('id', 'desc')->paginate($dataSorting):Zone::where(function($query) use($search){
-            $query->orWhere('name', 'LIKE', "%{$search}%");
+            $query->orWhere('zone_name', 'LIKE', "%{$search}%");
         })->orderBy('id', 'desc')->paginate($dataSorting);
 
         $divisions = Division::all();
@@ -48,7 +48,7 @@ class ZoneController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'name' => 'required|max:255',
+            'zone_name' => 'required|max:255',
             
         ]);
 
