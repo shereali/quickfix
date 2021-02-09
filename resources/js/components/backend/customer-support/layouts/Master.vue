@@ -1,7 +1,7 @@
 <template>
     <div>
         <navbar></navbar>
-        <sidebar v-if="showSidebar" :signOut="signOut"></sidebar>
+        <sidebar   :signOut="signOut"></sidebar>
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
           <section class="content">
