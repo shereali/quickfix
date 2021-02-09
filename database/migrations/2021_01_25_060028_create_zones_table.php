@@ -22,7 +22,7 @@ class CreateZonesTable extends Migration
             $table->unsignedBigInteger('service_type_id')->nullable()->comment('FK: service_type_id.id');
             $table->foreign('service_type_id')->references('id')->on('service_types');
             $table->string('charge')->nullable();
-            $table->string('name')->nullable();
+            $table->string('zone_name')->nullable();
             $table->text('description')->nullable();
             $table->string('image')->nullable();
             $table->tinyInteger('status')->comment('status 1=active;0=inactive');

@@ -22,7 +22,7 @@ class ZoneResource extends JsonResource
             'district_id'     => $this->district_id,
             'service_type_id' => $this->service_type_id,
             'charge'          => $this->charge,
-            'name'            => $this->name,
+            'zone_name'       => $this->zone_name,
             'description'     => $this->description,
             'image'           => $this->image,
             'status'          => $this->status,
