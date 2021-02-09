@@ -28,11 +28,10 @@
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
-<div class="wrapper">
 
+<div class="wrapper">
   <!-- Content Wrapper. Contains page content -->
  <div id="app_backend">
-
  </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">

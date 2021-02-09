@@ -4,7 +4,8 @@ import User from '../../../components/backend/auth/users/Index'
 import UserCreate from '../../../components/backend/auth/users/Create'
 import RoleCreate from '../../../components/backend/auth/roles/Create.vue'
 import Role from '../../../components/backend/auth/roles/Index'
-import Permission from '../../../components/backend/auth/Permission'
+import Permission from '../../../components/backend/auth/permissions/Index.vue'
+import PermissionCreate from '../../../components/backend/auth/permissions/Create.vue'
 import AssignRoleModel from '../../../components/backend/auth/AssignRoleModel'
 import AssignPermissionModel from '../../../components/backend/auth/AssignPermissionModel'
 import Service from '../../../components/backend/services/Index'
@@ -152,13 +153,41 @@ let routeBackend = [
     },
     {
         name:'Permission',
-        path:'/permission',
+        path:'/permissions',
         component:Permission,
         
         meta: {
             auth: true,
             breadcrumb: {
                 label: 'Permission',
+                
+              }
+          }
+
+    },
+    {
+        name:'PermissionCreate',
+        path:'/permissions/create',
+        component:PermissionCreate,
+        
+        meta: {
+            auth: true,
+            breadcrumb: {
+                label: 'PermissionCreate',
+                
+              }
+          }
+
+    },
+    {
+        name:'PermissionCreate',
+        path:'/permissions/:id',
+        component:PermissionCreate,
+        
+        meta: {
+            auth: true,
+            breadcrumb: {
+                label: 'PermissionCreate',
                 
               }
           }

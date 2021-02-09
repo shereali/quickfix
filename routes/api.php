@@ -33,8 +33,9 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
         Route::group(['namespace' => 'Auth'], function(){
             Route::apiResources([
 
-            'roles' => 'RoleController',
-            'users' => 'UserController'
+            'users'       => 'UserController',
+            'roles'       => 'RoleController',
+            'permissions' => 'PermissionController', 
 
             ]);
         });
@@ -55,7 +56,6 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
             'experience-category'    => 'ExprienceCategoryController', 
             'customers'              => 'CustomerController', 
             'bonus'                  => 'BonusController', 
-
             ]);
     });
 

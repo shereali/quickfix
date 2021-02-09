@@ -32,6 +32,8 @@ class UserController extends Controller
 
         $roles = Role::all();
 
+        return  $data;
+
         return  UserResource::collection($data)->additional(['roles' => $roles]);
     }
 

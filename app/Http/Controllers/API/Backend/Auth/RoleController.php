@@ -51,6 +51,12 @@ class RoleController extends Controller
     
         $role = Role::create(['name' => $request->input('name')]);
         $role->syncPermissions($request->input('permission'));
+
+        return response()->json([
+            'status'  => 'success',
+            'message' => 'Role has been created!',
+            'icon'    => 'check',
+        ]);
         
     }
 
@@ -83,15 +89,21 @@ class RoleController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'name' => 'required',
+            'name'       => 'required',
             'permission' => 'required',
         ]);
     
         $role = Role::find($id);
         $role->name = $request->input('name');
         $role->save();
-    
+
         $role->syncPermissions($request->input('permission'));
+
+        return response()->json([
+            'status'  => 'success',
+            'message' => 'Role has been created!',
+            'icon'    => 'check',
+        ]);
     }
 
     /**
@@ -103,5 +115,12 @@ class RoleController extends Controller
     public function destroy($id)
     {
         DB::table("roles")->where('id',$id)->delete();
+
+        DB::table('role_has_permissions')->where('role_id', $id)->delete();
+        return response()->json([
+            'status'  => 'success',
+            'message' => 'Role has been deleted!',
+            'icon'    => 'check',
+        ]);
     }
 }

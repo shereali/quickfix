@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\API\Backend\Auth;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Spatie\Permission\Models\Permission;
+use App\Http\Resources\Backend\Auth\PermissionResource;
 
 class PermissionController extends Controller
 {
@@ -14,7 +16,8 @@ class PermissionController extends Controller
      */
     public function index()
     {
-        //
+        $permission = Permission::paginate(10);
+        return PermissionResource::collection($permission);
     }
 
     /**
@@ -25,7 +28,17 @@ class PermissionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        Permission::create([
+            'name' => $input['name'],
+            'guard_name' => 'sanctum',
+        ]);
+
+        return response()->json([
+            'status'  => 'success',
+            'message' => 'Permission has been created!',
+            'icon'    => 'check',
+        ]);
     }
 
     /**
@@ -36,7 +49,8 @@ class PermissionController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = Permission::find($id);
+        return new PermissionResource($data);
     }
 
     /**
@@ -48,7 +62,17 @@ class PermissionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = $request->all();
+        Permission::find($id)->create([
+            'name' => $input['name'],
+            'guard_name' => 'sanctum',
+        ]);
+
+        return response()->json([
+            'status'  => 'success',
+            'message' => 'Permission has been updated!',
+            'icon'    => 'check',
+        ]);
     }
 
     /**
@@ -59,6 +83,11 @@ class PermissionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Permission::find($id)->id;
+        return response()->json([
+            'status'  => 'danger',
+            'message' => 'Permission has been deleted!',
+            'icon'    => 'check',
+        ]);
     }
 }
