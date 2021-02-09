@@ -88,6 +88,12 @@
               </li>
             </ul>
           </li>
+            <li class="nav-item">
+              <router-link class="nav-link" to="/customers">
+                <i class="fab fa-intercom nav-icon" aria-hidden="true"></i>
+                <p>Customer</p>
+              </router-link>
+            </li>
           
           <li class="nav-item">
                 <a href="javascript:void(0)" class="nav-link" @click.prevent="signOut">
