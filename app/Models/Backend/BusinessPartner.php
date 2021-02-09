@@ -28,6 +28,9 @@ class BusinessPartner extends Model
         'experience_category_id',
         'tradelicense_image',
         'name',
+        'created_by_type',
+        'updated_by_type',
+        
     ];
     public function setCatAttribute($value)
     {

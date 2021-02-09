@@ -33,8 +33,9 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
         Route::group(['namespace' => 'Auth'], function(){
             Route::apiResources([
 
-            'roles' => 'RoleController',
-            'users' => 'UserController'
+            'users'       => 'UserController',
+            'roles'       => 'RoleController',
+            'permissions' => 'PermissionController', 
 
             ]);
         });
@@ -62,6 +63,32 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
             ]);
             Route::post('divisions-wise-districts', 'AdminCommonController@divisionWiseDistrict');
             Route::post('districts-wise-zone', 'AdminCommonController@districtWiseZone');
+
+    });
+
+    // for customer support
+    Route::group(['namespace'  => 'API\Backend\CustomerSupport'], function(){
+    
+        Route::group(['namespace' => 'Auth'], function(){
+            Route::apiResources([
+
+            'users'       => 'UserController',
+            'roles'       => 'RoleController',
+            'permissions' => 'PermissionController', 
+
+            ]);
+        });
+
+        Route::apiResources([
+
+            
+            'customers'              => 'CustomerController', 
+            'corporate-clients'      => 'CorporateClientController', 
+            'business-partners'      => 'BusinessPartnerController', 
+
+            ]);
+            // Route::post('divisions-wise-districts', 'AdminCommonController@divisionWiseDistrict');
+            // Route::post('districts-wise-zone', 'AdminCommonController@districtWiseZone');
 
     });
 

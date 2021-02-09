@@ -28,6 +28,8 @@ class CorporateClient extends Model
         'coins',
         'bonus_amounts',
         'withdraw_amounts',
+        'created_by_type',
+        'updated_by_type',
     ];
     public static function boot()
     {

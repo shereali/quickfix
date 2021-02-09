@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\API\Backend\Auth;
 
 use App\Models\User;
+use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 use App\Http\Resources\Backend\Auth\UserResource;
 
 class UserController extends Controller
@@ -27,7 +30,11 @@ class UserController extends Controller
             $query->orWhere('name', 'LIKE', "%{$search}%");
         })->orderBy('id', 'desc')->paginate($dataSorting);
 
-        return  UserResource::collection($data);
+        $roles = Role::all();
+
+        return  $data;
+
+        return  UserResource::collection($data)->additional(['roles' => $roles]);
     }
 
     /**
@@ -41,7 +48,7 @@ class UserController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
-            'password' => 'required|same:confirm-password',
+            'password' => 'required|same:confirm_password',
             'roles' => 'required'
         ]);
     
@@ -61,8 +68,8 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-        // $roles = Role::pluck('name','name')->all();
-        // $userRole = $user->roles->pluck('name','name')->all();
+        // $roles = Role::pluck('name')->all();
+        // $userRole = $user->roles->pluck('name')->all();
         return new UserResource($user);
     }
 
