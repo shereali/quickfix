@@ -20,13 +20,13 @@
                     <table class="table table-bordered table-response">
                         <thead>
                             <tr class="table-secondary">
-                                <td  v-for="(thead, i) in columnsHead"  :key="i">{{ thead }}</td>
+                                <td style="text-align:center;" v-for="(thead, i) in columnsHead"  :key="i">{{ thead }}</td>
                             </tr>
                         </thead>
                         <tbody>
                             <tr v-for="(item, index) in dataList.data" :key="index" v-if="!item.isComplete">
-                                <td>{{ dataList.meta.from +index }}</td>
-                                <td v-for="(tbody, i) in columnsBody.slice(0, columnsBody.length)" :key="i" v-html="item[tbody]"> 
+                                <td style="text-align:center;">{{ dataList.meta.from +index }}</td>
+                                <td style="text-align:center;" v-for="(tbody, i) in columnsBody.slice(0, columnsBody.length)" :key="i" v-html="item[tbody]"> 
                                    
                                 </td>
                                 <td class="text-center" v-if="isActionBtn">

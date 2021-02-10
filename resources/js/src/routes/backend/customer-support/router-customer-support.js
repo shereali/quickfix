@@ -1,11 +1,14 @@
 import Home from '../../../../components/backend/customer-support/Home.vue'
 import SignIn from '../../../../components/backend/customer-support/auth/SignIn.vue'
+import CallRequest from '../../../../components/backend/customer-support/call-request/Index'
+import CreateCallRequest from '../../../../components/backend/customer-support/call-request/Create'
 import Customer from '../../../../components/backend/customer-support/customer/Index'
 import CreateCustomer from '../../../../components/backend/customer-support/customer/Create'
 import CorporateClient from '../../../../components/backend/customer-support/corporate-client/Index'
 import CreateCorporateClient from '../../../../components/backend/customer-support/corporate-client/Create'
 import BusinessPartner from '../../../../components/backend/customer-support/business-partner/Index'
 import CreateBusinessPartner from '../../../../components/backend/customer-support/business-partner/Create'
+
 
 
 
@@ -29,6 +32,34 @@ let routeCustomerSupport = [
         name:'SignIn',
         path:'/signin',
         component:SignIn,
+    },
+    {
+        name:'CallRequest',
+        path:'/call-request',
+        component:CallRequest,
+        
+        meta: {
+            auth: true,
+            breadcrumb: {
+                label: 'CallRequest',
+                
+              }
+          }
+
+    },
+    {
+        name:'CreateCallRequest',
+        path:'/call-request/:id',
+        component:CreateCallRequest,
+        
+        meta: {
+            auth: true,
+            breadcrumb: {
+                label: 'CreateCallRequest',
+                
+              }
+          }
+
     },
 
     {

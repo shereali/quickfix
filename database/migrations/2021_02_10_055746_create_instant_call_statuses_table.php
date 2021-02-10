@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateInstantCallsTable extends Migration
+class CreateInstantCallStatusesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateInstantCallsTable extends Migration
      */
     public function up()
     {
-        Schema::create('instant_calls', function (Blueprint $table) {
+        Schema::create('instant_call_statuses', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
-            $table->string('email')->nullable();
-            $table->string('mobile_number')->nullable();
+            $table->string('status_name')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ class CreateInstantCallsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('instant_calls');
+        Schema::dropIfExists('instant_call_statuses');
     }
 }
