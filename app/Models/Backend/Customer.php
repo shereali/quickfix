@@ -25,6 +25,8 @@ class Customer extends Model
         'rember_token',
         'image',
         'verify_status',
+        'created_by_type',
+        'updated_by_type',
     ];
     public static function boot()
     {
