@@ -101,6 +101,7 @@ Route::group(['namespace' => 'API\Frontend', 'middleware' => 'api'],function(){
         Route::apiResources([
             'get-quotation' => 'QuotationController',
             'instant-call' => 'InstantCallController',
+            'devices     ' => 'DeviceController',
         ]);
     Route::post('otp-verify', 'InstantCallController@otpVerify');
     Route::post('otp-verify-quotation', 'QuotationController@otpVerify');

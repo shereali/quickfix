@@ -15,9 +15,12 @@
                             <p class="hero-desc v2" style="margin-top:-10px;">
                                In Bangladesh
                             </p>
-                           <button class="btn v3  mar-right-5" type="button" data-toggle="modal"
+                           <!-- <button class="btn v3  mar-right-5" type="button" data-toggle="modal"
                                 data-target="#coupon_wrap"><i class="ion-ios-quote" aria-hidden="true"></i> Get
-                                Query</button>
+                                Query</button> -->
+                             <router-link to="/get-query">
+                                 <button class="btn v3  mar-right-5" type="button"><i class="ion-ios-quote" aria-hidden="true"></i> Get Query</button>
+                             </router-link>
 
                             <button class="btn v3  mar-right-5" type="button" data-toggle="modal"
                                 data-target="#instant_call"><i class="ion-ios-quote" aria-hidden="true"></i> Get instant
@@ -217,14 +220,14 @@
             <div class="row">
 
                 
-            <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12" style="margin-top: -25px;">
+            <div   class="col-md-12 col-lg-12 col-xs-12 col-sm-12" style="margin-top: -25px;">
               <!-- Rounded tabs -->
-                <button class="tablink defaultTablink serviceCatActive" onclick="openCity('London', this, 'red')" id="defaultOpen">Phone</button>
-                <button class="tablink" onclick="openCity('Paris', this, 'green')">Tab</button>
-                <button class="tablink" onclick="openCity('Tokyo', this, 'blue')">iPad</button>
+                <button  v-for="device in  devices" :key="device.id" class="tablink defaultTablink serviceCatActive" onclick="openCity('London', this, 'red')" id="defaultOpen">{{ device.device_name }}</button>
+                <!-- <button  class="tablink" onclick="openCity('Paris', this, 'green')">  </button> -->
+                <!-- <button class="tablink" onclick="openCity('Tokyo', this, 'blue')">iPad</button>
                 <button class="tablink" onclick="openCity('Oslo', this, 'orange')">Laptop</button>
                 <button class="tablink" onclick="openCity('Oslo', this, 'orange')">Mac</button>
-                <button class="tablink" onclick="openCity('Oslo', this, 'orange')">Others</button>
+                <button class="tablink" onclick="openCity('Oslo', this, 'orange')">Others</button> -->
               
               <!-- End rounded tabs -->
             </div>      
@@ -826,9 +829,10 @@
     </style>
 
 <script>
-    
+    // import mixin from '../../../src/mixin';
+    // import mixin from '../../src/mixin'
     export default {
-        
+        // mixins:[mixin], 
         data() {
             return {
                 url: window.location.origin+'/',
@@ -841,12 +845,20 @@
                 otp_quotation_verify_api: 'otp-verify-quotation',
                 isOtp:false,
                 isQuotation:false,
-                isInstantCall:false
+                isInstantCall:false,
+                devices : [],
             }
         },
 
         created() {
+                
+                axios.get(this.url+'api/devices')
+                .then(res => {
+                    console.log('device',res.data);
+                    this.devices = res.data.data
+                    console.log('.....',this.devices);
 
+                })
            
 
            
