@@ -421,6 +421,41 @@
 </template>
 <style scoped>
       /* query page */
+      
+.customer-review_wrap {
+    display: inline-block;
+    width: 100%;
+    padding: 50px 30px;
+    height: 100%;
+}
+      .thank-section{
+    padding-top: 35px;
+    padding-bottom: 50px;
+}
+.thank-section{
+    /* height: 181px; */
+    background: #1B75BC;
+}
+.thank-section h2{
+    font-family: Poppins;
+    font-style: normal;
+    font-size: 30px;
+    line-height: 45px;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+    padding-top: 50px;
+}
+.thank-section h6{
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 0px;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+}
       .invoice-confirm button {
     width: 48%;
     border: none;

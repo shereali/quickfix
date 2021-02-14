@@ -47,6 +47,10 @@ import CorporateClient from '../../../components/backend/corporate-client/Index'
 import CreateCorporateClient from '../../../components/backend/corporate-client/Create'
 import BusinessPartner from '../../../components/backend/business-partner/Index'
 import CreateBusinessPartner from '../../../components/backend/business-partner/Create'
+import ServiceProcess from '../../../components/backend/service-process/Index'
+import CreateServiceProcess from '../../../components/backend/service-process/Create'
+import Blog from '../../../components/backend/blog/Index'
+import CreateBlog from '../../../components/backend/blog/Create'
 
 
 let routeBackend = [
@@ -1046,6 +1050,94 @@ let routeBackend = [
             auth: true,
             breadcrumb: {
                 label: 'CreateBusinessPartner',
+                
+              }
+          }
+
+    },
+    {
+        name:'ServiceProcess',
+        path:'/service-process',
+        component:ServiceProcess,
+        
+        meta: {
+            auth: true,
+            breadcrumb: {
+                label: 'ServiceProcess',
+                
+              }
+          }
+
+    },
+
+    {
+        name:'CreateServiceProcess',
+        path:'/service-process/create',
+        component:CreateServiceProcess,
+        
+        meta: {
+            auth: true,
+            breadcrumb: {
+                label: 'CreateServiceProcess',
+                
+              }
+          }
+
+    },
+
+    {
+        name:'CreateServiceProcess',
+        path:'/service-process/:id',
+        component:CreateServiceProcess,
+        
+        meta: {
+            auth: true,
+            breadcrumb: {
+                label: 'CreateServiceProcess',
+                
+              }
+          }
+
+    },
+    {
+        name:'Blog',
+        path:'/blog',
+        component:Blog,
+        
+        meta: {
+            auth: true,
+            breadcrumb: {
+                label: 'Blog',
+                
+              }
+          }
+
+    },
+
+    {
+        name:'CreateBlog',
+        path:'/blog/create',
+        component:CreateBlog,
+        
+        meta: {
+            auth: true,
+            breadcrumb: {
+                label: 'CreateBlog',
+                
+              }
+          }
+
+    },
+
+    {
+        name:'CreateBlog',
+        path:'/blog/:id',
+        component:CreateBlog,
+        
+        meta: {
+            auth: true,
+            breadcrumb: {
+                label: 'CreateBlog',
                 
               }
           }

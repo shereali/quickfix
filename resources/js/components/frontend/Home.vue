@@ -244,14 +244,14 @@
                     <div class="col-md-8 offset-md-2 text-center"><h2 class="section-title v1">Our Service Process</h2></div>
                     <div class="col-md-12">
                         <div class="hero-catagory-wrapper v1">
-                            <a class="hero-category-content v1" style="background: white;box-shadow: 4px 0px 3px rgba(0, 0, 0, 0.25) !important;">
-                                <h5>Service Inquiry</h5>
+                            <a v-for="service in service_process" :key="service.id" class="hero-category-content v1" style="background: white;box-shadow: 4px 0px 3px rgba(0, 0, 0, 0.25) !important;">
+                                <h5>{{ service.title }}</h5>
                                 <p>Step</p>
-                                <h6>01</h6>
-                                <p>Let us know your all Inquiries</p>
+                                <h6>{{ service.step_no }}</h6>
+                                <p>{{ service.description }}</p>
                             </a>
                             
-                            <a class="hero-category-content v1" style="background: white;box-shadow: 4px 0px 3px rgba(0, 0, 0, 0.25) !important;">
+                            <!-- <a class="hero-category-content v1" style="background: white;box-shadow: 4px 0px 3px rgba(0, 0, 0, 0.25) !important;">
                                 <h5>Service Booking</h5>
                                 <p>Step</p>
                                 <h6>02</h6>
@@ -280,7 +280,7 @@
                                 <p>Step</p>
                                 <h6>06</h6>
                                 <p>Finally we deliver your device at expected location</p>
-                            </a>
+                            </a> -->
 
                         </div>
                     </div>
@@ -732,13 +732,13 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-4">
+                    <div class="col-lg-4" v-for="blog in blogs" :key="blog.id">
                         <div class="card single-blog-item v1">
                             <a target="_blank" href="https://www.facebook.com/quickfixbd/photos/a.1787620248163046/2798697017055359/">
-                                <img :src="'/frontend/images/blog/news_7.jpg'" alt="...">
+                               <div v-html="blog.imageBlog"></div>
                                 <!-- <a href="#" class="blog-cat btn v6 red">Hotel</a> -->
                                 <div class="card-body">
-                                    <h4 class="card-title text-center"><a target="_blank" href="https://www.facebook.com/quickfixbd/photos/a.1787620248163046/2798697017055359/">বাসা বা অফিসে বসেই পিক এন্ড ড্রপ বা হোম সার্ভিস নিতে এখনি ভিজিট করুন-</a></h4>
+                                    <h4 class="card-title text-center"><a target="_blank" href="https://www.facebook.com/quickfixbd/photos/a.1787620248163046/2798697017055359/">{{ blog.title}}</a></h4>
                                     <!-- <h5 class="text-center">Life time replacement gurantee</h5> -->
                                     <!-- <div class="bottom-content">
                                         <p class="date">Sep 28th , 2018 by <a href="#" class="text-dark">Louis Fonsi</a></p>
@@ -747,30 +747,30 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col-lg-4">
+                    <!-- <div class="col-lg-4">
                         <div class="card single-blog-item v1">
                             <a target="_blank" href="https://www.facebook.com/quickfixbd/photos/a.1787620248163046/2795726900685704/">
                                 <img :src="'/frontend/images/blog/news_8.jpg'" alt="...">
-                                <!-- <a href="#" class="blog-cat btn v6 red">Restaurant</a> -->
+                                <a href="#" class="blog-cat btn v6 red">Restaurant</a>
                                 <div class="card-body">
                                     <h4 class="card-title text-center"><a target="_blank" href="https://www.facebook.com/quickfixbd/photos/a.1787620248163046/2795726900685704/">রিপেয়ার সার্ভিস নিতে আর কোথাও যেতে হবেনা। এখন বাসা বা অফিসে বসেই হোম সার্ভিস নিন।</a></h4>
-                                    <!-- <h5 class="text-center">Life time replacement gurantee</h5> -->
+                                    <h5 class="text-center">Life time replacement gurantee</h5>
                                 </div>
                             </a>
                         </div>
-                    </div>
-                    <div class="col-lg-4">
+                    </div> -->
+                    <!-- <div class="col-lg-4">
                         <div class="card single-blog-item v1">
                             <a target="_blank" href="https://www.facebook.com/quickfixbd/photos/a.1787620248163046/2787028314888896">
                                 <img :src="'/frontend/images/blog/news_9.jpg'" alt="...">
                                     <div class="card-body">
                                         <h4 class="card-title text-center"><a target="_blank" href="https://www.facebook.com/quickfixbd/photos/a.1787620248163046/2787028314888896">iPhone ইউজারদের জন্য সুখবর !!
         ব্যাটারি রিপ্লেস্মেন্টে আজীবন গ্যারান্টি। একবার রিপ্লেস করলে পরবর্তী ব্যাটারি ফ্রি</a></h4>
-                                        <!-- <h5 class="text-center">Life time replacement gurantee</h5> -->
+                                        <h5 class="text-center">Life time replacement gurantee</h5>
                                     </div>
                             </a>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -831,11 +831,12 @@
 <script>
     // import mixin from '../../../src/mixin';
     // import mixin from '../../src/mixin'
+    import frmixin from '../../src/frontend-mixin'
     export default {
-        // mixins:[mixin], 
+        mixins:[frmixin], 
         data() {
             return {
-                url: window.location.origin+'/',
+                // url: window.location.origin+'/',
                 root_url: window.location.origin,
                 instant_call_api:'instant-call',
                 get_quotation_api:'get-quotation',
@@ -847,15 +848,32 @@
                 isQuotation:false,
                 isInstantCall:false,
                 devices : [],
+                service_process: [],
+                blogs: [],
+                
             }
         },
 
         created() {
                 
-                axios.get(this.url+'api/devices')
+                axios.get(this.url+'/api/frontend-devices')
                 .then(res => {
                     console.log('device',res.data);
                     this.devices = res.data.data
+                    console.log('.....',this.devices);
+
+                })
+                axios.get(this.url+'/api/frontend-service-process')
+                .then(res => {
+                    console.log('service process',res.data);
+                    this.service_process = res.data.data
+                    console.log('.....',this.devices);
+
+                })
+                axios.get(this.url+'/api/frontend-blog')
+                .then(res => {
+                    console.log('blog',res.data);
+                    this.blogs = res.data.data
                     console.log('.....',this.devices);
 
                 })

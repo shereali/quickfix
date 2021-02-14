@@ -59,6 +59,8 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
             'work-experience'        => 'WorkExperienceController', 
             'corporate-clients'      => 'CorporateClientController', 
             'business-partners'      => 'BusinessPartnerController', 
+            'service-process'        => 'OurServiceProcessController', 
+            'blog'                   => 'BlogController', 
 
             ]);
             Route::post('divisions-wise-districts', 'AdminCommonController@divisionWiseDistrict');
@@ -99,9 +101,11 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
 Route::group(['namespace' => 'API\Frontend', 'middleware' => 'api'],function(){
     Route::group(['namespace' => 'General'], function(){
         Route::apiResources([
-            'get-quotation' => 'QuotationController',
-            'instant-call' => 'InstantCallController',
-            'devices     ' => 'DeviceController',
+            'get-quotation'        => 'QuotationController',
+            'instant-call'         => 'InstantCallController',
+            'frontend-devices'     => 'DeviceController',
+            'frontend-service-process'      => 'OurServiceProcessController',
+            'frontend-blog'                 => 'BlogController',
         ]);
     Route::post('otp-verify', 'InstantCallController@otpVerify');
     Route::post('otp-verify-quotation', 'QuotationController@otpVerify');
