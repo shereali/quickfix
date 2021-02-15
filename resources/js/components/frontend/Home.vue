@@ -734,17 +734,21 @@
                 <div class="row">
                     <div class="col-lg-4" v-for="blog in blogs" :key="blog.id">
                         <div class="card single-blog-item v1">
-                            <a target="_blank" href="https://www.facebook.com/quickfixbd/photos/a.1787620248163046/2798697017055359/">
+                            <router-link target="_blank" :to="'/blog-details/'+blog.id">
                                <div v-html="blog.imageBlog"></div>
                                 <!-- <a href="#" class="blog-cat btn v6 red">Hotel</a> -->
                                 <div class="card-body">
-                                    <h4 class="card-title text-center"><a target="_blank" href="https://www.facebook.com/quickfixbd/photos/a.1787620248163046/2798697017055359/">{{ blog.title}}</a></h4>
+                                    <h4 class="card-title text-center">
+                                            <a target="_blank" href="https://www.facebook.com/quickfixbd/photos/a.1787620248163046/2798697017055359/">
+                                               {{ blog.title}}
+                                            </a>
+                                     </h4>
                                     <!-- <h5 class="text-center">Life time replacement gurantee</h5> -->
                                     <!-- <div class="bottom-content">
                                         <p class="date">Sep 28th , 2018 by <a href="#" class="text-dark">Louis Fonsi</a></p>
                                     </div> -->
                                 </div>
-                            </a>
+                            </router-link>
                         </div>
                     </div>
                     <!-- <div class="col-lg-4">
@@ -877,8 +881,6 @@
                     console.log('.....',this.devices);
 
                 })
-           
-
            
         },
 
