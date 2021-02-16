@@ -51,6 +51,8 @@ import ServiceProcess from '../../../components/backend/service-process/Index'
 import CreateServiceProcess from '../../../components/backend/service-process/Create'
 import Blog from '../../../components/backend/blog/Index'
 import CreateBlog from '../../../components/backend/blog/Create'
+import Premises from '../../../components/backend/premises-schedule/Index'
+import CreatePremises from '../../../components/backend/premises-schedule/Create'
 
 
 let routeBackend = [
@@ -1138,6 +1140,50 @@ let routeBackend = [
             auth: true,
             breadcrumb: {
                 label: 'CreateBlog',
+                
+              }
+          }
+
+    },
+    {
+        name:'Premises',
+        path:'/premises-schedule',
+        component:Premises,
+        
+        meta: {
+            auth: true,
+            breadcrumb: {
+                label: 'Premises',
+                
+              }
+          }
+
+    },
+
+    {
+        name:'CreatePremises',
+        path:'/premises-schedule/create',
+        component:CreatePremises,
+        
+        meta: {
+            auth: true,
+            breadcrumb: {
+                label: 'CreatePremises',
+                
+              }
+          }
+
+    },
+
+    {
+        name:'CreatePremises',
+        path:'/premises-schedule/:id',
+        component:CreatePremises,
+        
+        meta: {
+            auth: true,
+            breadcrumb: {
+                label: 'CreatePremises',
                 
               }
           }

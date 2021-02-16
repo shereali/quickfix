@@ -739,9 +739,9 @@
                                 <!-- <a href="#" class="blog-cat btn v6 red">Hotel</a> -->
                                 <div class="card-body">
                                     <h4 class="card-title text-center">
-                                            <a target="_blank" href="https://www.facebook.com/quickfixbd/photos/a.1787620248163046/2798697017055359/">
+                                            <router-link target="_blank" :to="'/blog-details/'+blog.id">
                                                {{ blog.title}}
-                                            </a>
+                                            </router-link>
                                      </h4>
                                     <!-- <h5 class="text-center">Life time replacement gurantee</h5> -->
                                     <!-- <div class="bottom-content">

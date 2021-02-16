@@ -61,6 +61,7 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
             'business-partners'      => 'BusinessPartnerController', 
             'service-process'        => 'OurServiceProcessController', 
             'blog'                   => 'BlogController', 
+            'premises-schedule'      => 'PremisesScheduleController', 
 
             ]);
             Route::post('divisions-wise-districts', 'AdminCommonController@divisionWiseDistrict');
