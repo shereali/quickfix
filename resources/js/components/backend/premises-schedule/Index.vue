@@ -13,8 +13,8 @@ export default {
 
         this.cardTitle ="Service Type List" 
 
-        this.columnsHead.push('Sn',' Name', 'Description', 'Photo','Status', 'Action')
-        this.columnsBody.push('name', 'description','image','statusText')
+        this.columnsHead.push('Sn',' Start Time', 'End Time','Status', 'Action')
+        this.columnsBody.push('start_time', 'end_time','statusText')
         // this.columnsBodyExtra = 
         this.isDownload = false; 
 

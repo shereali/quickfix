@@ -14,6 +14,19 @@ class PremisesScheduleResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+
+            'id'                 => $this->id,
+            'schedule_day'       => $this->schedule_day,
+            'start_time'         => $this->start_time,
+            'end_time'           => $this->end_time,
+            'schedule_create_id' => $this->schedule_create_id,
+            'schedule_duration'  => $this->schedule_duration,
+            'repeat_status'      => $this->repeat_status,
+            'repeat_schedule'    => $this->repeat_schedule,
+            'status'             => $this->status,
+            'statusText'         => $this->status == 1?'Active':'Inactive',
+            
+        ];
     }
 }

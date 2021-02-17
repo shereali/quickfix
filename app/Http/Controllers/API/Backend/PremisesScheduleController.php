@@ -8,6 +8,7 @@ use Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Backend\PremisesScheduleResource;
 use App\Models\Backend\Day;
+use App\Models\Backend\PremisesScheduleDetails;
 use App\Models\Backend\PremisesScheduleMaster;
 use App\Models\Backend\ScheduleCreate;
 use Illuminate\Http\Request;
@@ -55,37 +56,42 @@ class PremisesScheduleController extends Controller
             
         ]);
 
-        $chamberDay                             = $request->chamber_day;
-        $startTime                              = $request->chamber_start_time;
-        $endTime                                = $request->chamber_end_time;
-        $duration                               = $request->schedule_duration;
-        $schedule_create                        = $request->schedule_create;
 
-       
-
-        
-            $chamberScheduleStore = ChamberScheduleMaster::create([
-                'chamber_id'                    => $request->chamber,
-                'schedule_day'                  => json_encode($chamberDay, true),
-                'chamber_start_time'            => $startTime,
-                'chamber_end_time'              => $endTime,
-                'schedule_create'               => $schedule_create,
-                'schedule_duration'             => $duration,
-                'repeat_status'                 => $request->repeat_status,
-                'repeat_schedule'               => ($request->repeat_status==1)? $request->repeat_schedule:0,
-                'status'                        => '1',
-                'created_by_type'               => '2',
-                'created_by'                    => $userId,
-            ]); 
+        $schedule_day                             = $request->schedule_day;
+        $startTime                                = $request->start_time;
+        $endTime                                  = $request->end_time;
+        $duration                                 = $request->schedule_duration;
+        $schedule_create                          = $request->schedule_create_id;
 
          
+         
+        $newVale = explode(",", $schedule_day);
+        $days = [];
+        for($i=0; $i< count($newVale); $i++){
+            $days[] = (int)$newVale[$i];
+        }
+
+        
+            $ScheduleStore = PremisesScheduleMaster::create([
+                'schedule_day'       => json_encode($days),
+                'start_time'         => $startTime,
+                'end_time'           => $endTime,
+                'schedule_create_id' => $schedule_create,
+                'schedule_duration'  => $duration,
+                'repeat_status'      => 1,
+                'repeat_schedule'    => $schedule_create,
+                'status'             => $request->status,
+                'created_by'         => $userId,
+            ]); 
+
             
-            foreach ($chamberDay as $key => $daySlot) {
+            
+        foreach ($days as $key => $daySlot) {
             $totalSchedules = Helper::allScheduleTimes($startTime, $endTime, $duration);
             
             $createScheduleDates = array();
 
-            if ($chamberScheduleStore) {
+            if ($ScheduleStore) {
                
 
                 $day = $daySlot;
@@ -94,14 +100,13 @@ class PremisesScheduleController extends Controller
                     $eTime = Helper::addtime($sTime, $duration);
                     $date = Helper::dayWiseDate(($i*7) + $daySlot);
                     foreach ($totalSchedules as $totalSchedule) {
-                        ChamberScheduleDetail::create([
-                            'chamber_schedule_master_id'    => $chamberScheduleStore->id,
-                            'day'                           => $daySlot,
+                        PremisesScheduleDetails::create([
+                            'premises_schedule_masters_id'    => $ScheduleStore->id,
+                            'day_id'                           => $daySlot,
                             'schedule_date'                 => $date,
                             'start_time'                    => $sTime,
                             'end_time'                      => $eTime,
-                            'status'                        => '1',
-                            'created_by_type'               => '2',
+                            'status'                        => 1,
                             'created_by'                    => $userId,
                         ]);
 
@@ -110,15 +115,19 @@ class PremisesScheduleController extends Controller
                     }
                 }
             }
+        }
         
 
 
-            if ($chamberScheduleStore){
-                $data['successMessage'] = "Chamber Schedule Created Successfully";
+            if ($ScheduleStore){
                 DB::commit();
-                return $data;
+                return response()->json([
+                    'status'  => 'success',
+                    'message' => 'Schedule has been created!',
+                    'icon'    => 'check',
+                ]);
             }            
-        }
+        
     }
     /**
      * Display the specified resource.
@@ -128,7 +137,8 @@ class PremisesScheduleController extends Controller
      */
     public function show($id)
     {
-        //
+        $premises_schedule_master = PremisesScheduleMaster::find($id);
+        return new PremisesScheduleResource($premises_schedule_master);
     }
 
     /**
@@ -140,7 +150,7 @@ class PremisesScheduleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
     }
 
     /**
@@ -151,6 +161,19 @@ class PremisesScheduleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::beginTransaction();
+         $data =DB::table('premises_schedule_masters')
+                ->leftJoin('premises_schedule_details','premises_schedule_masters.id', '=','premises_schedule_details.premises_schedule_masters_id')
+                ->where('premises_schedule_masters.id', $id); 
+         DB::table('premises_schedule_details')->where('premises_schedule_masters_id', $id)->delete();                           
+         $delete = $data->delete();
+        if($delete){
+            DB::commit();
+            return response()->json([
+                'status'  => 'danger',
+                'message' => 'Schedule has been deleted!',
+                'icon'    => 'times',
+            ]);   
+        }
     }
 }
