@@ -29,6 +29,17 @@ import vSelect from 'vue-select'
 import 'vue-select/dist/vue-select.css';
 Vue.component('v-select', vSelect)
 
+// for time picker
+import VueTimepicker from 'vue2-timepicker'
+import 'vue2-timepicker/dist/VueTimepicker.css'
+import '@pencilpix/vue2-clock-picker/dist/vue2-clock-picker.min.css';
+const VueClockPickerPlugin = require('@pencilpix/vue2-clock-picker/dist/vue2-clock-picker.plugin.js')
+Vue.use(VueClockPickerPlugin)
+
+Vue.component('vue-timepicker', VueTimepicker)
+
+
+
 
 // Excell
 import JsonExcel from "vue-json-excel";
