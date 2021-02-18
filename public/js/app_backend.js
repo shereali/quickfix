@@ -5374,7 +5374,16 @@ __webpack_require__.r(__webpack_exports__);
       console.log(res.data.days);
       _this.days = res.data.days;
       _this.scheduleCreates = res.data.scheduleCreates;
+
+      if (_this.isEdit) {
+        console.log('jkdhfsdjkhf', res.data);
+      }
     });
+    setTimeout(function () {
+      _this.inputData.sl_no.forEach(function (item) {
+        console.log('this.inputData.sl_no', item.name);
+      });
+    }, 3000);
   },
   methods: {
     timeChangeHandler: function timeChangeHandler() {// ...
@@ -74893,6 +74902,25 @@ var render = function() {
                             _vm._v("Select Day")
                           ]),
                           _vm._v(" "),
+                          _c("v-select", {
+                            attrs: {
+                              multiple: "",
+                              options: _vm.days,
+                              reduce: function(day) {
+                                return day.sl_no
+                              },
+                              label: "name",
+                              placeholder: "Select Day"
+                            },
+                            model: {
+                              value: _vm.inputData.schedule_day,
+                              callback: function($$v) {
+                                _vm.$set(_vm.inputData, "schedule_day", $$v)
+                              },
+                              expression: "inputData.schedule_day"
+                            }
+                          }),
+                          _vm._v(" "),
                           _c("input", {
                             directives: [
                               {
@@ -74915,25 +74943,6 @@ var render = function() {
                                   $event.target.value
                                 )
                               }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("v-select", {
-                            attrs: {
-                              multiple: "",
-                              options: _vm.days,
-                              reduce: function(day) {
-                                return day.id
-                              },
-                              label: "name",
-                              placeholder: "Select Day"
-                            },
-                            model: {
-                              value: _vm.inputData.schedule_day,
-                              callback: function($$v) {
-                                _vm.$set(_vm.inputData, "schedule_day", $$v)
-                              },
-                              expression: "inputData.schedule_day"
                             }
                           })
                         ],

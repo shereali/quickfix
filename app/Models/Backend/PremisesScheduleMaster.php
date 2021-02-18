@@ -30,5 +30,9 @@ class PremisesScheduleMaster extends Model
         return $this->belongsTo(Chamber::class);
     }
 
+    public function day(){
+        return $this->hasOne(Day::class,'id');
+    }
+
     
 }
