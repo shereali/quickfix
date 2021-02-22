@@ -1,4 +1,8 @@
 <?php
+
+use App\Models\Backend\Module;
+use App\Models\Backend\Permission;
+use App\Models\Backend\Role;
 use Carbon\Carbon;
 use Symfony\Component\HttpFoundation\File\getClientOriginalName;
 
@@ -120,12 +124,23 @@ class Helper{
         
     }
 
-
     public static function autoOtp() {
         $limit = 4;
         return rand(pow(10, $limit-1), pow(10, $limit)-1);
     }
 
+    public static function permission($model){
+
+        $module_id = Module::where('resource_name', $model)->first()->id;
+        $permission = Permission::where('module_id', $module_id)->select('read', 'write', 'update', 'delete')->first();
+        return $permission;
+
+    }
+
+    public static function role($id){
+        $role = Role::find($id)->name;
+        return $role;
+    }
 
 
 }

@@ -28,7 +28,8 @@ class DeviceController extends Controller
         $deviceTypes = DeviceType::where('status',1)->get();
 
         return  DeviceResource::collection($data)->additional([
-            'deviceTypes' => $deviceTypes
+            'deviceTypes' => $deviceTypes,
+            'permissions' => Helper::permission('Device')
 
         ]);
 

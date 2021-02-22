@@ -54,7 +54,7 @@
 </template>
 
 <script>
-import mixin from '../../../../src/mixin';
+import mixin from '../../../../../src/mixin';
 export default {
 mixins:[mixin], 
 created(){

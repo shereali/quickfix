@@ -14,8 +14,10 @@ export default new Vuex.Store({
     mutations: {
         setUserData(state, userData) {
             state.user = userData
-            localStorage.setItem('user', JSON.stringify(userData))
-            axios.defaults.headers.common.Authorization = `Bearer ${userData.token}`
+            if(userData.user.status != 'false' && userData.role == 'CustomerSupport'){
+                localStorage.setItem('user', JSON.stringify(userData))
+                axios.defaults.headers.common.Authorization = `Bearer ${userData.token}`
+            }
         },
 
         clearUserData() {
@@ -32,9 +34,9 @@ export default new Vuex.Store({
                     commit('setUserData', data)
                    
                     // let user = data.user 
-                //   if(data.status == 'true'){
+                  if(data.role == 'CustomerSupport'){
                      window.location.href = window.location.origin+'/customer-support' 
-                //   }
+                  }
                       
                 })
         },

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\API\Backend\Auth;
 
+use DB;
 use App\Models\User;
 use Illuminate\Support\Arr;
+use App\Models\Backend\Role;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Resources\Backend\Auth\UserResource;
@@ -32,8 +32,6 @@ class UserController extends Controller
 
         $roles = Role::all();
 
-        return  $data;
-
         return  UserResource::collection($data)->additional(['roles' => $roles]);
     }
 
@@ -49,14 +47,18 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|same:confirm_password',
-            'roles' => 'required'
         ]);
     
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
     
         $user = User::create($input);
-        $user->assignRole($request->input('roles'));
+
+        return response()->json([
+            'status'  => 'success',
+            'message' => 'User has been created!',
+            'icon'    => 'check',
+        ]);
     }
 
     /**
@@ -86,7 +88,6 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users,email,'.$id,
             'password' => 'same:confirm-password',
-            'roles' => 'required'
         ]);
     
         $input = $request->all();
@@ -98,9 +99,11 @@ class UserController extends Controller
     
         $user = User::find($id);
         $user->update($input);
-        DB::table('model_has_roles')->where('model_id',$id)->delete();
-    
-        $user->assignRole($request->input('roles'));
+        return response()->json([
+            'status'  => 'success',
+            'message' => 'User has been updated!',
+            'icon'    => 'check',
+        ]);
     }
 
     /**
