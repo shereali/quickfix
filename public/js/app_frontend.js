@@ -2789,7 +2789,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 // import mixin from '../../../src/mixin';
 // import mixin from '../../src/mixin'
 
@@ -2810,7 +2809,8 @@ __webpack_require__.r(__webpack_exports__);
       isInstantCall: false,
       devices: [],
       service_process: [],
-      blogs: []
+      blogs: [],
+      serviceTypes: []
     };
   },
   created: function created() {
@@ -2819,17 +2819,18 @@ __webpack_require__.r(__webpack_exports__);
     axios.get(this.url + '/api/frontend-devices').then(function (res) {
       console.log('device', res.data);
       _this.devices = res.data.data;
-      console.log('.....', _this.devices);
     });
     axios.get(this.url + '/api/frontend-service-process').then(function (res) {
       console.log('service process', res.data);
       _this.service_process = res.data.data;
-      console.log('.....', _this.devices);
+    });
+    axios.get(this.url + '/api/frontend-service-type').then(function (res) {
+      console.log('serviceTypes', res.data);
+      _this.serviceTypes = res.data.data;
     });
     axios.get(this.url + '/api/frontend-blog').then(function (res) {
       console.log('blog', res.data);
       _this.blogs = res.data.data;
-      console.log('.....', _this.devices);
     });
   },
   mounted: function mounted() {
@@ -3295,6 +3296,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _src_frontend_mixin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../src/frontend-mixin */ "./resources/js/src/frontend-mixin.js");
 //
 //
 //
@@ -4405,12 +4407,40 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  mixins: [_src_frontend_mixin__WEBPACK_IMPORTED_MODULE_0__["default"]],
   data: function data() {
     return {
       show: false,
-      premises: false
+      premises: false,
+      showSection: false,
+      showDisplay: false,
+      showHardware: false,
+      showCamera: false,
+      devices: []
     };
+  },
+  created: function created() {
+    var _this = this;
+
+    axios.get(this.url + '/api/frontend-devices').then(function (res) {
+      console.log('device', res.data);
+      _this.devices = res.data.data;
+    });
   },
   //  <script>
   // function showDiv() {
@@ -4501,6 +4531,18 @@ __webpack_require__.r(__webpack_exports__);
     showPremises: function showPremises(event) {
       this.premises = true;
       this.show = false;
+    },
+    toggleDisplay: function toggleDisplay() {
+      this.showDisplay = !this.showDisplay;
+    },
+    toggleHardware: function toggleHardware() {
+      this.showHardware = !this.showHardware;
+    },
+    toggleCamera: function toggleCamera() {
+      this.showCamera = !this.showCamera;
+    },
+    toggle: function toggle() {
+      this.showSection = !this.showSection;
     }
   }
 }); //
@@ -8985,7 +9027,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* .default_active {\n    box-shadow: 4px 0px 3px rgba(0, 0, 0, 0.25) !important;\n    background: #1B75BC;\n    z-index: 999 !important;\n    color:white !important;\n    padding-left: 11px !important;\n}\n.default_active p {\n   color:white !important;\n} */\n\n/* .default_inactive {\n    border: none !important;\n    box-shadow: 4px 0px 3px rgba(0, 0, 0, 0.25) !important;\n    background: #F1F1F1;\n    color: #656565;\n    \n} */\n/* .nav-tabs .nav-item:hover{\n    background: #1B75BC;\n    color:#fff;\n}\n\n.nav-pills .nav-link:hover{\n    color:#fff;\n} */\n\n/* .active_show {\n    display: block !important;\n}\n\n.active_hide {\n    display: none !important;\n}\n\n.swiper-slide .single-partner .swiper-slide-duplicate-prev {\n    text-align: right !important;\n} */\n.hero-category-content .v1:hover{\n    background: #fff;\n}\n.serviceCatActive {\n    background-color: #1B75BC;\n    color: #fff;\n}\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* .default_active {\n    box-shadow: 4px 0px 3px rgba(0, 0, 0, 0.25) !important;\n    background: #1B75BC;\n    z-index: 999 !important;\n    color:white !important;\n    padding-left: 11px !important;\n}\n.default_active p {\n   color:white !important;\n} */\n\n/* .default_inactive {\n    border: none !important;\n    box-shadow: 4px 0px 3px rgba(0, 0, 0, 0.25) !important;\n    background: #F1F1F1;\n    color: #656565;\n    \n} */\n/* .nav-tabs .nav-item:hover{\n    background: #1B75BC;\n    color:#fff;\n}\n\n.nav-pills .nav-link:hover{\n    color:#fff;\n} */\n\n/* .active_show {\n    display: block !important;\n}\n\n.active_hide {\n    display: none !important;\n}\n\n.swiper-slide .single-partner .swiper-slide-duplicate-prev {\n    text-align: right !important;\n} */\n.hero-category-content .v1:hover{\n    background: #fff;\n}\n.serviceCatActive {\n    background-color: #1B75BC;\n    color: #fff;\n}\n\n", ""]);
 
 // exports
 
@@ -9004,7 +9046,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n      /* query page */\nul[data-v-6d805e82] {list-style-type: none;}\nbody[data-v-6d805e82] {font-family: Verdana, sans-serif;}\n\n/* Month header */\n.month[data-v-6d805e82] {\n    width: 100%;\n    background: #C4C4C4;\n    border-radius: 6px;\n    text-align: center;\n    height: 49px;\n}\n\n/* Month list */\n.month ul[data-v-6d805e82] {\n  margin: 0;\n  padding: 0;\n}\n.month ul li[data-v-6d805e82] {\n  color: white;\n  font-size: 18px;\n  text-transform: uppercase;\n  padding: 10px\n}\n\n/* Previous button inside month header */\n.month .prev[data-v-6d805e82] {\n  float: left;\n  padding-top: 10px;\n}\n\n/* Next button */\n.month .next[data-v-6d805e82] {\n  float: right;\n  padding-top: 10px;\n}\n\n/* Weekdays (Mon-Sun) */\n.weekdays[data-v-6d805e82] {\n  margin: 0;\n  padding: 10px 0;\n}\n.weekdays li[data-v-6d805e82] {\n  display: inline-block;\n  width: 13.6%;\n  color: #666;\n  text-align: center;\n}\n\n/* Days (1-31) */\n.days[data-v-6d805e82] {\n  padding: 10px 0;\n  margin: 0;\n}\n.days li[data-v-6d805e82] {\n  list-style-type: none;\n  display: inline-block;\n  width: 13.6%;\n  text-align: center;\n  margin-bottom: 5px;\n  font-size:12px;\n  color: #777;\n}\n\n/* Highlight the \"current\" day */\n.days li .active[data-v-6d805e82] {\n  padding: 5px;\n  background: #1B75BC;\n  color: white !important;\n  border-radius: 15px;\n}\n.premises h2[data-v-6d805e82]{\n    padding-top: 20px;\n    font-family: Poppins;\n    font-style: normal;\n    font-weight: normal;\n    font-size: 18px;\n    line-height: 18px;\n    display: flex;\n    align-items: center;\n    text-align: center;\n    color: #333333;\n}\n.customer-review_wrap[data-v-6d805e82] {\n    display: inline-block;\n    width: 100%;\n    padding: 50px 30px;\n    height: 100%;\n}\n.review_wrap li li[data-v-6d805e82] {\n    margin-left: 135px;\n}\n.review_wrap>li:last-child .customer-review_wrap[data-v-6d805e82] {\n    border-bottom: none;\n}\n.thank-section[data-v-6d805e82]{\n    padding-top: 35px;\n    padding-bottom: 50px;\n}\n.thank-section[data-v-6d805e82]{\n    /* height: 181px; */\n    background: #1B75BC;\n}\n.thank-section h2[data-v-6d805e82]{\n    font-family: Poppins;\n    font-style: normal;\n    font-size: 30px;\n    line-height: 45px;\n    align-items: center;\n    text-align: center;\n    color: #FFFFFF;\n    padding-top: 50px;\n}\n.thank-section h6[data-v-6d805e82]{\n    font-family: Poppins;\n    font-style: normal;\n    font-weight: normal;\n    font-size: 18px;\n    line-height: 0px;\n    align-items: center;\n    text-align: center;\n    color: #FFFFFF;\n}\n.invoice-confirm button[data-v-6d805e82] {\n    width: 48%;\n    border: none;\n    background-color: #bbb;\n    height: 30px;\n    color: #fff;\n    border-radius: 5px;\n    height: 44px;\n    font-size: 26px;\n}\n.invoice-confirm button.yes[data-v-6d805e82] {\n    background-color: green;\n    font-size: 17px;\n}\n.invoice-confirm button.no[data-v-6d805e82] {\n    background-color: red;\n    font-size: 17px;\n}\n.invoice-confirm[data-v-6d805e82] {\n    background-color: #fff;\n    position: absolute;\n    bottom: 0;\n    right: 0;\n    width: 100%;\n    padding-top: 4px;\n}\n.invoice-price[data-v-6d805e82] {\n    background-color: #f1f1f1;\n    border-left: 5px solid #fff;\n    border-radius: 6px;\n}\n.invoice-price h2[data-v-6d805e82] {\n    font-size: 25px;\n    text-align: center;\n}\n.invoice-price h4[data-v-6d805e82] {\n    font-size: 15px;\n    text-align: center;\n}\n.invoice-details button.btn-2[data-v-6d805e82] {\n    width: -webkit-max-content;\n    width: -moz-max-content;\n    width: max-content;\n    padding: 5px 14px;\n    height: 40px;\n    background: transparent !important;\n    border-radius: 10px;\n    color: #656565 !important;\n    border: 2px solid rgb(211 211 211);\n    cursor: pointer;\n    transition: 0.3s;\n    margin-right: 10px;\n    border: 1px solid #1B75BC;\n    box-sizing: border-box;\n    border-radius: 6px;\n    font-size: 12px;\n}\n.invoice-details[data-v-6d805e82] {\n    background-color: #f1f1f1;\n    padding: 20px;\n    border-radius: 6px;\n}\n.add-device[data-v-6d805e82] {\n    float: right;\n    font-size: 17px;\n    font-weight: 500;\n    color: #1B75BC;\n}\nbutton.btn-2[data-v-6d805e82] {\n    width: 285px;\n    height: 49.56px;\n    left: 711.76px;\n    top: 409px;\n    background: #FFFFFF !important;\n    border-radius: 6px;\n    color: #656565 !important;\n    border: 1px solid rgb(243 243 243);\n    cursor: pointer;\n    transition: 0.3s;\n}\nbutton.btn-2[data-v-6d805e82]:hover {\n    border: 1px solid rgb(176, 176, 255);\n}\n.card-header[data-v-6d805e82] {\n    border: none;\n    border-radius: 10px;\n}\n.service-accordion a[data-v-6d805e82] {\n    color: rgb(119, 119, 119);\n}\n.service-accordion button.btn-2[data-v-6d805e82]  {\n    margin-right: 10px;\n    margin-bottom: 16px;\n    transition: 0.3s;\n}\n.service-accordion[data-v-6d805e82] {\n    margin: 16px 0;\n}\n.services textarea[data-v-6d805e82] {\n    width: 100%;\n    height: 100px;\n    padding: .75rem 1.25rem;\n    margin-bottom: 0;\n    background-color: rgba(0,0,0,.03);\n    border: none;\n    font-family: \"poppins\", sans-serif;\n    color: rgb(119, 119, 119);\n    font-size: 18px;\n}\n.services[data-v-6d805e82] {\n    padding: 0;\n}\n.pad-top-20[data-v-6d805e82] {\n    padding-top: 20px !important;\n}\n.btn.v3.ipad[data-v-6d805e82]{\n    width: 200.48px;\n    height: 49.56px;\n    left: 711.76px;\n    top: 409px;\n    \n    background: #F1F1F1 !important;\n    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n    border-radius: 6px;\n    color: #656565 !important;\n}\n.mar-right-5[data-v-6d805e82] {\n    margin-right: 5px !important;\n}\n.smartphone[data-v-6d805e82]{\n\n    width: 200px;\n    height: 49px;\n    left: 489px;\n    top: 409.35px;\n\n    background: #1B75BC;\n    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n    border-radius: 6px;\n}\n.nice-select.hero__form-input.custom-select span[data-v-6d805e82] {\n    color: #999;\n}\n.nice-select.filter-input ul li[data-v-6d805e82] {\n    font-size: 15px;\n}\n.nice-select[data-v-6d805e82] {\n    background-color: transparent;\n    border-bottom: 1px solid #ddd;\n    box-sizing: border-box;\n    clear: both;\n    cursor: pointer;\n    display: inline-block;\n    font-size: 15px;\n    line-height: 40px;\n    padding-left: 18px;\n    padding-right: 30px;\n    position: relative;\n    text-align: left !important;\n    -webkit-user-select: none;\n       -moz-user-select: none;\n        -ms-user-select: none;\n            user-select: none;\n}\n.nice-select[data-v-6d805e82]:after {\n    content: '\\F3D0';\n    font-family: \"Ionicons\";\n    display: block;\n    pointer-events: none;\n    position: absolute;\n    right: 5%;\n    top: 30%;\n    font-size: 16px;\n    color: #999;\n    transition: all 0.15s ease-in-out;\n}\n.nice-select.open[data-v-6d805e82]:after {\n    transform: rotate(-180deg);\n}\n.nice-select.open .list[data-v-6d805e82] {\n    opacity: 1;\n    pointer-events: auto;\n    transform: scale(1) translateY(0);\n    width: 100%;\n    height: 200px;\n    overflow-y: scroll;\n}\n.nice-select.disabled[data-v-6d805e82] {\n    border-color: #ededed;\n    color: #999;\n    pointer-events: none;\n}\n.nice-select.disabled[data-v-6d805e82]:after {\n    border-color: #cccccc;\n}\n.nice-select .list[data-v-6d805e82] {\n    background-color: #fff;\n    border-radius: 1px;\n    box-shadow: 0 0 0 1px rgba(68, 68, 68, 0.11);\n    box-sizing: border-box;\n    margin-top: 4px;\n    opacity: 0;\n    overflow: hidden;\n    padding: 0;\n    pointer-events: none;\n    position: absolute;\n    top: 100%;\n    left: 0;\n    transform-origin: 50% 0;\n    transform: scale(0.75) translateY(-21px);\n    transition: all 0.2s cubic-bezier(0.5, 0, 0, 1.25), opacity 0.15s ease-out;\n    z-index: 9;\n}\n.nice-select .list:hover .option[data-v-6d805e82]:not(:hover) {\n    background-color: transparent !important;\n}\n.nice-select .option[data-v-6d805e82] {\n    cursor: pointer;\n    font-weight: 400;\n    line-height: 40px;\n    list-style: none;\n    min-height: 40px;\n    outline: none;\n    padding-left: 18px;\n    padding-right: 29px;\n    text-align: left;\n    transition: all 0.2s;\n}\n.nice-select .option[data-v-6d805e82]:hover {\n    background-color: #2ac590;\n    color: #fff;\n}\n.nice-select .option.disabled[data-v-6d805e82] {\n    background-color: transparent;\n    color: #999;\n    cursor: default;\n}\n.filter-input[data-v-6d805e82] {\n\n    border: 1px solid #ddd;\n    margin-top: 0px;\n    border-radius: 3px;\n    width: 100%;\n    padding: 10px 20px;\n    height: 50px;\n}\n.filter-input[data-v-6d805e82]:last-child {\n    padding: 5px 20px;\n}\n.filter-input.nice-select[data-v-6d805e82]::after {\n    content: '\\F35F';\n    font-family: \"Ionicons\";\n    display: block;\n    margin-top: 5px;\n    pointer-events: none;\n    position: absolute;\n    right: 12px;\n    top: 5%;\n    font-size: 20px;\n    color: #999;\n    transition: all 0.15s ease-in-out;\n}\n.filter-input.nice-select[data-v-6d805e82] {\n\n    font-size: 15px;\n    font-weight: 400;\n}\n.card[data-v-6d805e82] {\n    border: none;\n}\n.card[data-v-6d805e82] {\n    z-index: 0;\n    border: none;\n    position: relative\n}\n.hero-area.v1[data-v-6d805e82] {\n    background-size: cover;\n    background-repeat: no-repeat;\n    height: auto;\n}\n.hero-area.v1 .hero__form.v2[data-v-6d805e82] {\n    border-radius: 0;\n    background: transparent;\n    padding: 0;\n}\n.hero-area.v1 .hero__form.v2 .hero__form-input[data-v-6d805e82] {\n    background: #fff;\n    margin-bottom: 20px;\n    height: 50px;\n    border-radius: 3px;\n    padding-left: 25px;\n}\n.hero-area.v1 .hero__form.v2 .hero__form-input[data-v-6d805e82]::before {\n    display: none;\n}\n.hero-area.v1 .hero-title.v2[data-v-6d805e82] {\n    color:#fff;\n    font-size: 4.375rem;\n    line-height: 4.2rem;\n    margin-bottom: 0;\n    margin-left: 0;\n}\n.modal-header-bg-color[data-v-6d805e82]{\n    background-color:#1B75BC;\n}\n.hero-area.v1 .hero-desc.v2[data-v-6d805e82] {\n\n    margin-bottom: 0;\n    font-size: 20px\n}\np[data-v-6d805e82] {\n    color: grey\n}\n#heading[data-v-6d805e82] {\n    text-transform: uppercase;\n    color: #673AB7;\n    font-weight: normal\n}\n#msform[data-v-6d805e82] {\n    text-align: center;\n    position: relative;\n    margin-top: 20px\n}\n#msform fieldset[data-v-6d805e82] {\n    background: white;\n    border: 0 none;\n    border-radius: 0.5rem;\n    box-sizing: border-box;\n    width: 100%;\n    margin: 0;\n    padding-bottom: 20px;\n    position: relative\n}\n.form-card[data-v-6d805e82] {\n    text-align: left\n}\n#msform fieldset[data-v-6d805e82]:not(:first-of-type) {\n    display: none\n}\n#msform input[data-v-6d805e82],\n#msform textarea[data-v-6d805e82] {\n    padding: 8px 15px 8px 15px;\n    border-radius: 0px;\n    /* margin-bottom: 25px; */\n    margin-top: 2px;\n    /* width: 100%; */\n    box-sizing: border-box;\n    font-family: montserrat;\n    color: #2C3E50;\n    background-color: #ECEFF1;\n    font-size: 16px;\n    letter-spacing: 1px;\n    border: 1px solid #D8D8D8;\n    box-sizing: border-box;\n    border-radius: 6px;\n}\n#msform input[data-v-6d805e82]:focus,\n#msform textarea[data-v-6d805e82]:focus {\n    box-shadow: none !important;\n    border: 1px solid #673AB7;\n    outline-width: 0\n}\n#msform .action-button[data-v-6d805e82] {\n    width: 100px;\n    background: #1B75BC;\n    font-weight: bold;\n    color: white;\n    border: 0 none;\n    border-radius: 5px;\n    cursor: pointer;\n    padding: 10px 5px;\n    margin: 10px 0px 10px 5px;\n    float: right;\n    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n}\n#msform .action-button[data-v-6d805e82]:hover,\n#msform .action-button[data-v-6d805e82]:focus {\n    background-color: #1B75BC\n}\n#msform .action-button-previous[data-v-6d805e82] {\n    width: 100px;\n    background: #616161;\n    font-weight: bold;\n    color: white;\n    border: 0 none;\n    border-radius: 5px;\n    cursor: pointer;\n    padding: 10px 5px;\n    margin: 10px 5px 10px 0px;\n    float: right;\n    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n}\n#msform .action-button-previous[data-v-6d805e82]:hover,\n#msform .action-button-previous[data-v-6d805e82]:focus {\n    background-color: #616161\n}\n.card[data-v-6d805e82] {\n    z-index: 0;\n    border: none;\n    position: relative\n}\n.fs-title[data-v-6d805e82] {\n    font-size: 17px;\n    color: #1B75BC;\n    margin-bottom: 15px;\n    font-weight: normal;\n    text-align: left\n}\n.purple-text[data-v-6d805e82] {\n    color: #673AB7;\n    font-weight: normal\n}\n.steps[data-v-6d805e82] {\n    font-size: 17px;\n    color: gray;\n    margin-bottom: 10px;\n    font-weight: normal;\n    text-align: right\n}\n.fieldlabels[data-v-6d805e82] {\n    color: gray;\n    text-align: left\n}\n#progressbar[data-v-6d805e82] {\n    margin-bottom: 30px;\n    overflow: hidden;\n    color: lightgrey\n}\n#progressbar .active[data-v-6d805e82] {\n    color: #1B75BC\n}\n#progressbar li[data-v-6d805e82] {\n    list-style-type: none;\n    font-size: 15px;\n    /* width: 25%; */\n    float: left;\n    position: relative;\n    font-weight: 400\n}\n#progressbar #account[data-v-6d805e82]:before {\n    font-family: FontAwesome;\n    content: \"\\F13E\"\n}\n#progressbar #personal[data-v-6d805e82]:before {\n    font-family: FontAwesome;\n    content: \"\\F007\"\n}\n#progressbar #payment[data-v-6d805e82]:before {\n    font-family: FontAwesome;\n    content: \"\\F030\"\n}\n#progressbar #confirm[data-v-6d805e82]:before {\n    font-family: FontAwesome;\n    content: \"\\F00C\"\n}\n#progressbar li[data-v-6d805e82]:before {\n    width: 50px;\n    height: 50px;\n    line-height: 45px;\n    display: block;\n    font-size: 20px;\n    color: #ffffff;\n    background: lightgray;\n    border-radius: 50%;\n    margin: 0px 0px 10px 0px;\n    padding: 2px\n}\n#progressbar li[data-v-6d805e82]:after {\n    content: '';\n    width: 100%;\n    height: 2px;\n    background: lightgray;\n    position: absolute;\n    left: 0;\n    top: 25px;\n    z-index: -1\n}\n#progressbar li.active[data-v-6d805e82]:before,\n#progressbar li.active[data-v-6d805e82]:after {\n    background: #1B75BC\n}\n.progress[data-v-6d805e82] {\n    height: 20px\n}\n.progress-bar[data-v-6d805e82] {\n    background-color: #1B75BC\n}\n.fit-image[data-v-6d805e82] {\n    width: 100%;\n    -o-object-fit: cover;\n       object-fit: cover\n}\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n      /* query page */\nul[data-v-6d805e82] {list-style-type: none;}\nbody[data-v-6d805e82] {font-family: Verdana, sans-serif;}\n.listing-sidebar[data-v-6d805e82] {\n    padding-left: 15px;\n    height: 100%;\n}\n.dot-modern[data-v-6d805e82]{\n    border-radius: 50%;\n    display: inline-block;\n    width: 11px;\n    height: 11px;\n    left: 1186px;\n    top: 651px;\n    background: #C4C4C4;\n}\n/* Month header */\n.month[data-v-6d805e82] {\n    width: 100%;\n    background: #C4C4C4;\n    border-radius: 6px;\n    text-align: center;\n    height: 49px;\n}\n\n/* Month list */\n.month ul[data-v-6d805e82] {\n  margin: 0;\n  padding: 0;\n}\n.month ul li[data-v-6d805e82] {\n  color: white;\n  font-size: 18px;\n  text-transform: uppercase;\n  padding: 10px\n}\n\n/* Previous button inside month header */\n.month .prev[data-v-6d805e82] {\n  float: left;\n  padding-top: 10px;\n}\n\n/* Next button */\n.month .next[data-v-6d805e82] {\n  float: right;\n  padding-top: 10px;\n}\n\n/* Weekdays (Mon-Sun) */\n.weekdays[data-v-6d805e82] {\n  margin: 0;\n  padding: 10px 0;\n}\n.weekdays li[data-v-6d805e82] {\n  display: inline-block;\n  width: 13.6%;\n  color: #666;\n  text-align: center;\n}\n\n/* Days (1-31) */\n.days[data-v-6d805e82] {\n  padding: 10px 0;\n  margin: 0;\n}\n.days li[data-v-6d805e82] {\n  list-style-type: none;\n  display: inline-block;\n  width: 13.6%;\n  text-align: center;\n  margin-bottom: 5px;\n  font-size:12px;\n  color: #777;\n}\n\n/* Highlight the \"current\" day */\n.days li .active[data-v-6d805e82] {\n  padding: 5px;\n  background: #1B75BC;\n  color: white !important;\n  border-radius: 15px;\n}\n.premises h2[data-v-6d805e82]{\n    padding-top: 20px;\n    font-family: Poppins;\n    font-style: normal;\n    font-weight: normal;\n    font-size: 18px;\n    line-height: 18px;\n    display: flex;\n    align-items: center;\n    text-align: center;\n    color: #333333;\n}\n.customer-review_wrap[data-v-6d805e82] {\n    display: inline-block;\n    width: 100%;\n    padding: 50px 30px;\n    height: 100%;\n}\n.review_wrap li li[data-v-6d805e82] {\n    margin-left: 135px;\n}\n.review_wrap>li:last-child .customer-review_wrap[data-v-6d805e82] {\n    border-bottom: none;\n}\n.thank-section[data-v-6d805e82]{\n    padding-top: 35px;\n    padding-bottom: 50px;\n}\n.thank-section[data-v-6d805e82]{\n    /* height: 181px; */\n    background: #1B75BC;\n}\n.thank-section h2[data-v-6d805e82]{\n    font-family: Poppins;\n    font-style: normal;\n    font-size: 30px;\n    line-height: 45px;\n    align-items: center;\n    text-align: center;\n    color: #FFFFFF;\n    padding-top: 50px;\n}\n.thank-section h6[data-v-6d805e82]{\n    font-family: Poppins;\n    font-style: normal;\n    font-weight: normal;\n    font-size: 18px;\n    line-height: 0px;\n    align-items: center;\n    text-align: center;\n    color: #FFFFFF;\n}\n.invoice-confirm button[data-v-6d805e82] {\n    width: 48%;\n    border: none;\n    background-color: #bbb;\n    height: 30px;\n    color: #fff;\n    border-radius: 5px;\n    height: 44px;\n    font-size: 26px;\n}\n.invoice-confirm button.yes[data-v-6d805e82] {\n    background-color: green;\n    font-size: 17px;\n}\n.invoice-confirm button.no[data-v-6d805e82] {\n    background-color: red;\n    font-size: 17px;\n}\n.invoice-confirm[data-v-6d805e82] {\n    background-color: #fff;\n    position: absolute;\n    bottom: 0;\n    right: 0;\n    width: 100%;\n    padding-top: 4px;\n}\n.invoice-price[data-v-6d805e82] {\n    background-color: #f1f1f1;\n    border-left: 5px solid #fff;\n    border-radius: 6px;\n}\n.invoice-price h2[data-v-6d805e82] {\n    font-size: 25px;\n    text-align: center;\n}\n.invoice-price h4[data-v-6d805e82] {\n    font-size: 15px;\n    text-align: center;\n}\n.invoice-details button.btn-2[data-v-6d805e82] {\n    width: -webkit-max-content;\n    width: -moz-max-content;\n    width: max-content;\n    padding: 5px 14px;\n    height: 40px;\n    background: transparent !important;\n    border-radius: 10px;\n    color: #656565 !important;\n    border: 2px solid rgb(211 211 211);\n    cursor: pointer;\n    transition: 0.3s;\n    margin-right: 10px;\n    border: 1px solid #1B75BC;\n    box-sizing: border-box;\n    border-radius: 6px;\n    font-size: 12px;\n}\n.invoice-details[data-v-6d805e82] {\n    background-color: #f1f1f1;\n    padding: 20px;\n    border-radius: 6px;\n}\n.add-device[data-v-6d805e82] {\n    float: right;\n    font-size: 17px;\n    font-weight: 500;\n    color: #1B75BC;\n}\nbutton.btn-2[data-v-6d805e82] {\n    width: 285px;\n    height: 49.56px;\n    left: 711.76px;\n    top: 409px;\n    background: #FFFFFF !important;\n    border-radius: 6px;\n    color: #656565 !important;\n    border: 1px solid rgb(243 243 243);\n    cursor: pointer;\n    transition: 0.3s;\n}\nbutton.btn-2[data-v-6d805e82]:hover {\n    border: 1px solid rgb(176, 176, 255);\n}\n.card-header[data-v-6d805e82] {\n    border: none;\n    border-radius: 10px;\n}\n.service-accordion a[data-v-6d805e82] {\n    color: rgb(119, 119, 119);\n}\n.service-accordion button.btn-2[data-v-6d805e82]  {\n    margin-right: 10px;\n    margin-bottom: 16px;\n    transition: 0.3s;\n}\n.service-accordion[data-v-6d805e82] {\n    margin: 16px 0;\n}\n.services textarea[data-v-6d805e82] {\n    width: 100%;\n    height: 100px;\n    padding: .75rem 1.25rem;\n    margin-bottom: 0;\n    background-color: rgba(0,0,0,.03);\n    border: none;\n    font-family: \"poppins\", sans-serif;\n    color: rgb(119, 119, 119);\n    font-size: 18px;\n}\n.services[data-v-6d805e82] {\n    padding: 0;\n}\n.pad-top-20[data-v-6d805e82] {\n    padding-top: 20px !important;\n}\n.btn.v3.ipad[data-v-6d805e82]{\n    width: 200.48px;\n    height: 49.56px;\n    left: 711.76px;\n    top: 409px;\n    \n    background: #F1F1F1 !important;\n    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n    border-radius: 6px;\n    color: #656565 !important;\n}\n.mar-right-5[data-v-6d805e82] {\n    margin-right: 5px !important;\n}\n.smartphone[data-v-6d805e82]{\n\n    width: 200px;\n    height: 49px;\n    left: 489px;\n    top: 409.35px;\n\n    background: #1B75BC;\n    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n    border-radius: 6px;\n}\n.nice-select.hero__form-input.custom-select span[data-v-6d805e82] {\n    color: #999;\n}\n.nice-select.filter-input ul li[data-v-6d805e82] {\n    font-size: 15px;\n}\n.nice-select[data-v-6d805e82] {\n    background-color: transparent;\n    border-bottom: 1px solid #ddd;\n    box-sizing: border-box;\n    clear: both;\n    cursor: pointer;\n    display: inline-block;\n    font-size: 15px;\n    line-height: 40px;\n    padding-left: 18px;\n    padding-right: 30px;\n    position: relative;\n    text-align: left !important;\n    -webkit-user-select: none;\n       -moz-user-select: none;\n        -ms-user-select: none;\n            user-select: none;\n}\n.nice-select[data-v-6d805e82]:after {\n    content: '\\F3D0';\n    font-family: \"Ionicons\";\n    display: block;\n    pointer-events: none;\n    position: absolute;\n    right: 5%;\n    top: 30%;\n    font-size: 16px;\n    color: #999;\n    transition: all 0.15s ease-in-out;\n}\n.nice-select.open[data-v-6d805e82]:after {\n    transform: rotate(-180deg);\n}\n.nice-select.open .list[data-v-6d805e82] {\n    opacity: 1;\n    pointer-events: auto;\n    transform: scale(1) translateY(0);\n    width: 100%;\n    height: 200px;\n    overflow-y: scroll;\n}\n.nice-select.disabled[data-v-6d805e82] {\n    border-color: #ededed;\n    color: #999;\n    pointer-events: none;\n}\n.nice-select.disabled[data-v-6d805e82]:after {\n    border-color: #cccccc;\n}\n.nice-select .list[data-v-6d805e82] {\n    background-color: #fff;\n    border-radius: 1px;\n    box-shadow: 0 0 0 1px rgba(68, 68, 68, 0.11);\n    box-sizing: border-box;\n    margin-top: 4px;\n    opacity: 0;\n    overflow: hidden;\n    padding: 0;\n    pointer-events: none;\n    position: absolute;\n    top: 100%;\n    left: 0;\n    transform-origin: 50% 0;\n    transform: scale(0.75) translateY(-21px);\n    transition: all 0.2s cubic-bezier(0.5, 0, 0, 1.25), opacity 0.15s ease-out;\n    z-index: 9;\n}\n.nice-select .list:hover .option[data-v-6d805e82]:not(:hover) {\n    background-color: transparent !important;\n}\n.nice-select .option[data-v-6d805e82] {\n    cursor: pointer;\n    font-weight: 400;\n    line-height: 40px;\n    list-style: none;\n    min-height: 40px;\n    outline: none;\n    padding-left: 18px;\n    padding-right: 29px;\n    text-align: left;\n    transition: all 0.2s;\n}\n.nice-select .option[data-v-6d805e82]:hover {\n    background-color: #2ac590;\n    color: #fff;\n}\n.nice-select .option.disabled[data-v-6d805e82] {\n    background-color: transparent;\n    color: #999;\n    cursor: default;\n}\n.filter-input[data-v-6d805e82] {\n\n    border: 1px solid #ddd;\n    margin-top: 0px;\n    border-radius: 3px;\n    width: 100%;\n    padding: 10px 20px;\n    height: 50px;\n}\n.filter-input[data-v-6d805e82]:last-child {\n    padding: 5px 20px;\n}\n.filter-input.nice-select[data-v-6d805e82]::after {\n    content: '\\F35F';\n    font-family: \"Ionicons\";\n    display: block;\n    margin-top: 5px;\n    pointer-events: none;\n    position: absolute;\n    right: 12px;\n    top: 5%;\n    font-size: 20px;\n    color: #999;\n    transition: all 0.15s ease-in-out;\n}\n.filter-input.nice-select[data-v-6d805e82] {\n\n    font-size: 15px;\n    font-weight: 400;\n}\n.card[data-v-6d805e82] {\n    border: none;\n}\n.card[data-v-6d805e82] {\n    z-index: 0;\n    border: none;\n    position: relative\n}\n.hero-area.v1[data-v-6d805e82] {\n    background-size: cover;\n    background-repeat: no-repeat;\n    height: auto;\n}\n.hero-area.v1 .hero__form.v2[data-v-6d805e82] {\n    border-radius: 0;\n    background: transparent;\n    padding: 0;\n}\n.hero-area.v1 .hero__form.v2 .hero__form-input[data-v-6d805e82] {\n    background: #fff;\n    margin-bottom: 20px;\n    height: 50px;\n    border-radius: 3px;\n    padding-left: 25px;\n}\n.hero-area.v1 .hero__form.v2 .hero__form-input[data-v-6d805e82]::before {\n    display: none;\n}\n.hero-area.v1 .hero-title.v2[data-v-6d805e82] {\n    color:#fff;\n    font-size: 4.375rem;\n    line-height: 4.2rem;\n    margin-bottom: 0;\n    margin-left: 0;\n}\n.modal-header-bg-color[data-v-6d805e82]{\n    background-color:#1B75BC;\n}\n.hero-area.v1 .hero-desc.v2[data-v-6d805e82] {\n\n    margin-bottom: 0;\n    font-size: 20px\n}\np[data-v-6d805e82] {\n    color: grey\n}\n#heading[data-v-6d805e82] {\n    text-transform: uppercase;\n    color: #673AB7;\n    font-weight: normal\n}\n#msform[data-v-6d805e82] {\n    text-align: center;\n    position: relative;\n    margin-top: 20px\n}\n#msform fieldset[data-v-6d805e82] {\n    background: white;\n    border: 0 none;\n    border-radius: 0.5rem;\n    box-sizing: border-box;\n    width: 100%;\n    margin: 0;\n    padding-bottom: 20px;\n    position: relative\n}\n.form-card[data-v-6d805e82] {\n    text-align: left\n}\n#msform fieldset[data-v-6d805e82]:not(:first-of-type) {\n    display: none\n}\n#msform input[data-v-6d805e82],\n#msform textarea[data-v-6d805e82] {\n    padding: 8px 15px 8px 15px;\n    border-radius: 0px;\n    /* margin-bottom: 25px; */\n    margin-top: 2px;\n    /* width: 100%; */\n    box-sizing: border-box;\n    font-family: montserrat;\n    color: #2C3E50;\n    background-color: #ECEFF1;\n    font-size: 16px;\n    letter-spacing: 1px;\n    border: 1px solid #D8D8D8;\n    box-sizing: border-box;\n    border-radius: 6px;\n}\n#msform input[data-v-6d805e82]:focus,\n#msform textarea[data-v-6d805e82]:focus {\n    box-shadow: none !important;\n    border: 1px solid #673AB7;\n    outline-width: 0\n}\n#msform .action-button[data-v-6d805e82] {\n    width: 100px;\n    background: #1B75BC;\n    font-weight: bold;\n    color: white;\n    border: 0 none;\n    border-radius: 5px;\n    cursor: pointer;\n    padding: 10px 5px;\n    margin: 10px 0px 10px 5px;\n    float: right;\n    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n}\n#msform .action-button[data-v-6d805e82]:hover,\n#msform .action-button[data-v-6d805e82]:focus {\n    background-color: #1B75BC\n}\n#msform .action-button-previous[data-v-6d805e82] {\n    width: 100px;\n    background: #616161;\n    font-weight: bold;\n    color: white;\n    border: 0 none;\n    border-radius: 5px;\n    cursor: pointer;\n    padding: 10px 5px;\n    margin: 10px 5px 10px 0px;\n    float: right;\n    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n}\n#msform .action-button-previous[data-v-6d805e82]:hover,\n#msform .action-button-previous[data-v-6d805e82]:focus {\n    background-color: #616161\n}\n.card[data-v-6d805e82] {\n    z-index: 0;\n    border: none;\n    position: relative\n}\n.fs-title[data-v-6d805e82] {\n    font-size: 17px;\n    color: #1B75BC;\n    margin-bottom: 15px;\n    font-weight: normal;\n    text-align: left\n}\n.purple-text[data-v-6d805e82] {\n    color: #673AB7;\n    font-weight: normal\n}\n.steps[data-v-6d805e82] {\n    font-size: 17px;\n    color: gray;\n    margin-bottom: 10px;\n    font-weight: normal;\n    text-align: right\n}\n.fieldlabels[data-v-6d805e82] {\n    color: gray;\n    text-align: left\n}\n#progressbar[data-v-6d805e82] {\n    margin-bottom: 30px;\n    overflow: hidden;\n    color: lightgrey\n}\n#progressbar .active[data-v-6d805e82] {\n    color: #1B75BC\n}\n#progressbar li[data-v-6d805e82] {\n    list-style-type: none;\n    font-size: 15px;\n    /* width: 25%; */\n    float: left;\n    position: relative;\n    font-weight: 400\n}\n#progressbar #account[data-v-6d805e82]:before {\n    font-family: FontAwesome;\n    content: \"\\F13E\"\n}\n#progressbar #personal[data-v-6d805e82]:before {\n    font-family: FontAwesome;\n    content: \"\\F007\"\n}\n#progressbar #payment[data-v-6d805e82]:before {\n    font-family: FontAwesome;\n    content: \"\\F030\"\n}\n#progressbar #confirm[data-v-6d805e82]:before {\n    font-family: FontAwesome;\n    content: \"\\F00C\"\n}\n#progressbar li[data-v-6d805e82]:before {\n    width: 50px;\n    height: 50px;\n    line-height: 45px;\n    display: block;\n    font-size: 20px;\n    color: #ffffff;\n    background: lightgray;\n    border-radius: 50%;\n    margin: 0px 0px 10px 0px;\n    padding: 2px\n}\n#progressbar li[data-v-6d805e82]:after {\n    content: '';\n    width: 100%;\n    height: 2px;\n    background: lightgray;\n    position: absolute;\n    left: 0;\n    top: 25px;\n    z-index: -1\n}\n#progressbar li.active[data-v-6d805e82]:before,\n#progressbar li.active[data-v-6d805e82]:after {\n    background: #1B75BC\n}\n.progress[data-v-6d805e82] {\n    height: 20px\n}\n.progress-bar[data-v-6d805e82] {\n    background-color: #1B75BC\n}\n.fit-image[data-v-6d805e82] {\n    width: 100%;\n    -o-object-fit: cover;\n       object-fit: cover\n}\n", ""]);
 
 // exports
 
@@ -64112,91 +64154,48 @@ var render = function() {
     _vm._v(" "),
     _c("div", { staticClass: "work-process  section-padding-how-works " }, [
       _c("div", { staticClass: "container" }, [
-        _c("div", { staticClass: "row" }, [
-          _vm._m(6),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-md-4" }, [
-            _c("a", { attrs: { href: "" } }, [
-              _c(
+        _c(
+          "div",
+          { staticClass: "row" },
+          [
+            _vm._m(6),
+            _vm._v(" "),
+            _vm._l(_vm.serviceTypes, function(serviceType) {
+              return _c(
                 "div",
-                { staticClass: "work-process-content v1 text-center" },
+                { key: serviceType.id, staticClass: "col-md-4" },
                 [
-                  _c("div", { staticClass: "process-icon v1" }, [
-                    _c("img", {
-                      attrs: { src: "frontend/images/others/1.png", alt: "..." }
-                    }),
-                    _vm._v(" "),
-                    _c("span")
-                  ]),
-                  _vm._v(" "),
-                  _c("h4", { staticClass: "title" }, [
-                    _vm._v(" Pick & Drop Service")
-                  ]),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "info" }, [
-                    _vm._v(
-                      "\n                            Affordable Smartphone and Laptop Pick & Drop Repair Service\n                        "
+                  _c("a", { attrs: { href: "" } }, [
+                    _c(
+                      "div",
+                      { staticClass: "work-process-content v1 text-center" },
+                      [
+                        _c("div", { staticClass: "process-icon v1" }, [
+                          _c("div", {
+                            domProps: {
+                              innerHTML: _vm._s(serviceType.serviceImage)
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("span")
+                        ]),
+                        _vm._v(" "),
+                        _c("h4", { staticClass: "title" }, [
+                          _vm._v(_vm._s(serviceType.name))
+                        ]),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "info" }, [
+                          _vm._v(_vm._s(serviceType.description))
+                        ])
+                      ]
                     )
                   ])
                 ]
               )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-md-4" }, [
-            _c("a", { attrs: { href: "" } }, [
-              _c(
-                "div",
-                { staticClass: "work-process-content v1 text-center" },
-                [
-                  _c("div", { staticClass: "process-icon v1" }, [
-                    _c("img", {
-                      attrs: { src: "frontend/images/others/2.png", alt: "..." }
-                    }),
-                    _vm._v(" "),
-                    _c("span")
-                  ]),
-                  _vm._v(" "),
-                  _c("h4", { staticClass: "title" }, [_vm._v("Home Service")]),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "info" }, [
-                    _vm._v(
-                      "\n                           We have expert and reliable technician team for home service\n                        "
-                    )
-                  ])
-                ]
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-md-4" }, [
-            _c("a", { attrs: { href: "" } }, [
-              _c(
-                "div",
-                { staticClass: "work-process-content v1 text-center" },
-                [
-                  _c("div", { staticClass: "process-icon v1" }, [
-                    _c("img", {
-                      attrs: { src: "frontend/images/others/3.png", alt: "..." }
-                    }),
-                    _vm._v(" "),
-                    _c("span")
-                  ]),
-                  _vm._v(" "),
-                  _c("h4", { staticClass: "title" }, [
-                    _vm._v("Stand by Service")
-                  ]),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "info" }, [
-                    _vm._v(
-                      "\n                           You are always welcome to our premises to get your service\n                        "
-                    )
-                  ])
-                ]
-              )
-            ])
-          ])
-        ])
+            })
+          ],
+          2
+        )
       ])
     ]),
     _vm._v(" "),
@@ -65893,234 +65892,335 @@ var render = function() {
               _vm._v(" "),
               _c("fieldset", [
                 _c("div", { staticClass: "form-card" }, [
-                  _c("div", { staticClass: "row" }, [
-                    _vm._m(2),
-                    _vm._v(" "),
-                    _vm._m(3),
-                    _vm._v(" "),
-                    _vm._m(4),
-                    _vm._v(" "),
-                    _vm._m(5),
-                    _vm._v(" "),
-                    _vm._m(6),
-                    _vm._v(" "),
-                    _vm._m(7),
-                    _vm._v(" "),
-                    _vm._m(8),
-                    _vm._v(" "),
-                    _vm._m(9),
-                    _vm._v(" "),
-                    _vm._m(10),
-                    _vm._v(" "),
-                    _vm._m(11),
-                    _vm._v(" "),
-                    _vm._m(12),
-                    _vm._v(" "),
-                    _vm._m(13),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-12 services" }, [
-                      _c("div", { staticClass: "service-accordion" }, [
-                        _c("h6", [_vm._v("Select Problem Type")]),
+                  _c(
+                    "div",
+                    { staticClass: "row" },
+                    [
+                      _vm._m(2),
+                      _vm._v(" "),
+                      _vm._m(3),
+                      _vm._v(" "),
+                      _vm._m(4),
+                      _vm._v(" "),
+                      _vm._m(5),
+                      _vm._v(" "),
+                      _vm._l(_vm.devices, function(device) {
+                        return _c(
+                          "div",
+                          { key: device.id, staticClass: "col-4 pad-top-20" },
+                          [
+                            _c(
+                              "button",
+                              {
+                                staticClass:
+                                  "btn v3  mar-right-5 smartphone filter-input",
+                                attrs: { type: "button" }
+                              },
+                              [_vm._v(" " + _vm._s(device.device_name))]
+                            )
+                          ]
+                        )
+                      }),
+                      _vm._v(" "),
+                      _vm._m(6),
+                      _vm._v(" "),
+                      _vm._m(7),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-12 services" }, [
+                        _c("div", { staticClass: "service-accordion" }, [
+                          _c("h6", [_vm._v("Select Problem Type")]),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass: "accordion",
+                              attrs: { role: "tablist" }
+                            },
+                            [
+                              _c("div", { staticClass: "card" }, [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass: "card-header",
+                                    attrs: {
+                                      role: "tab",
+                                      id: "headingDisplay"
+                                    },
+                                    on: { click: _vm.toggleDisplay }
+                                  },
+                                  [
+                                    _c("h5", { staticClass: "mb-0" }, [
+                                      _c(
+                                        "a",
+                                        {
+                                          staticClass:
+                                            "nice-select filter-input",
+                                          style: {
+                                            border: "none",
+                                            height: "40px"
+                                          },
+                                          attrs: {
+                                            "data-toggle": "collapse",
+                                            href: "#collapseDisplay",
+                                            "aria-expanded": "true",
+                                            "aria-controls": "collapseDisplay"
+                                          }
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                                                                    Display \n                                                                "
+                                          )
+                                        ]
+                                      )
+                                    ])
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "show",
+                                        rawName: "v-show",
+                                        value: _vm.showDisplay,
+                                        expression: "showDisplay"
+                                      }
+                                    ],
+                                    staticClass: "collapse show",
+                                    attrs: {
+                                      id: "collapseDisplay",
+                                      role: "tabpanel",
+                                      "aria-labelledby": "headingDisplay"
+                                    }
+                                  },
+                                  [_vm._m(8)]
+                                )
+                              ])
+                            ]
+                          )
+                        ]),
                         _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "accordion",
-                            attrs: { role: "tablist" }
-                          },
-                          [
-                            _c("div", { staticClass: "card" }, [
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "card-header",
-                                  attrs: { role: "tab", id: "headingDisplay" }
-                                },
-                                [
-                                  _c("h5", { staticClass: "mb-0" }, [
-                                    _c(
-                                      "a",
-                                      {
-                                        staticClass: "nice-select filter-input",
-                                        style: {
-                                          border: "none",
-                                          height: "40px"
+                        _c("div", { staticClass: "service-accordion" }, [
+                          _c(
+                            "div",
+                            {
+                              staticClass: "accordion",
+                              attrs: { role: "tablist" }
+                            },
+                            [
+                              _c("div", { staticClass: "card" }, [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass: "card-header",
+                                    attrs: {
+                                      role: "tab",
+                                      id: "headingHardware"
+                                    },
+                                    on: { click: _vm.toggleHardware }
+                                  },
+                                  [
+                                    _c("h5", { staticClass: "mb-0" }, [
+                                      _c(
+                                        "a",
+                                        {
+                                          staticClass:
+                                            "collapsed nice-select filter-input",
+                                          style: {
+                                            border: "none",
+                                            height: "40px"
+                                          },
+                                          attrs: {
+                                            "data-toggle": "collapse",
+                                            href: "#collapseHardware",
+                                            "aria-expanded": "flase",
+                                            "aria-controls": "collapseHardware"
+                                          }
                                         },
-                                        attrs: {
-                                          "data-toggle": "collapse",
-                                          href: "#collapseDisplay",
-                                          "aria-expanded": "true",
-                                          "aria-controls": "collapseDisplay"
-                                        }
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n                                                                    Display \n                                                                "
-                                        )
-                                      ]
-                                    )
-                                  ])
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _vm._m(14)
-                            ])
-                          ]
-                        )
+                                        [
+                                          _vm._v(
+                                            "\n                                                                    Hardware\n                                                                "
+                                          )
+                                        ]
+                                      )
+                                    ])
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "show",
+                                        rawName: "v-show",
+                                        value: _vm.showHardware,
+                                        expression: "showHardware"
+                                      }
+                                    ],
+                                    staticClass: "collapse show",
+                                    attrs: {
+                                      id: "collapseHardware",
+                                      role: "tabpanel",
+                                      "aria-labelledby": "headingHardware"
+                                    }
+                                  },
+                                  [_vm._m(9)]
+                                )
+                              ])
+                            ]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "service-accordion" }, [
+                          _c(
+                            "div",
+                            {
+                              staticClass: "accordion",
+                              attrs: { role: "tablist" }
+                            },
+                            [
+                              _c("div", { staticClass: "card" }, [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass: "card-header",
+                                    attrs: { role: "tab", id: "headingCamera" },
+                                    on: { click: _vm.toggleCamera }
+                                  },
+                                  [
+                                    _c("h5", { staticClass: "mb-0" }, [
+                                      _c(
+                                        "a",
+                                        {
+                                          staticClass:
+                                            "collapsed nice-select filter-input",
+                                          style: {
+                                            border: "none",
+                                            height: "40px"
+                                          },
+                                          attrs: {
+                                            "data-toggle": "collapse",
+                                            href: "#collapseCamera",
+                                            "aria-expanded": "false",
+                                            "aria-controls": "collapseCamera"
+                                          }
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                                                                    Camera & Others\n                                                                "
+                                          )
+                                        ]
+                                      )
+                                    ])
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "show",
+                                        rawName: "v-show",
+                                        value: _vm.showCamera,
+                                        expression: "showCamera"
+                                      }
+                                    ],
+                                    staticClass: "collapse show",
+                                    attrs: {
+                                      cid: "collapseCamera",
+                                      role: "tabpanel",
+                                      "aria-labelledby": "headingCamera"
+                                    }
+                                  },
+                                  [_vm._m(10)]
+                                )
+                              ])
+                            ]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "service-accordion" }, [
+                          _c(
+                            "div",
+                            {
+                              staticClass: "accordion",
+                              attrs: { role: "tablist" }
+                            },
+                            [
+                              _c("div", { staticClass: "card" }, [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass: "card-header",
+                                    attrs: {
+                                      role: "tab",
+                                      id: "headingBattery"
+                                    },
+                                    on: { click: _vm.toggle }
+                                  },
+                                  [
+                                    _c("h5", { staticClass: "mb-0" }, [
+                                      _c(
+                                        "a",
+                                        {
+                                          staticClass:
+                                            "collapsed nice-select filter-input",
+                                          style: {
+                                            border: "none",
+                                            height: "40px"
+                                          },
+                                          attrs: {
+                                            "data-toggle": "collapse",
+                                            href: "#collapseBattery",
+                                            "aria-expanded": "false",
+                                            "aria-controls": "collapseBattery"
+                                          }
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                                                                    Battery\n                                                                "
+                                          )
+                                        ]
+                                      )
+                                    ])
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "show",
+                                        rawName: "v-show",
+                                        value: _vm.showSection,
+                                        expression: "showSection"
+                                      }
+                                    ],
+                                    staticClass: "collapse show",
+                                    attrs: {
+                                      id: "collapseBattery",
+                                      role: "tabpanel",
+                                      "aria-labelledby": "headingBattery"
+                                    }
+                                  },
+                                  [_vm._m(11)]
+                                )
+                              ])
+                            ]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("textarea", { attrs: { placeholder: "Note" } })
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "service-accordion" }, [
-                        _c(
-                          "div",
-                          {
-                            staticClass: "accordion",
-                            attrs: { role: "tablist" }
-                          },
-                          [
-                            _c("div", { staticClass: "card" }, [
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "card-header",
-                                  attrs: { role: "tab", id: "headingHardware" }
-                                },
-                                [
-                                  _c("h5", { staticClass: "mb-0" }, [
-                                    _c(
-                                      "a",
-                                      {
-                                        staticClass:
-                                          "collapsed nice-select filter-input",
-                                        style: {
-                                          border: "none",
-                                          height: "40px"
-                                        },
-                                        attrs: {
-                                          "data-toggle": "collapse",
-                                          href: "#collapseHardware",
-                                          "aria-expanded": "flase",
-                                          "aria-controls": "collapseHardware"
-                                        }
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n                                                                    Hardware\n                                                                "
-                                        )
-                                      ]
-                                    )
-                                  ])
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _vm._m(15)
-                            ])
-                          ]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "service-accordion" }, [
-                        _c(
-                          "div",
-                          {
-                            staticClass: "accordion",
-                            attrs: { role: "tablist" }
-                          },
-                          [
-                            _c("div", { staticClass: "card" }, [
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "card-header",
-                                  attrs: { role: "tab", id: "headingCamera" }
-                                },
-                                [
-                                  _c("h5", { staticClass: "mb-0" }, [
-                                    _c(
-                                      "a",
-                                      {
-                                        staticClass:
-                                          "collapsed nice-select filter-input",
-                                        style: {
-                                          border: "none",
-                                          height: "40px"
-                                        },
-                                        attrs: {
-                                          "data-toggle": "collapse",
-                                          href: "#collapseCamera",
-                                          "aria-expanded": "false",
-                                          "aria-controls": "collapseCamera"
-                                        }
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n                                                                    Camera & Others\n                                                                "
-                                        )
-                                      ]
-                                    )
-                                  ])
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _vm._m(16)
-                            ])
-                          ]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "service-accordion" }, [
-                        _c(
-                          "div",
-                          {
-                            staticClass: "accordion",
-                            attrs: { role: "tablist" }
-                          },
-                          [
-                            _c("div", { staticClass: "card" }, [
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "card-header",
-                                  attrs: { role: "tab", id: "headingBattery" }
-                                },
-                                [
-                                  _c("h5", { staticClass: "mb-0" }, [
-                                    _c(
-                                      "a",
-                                      {
-                                        staticClass:
-                                          "collapsed nice-select filter-input",
-                                        style: {
-                                          border: "none",
-                                          height: "40px"
-                                        },
-                                        attrs: {
-                                          "data-toggle": "collapse",
-                                          href: "#collapseBattery",
-                                          "aria-expanded": "false",
-                                          "aria-controls": "collapseBattery"
-                                        }
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n                                                                    Battery\n                                                                "
-                                        )
-                                      ]
-                                    )
-                                  ])
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _vm._m(17)
-                            ])
-                          ]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("textarea", { attrs: { placeholder: "Note" } })
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(18)
-                  ])
+                      _vm._m(12)
+                    ],
+                    2
+                  )
                 ]),
                 _vm._v(" "),
                 _c("input", {
@@ -66129,14 +66229,14 @@ var render = function() {
                 })
               ]),
               _vm._v(" "),
-              _vm._m(19),
+              _vm._m(13),
               _vm._v(" "),
               _c("fieldset", [
                 _c("div", { staticClass: "form-card" }, [
                   _c("div", { staticClass: "row" }, [
-                    _vm._m(20),
+                    _vm._m(14),
                     _vm._v(" "),
-                    _vm._m(21),
+                    _vm._m(15),
                     _vm._v(" "),
                     _c("div", { staticClass: "col-9 invoice-details" }, [
                       _c("h6", [_vm._v("Device Queries")]),
@@ -66233,7 +66333,7 @@ var render = function() {
                       )
                     ]),
                     _vm._v(" "),
-                    _vm._m(22)
+                    _vm._m(16)
                   ]),
                   _vm._v(" "),
                   _vm.show
@@ -66261,11 +66361,11 @@ var render = function() {
                             )
                           ]),
                           _vm._v(" "),
-                          _vm._m(23),
+                          _vm._m(17),
                           _vm._v(" "),
-                          _vm._m(24),
+                          _vm._m(18),
                           _vm._v(" "),
-                          _vm._m(25)
+                          _vm._m(19)
                         ]
                       )
                     : _vm._e(),
@@ -66278,21 +66378,21 @@ var render = function() {
                           attrs: { id: "welcomePremises" }
                         },
                         [
+                          _vm._m(20),
+                          _vm._v(" "),
+                          _vm._m(21),
+                          _vm._v(" "),
+                          _vm._m(22),
+                          _vm._v(" "),
+                          _vm._m(23),
+                          _vm._v(" "),
+                          _vm._m(24),
+                          _vm._v(" "),
+                          _vm._m(25),
+                          _vm._v(" "),
                           _vm._m(26),
                           _vm._v(" "),
-                          _vm._m(27),
-                          _vm._v(" "),
-                          _vm._m(28),
-                          _vm._v(" "),
-                          _vm._m(29),
-                          _vm._v(" "),
-                          _vm._m(30),
-                          _vm._v(" "),
-                          _vm._m(31),
-                          _vm._v(" "),
-                          _vm._m(32),
-                          _vm._v(" "),
-                          _vm._m(33)
+                          _vm._m(27)
                         ]
                       )
                     : _vm._e()
@@ -66309,7 +66409,7 @@ var render = function() {
                 })
               ]),
               _vm._v(" "),
-              _vm._m(34)
+              _vm._m(28)
             ])
           ])
         ]),
@@ -66327,9 +66427,9 @@ var render = function() {
                   _c("h3", [_vm._v("Service Overview")]),
                   _vm._v(" "),
                   _c("div", { staticClass: "row" }, [
-                    _vm._m(35),
+                    _vm._m(29),
                     _vm._v(" "),
-                    _vm._m(36),
+                    _vm._m(30),
                     _vm._v(" "),
                     _c("div", { staticClass: "col-md-12 mar-bot-15" }, [
                       _c("span", { style: { "font-size": "30px" } }, [
@@ -66433,84 +66533,6 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-4 pad-top-20" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn v3  mar-right-5 smartphone filter-input",
-          attrs: { type: "button" }
-        },
-        [_vm._v(" Smartphone")]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-4 pad-top-20" }, [
-      _c(
-        "button",
-        { staticClass: "btn v3 ipad filter-input", attrs: { type: "button" } },
-        [_vm._v(" iPad")]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-4 pad-top-20" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn v3  mar-right-5 ipad filter-input",
-          attrs: { type: "button" }
-        },
-        [_vm._v(" Tablet")]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-4 pad-top-20" }, [
-      _c(
-        "button",
-        { staticClass: "btn v3  mar-right-5 ipad", attrs: { type: "button" } },
-        [_vm._v(" Laptop")]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-4 pad-top-20" }, [
-      _c(
-        "button",
-        { staticClass: "btn v3  mar-right-5 ipad", attrs: { type: "button" } },
-        [_vm._v(" Mac")]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-4 pad-top-20" }, [
-      _c(
-        "button",
-        { staticClass: "btn v3  mar-right-5 ipad", attrs: { type: "button" } },
-        [_vm._v(" Others")]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-6 pad-top-20" }, [
       _c("div", { staticClass: "device-brand" }, [
         _c("h6", [_vm._v("Select Device Brand")]),
@@ -66563,141 +66585,89 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "collapse show",
-        attrs: {
-          id: "collapseDisplay",
-          role: "tabpanel",
-          "aria-labelledby": "headingDisplay"
-        }
-      },
-      [
-        _c("div", { staticClass: "card-body" }, [
-          _c("button", { staticClass: "btn-2", attrs: { type: "button" } }, [
-            _vm._v("Display Broken")
-          ]),
-          _vm._v(" "),
-          _c("button", { staticClass: "btn-2", attrs: { type: "button" } }, [
-            _vm._v("Touch Broken")
-          ]),
-          _vm._v(" "),
-          _c("button", { staticClass: "btn-2", attrs: { type: "button" } }, [
-            _vm._v("Glass Broken")
-          ]),
-          _vm._v(" "),
-          _c("button", { staticClass: "btn-2", attrs: { type: "button" } }, [
-            _vm._v("Glass Broken")
-          ])
-        ])
-      ]
-    )
+    return _c("div", { staticClass: "card-body" }, [
+      _c("button", { staticClass: "btn-2", attrs: { type: "button" } }, [
+        _vm._v("Display Broken")
+      ]),
+      _vm._v(" "),
+      _c("button", { staticClass: "btn-2", attrs: { type: "button" } }, [
+        _vm._v("Touch Broken")
+      ]),
+      _vm._v(" "),
+      _c("button", { staticClass: "btn-2", attrs: { type: "button" } }, [
+        _vm._v("Glass Broken")
+      ]),
+      _vm._v(" "),
+      _c("button", { staticClass: "btn-2", attrs: { type: "button" } }, [
+        _vm._v("Glass Broken")
+      ])
+    ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "collapse show",
-        attrs: {
-          id: "collapseHardware",
-          role: "tabpanel",
-          "aria-labelledby": "headingHardware"
-        }
-      },
-      [
-        _c("div", { staticClass: "card-body" }, [
-          _c("button", { staticClass: "btn-2", attrs: { type: "button" } }, [
-            _vm._v("Display Broken")
-          ]),
-          _vm._v(" "),
-          _c("button", { staticClass: "btn-2", attrs: { type: "button" } }, [
-            _vm._v("Touch Broken")
-          ]),
-          _vm._v(" "),
-          _c("button", { staticClass: "btn-2", attrs: { type: "button" } }, [
-            _vm._v("Glass Broken")
-          ]),
-          _vm._v(" "),
-          _c("button", { staticClass: "btn-2", attrs: { type: "button" } }, [
-            _vm._v("Glass Broken")
-          ])
-        ])
-      ]
-    )
+    return _c("div", { staticClass: "card-body" }, [
+      _c("button", { staticClass: "btn-2", attrs: { type: "button" } }, [
+        _vm._v("Display Broken")
+      ]),
+      _vm._v(" "),
+      _c("button", { staticClass: "btn-2", attrs: { type: "button" } }, [
+        _vm._v("Touch Broken")
+      ]),
+      _vm._v(" "),
+      _c("button", { staticClass: "btn-2", attrs: { type: "button" } }, [
+        _vm._v("Glass Broken")
+      ]),
+      _vm._v(" "),
+      _c("button", { staticClass: "btn-2", attrs: { type: "button" } }, [
+        _vm._v("Glass Broken")
+      ])
+    ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "collapse show",
-        attrs: {
-          cid: "collapseCamera",
-          role: "tabpanel",
-          "aria-labelledby": "headingCamera"
-        }
-      },
-      [
-        _c("div", { staticClass: "card-body" }, [
-          _c("button", { staticClass: "btn-2", attrs: { type: "button" } }, [
-            _vm._v("Display Broken")
-          ]),
-          _vm._v(" "),
-          _c("button", { staticClass: "btn-2", attrs: { type: "button" } }, [
-            _vm._v("Touch Broken")
-          ]),
-          _vm._v(" "),
-          _c("button", { staticClass: "btn-2", attrs: { type: "button" } }, [
-            _vm._v("Glass Broken")
-          ]),
-          _vm._v(" "),
-          _c("button", { staticClass: "btn-2", attrs: { type: "button" } }, [
-            _vm._v("Glass Broken")
-          ])
-        ])
-      ]
-    )
+    return _c("div", { staticClass: "card-body" }, [
+      _c("button", { staticClass: "btn-2", attrs: { type: "button" } }, [
+        _vm._v("Display Broken")
+      ]),
+      _vm._v(" "),
+      _c("button", { staticClass: "btn-2", attrs: { type: "button" } }, [
+        _vm._v("Touch Broken")
+      ]),
+      _vm._v(" "),
+      _c("button", { staticClass: "btn-2", attrs: { type: "button" } }, [
+        _vm._v("Glass Broken")
+      ]),
+      _vm._v(" "),
+      _c("button", { staticClass: "btn-2", attrs: { type: "button" } }, [
+        _vm._v("Glass Broken")
+      ])
+    ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "collapse show",
-        attrs: {
-          id: "collapseBattery",
-          role: "tabpanel",
-          "aria-labelledby": "headingBattery"
-        }
-      },
-      [
-        _c("div", { staticClass: "card-body" }, [
-          _c("button", { staticClass: "btn-2", attrs: { type: "button" } }, [
-            _vm._v("Display Broken")
-          ]),
-          _vm._v(" "),
-          _c("button", { staticClass: "btn-2", attrs: { type: "button" } }, [
-            _vm._v("Touch Broken")
-          ]),
-          _vm._v(" "),
-          _c("button", { staticClass: "btn-2", attrs: { type: "button" } }, [
-            _vm._v("Glass Broken")
-          ]),
-          _vm._v(" "),
-          _c("button", { staticClass: "btn-2", attrs: { type: "button" } }, [
-            _vm._v("Glass Broken")
-          ])
-        ])
-      ]
-    )
+    return _c("div", { staticClass: "card-body" }, [
+      _c("button", { staticClass: "btn-2", attrs: { type: "button" } }, [
+        _vm._v("Display Broken")
+      ]),
+      _vm._v(" "),
+      _c("button", { staticClass: "btn-2", attrs: { type: "button" } }, [
+        _vm._v("Touch Broken")
+      ]),
+      _vm._v(" "),
+      _c("button", { staticClass: "btn-2", attrs: { type: "button" } }, [
+        _vm._v("Glass Broken")
+      ]),
+      _vm._v(" "),
+      _c("button", { staticClass: "btn-2", attrs: { type: "button" } }, [
+        _vm._v("Glass Broken")
+      ])
+    ])
   },
   function() {
     var _vm = this
@@ -84453,11 +84423,13 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       url: window.location.origin,
-      blogImage: ''
+      blogImage: '',
+      serviceImage: ''
     };
   },
   created: function created() {
     this.blogImage = this.url + '/images/blog/';
+    this.serviceImage = this.url + '/images/service-type/';
   }
 });
 

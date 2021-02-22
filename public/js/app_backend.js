@@ -76556,7 +76556,7 @@ var render = function() {
                             }
                           ],
                           staticClass: "form-control",
-                          attrs: { name: "description", cols: "4", rows: "4" },
+                          attrs: { name: "description", cols: "2", rows: "2" },
                           domProps: { value: _vm.inputData.description },
                           on: {
                             input: function($event) {

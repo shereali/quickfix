@@ -19,8 +19,7 @@ class CreateZonesTable extends Migration
             $table->foreign('division_id')->references('id')->on('divisions');
             $table->unsignedBigInteger('district_id')->nullable()->comment('FK: district_id.id');
             $table->foreign('district_id')->references('id')->on('districts');
-            $table->unsignedBigInteger('service_type_id')->nullable()->comment('FK: service_type_id.id');
-            $table->foreign('service_type_id')->references('id')->on('service_types');
+            $table->bigInteger('service_type_id')->nullable()->comment('FK: service_type_id.id');
             $table->string('charge')->nullable();
             $table->string('zone_name')->nullable();
             $table->text('description')->nullable();

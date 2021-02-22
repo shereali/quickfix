@@ -296,21 +296,20 @@
                     <div class="col-md-8 offset-md-2 text-center">
                         <h2 class="section-title v1">Service Type</h2>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4" v-for="serviceType in serviceTypes" :key="serviceType.id">
                         <a href="">
-                        <div class="work-process-content v1 text-center">
-                            <div class="process-icon v1">
-                                <img :src="'frontend/images/others/1.png'" alt="...">
-                                <span></span>
+                            <div class="work-process-content v1 text-center">
+                                <div class="process-icon v1">
+                                    <!-- <img :src="'frontend/images/others/1.png'" alt="..."> -->
+                                    <div v-html="serviceType.serviceImage"></div>
+                                    <span></span>
+                                </div>
+                                <h4 class="title">{{ serviceType.name }}</h4>
+                                <p class="info">{{serviceType.description}}</p>
                             </div>
-                            <h4 class="title"> Pick & Drop Service</h4>
-                            <p class="info">
-                                Affordable Smartphone and Laptop Pick & Drop Repair Service
-                            </p>
-                        </div>
-                    </a>
+                        </a>
                     </div>
-                    <div class="col-md-4">
+                    <!-- <div class="col-md-4">
                         <a href="">
                         <div class="work-process-content v1 text-center">
                             <div class="process-icon v1">
@@ -325,8 +324,8 @@
                             </p>
                         </div>
                     </a>
-                    </div>
-                    <div class="col-md-4">
+                    </div> -->
+                    <!-- <div class="col-md-4">
                         <a href="">
                         <div class="work-process-content v1 text-center">
                             <div class="process-icon v1">
@@ -340,7 +339,7 @@
                             </p>
                         </div>
                     </a>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -854,6 +853,7 @@
                 devices : [],
                 service_process: [],
                 blogs: [],
+                serviceTypes: []
                 
             }
         },
@@ -864,22 +864,21 @@
                 .then(res => {
                     console.log('device',res.data);
                     this.devices = res.data.data
-                    console.log('.....',this.devices);
-
                 })
                 axios.get(this.url+'/api/frontend-service-process')
                 .then(res => {
                     console.log('service process',res.data);
                     this.service_process = res.data.data
-                    console.log('.....',this.devices);
-
+                })
+                axios.get(this.url+'/api/frontend-service-type')
+                .then(res => {
+                    console.log('serviceTypes',res.data);
+                    this.serviceTypes = res.data.data
                 })
                 axios.get(this.url+'/api/frontend-blog')
                 .then(res => {
                     console.log('blog',res.data);
                     this.blogs = res.data.data
-                    console.log('.....',this.devices);
-
                 })
            
         },

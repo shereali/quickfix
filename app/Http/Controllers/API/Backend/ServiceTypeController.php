@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\Backend\ServiceTypeResource;
 use App\Models\Backend\ServiceType;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class ServiceTypeController extends Controller
 {
@@ -96,8 +97,13 @@ class ServiceTypeController extends Controller
      */
     public function destroy($id)
     {
-        $delete = ServiceType::find($id)->delete();
-        if($delete){
+        $serviceType = ServiceType::findOrFail($id);
+        $imagePath = public_path("images/service-type/".$serviceType->image);
+        if(file_exists($imagePath)){
+            File::delete($imagePath);
+        }
+        $serviceType->delete();
+        if($serviceType){
             return response()->json([
                 'status'  => 'danger',
                 'message' => 'ServiceType has been deleted!',
@@ -105,4 +111,5 @@ class ServiceTypeController extends Controller
             ]);   
         }
     }
+    
 }
