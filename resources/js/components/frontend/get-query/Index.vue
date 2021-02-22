@@ -421,12 +421,105 @@
 </template>
 <style scoped>
       /* query page */
-      
+      ul {list-style-type: none;}
+body {font-family: Verdana, sans-serif;}
+
+/* Month header */
+.month {
+    width: 100%;
+    background: #C4C4C4;
+    border-radius: 6px;
+    text-align: center;
+    height: 49px;
+}
+
+/* Month list */
+.month ul {
+  margin: 0;
+  padding: 0;
+}
+
+.month ul li {
+  color: white;
+  font-size: 18px;
+  text-transform: uppercase;
+  padding: 10px
+}
+
+/* Previous button inside month header */
+.month .prev {
+  float: left;
+  padding-top: 10px;
+}
+
+/* Next button */
+.month .next {
+  float: right;
+  padding-top: 10px;
+}
+
+/* Weekdays (Mon-Sun) */
+.weekdays {
+  margin: 0;
+  padding: 10px 0;
+ 
+}
+
+.weekdays li {
+  display: inline-block;
+  width: 13.6%;
+  color: #666;
+  text-align: center;
+}
+
+/* Days (1-31) */
+.days {
+  padding: 10px 0;
+  margin: 0;
+}
+
+.days li {
+  list-style-type: none;
+  display: inline-block;
+  width: 13.6%;
+  text-align: center;
+  margin-bottom: 5px;
+  font-size:12px;
+  color: #777;
+}
+
+/* Highlight the "current" day */
+.days li .active {
+  padding: 5px;
+  background: #1B75BC;
+  color: white !important;
+  border-radius: 15px;
+}
+      .premises h2{
+    padding-top: 20px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 18px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #333333;
+}
 .customer-review_wrap {
     display: inline-block;
     width: 100%;
     padding: 50px 30px;
     height: 100%;
+}
+
+.review_wrap li li {
+    margin-left: 135px;
+}
+
+.review_wrap>li:last-child .customer-review_wrap {
+    border-bottom: none;
 }
       .thank-section{
     padding-top: 35px;
@@ -1114,10 +1207,12 @@ export default {
         methods:{
              showDiv: function (event){
 
-                    this.show = true
+                    this.show     = true
+                    this.premises = false
              },
          showPremises: function (event) {
               this.premises = true
+              this.show     = false
         }
 
         }
