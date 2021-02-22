@@ -12,8 +12,8 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="">Select Day</label>
+                                        <v-select multiple :options="days" :reduce="day => day.sl_no" label="name" v-model="inputData.schedule_day"  placeholder="Select Day"></v-select>
                                         <input type="hidden" name="schedule_day" v-model="inputData.schedule_day">
-                                        <v-select multiple :options="days" :reduce="day => day.id" label="name" v-model="inputData.schedule_day"  placeholder="Select Day"></v-select>
                                     </div>
                                     <div class="form-group">
                                         <label for="">Start Time</label>
@@ -106,7 +106,23 @@ created(){
         console.log(res.data.days);
         this.days = res.data.days
         this.scheduleCreates = res.data.scheduleCreates
+        if(this.isEdit){
+            console.log('jkdhfsdjkhf',res.data);
+        }
     })
+
+    setTimeout(()=>{
+
+        
+        this.inputData.sl_no.forEach(item => {
+            
+            console.log('this.inputData.sl_no', item.name);
+
+        })
+          
+       
+
+    }, 3000)
 
 },
  methods:{

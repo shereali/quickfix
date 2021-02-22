@@ -49,7 +49,7 @@ class PremisesScheduleController extends Controller
      */
     public function store(Request $request)
     {
-        DB::beginTransaction();
+      
         $userId = Auth::user()->id;
         $validated = $request->validate([
             'start_time' => 'required'
@@ -61,7 +61,7 @@ class PremisesScheduleController extends Controller
         $startTime                                = $request->start_time;
         $endTime                                  = $request->end_time;
         $duration                                 = $request->schedule_duration;
-        $schedule_create                          = $request->schedule_create_id;
+        $schedule_create                          = 2;
 
          
          
@@ -70,21 +70,18 @@ class PremisesScheduleController extends Controller
         for($i=0; $i< count($newVale); $i++){
             $days[] = (int)$newVale[$i];
         }
-
         
-            $ScheduleStore = PremisesScheduleMaster::create([
-                'schedule_day'       => json_encode($days),
-                'start_time'         => $startTime,
-                'end_time'           => $endTime,
-                'schedule_create_id' => $schedule_create,
-                'schedule_duration'  => $duration,
-                'repeat_status'      => 1,
-                'repeat_schedule'    => $schedule_create,
-                'status'             => $request->status,
-                'created_by'         => $userId,
-            ]); 
-
-            
+        $ScheduleStore = PremisesScheduleMaster::create([
+            'schedule_day'       => json_encode($days),
+            'start_time'         => $startTime,
+            'end_time'           => $endTime,
+            'schedule_create_id' => $schedule_create,
+            'schedule_duration'  => $duration,
+            'repeat_status'      => 1,
+            'repeat_schedule'    => 1,
+            'status'             => $request->status,
+            'created_by'         => $userId,
+        ]);  
             
         foreach ($days as $key => $daySlot) {
             $totalSchedules = Helper::allScheduleTimes($startTime, $endTime, $duration);
@@ -92,8 +89,6 @@ class PremisesScheduleController extends Controller
             $createScheduleDates = array();
 
             if ($ScheduleStore) {
-               
-
                 $day = $daySlot;
                 for ($i=0; $i < $schedule_create; $i++) {
                     $sTime = $startTime;
@@ -101,13 +96,13 @@ class PremisesScheduleController extends Controller
                     $date = Helper::dayWiseDate(($i*7) + $daySlot);
                     foreach ($totalSchedules as $totalSchedule) {
                         PremisesScheduleDetails::create([
-                            'premises_schedule_masters_id'    => $ScheduleStore->id,
-                            'day_id'                           => $daySlot,
-                            'schedule_date'                 => $date,
-                            'start_time'                    => $sTime,
-                            'end_time'                      => $eTime,
-                            'status'                        => 1,
-                            'created_by'                    => $userId,
+                            'premises_schedule_masters_id'      => $ScheduleStore->id,
+                            'day_id'                            => $daySlot,
+                            'schedule_date'                     => $date,
+                            'start_time'                        => $sTime,
+                            'end_time'                          => $eTime,
+                            'status'                            => 0,
+                            'created_by'                        => $userId,
                         ]);
 
                         $sTime = $totalSchedule;
@@ -116,17 +111,14 @@ class PremisesScheduleController extends Controller
                 }
             }
         }
-        
 
-
-            if ($ScheduleStore){
-                DB::commit();
-                return response()->json([
-                    'status'  => 'success',
-                    'message' => 'Schedule has been created!',
-                    'icon'    => 'check',
-                ]);
-            }            
+        if ($ScheduleStore){
+            return response()->json([
+                'status'  => 'success',
+                'message' => 'Schedule has been created!',
+                'icon'    => 'check',
+            ]);
+        }            
         
     }
     /**
@@ -150,6 +142,77 @@ class PremisesScheduleController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $userId = Auth::user()->id;
+        $validated = $request->validate([
+            'start_time' => 'required'
+            
+        ]);
+
+
+        $schedule_day    = $request->schedule_day;
+        $startTime       = $request->start_time;
+        $endTime         = $request->end_time;
+        $duration        = $request->schedule_duration;
+        $schedule_create = 2;
+
+        $currentDate = date("Y-m-d");
+        $preDataDetails = PremisesScheduleDetails::where('schedule_date','>',$currentDate)->where('status',0)->where('premises_schedule_masters_id',$id)->delete();
+        // $deleteScheduleDetails = $preDataDetails->delete();
+        // if($preDataDetails){
+            $newVale = explode(",", $schedule_day);
+            $days = [];
+            for($i=0; $i< count($newVale); $i++){
+                 $days[] = (int)$newVale[$i];
+             }
+             $ScheduleStore = PremisesScheduleMaster::find($id)->update([
+                'schedule_day'       => json_encode($days),
+                'start_time'         => $startTime,
+                'end_time'           => $endTime,
+                'schedule_create_id' => $schedule_create,
+                'schedule_duration'  => $duration,
+                'repeat_status'      => 1,
+                'repeat_schedule'    => $schedule_create,
+                'status'             => $request->status,
+                'created_by'         => $userId,
+            ]);
+            foreach ($days as $key => $daySlot) {
+                $totalSchedules = Helper::allScheduleTimes($startTime, $endTime, $duration);
+                
+                $createScheduleDates = array();
+    
+                if ($ScheduleStore) {
+                    $day = $daySlot;
+                    for ($i=0; $i < $schedule_create; $i++) {
+                        $sTime = $startTime;
+                        $eTime = Helper::addtime($sTime, $duration);
+                        $date = Helper::dayWiseDate(($i*7) + $daySlot);
+                        foreach ($totalSchedules as $totalSchedule) {
+                            PremisesScheduleDetails::create([
+                                'premises_schedule_masters_id'      => $id,
+                                'day_id'                            => $daySlot,
+                                'schedule_date'                     => $date,
+                                'start_time'                        => $sTime,
+                                'end_time'                          => $eTime,
+                                'status'                            => 0,
+                                'created_by'                        => $userId,
+                            ]);
+    
+                            $sTime = $totalSchedule;
+                            $eTime = Helper::addtime($totalSchedule, $duration);
+                        }
+                    }
+                }
+            }
+            if ($ScheduleStore){
+                return response()->json([
+                    'status'  => 'success',
+                    'message' => 'Schedule has been updated!',
+                    'icon'    => 'check',
+                ]);
+            }
+
+        // }      
+        
         
     }
 

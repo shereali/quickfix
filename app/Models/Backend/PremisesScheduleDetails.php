@@ -24,7 +24,7 @@ class PremisesScheduleDetails extends Model
         return $this->belongsToMany(PremisesScheduleMaster::class);
     }
 
-    public function day(){
-        return $this->hasOne(Day::class, 'day_id','id');
-    }
+    // public function day(){
+    //     return $this->hasOne(Day::class, 'day_id','id');
+    // }
 }

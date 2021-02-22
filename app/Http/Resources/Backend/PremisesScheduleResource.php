@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Backend;
 
+use App\Models\Backend\Day;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class PremisesScheduleResource extends JsonResource
@@ -17,7 +18,7 @@ class PremisesScheduleResource extends JsonResource
         return [
 
             'id'                 => $this->id,
-            'schedule_day'       => $this->schedule_day,
+            'schedule_day'       => Day::whereIn('sl_no', json_decode($this->schedule_day, true))->pluck('sl_no'),
             'start_time'         => $this->start_time,
             'end_time'           => $this->end_time,
             'schedule_create_id' => $this->schedule_create_id,
