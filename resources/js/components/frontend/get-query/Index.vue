@@ -41,11 +41,11 @@
                                                  </select>
                                             </div>
                                         </div>
-                                        <div class="col-4 pad-top-20">
-                                            <button class="btn v3  mar-right-5 smartphone filter-input" type="button"> Smartphone</button>
+                                        <div class="col-4 pad-top-20" v-for="device in devices" :key="device.id">
+                                            <button  class="btn v3  mar-right-5 smartphone filter-input" type="button"> {{device.device_name}}</button>
                                         </div>
                                         
-                                        <div class="col-4 pad-top-20">
+                                        <!-- <div class="col-4 pad-top-20">
                                             <button class="btn v3 ipad filter-input" type="button"> iPad</button>
                                         </div>
                                         <div class="col-4 pad-top-20">
@@ -59,7 +59,7 @@
                                         </div>
                                         <div class="col-4 pad-top-20">
                                             <button class="btn v3  mar-right-5 ipad" type="button"> Others</button>
-                                        </div>                                           
+                                        </div>                                            -->
                                             <div class="col-6 pad-top-20">
                                                 <div class="device-brand">
                                                     <h6>Select Device Brand</h6>
@@ -86,7 +86,7 @@
                                                     <h6>Select Problem Type</h6>
                                                     <div class="accordion" role="tablist">
                                                         <div class="card">
-                                                            <div class="card-header" role="tab" id="headingDisplay">
+                                                            <div class="card-header" role="tab" id="headingDisplay" v-on:click="toggleDisplay">
                                                                 <h5 class="mb-0">
                                                                     <a data-toggle="collapse"  class="nice-select filter-input" :style="{'border':'none','height':'40px'}"  href="#collapseDisplay"
                                                                         aria-expanded="true" aria-controls="collapseDisplay">
@@ -95,7 +95,7 @@
                                                                 </h5>
                                                             </div>
                                                             <div id="collapseDisplay" class="collapse show" role="tabpanel"
-                                                                aria-labelledby="headingDisplay">
+                                                                aria-labelledby="headingDisplay" v-show="showDisplay">
                                                                 <div class="card-body">
                                                                     <button class="btn-2" type="button">Display Broken</button>
                                                                     <button class="btn-2" type="button">Touch Broken</button>
@@ -110,7 +110,7 @@
                                                 <div class="service-accordion">
                                                     <div class="accordion" role="tablist">
                                                         <div class="card">
-                                                            <div class="card-header" role="tab" id="headingHardware">
+                                                            <div class="card-header" role="tab" id="headingHardware" v-on:click="toggleHardware">
                                                                 <h5 class="mb-0">
                                                                     <a class="collapsed nice-select filter-input" :style="{'border':'none','height':'40px'}"  data-toggle="collapse" href="#collapseHardware"
                                                                         aria-expanded="flase" aria-controls="collapseHardware">
@@ -119,7 +119,7 @@
                                                                 </h5>
                                                             </div>
                                                             <div  id="collapseHardware" class="collapse show"
-                                                                role="tabpanel" aria-labelledby="headingHardware">
+                                                                role="tabpanel" aria-labelledby="headingHardware" v-show="showHardware">
                                                                 <div class="card-body">
                                                                     <button class="btn-2" type="button">Display Broken</button>
                                                                     <button class="btn-2" type="button">Touch Broken</button>
@@ -133,7 +133,7 @@
                                                 <div class="service-accordion">
                                                     <div class="accordion" role="tablist">
                                                         <div class="card">
-                                                            <div class="card-header" role="tab" id="headingCamera">
+                                                            <div class="card-header" role="tab" id="headingCamera" v-on:click="toggleCamera">
                                                                 <h5 class="mb-0">
                                                                     <a class="collapsed nice-select filter-input" :style="{'border':'none','height':'40px'}" data-toggle="collapse" href="#collapseCamera"
                                                                         aria-expanded="false" aria-controls="collapseCamera">
@@ -142,7 +142,7 @@
                                                                 </h5>
                                                             </div>
                                                             <div cid="collapseCamera" class="collapse show"
-                                                                role="tabpanel" aria-labelledby="headingCamera">
+                                                                role="tabpanel" aria-labelledby="headingCamera" v-show="showCamera">
                                                                 <div class="card-body">
                                                                     <button class="btn-2" type="button">Display Broken</button>
                                                                     <button class="btn-2" type="button">Touch Broken</button>
@@ -156,16 +156,16 @@
                                                 <div class="service-accordion">
                                                     <div class="accordion" role="tablist">
                                                         <div class="card">
-                                                            <div class="card-header" role="tab" id="headingBattery">
+                                                            <div class="card-header" role="tab" id="headingBattery" v-on:click="toggle">
                                                                 <h5 class="mb-0">
                                                                     <a class="collapsed nice-select filter-input" :style="{'border':'none','height':'40px'}" data-toggle="collapse" href="#collapseBattery"
-                                                                        aria-expanded="false" aria-controls="collapseBattery">
+                                                                     aria-expanded="false" aria-controls="collapseBattery">
                                                                         Battery
                                                                     </a>
                                                                 </h5>
                                                             </div>
                                                             <div  id="collapseBattery" class="collapse show"
-                                                                role="tabpanel" aria-labelledby="headingBattery">
+                                                                role="tabpanel" aria-labelledby="headingBattery" v-show="showSection">
                                                                 <div class="card-body">
                                                                     <button class="btn-2" type="button">Display Broken</button>
                                                                     <button class="btn-2" type="button">Touch Broken</button>
@@ -421,9 +421,22 @@
 </template>
 <style scoped>
       /* query page */
+
       ul {list-style-type: none;}
 body {font-family: Verdana, sans-serif;}
-
+.listing-sidebar {
+    padding-left: 15px;
+    height: 100%;
+}
+.dot-modern{
+    border-radius: 50%;
+    display: inline-block;
+    width: 11px;
+    height: 11px;
+    left: 1186px;
+    top: 651px;
+    background: #C4C4C4;
+  }
 /* Month header */
 .month {
     width: 100%;
@@ -641,7 +654,7 @@ button.btn-2:hover {
     border: none;
     border-radius: 10px;
 }
-      .service-accordion a {
+.service-accordion a {
     color: rgb(119, 119, 119);
 }
 
@@ -653,7 +666,7 @@ button.btn-2:hover {
 .service-accordion {
     margin: 16px 0;
 }
-      .services textarea {
+.services textarea {
     width: 100%;
     height: 100px;
     padding: .75rem 1.25rem;
@@ -1109,12 +1122,26 @@ p {
 }
 </style>
 <script>
+ import frmixin from '../../../src/frontend-mixin'
 export default {
+      mixins:[frmixin],
      data(){
             return {
-                show: false,
-                premises : false
+                show    : false,
+                premises: false,
+                showSection: false,
+                showDisplay: false,
+                showHardware: false,
+                showCamera: false,
+                devices : [],
             }
+        },
+        created(){
+            axios.get(this.url+'/api/frontend-devices')
+                .then(res => {
+                    console.log('device',res.data);
+                    this.devices = res.data.data
+                })
         },
     //  <script>
         // function showDiv() {
@@ -1210,10 +1237,26 @@ export default {
                     this.show     = true
                     this.premises = false
              },
-         showPremises: function (event) {
-              this.premises = true
-              this.show     = false
-        }
+            showPremises: function (event) {
+                this.premises = true
+                this.show     = false
+            },
+             toggleDisplay() {
+            this.showDisplay = !this.showDisplay
+            },
+             toggleHardware() {
+            this.showHardware = !this.showHardware
+            },
+             toggleCamera() {
+            this.showCamera = !this.showCamera
+            },
+           
+            toggle() {
+            this.showSection = !this.showSection
+            
+            },
+           
+ 
 
         }
 }
