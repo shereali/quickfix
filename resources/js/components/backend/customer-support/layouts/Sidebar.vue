@@ -82,6 +82,42 @@
                 <p>Business Partner</p>
               </router-link>
             </li> 
+            <li class="nav-item">
+               <router-link class="nav-link" to="/business-partners">
+                 <i class="fas fa-truck-pickup nav-icon" aria-hidden="true"></i>
+                <p>Assign Pickup/Orders</p>
+              </router-link>
+            </li> 
+            <li class="nav-item">
+               <router-link class="nav-link" to="/business-partners">
+                <i class="fas fa-truck-loading nav-icon" aria-hidden="true"></i>
+                <p>Assign Delivery Orders</p>
+              </router-link>
+            </li> 
+            <li class="nav-item">
+               <router-link class="nav-link" to="/business-partners">
+                 <i class="fas fa-undo nav-icon" aria-hidden="true"></i>
+                <p>Assign Return Orders</p>
+              </router-link>
+            </li> 
+            <li class="nav-item">
+               <router-link class="nav-link" to="/business-partners">
+                <i class="fas fa-poll nav-icon" aria-hidden="true"></i>
+                <p>Merchant Request</p>
+              </router-link>
+            </li> 
+            <li class="nav-item">
+               <router-link class="nav-link" to="/business-partners">
+               <i class="fas fa-snowflake nav-icon" aria-hidden="true"></i>
+                <p>Premises Service Request</p>
+              </router-link>
+            </li> 
+            <li class="nav-item">
+               <router-link class="nav-link" to="/business-partners">
+                <i class="fas fa-home nav-icon" aria-hidden="true"></i>
+                <p>Home Service Request</p>
+              </router-link>
+            </li> 
           
           <li class="nav-item">
                 <a href="javascript:void(0)" class="nav-link" @click.prevent="signOut">

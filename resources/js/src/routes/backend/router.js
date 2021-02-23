@@ -7,6 +7,9 @@ import VueBreadcrumbs from 'vue-2-breadcrumbs'
 
 import routeBackend from './routes-backend'
 
+
+
+
 axios.defaults.baseURL = window.location.origin
 
 Vue.use(Router, VueAxios, axios, VueResource, VueBreadcrumbs)
@@ -17,6 +20,9 @@ let router = new Router({
     fallback: true,
     routes: [...routeBackend]
 })
+
+
+
 
 router.beforeEach((to, from, next) => {
     const loggedIn = localStorage.getItem('user')

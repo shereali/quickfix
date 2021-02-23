@@ -15,9 +15,12 @@
                             <p class="hero-desc v2" style="margin-top:-10px;">
                                In Bangladesh
                             </p>
-                           <button class="btn v3  mar-right-5" type="button" data-toggle="modal"
+                           <!-- <button class="btn v3  mar-right-5" type="button" data-toggle="modal"
                                 data-target="#coupon_wrap"><i class="ion-ios-quote" aria-hidden="true"></i> Get
-                                Query</button>
+                                Query</button> -->
+                             <router-link to="/get-query">
+                                 <button class="btn v3  mar-right-5" type="button"><i class="ion-ios-quote" aria-hidden="true"></i> Get Query</button>
+                             </router-link>
 
                             <button class="btn v3  mar-right-5" type="button" data-toggle="modal"
                                 data-target="#instant_call"><i class="ion-ios-quote" aria-hidden="true"></i> Get instant
@@ -217,14 +220,14 @@
             <div class="row">
 
                 
-            <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12" style="margin-top: -25px;">
+            <div   class="col-md-12 col-lg-12 col-xs-12 col-sm-12" style="margin-top: -25px;">
               <!-- Rounded tabs -->
-                <button class="tablink defaultTablink serviceCatActive" onclick="openCity('London', this, 'red')" id="defaultOpen">Phone</button>
-                <button class="tablink" onclick="openCity('Paris', this, 'green')">Tab</button>
-                <button class="tablink" onclick="openCity('Tokyo', this, 'blue')">iPad</button>
+                <button  v-for="device in  devices" :key="device.id" class="tablink defaultTablink serviceCatActive" onclick="openCity('London', this, 'red')" id="defaultOpen">{{ device.device_name }}</button>
+                <!-- <button  class="tablink" onclick="openCity('Paris', this, 'green')">  </button> -->
+                <!-- <button class="tablink" onclick="openCity('Tokyo', this, 'blue')">iPad</button>
                 <button class="tablink" onclick="openCity('Oslo', this, 'orange')">Laptop</button>
                 <button class="tablink" onclick="openCity('Oslo', this, 'orange')">Mac</button>
-                <button class="tablink" onclick="openCity('Oslo', this, 'orange')">Others</button>
+                <button class="tablink" onclick="openCity('Oslo', this, 'orange')">Others</button> -->
               
               <!-- End rounded tabs -->
             </div>      
@@ -241,14 +244,14 @@
                     <div class="col-md-8 offset-md-2 text-center"><h2 class="section-title v1">Our Service Process</h2></div>
                     <div class="col-md-12">
                         <div class="hero-catagory-wrapper v1">
-                            <a class="hero-category-content v1" style="background: white;box-shadow: 4px 0px 3px rgba(0, 0, 0, 0.25) !important;">
-                                <h5>Service Inquiry</h5>
+                            <a v-for="service in service_process" :key="service.id" class="hero-category-content v1" style="background: white;box-shadow: 4px 0px 3px rgba(0, 0, 0, 0.25) !important;">
+                                <h5>{{ service.title }}</h5>
                                 <p>Step</p>
-                                <h6>01</h6>
-                                <p>Let us know your all Inquiries</p>
+                                <h6>{{ service.step_no }}</h6>
+                                <p>{{ service.description }}</p>
                             </a>
                             
-                            <a class="hero-category-content v1" style="background: white;box-shadow: 4px 0px 3px rgba(0, 0, 0, 0.25) !important;">
+                            <!-- <a class="hero-category-content v1" style="background: white;box-shadow: 4px 0px 3px rgba(0, 0, 0, 0.25) !important;">
                                 <h5>Service Booking</h5>
                                 <p>Step</p>
                                 <h6>02</h6>
@@ -277,7 +280,7 @@
                                 <p>Step</p>
                                 <h6>06</h6>
                                 <p>Finally we deliver your device at expected location</p>
-                            </a>
+                            </a> -->
 
                         </div>
                     </div>
@@ -293,21 +296,20 @@
                     <div class="col-md-8 offset-md-2 text-center">
                         <h2 class="section-title v1">Service Type</h2>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4" v-for="serviceType in serviceTypes" :key="serviceType.id">
                         <a href="">
-                        <div class="work-process-content v1 text-center">
-                            <div class="process-icon v1">
-                                <img :src="'frontend/images/others/1.png'" alt="...">
-                                <span></span>
+                            <div class="work-process-content v1 text-center">
+                                <div class="process-icon v1">
+                                    <!-- <img :src="'frontend/images/others/1.png'" alt="..."> -->
+                                    <div v-html="serviceType.serviceImage"></div>
+                                    <span></span>
+                                </div>
+                                <h4 class="title">{{ serviceType.name }}</h4>
+                                <p class="info">{{serviceType.description}}</p>
                             </div>
-                            <h4 class="title"> Pick & Drop Service</h4>
-                            <p class="info">
-                                Affordable Smartphone and Laptop Pick & Drop Repair Service
-                            </p>
-                        </div>
-                    </a>
+                        </a>
                     </div>
-                    <div class="col-md-4">
+                    <!-- <div class="col-md-4">
                         <a href="">
                         <div class="work-process-content v1 text-center">
                             <div class="process-icon v1">
@@ -322,8 +324,8 @@
                             </p>
                         </div>
                     </a>
-                    </div>
-                    <div class="col-md-4">
+                    </div> -->
+                    <!-- <div class="col-md-4">
                         <a href="">
                         <div class="work-process-content v1 text-center">
                             <div class="process-icon v1">
@@ -337,7 +339,7 @@
                             </p>
                         </div>
                     </a>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -729,45 +731,49 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-4">
+                    <div class="col-lg-4" v-for="blog in blogs" :key="blog.id">
                         <div class="card single-blog-item v1">
-                            <a target="_blank" href="https://www.facebook.com/quickfixbd/photos/a.1787620248163046/2798697017055359/">
-                                <img :src="'/frontend/images/blog/news_7.jpg'" alt="...">
+                            <router-link target="_blank" :to="'/blog-details/'+blog.id">
+                               <div v-html="blog.imageBlog"></div>
                                 <!-- <a href="#" class="blog-cat btn v6 red">Hotel</a> -->
                                 <div class="card-body">
-                                    <h4 class="card-title text-center"><a target="_blank" href="https://www.facebook.com/quickfixbd/photos/a.1787620248163046/2798697017055359/">বাসা বা অফিসে বসেই পিক এন্ড ড্রপ বা হোম সার্ভিস নিতে এখনি ভিজিট করুন-</a></h4>
+                                    <h4 class="card-title text-center">
+                                            <router-link target="_blank" :to="'/blog-details/'+blog.id">
+                                               {{ blog.title}}
+                                            </router-link>
+                                     </h4>
                                     <!-- <h5 class="text-center">Life time replacement gurantee</h5> -->
                                     <!-- <div class="bottom-content">
                                         <p class="date">Sep 28th , 2018 by <a href="#" class="text-dark">Louis Fonsi</a></p>
                                     </div> -->
                                 </div>
-                            </a>
+                            </router-link>
                         </div>
                     </div>
-                    <div class="col-lg-4">
+                    <!-- <div class="col-lg-4">
                         <div class="card single-blog-item v1">
                             <a target="_blank" href="https://www.facebook.com/quickfixbd/photos/a.1787620248163046/2795726900685704/">
                                 <img :src="'/frontend/images/blog/news_8.jpg'" alt="...">
-                                <!-- <a href="#" class="blog-cat btn v6 red">Restaurant</a> -->
+                                <a href="#" class="blog-cat btn v6 red">Restaurant</a>
                                 <div class="card-body">
                                     <h4 class="card-title text-center"><a target="_blank" href="https://www.facebook.com/quickfixbd/photos/a.1787620248163046/2795726900685704/">রিপেয়ার সার্ভিস নিতে আর কোথাও যেতে হবেনা। এখন বাসা বা অফিসে বসেই হোম সার্ভিস নিন।</a></h4>
-                                    <!-- <h5 class="text-center">Life time replacement gurantee</h5> -->
+                                    <h5 class="text-center">Life time replacement gurantee</h5>
                                 </div>
                             </a>
                         </div>
-                    </div>
-                    <div class="col-lg-4">
+                    </div> -->
+                    <!-- <div class="col-lg-4">
                         <div class="card single-blog-item v1">
                             <a target="_blank" href="https://www.facebook.com/quickfixbd/photos/a.1787620248163046/2787028314888896">
                                 <img :src="'/frontend/images/blog/news_9.jpg'" alt="...">
                                     <div class="card-body">
                                         <h4 class="card-title text-center"><a target="_blank" href="https://www.facebook.com/quickfixbd/photos/a.1787620248163046/2787028314888896">iPhone ইউজারদের জন্য সুখবর !!
         ব্যাটারি রিপ্লেস্মেন্টে আজীবন গ্যারান্টি। একবার রিপ্লেস করলে পরবর্তী ব্যাটারি ফ্রি</a></h4>
-                                        <!-- <h5 class="text-center">Life time replacement gurantee</h5> -->
+                                        <h5 class="text-center">Life time replacement gurantee</h5>
                                     </div>
                             </a>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -826,12 +832,14 @@
     </style>
 
 <script>
-    
+    // import mixin from '../../../src/mixin';
+    // import mixin from '../../src/mixin'
+    import frmixin from '../../src/frontend-mixin'
     export default {
-        
+        mixins:[frmixin], 
         data() {
             return {
-                url: window.location.origin+'/',
+                // url: window.location.origin+'/',
                 root_url: window.location.origin,
                 instant_call_api:'instant-call',
                 get_quotation_api:'get-quotation',
@@ -841,14 +849,37 @@
                 otp_quotation_verify_api: 'otp-verify-quotation',
                 isOtp:false,
                 isQuotation:false,
-                isInstantCall:false
+                isInstantCall:false,
+                devices : [],
+                service_process: [],
+                blogs: [],
+                serviceTypes: []
+                
             }
         },
 
         created() {
-
-           
-
+                
+                axios.get(this.url+'/api/frontend-devices')
+                .then(res => {
+                    console.log('device',res.data);
+                    this.devices = res.data.data
+                })
+                axios.get(this.url+'/api/frontend-service-process')
+                .then(res => {
+                    console.log('service process',res.data);
+                    this.service_process = res.data.data
+                })
+                axios.get(this.url+'/api/frontend-service-type')
+                .then(res => {
+                    console.log('serviceTypes',res.data);
+                    this.serviceTypes = res.data.data
+                })
+                axios.get(this.url+'/api/frontend-blog')
+                .then(res => {
+                    console.log('blog',res.data);
+                    this.blogs = res.data.data
+                })
            
         },
 

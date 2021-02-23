@@ -134,6 +134,24 @@
                 <p>Work Experience</p>
                </router-link>
             </li>
+            <li class="nav-item">
+               <router-link class="nav-link" to="/service-process">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Service Process</p>
+               </router-link>
+            </li>
+            <li class="nav-item">
+               <router-link class="nav-link" to="/blog">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Blog</p>
+               </router-link>
+            </li>
+            <li class="nav-item">
+               <router-link class="nav-link" to="/premises-schedule">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Premises Schedule</p>
+               </router-link>
+            </li>
             </ul>
           </li>
           <!-- <li class="nav-item has-treeview">

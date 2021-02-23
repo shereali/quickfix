@@ -19,8 +19,7 @@ class CreateDeviceProblemsTable extends Migration
             $table->foreign('device_id')->references('id')->on('devices');
             $table->unsignedBigInteger('device_functional_type_id')->nullable()->comment('FK: device_functional_types.id');
             $table->foreign('device_functional_type_id')->references('id')->on('device_functional_types');
-            $table->unsignedBigInteger('service_type_id')->nullable()->comment('FK: service_types.id');
-            $table->foreign('service_type_id')->references('id')->on('service_types');
+            $table->bigInteger('service_type_id')->nullable()->comment('FK: service_types.id');
             $table->unsignedBigInteger('brand_id')->nullable()->comment('FK: brands.id');
             $table->foreign('brand_id')->references('id')->on('brands');
             $table->unsignedBigInteger('device_model_id')->nullable()->comment('FK: device_models.id');

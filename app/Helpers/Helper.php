@@ -1,8 +1,12 @@
 <?php
 
+<<<<<<< HEAD
 use App\Models\Backend\Module;
 use App\Models\Backend\Permission;
 use App\Models\Backend\Role;
+=======
+use App\Models\Backend\Day;
+>>>>>>> 3fc3ce602173dc93b31d1b422af7702958ba69d5
 use Carbon\Carbon;
 use Symfony\Component\HttpFoundation\File\getClientOriginalName;
 
@@ -129,6 +133,7 @@ class Helper{
         return rand(pow(10, $limit-1), pow(10, $limit)-1);
     }
 
+<<<<<<< HEAD
     public static function permission($model){
 
         $module_id = Module::where('resource_name', $model)->first()->id;
@@ -158,6 +163,56 @@ class Helper{
         }
         return $out;
     }
+=======
+    //TIME ADD
+    // Example Value 
+    // $startTime = '3:30';
+    // $endTime = '5:55';
+    // $duration = 30;
+    public static function allScheduleTimes($startTime, $endTime, $duration) {
+        $start_time = new DateTime($startTime);
+        $end_time = new DateTime($endTime); 
+        $totalTime =  $start_time->diff($end_time)->format("%H:%I:%S");
+
+        $hours = explode(':', $totalTime);
+        $totalMinutes = $hours[0]*60+$hours[1];
+        $totalNoOfSchedule = floor($totalMinutes/$duration);
+
+        $singleSchedule = array();
+        $time = strtotime($startTime);
+        for($i=1; $i<=$totalNoOfSchedule; $i++) {
+            $singleSchedule[] = date("H:i", strtotime('+'.$duration.' minutes', $time));
+            $time = strtotime(date("H:i", strtotime('+'.$duration.' minutes', $time)));
+        }
+
+        return $singleSchedule;
+    }
+
+    //TIME ADD
+    public static function addtime($startTime, $duration) {
+        return date("H:i", strtotime('+'.$duration.' minutes', strtotime($startTime)));
+    }
+
+    //NEXT DAY WISE DATE
+    public static function dayWiseDate($selectedDay) {
+        // $selectedDay = 6; //monday
+        $currentDay = date('l');
+        $currentDay = Day::where('status', 1)->where('name', $currentDay)->first()->sl_no;
+        if ($currentDay == $selectedDay) {
+            $days = 0;
+            return $date = date('Y-m-d', strtotime('+'.$days.' days'));
+        } else {
+            if ($selectedDay > $currentDay) {
+                $days = $selectedDay - $currentDay;
+                return $date = date('Y-m-d', strtotime('+'.$days.' days'));
+            } else {
+                $days = $currentDay - 1 + $selectedDay;
+                return $date = date('Y-m-d', strtotime('+'.$days.' days'));
+            }
+        }
+    }
+
+>>>>>>> 3fc3ce602173dc93b31d1b422af7702958ba69d5
 
 
 }
