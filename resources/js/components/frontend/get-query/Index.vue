@@ -69,7 +69,7 @@
                                                         <option value="fiat">iPhone</option>
                                                         <option value="audi">Nokia</option>
                                                      </select>
-                                                </div>
+                                                 </div>
                                             </div>
                                             <div class="col-6 pad-top-20">
                                                 <div class="device-brand">
@@ -179,8 +179,167 @@
                                                 <textarea placeholder="Note"></textarea>
                                             </div>
                                             <div class="col-12">
-                                                <a class="add-device" href="#">Add Device<i class="icofont-long-arrow-right"></i></a>
+                                                <a class="add-device" data-toggle="modal" data-target="#addDevice" href="#">Add Device<i class="icofont-long-arrow-right"></i></a>
                                             </div>
+                                            <!-- more start -->
+                                            <div class="row next-device"  v-for="(moreDevice, counter) in moreDevices" v-bind:key="counter" >
+                                                <span class="close-device" @click="deleteDevice(counter)">x</span>
+                                                <div class="col-4 pad-top-20" v-for="device in devices" :key="device.id">
+                                                    <button  class="btn v3  mar-right-5 smartphone filter-input" type="button"> {{device.device_name}}</button>
+                                                </div>
+                                                <div class="col-6 pad-top-20">
+                                                    <div class="device-brand">
+                                                        <h6>Select Device Brand</h6>
+                                                        <select id="cars" name="cars" class="nice-select filter-input">
+                                                            <option value="volvo">Apple</option>
+                                                            <option value="saab">Samsung</option>
+                                                            <option value="fiat">iPhone</option>
+                                                            <option value="audi">Nokia</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6 pad-top-20">
+                                                    <div class="device-brand">
+                                                        <h6>Select Device Model</h6>
+                                                        <select id="cars" name="cars" class="nice-select filter-input">
+                                                            <option value="0">8 Plus</option>
+                                                            <option value="1">Apple</option>
+                                                            <option value="2">Apple</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 services">
+                                                    <div class="service-accordion">
+                                                        <h6>Select Problem Type</h6>
+                                                        <div class="accordion" role="tablist">
+                                                            <div class="card">
+                                                                <div class="card-header" role="tab" id="headingDisplay" v-on:click="toggleDisplay">
+                                                                    <h5 class="mb-0">
+                                                                        <a data-toggle="collapse"  class="nice-select filter-input" :style="{'border':'none','height':'40px'}"  href="#collapseDisplay"
+                                                                            aria-expanded="true" aria-controls="collapseDisplay">
+                                                                            Display 
+                                                                        </a>
+                                                                    </h5>
+                                                                </div>
+                                                                <div id="collapseDisplay" class="collapse show" role="tabpanel"
+                                                                    aria-labelledby="headingDisplay" v-show="showDisplay">
+                                                                    <div class="card-body">
+                                                                        <button class="btn-2" type="button">Display Broken</button>
+                                                                        <button class="btn-2" type="button">Touch Broken</button>
+                                                                        <button class="btn-2" type="button">Glass Broken</button>
+                                                                        <button class="btn-2" type="button">Glass Broken</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="service-accordion">
+                                                        <div class="accordion" role="tablist">
+                                                            <div class="card">
+                                                                <div class="card-header" role="tab" id="headingHardware" v-on:click="toggleHardware">
+                                                                    <h5 class="mb-0">
+                                                                        <a class="collapsed nice-select filter-input" :style="{'border':'none','height':'40px'}"  data-toggle="collapse" href="#collapseHardware"
+                                                                            aria-expanded="flase" aria-controls="collapseHardware">
+                                                                            Hardware
+                                                                        </a>
+                                                                    </h5>
+                                                                </div>
+                                                                <div  id="collapseHardware" class="collapse show"
+                                                                    role="tabpanel" aria-labelledby="headingHardware" v-show="showHardware">
+                                                                    <div class="card-body">
+                                                                        <button class="btn-2" type="button">Display Broken</button>
+                                                                        <button class="btn-2" type="button">Touch Broken</button>
+                                                                        <button class="btn-2" type="button">Glass Broken</button>
+                                                                        <button class="btn-2" type="button">Glass Broken</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="service-accordion">
+                                                        <div class="accordion" role="tablist">
+                                                            <div class="card">
+                                                                <div class="card-header" role="tab" id="headingCamera" v-on:click="toggleCamera">
+                                                                    <h5 class="mb-0">
+                                                                        <a class="collapsed nice-select filter-input" :style="{'border':'none','height':'40px'}" data-toggle="collapse" href="#collapseCamera"
+                                                                            aria-expanded="false" aria-controls="collapseCamera">
+                                                                            Camera & Others
+                                                                        </a>
+                                                                    </h5>
+                                                                </div>
+                                                                <div cid="collapseCamera" class="collapse show"
+                                                                    role="tabpanel" aria-labelledby="headingCamera" v-show="showCamera">
+                                                                    <div class="card-body">
+                                                                        <button class="btn-2" type="button">Display Broken</button>
+                                                                        <button class="btn-2" type="button">Touch Broken</button>
+                                                                        <button class="btn-2" type="button">Glass Broken</button>
+                                                                        <button class="btn-2" type="button">Glass Broken</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="service-accordion">
+                                                        <div class="accordion" role="tablist">
+                                                            <div class="card">
+                                                                <div class="card-header" role="tab" id="headingBattery" v-on:click="toggle">
+                                                                    <h5 class="mb-0">
+                                                                        <a class="collapsed nice-select filter-input" :style="{'border':'none','height':'40px'}" data-toggle="collapse" href="#collapseBattery"
+                                                                        aria-expanded="false" aria-controls="collapseBattery">
+                                                                            Battery
+                                                                        </a>
+                                                                    </h5>
+                                                                </div>
+                                                                <div  id="collapseBattery" class="collapse show"
+                                                                    role="tabpanel" aria-labelledby="headingBattery" v-show="showSection">
+                                                                    <div class="card-body">
+                                                                        <button class="btn-2" type="button">Display Broken</button>
+                                                                        <button class="btn-2" type="button">Touch Broken</button>
+                                                                        <button class="btn-2" type="button">Glass Broken</button>
+                                                                        <button class="btn-2" type="button">Glass Broken</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <textarea placeholder="Note"></textarea>
+                                                </div>
+                                                <div class="col-12">
+                                                    <a class="add-device" data-toggle="modal" data-target="#addDevice" href="#">Add Device<i class="icofont-long-arrow-right"></i></a>
+                                                </div>
+                                            </div>
+                                            <!-- more end -->
+                                            <!-- add device modal start -->
+                                                  <div class="modal fade" id="addDevice" :style="{'z-index':'999999'}">
+                                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header modal-header-bg-color">
+                                                                    <h4 class="modal-title" style="color: white;" id="myModalLabel">Add Device</h4>
+                                                                    <!-- <button type="button" class="close close_modal" style="color: white;" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">
+                                                                            <i class="ion-ios-close-empty"></i>
+                                                                         </span>
+                                                                    </button> -->
+                                                    
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <form>
+                                                                        <div class="row">
+                                                                           <div class="col-4 pad-top-20" v-for="device in devices" :key="device.id">
+                                                                                <button  class="btn v3  mar-right-5 smartphone filter-input" type="button"> {{device.device_name}}</button>
+                                                                            </div>                                          
+                                                                            <div class="coupon-bottom col-md-12 col-lg-12 pull-right">
+                                                                                <button  type="button" class="btn v1 float-right close_modal" @click="addMoreDevice" data-dismiss="modal">Add Device</button>
+                                                                                <button  type="button" class="btn v1 float-right close_modal" data-dismiss="modal">Close</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                            <!-- add device modal end -->
                                     </div>
                                      
                                 </div>
@@ -428,6 +587,20 @@ body {font-family: Verdana, sans-serif;}
     padding-left: 15px;
     height: 100%;
 }
+.next-device{
+  border: 1.5px solid;
+  padding:5px;
+  margin-bottom: 10px;
+}
+.close-device{
+  width: 30px;
+  float: right;
+  cursor: pointer;
+  margin-left: 95%
+}
+.close-device:hover{
+  color: brown;
+}
 .dot-modern{
     border-radius: 50%;
     display: inline-block;
@@ -508,7 +681,7 @@ body {font-family: Verdana, sans-serif;}
   color: white !important;
   border-radius: 15px;
 }
-      .premises h2{
+ .premises h2{
     padding-top: 20px;
     font-family: Poppins;
     font-style: normal;
@@ -562,7 +735,7 @@ body {font-family: Verdana, sans-serif;}
     text-align: center;
     color: #FFFFFF;
 }
-      .invoice-confirm button {
+ .invoice-confirm button {
     width: 48%;
     border: none;
     background-color: #bbb;
@@ -606,7 +779,7 @@ body {font-family: Verdana, sans-serif;}
     font-size: 15px;
     text-align: center;
 }
-      .invoice-details button.btn-2 {
+.invoice-details button.btn-2 {
     width: max-content;
     padding: 5px 14px;
     height: 40px;
@@ -627,7 +800,7 @@ body {font-family: Verdana, sans-serif;}
     padding: 20px;
     border-radius: 6px;
 }
-      .add-device {
+.add-device {
     float: right;
     font-size: 17px;
     font-weight: 500;
@@ -635,8 +808,8 @@ body {font-family: Verdana, sans-serif;}
     
 }
 
-      button.btn-2 {
-    width: 285px;
+ button.btn-2 {
+    width: 48%;
     height: 49.56px;
     left: 711.76px;
     top: 409px;
@@ -679,7 +852,7 @@ button.btn-2:hover {
 }
 
 .services {
-    padding: 0;
+    padding: 15px;
 }
 .pad-top-20 {
     padding-top: 20px !important;
@@ -695,10 +868,10 @@ button.btn-2:hover {
     border-radius: 6px;
     color: #656565 !important;
 }
-      .mar-right-5 {
+.mar-right-5 {
     margin-right: 5px !important;
 }
-      .smartphone{
+.smartphone{
 
     width: 200px;
     height: 49px;
@@ -709,7 +882,7 @@ button.btn-2:hover {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 6px;
 }
-      .nice-select.hero__form-input.custom-select span {
+.nice-select.hero__form-input.custom-select span {
     color: #999;
 }
 .nice-select.filter-input ul li {
@@ -1125,6 +1298,7 @@ p {
  import frmixin from '../../../src/frontend-mixin'
 export default {
       mixins:[frmixin],
+     
      data(){
             return {
                 show    : false,
@@ -1134,6 +1308,9 @@ export default {
                 showHardware: false,
                 showCamera: false,
                 devices : [],
+               moreDevices:[]
+              
+              
             }
         },
         created(){
@@ -1255,8 +1432,14 @@ export default {
             this.showSection = !this.showSection
             
             },
-           
- 
+            addMoreDevice(){
+                this.moreDevices.push({})
+                
+        
+            },
+               deleteDevice(counter){
+                this.moreDevices.splice(counter,1);
+            }
 
         }
 }
