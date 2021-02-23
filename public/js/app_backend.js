@@ -4557,9 +4557,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -72751,34 +72748,28 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm.user.role == "Admin"
-    ? _c(
-        "div",
-        [
-          _vm.isNavbar ? _c("navbar") : _vm._e(),
-          _vm._v(" "),
-          _vm.isSidebar
-            ? _c("sidebar", { attrs: { signOut: _vm.signOut } })
-            : _vm._e(),
-          _vm._v(" "),
-          _c("div", { staticClass: "content-wrapper" }, [
-            _c("section", { staticClass: "content" }, [
-              _c(
-                "div",
-                { staticClass: "container-fluid" },
-                [_c("router-view", { key: "this.$router.fullPath" })],
-                1
-              )
-            ])
-          ])
-        ],
-        1
-      )
-    : _c("div", { staticClass: "py-5" }, [
-        _c("h1", { staticClass: "text-danger text-center" }, [
-          _vm._v("Access Denied!")
+  return _c(
+    "div",
+    [
+      _vm.isNavbar ? _c("navbar") : _vm._e(),
+      _vm._v(" "),
+      _vm.isSidebar
+        ? _c("sidebar", { attrs: { signOut: _vm.signOut } })
+        : _vm._e(),
+      _vm._v(" "),
+      _c("div", { staticClass: "content-wrapper" }, [
+        _c("section", { staticClass: "content" }, [
+          _c(
+            "div",
+            { staticClass: "container-fluid" },
+            [_c("router-view", { key: "this.$router.fullPath" })],
+            1
+          )
         ])
       ])
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

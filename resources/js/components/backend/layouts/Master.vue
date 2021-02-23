@@ -1,5 +1,5 @@
 <template>
-    <div v-if="user.role == 'Admin'">
+    <div>
         <navbar v-if="isNavbar"></navbar>
         <sidebar v-if="isSidebar" :signOut="signOut"></sidebar>
         <!-- Content Wrapper. Contains page content -->
@@ -11,9 +11,6 @@
             </div>
           </section>
         </div>
-    </div>
-     <div class="py-5" v-else>
-        <h1 class="text-danger text-center">Access Denied!</h1>
     </div>
 </template>
 
