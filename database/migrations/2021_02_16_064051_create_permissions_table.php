@@ -17,7 +17,10 @@ class CreatePermissionsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('module_id')->nullable();
             $table->unsignedBigInteger('role_id')->nullable();
-            $table->string('permission')->nullable();
+            $table->boolean('read')->nullable();
+            $table->boolean('write')->nullable();
+            $table->boolean('update')->nullable();
+            $table->boolean('delete')->nullable();
             $table->timestamps();
         });
     }
