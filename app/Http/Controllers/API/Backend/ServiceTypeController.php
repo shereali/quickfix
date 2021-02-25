@@ -25,7 +25,11 @@ class ServiceTypeController extends Controller
             $query->orWhere('name', 'LIKE', "%{$search}%");
         })->orderBy('id', 'desc')->paginate($dataSorting);
 
-        return  ServiceTypeResource::collection($data);
+        return  ServiceTypeResource::collection($data)->additional(
+            [
+                'permissions' => Helper::permission('ServiceType')
+            ]
+        );
 
     }
 
