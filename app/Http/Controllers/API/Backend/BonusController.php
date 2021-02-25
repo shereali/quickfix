@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\Backend\BonusResource;
 use App\Models\Backend\Bonus;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class BonusController extends Controller
 {
@@ -105,7 +106,13 @@ class BonusController extends Controller
      */
     public function destroy($id)
     {
-        $delete = Bonus::find($id)->delete();
+        $bonus = Bonus::findOrFail($id);
+        $imagePath = public_path("images/customer-registration/".$bonus->image);
+        if(file_exists($imagePath)){
+            File::delete($imagePath);
+        }
+        
+        $delete = $bonus->delete();
         if($delete){
             return response()->json([
                 'status'  => 'danger',

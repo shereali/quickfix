@@ -1,6 +1,7 @@
 <template>
     <section>
-         <div class="hero-area v1 section-padding pad-bot-150" :style="{'background-image': 'url(frontend/images/header/mask_group2.png)','height': '200px','opacity': '0.5'}"></div>
+         <div class="hero-area v1 section-padding pad-bot-150" :style="{'background-image': 'url(frontend/images/header/mask_group2.png)','height': '200px','opacity': '0.5'}">
+         </div>
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-md-12">   
@@ -42,7 +43,7 @@
                                             </div>
                                         </div>
                                         <div class="col-4 pad-top-20" v-for="device in devices" :key="device.id">
-                                            <button  class="btn v3  mar-right-5 smartphone filter-input" type="button"> {{device.device_name}}</button>
+                                            <button :class="device.device_name == 'Phone'?'smartphone':'ipad'"  class="btn v3  mar-right-5  filter-input" type="button"> {{device.device_name}}</button>
                                         </div>
                                         
                                         <!-- <div class="col-4 pad-top-20">
@@ -179,13 +180,13 @@
                                                 <textarea placeholder="Note"></textarea>
                                             </div>
                                             <div class="col-12">
-                                                <a class="add-device" data-toggle="modal" data-target="#addDevice" href="#">Add Device<i class="icofont-long-arrow-right"></i></a>
+                                                <a class="add-device"  data-toggle="modal" data-target="#addDevice" href="#">Add Device<i class="icofont-long-arrow-right"></i></a>
                                             </div>
                                             <!-- more start -->
                                             <div class="row next-device"  v-for="(moreDevice, counter) in moreDevices" v-bind:key="counter" >
                                                 <span class="close-device" @click="deleteDevice(counter)">x</span>
                                                 <div class="col-4 pad-top-20" v-for="device in devices" :key="device.id">
-                                                    <button  class="btn v3  mar-right-5 smartphone filter-input" type="button"> {{device.device_name}}</button>
+                                                    <button :class="device.device_name == 'Phone'?'smartphone':'ipad'"  class="btn v3  mar-right-5 smartphone filter-input" type="button"> {{device.device_name}}</button>
                                                 </div>
                                                 <div class="col-6 pad-top-20">
                                                     <div class="device-brand">
@@ -327,7 +328,7 @@
                                                                     <form>
                                                                         <div class="row">
                                                                            <div class="col-4 pad-top-20" v-for="device in devices" :key="device.id">
-                                                                                <button  class="btn v3  mar-right-5 smartphone filter-input" type="button"> {{device.device_name}}</button>
+                                                                                <button :class="device.device_name == 'Phone'?'smartphone':'ipad'" class="btn v3  mar-right-5  filter-input" type="button"> {{device.device_name}}</button>
                                                                             </div>                                          
                                                                             <div class="coupon-bottom col-md-12 col-lg-12 pull-right">
                                                                                 <button  type="button" class="btn v1 float-right close_modal" @click="addMoreDevice" data-dismiss="modal">Add Device</button>
@@ -588,9 +589,10 @@ body {font-family: Verdana, sans-serif;}
     height: 100%;
 }
 .next-device{
-  border: 1.5px solid;
-  padding:5px;
-  margin-bottom: 10px;
+     border: 1px solid #D8D8D8;
+    padding: 5px;
+    margin-bottom: 10px;
+    border-radius: 6px;
 }
 .close-device{
   width: 30px;
@@ -707,7 +709,7 @@ body {font-family: Verdana, sans-serif;}
 .review_wrap>li:last-child .customer-review_wrap {
     border-bottom: none;
 }
-      .thank-section{
+ .thank-section{
     padding-top: 35px;
     padding-bottom: 50px;
 }
@@ -857,8 +859,8 @@ button.btn-2:hover {
 .pad-top-20 {
     padding-top: 20px !important;
 }
-      .btn.v3.ipad{
-    width: 200.48px;
+.btn.v3.ipad{
+    /* width: 200.48px; */
     height: 49.56px;
     left: 711.76px;
     top: 409px;

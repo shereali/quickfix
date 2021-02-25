@@ -10,6 +10,7 @@ use App\Models\Backend\ServiceCategory;
 use App\Http\Requests\Backend\BrandRequest;
 use App\Http\Resources\Backend\BrandResource;
 use App\Models\Backend\Device;
+use Illuminate\Support\Facades\File;
 
 class BrandController extends Controller
 {
@@ -109,7 +110,12 @@ class BrandController extends Controller
      */
     public function destroy($id)
     {
-        $delete = Brand::find($id)->delete();
+        $brand = Brand::findOrFail($id);
+        $imagePath = public_path("images/brands/".$brand->image);
+        if(file_exists($imagePath)){
+            File::delete($imagePath);
+        }
+        $delete = $brand->delete();
         if($delete){
             return response()->json([
                 'status'  => 'danger',

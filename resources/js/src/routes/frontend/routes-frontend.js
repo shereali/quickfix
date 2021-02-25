@@ -2,6 +2,7 @@ import Home from '../../../components/frontend/Home'
 // import SignIn from '../../../components/frontend/auth/SignIn'
 import GetQuery from '../../../components/frontend/get-query/Index'
 import BlogDetails from '../../../components/frontend/blog-details/Index'
+import ServicePartner from '../../../components/frontend/service-partner/Index'
 
 let routeFrontend = [
 
@@ -38,6 +39,11 @@ let routeFrontend = [
         path:'/blog-details/:id',
         component:BlogDetails,
 
+    },
+    {
+        name:'ServicePartner',
+        path:'/service-partner',
+        component:ServicePartner
     }
     // {
     //     name:'SignIn',

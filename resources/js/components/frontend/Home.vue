@@ -622,7 +622,10 @@
                                         <h4>Become a <br> service Partner</h4>
                                     </div>
                                     <div class="col-md-5 pt-20 service_partner_btn_div_right">
-                                        <button class="btn v3" type="" data-toggle="modal1" data-target="#coupon_wrap"><i class="ion-ios-quote" aria-hidden="true"></i>Apply</button>
+                                        <router-link to="/service-partner" target=”_blank”>
+                                            <button class="btn v3" type="submit"><i class="ion-ios-quote" aria-hidden="true"></i>Apply</button>
+                                        </router-link>
+                                        
                                     </div>
                                 </div>
                             </div>
