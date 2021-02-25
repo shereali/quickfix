@@ -70,6 +70,7 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
             'work-experience'        => 'WorkExperienceController', 
             'corporate-clients'      => 'CorporateClientController', 
             'business-partners'      => 'BusinessPartnerController', 
+            'module'                 => 'ModuleController', 
             'service-process'        => 'OurServiceProcessController', 
             'blog'                   => 'BlogController', 
             'premises-schedule'      => 'PremisesScheduleController', 

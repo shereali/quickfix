@@ -74695,7 +74695,11 @@ var render = function() {
                     label: "count_num",
                     placeholder: "Sort Item"
                   },
-                  on: { input: _vm.getDataList },
+                  on: {
+                    input: function($event) {
+                      return _vm.getDataList(_vm.sorting_item)
+                    }
+                  },
                   model: {
                     value: _vm.sortingForm.sorting_item,
                     callback: function($$v) {

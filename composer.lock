@@ -1114,10 +1114,13 @@
                 "framework",
                 "laravel"
             ],
+<<<<<<< HEAD
             "support": {
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
+=======
+>>>>>>> 5e7f72ac6a0bf689ed05ed1aae427cdc6236aee7
             "time": "2021-02-23T14:27:41+00:00"
         },
         {
@@ -3543,9 +3546,12 @@
                 "polyfill",
                 "portable"
             ],
+<<<<<<< HEAD
             "support": {
                 "source": "https://github.com/symfony/polyfill-ctype/tree/v1.22.1"
             },
+=======
+>>>>>>> 5e7f72ac6a0bf689ed05ed1aae427cdc6236aee7
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -3623,9 +3629,12 @@
                 "portable",
                 "shim"
             ],
+<<<<<<< HEAD
             "support": {
                 "source": "https://github.com/symfony/polyfill-iconv/tree/v1.22.1"
             },
+=======
+>>>>>>> 5e7f72ac6a0bf689ed05ed1aae427cdc6236aee7
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -3704,9 +3713,12 @@
                 "portable",
                 "shim"
             ],
+<<<<<<< HEAD
             "support": {
                 "source": "https://github.com/symfony/polyfill-intl-grapheme/tree/v1.22.1"
             },
+=======
+>>>>>>> 5e7f72ac6a0bf689ed05ed1aae427cdc6236aee7
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -3791,9 +3803,12 @@
                 "portable",
                 "shim"
             ],
+<<<<<<< HEAD
             "support": {
                 "source": "https://github.com/symfony/polyfill-intl-idn/tree/v1.22.1"
             },
+=======
+>>>>>>> 5e7f72ac6a0bf689ed05ed1aae427cdc6236aee7
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -3875,9 +3890,12 @@
                 "portable",
                 "shim"
             ],
+<<<<<<< HEAD
             "support": {
                 "source": "https://github.com/symfony/polyfill-intl-normalizer/tree/v1.22.1"
             },
+=======
+>>>>>>> 5e7f72ac6a0bf689ed05ed1aae427cdc6236aee7
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -3955,9 +3973,12 @@
                 "portable",
                 "shim"
             ],
+<<<<<<< HEAD
             "support": {
                 "source": "https://github.com/symfony/polyfill-mbstring/tree/v1.22.1"
             },
+=======
+>>>>>>> 5e7f72ac6a0bf689ed05ed1aae427cdc6236aee7
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -4031,9 +4052,12 @@
                 "portable",
                 "shim"
             ],
+<<<<<<< HEAD
             "support": {
                 "source": "https://github.com/symfony/polyfill-php72/tree/v1.22.1"
             },
+=======
+>>>>>>> 5e7f72ac6a0bf689ed05ed1aae427cdc6236aee7
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -4110,9 +4134,12 @@
                 "portable",
                 "shim"
             ],
+<<<<<<< HEAD
             "support": {
                 "source": "https://github.com/symfony/polyfill-php73/tree/v1.22.1"
             },
+=======
+>>>>>>> 5e7f72ac6a0bf689ed05ed1aae427cdc6236aee7
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -4193,9 +4220,12 @@
                 "portable",
                 "shim"
             ],
+<<<<<<< HEAD
             "support": {
                 "source": "https://github.com/symfony/polyfill-php80/tree/v1.22.1"
             },
+=======
+>>>>>>> 5e7f72ac6a0bf689ed05ed1aae427cdc6236aee7
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -5169,10 +5199,13 @@
                 "flare",
                 "reporting"
             ],
+<<<<<<< HEAD
             "support": {
                 "issues": "https://github.com/facade/flare-client-php/issues",
                 "source": "https://github.com/facade/flare-client-php/tree/1.4.0"
             },
+=======
+>>>>>>> 5e7f72ac6a0bf689ed05ed1aae427cdc6236aee7
             "funding": [
                 {
                     "url": "https://github.com/spatie",
@@ -5250,12 +5283,15 @@
                 "laravel",
                 "page"
             ],
+<<<<<<< HEAD
             "support": {
                 "docs": "https://flareapp.io/docs/ignition-for-laravel/introduction",
                 "forum": "https://twitter.com/flareappio",
                 "issues": "https://github.com/facade/ignition/issues",
                 "source": "https://github.com/facade/ignition"
             },
+=======
+>>>>>>> 5e7f72ac6a0bf689ed05ed1aae427cdc6236aee7
             "time": "2021-02-16T12:46:19+00:00"
         },
         {
@@ -5808,10 +5844,13 @@
                 }
             ],
             "description": "Library for handling version information and constraints",
+<<<<<<< HEAD
             "support": {
                 "issues": "https://github.com/phar-io/version/issues",
                 "source": "https://github.com/phar-io/version/tree/3.1.0"
             },
+=======
+>>>>>>> 5e7f72ac6a0bf689ed05ed1aae427cdc6236aee7
             "time": "2021-02-23T14:00:09+00:00"
         },
         {

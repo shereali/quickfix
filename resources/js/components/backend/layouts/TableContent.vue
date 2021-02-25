@@ -10,7 +10,7 @@
                     </div>
                     <router-link  :to="this.$route.path+'/create'" class="btn btn-sm btn-primary float-right m-1" v-if="isAddItem && dataList.permissions.write !=null">Add New</router-link>
                      
-                     <v-select @input="getDataList" :isSorting="isSorting" v-model="sortingForm.sorting_item" class="col-md-2 float-right m-1" :options="sortingData" :reduce="sorting => sorting.count_num" label="count_num" placeholder="Sort Item"></v-select>
+                     <v-select @input="getDataList(sorting_item)" :isSorting="isSorting" v-model="sortingForm.sorting_item" class="col-md-2 float-right m-1" :options="sortingData" :reduce="sorting => sorting.count_num" label="count_num" placeholder="Sort Item"></v-select>
 
                     <downloadExcel :style="isDownload == false?'display:none':''" class="btn btn-sm btn-success float-right m-1" :data="dataList.data" :fields="excelFields"  :name="cardTitle"></downloadExcel>
                    <!-- <form @keypress="dataSearching" > -->

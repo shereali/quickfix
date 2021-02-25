@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API\Backend;
 
+use Helper;
 use Illuminate\Http\Request;
 use App\Models\Backend\DeviceType;
 use App\Http\Controllers\Controller;
@@ -23,7 +24,9 @@ class DeviceTypecontroller extends Controller
             $query->orWhere('type_name', 'LIKE', "%{$search}%");
         })->orderBy('id', 'desc')->paginate($dataSorting);
 
-        return  DeviceTypeResource::collection($data);
+        return  DeviceTypeResource::collection($data)->additional([
+            'permissions' => Helper::permission('DeviceType')
+        ]);
     }
 
     /**

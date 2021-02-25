@@ -42,29 +42,21 @@
                                                  </select>
                                             </div>
                                         </div>
-                                        <div class="col-4 pad-top-20" v-for="device in devices" :key="device.id">
-                                            <button :class="device.device_name == 'Phone'?'smartphone':'ipad'"  class="btn v3  mar-right-5  filter-input" type="button"> {{device.device_name}}</button>
-                                        </div>
+
+                                        <!-- Device Portion Start  -->
+                                    </div>
+
+                                    <div class="row"  v-for="(moreDevice, index) in moreDevices" :key="index">
+                                       
+                                            <div class="col-4 pad-top-20"  v-for="(device, i) in devices" :id="index+i" :key="i+index">
+                                              <button   class="mar-right-5  filter-input" ref="device_btn"  @click="deviceSelect(i)" type="button"> {{device.device_name}}</button>
+                                            </div>
                                         
-                                        <!-- <div class="col-4 pad-top-20">
-                                            <button class="btn v3 ipad filter-input" type="button"> iPad</button>
-                                        </div>
-                                        <div class="col-4 pad-top-20">
-                                            <button class="btn v3  mar-right-5 ipad filter-input" type="button"> Tablet</button>
-                                        </div>
-                                        <div class="col-4 pad-top-20">
-                                            <button class="btn v3  mar-right-5 ipad" type="button"> Laptop</button>
-                                        </div>
-                                        <div class="col-4 pad-top-20">
-                                            <button class="btn v3  mar-right-5 ipad" type="button"> Mac</button>
-                                        </div>
-                                        <div class="col-4 pad-top-20">
-                                            <button class="btn v3  mar-right-5 ipad" type="button"> Others</button>
-                                        </div>                                            -->
+
                                             <div class="col-6 pad-top-20">
                                                 <div class="device-brand">
                                                     <h6>Select Device Brand</h6>
-                                                    <select id="cars" name="cars" class="nice-select filter-input">
+                                                    <select id="cars" name="cars" v-model="moreDevice.cars" class="nice-select filter-input">
                                                         <option value="volvo">Apple</option>
                                                         <option value="saab">Samsung</option>
                                                         <option value="fiat">iPhone</option>
@@ -75,7 +67,7 @@
                                             <div class="col-6 pad-top-20">
                                                 <div class="device-brand">
                                                     <h6>Select Device Model</h6>
-                                                    <select id="cars" name="cars" class="nice-select filter-input">
+                                                    <select id="model" name="model" v-model="moreDevice.model" class="nice-select filter-input">
                                                         <option value="0">8 Plus</option>
                                                         <option value="1">Apple</option>
                                                         <option value="2">Apple</option>
@@ -180,167 +172,14 @@
                                                 <textarea placeholder="Note"></textarea>
                                             </div>
                                             <div class="col-12">
-                                                <a class="add-device"  data-toggle="modal" data-target="#addDevice" href="#">Add Device<i class="icofont-long-arrow-right"></i></a>
+                                                <!-- <a class="add-device" data-toggle="modal" data-target="#addDevice" href="#">Add Device<i class="icofont-long-arrow-right"></i></a> -->
+
+                                                <a href="javascript:void(0)" class="add-device text-danger m-2"  v-if=" moreDevices.length != 1" @click.prevent="deleteDevice(index)">Remove Device <i class="icofont-minus"></i></a>
+
+                                                <a href="javascript:void(0)" class="add-device m-2" v-if="index == moreDevices.length -1 ? true :false" @click.prevent="addMoreDevice">Add Device <i class="icofont-plus"></i></a>
                                             </div>
                                             <!-- more start -->
-                                            <div class="row next-device"  v-for="(moreDevice, counter) in moreDevices" v-bind:key="counter" >
-                                                <span class="close-device" @click="deleteDevice(counter)">x</span>
-                                                <div class="col-4 pad-top-20" v-for="device in devices" :key="device.id">
-                                                    <button :class="device.device_name == 'Phone'?'smartphone':'ipad'"  class="btn v3  mar-right-5 smartphone filter-input" type="button"> {{device.device_name}}</button>
-                                                </div>
-                                                <div class="col-6 pad-top-20">
-                                                    <div class="device-brand">
-                                                        <h6>Select Device Brand</h6>
-                                                        <select id="cars" name="cars" class="nice-select filter-input">
-                                                            <option value="volvo">Apple</option>
-                                                            <option value="saab">Samsung</option>
-                                                            <option value="fiat">iPhone</option>
-                                                            <option value="audi">Nokia</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-6 pad-top-20">
-                                                    <div class="device-brand">
-                                                        <h6>Select Device Model</h6>
-                                                        <select id="cars" name="cars" class="nice-select filter-input">
-                                                            <option value="0">8 Plus</option>
-                                                            <option value="1">Apple</option>
-                                                            <option value="2">Apple</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-12 services">
-                                                    <div class="service-accordion">
-                                                        <h6>Select Problem Type</h6>
-                                                        <div class="accordion" role="tablist">
-                                                            <div class="card">
-                                                                <div class="card-header" role="tab" id="headingDisplay" v-on:click="toggleDisplay">
-                                                                    <h5 class="mb-0">
-                                                                        <a data-toggle="collapse"  class="nice-select filter-input" :style="{'border':'none','height':'40px'}"  href="#collapseDisplay"
-                                                                            aria-expanded="true" aria-controls="collapseDisplay">
-                                                                            Display 
-                                                                        </a>
-                                                                    </h5>
-                                                                </div>
-                                                                <div id="collapseDisplay" class="collapse show" role="tabpanel"
-                                                                    aria-labelledby="headingDisplay" v-show="showDisplay">
-                                                                    <div class="card-body">
-                                                                        <button class="btn-2" type="button">Display Broken</button>
-                                                                        <button class="btn-2" type="button">Touch Broken</button>
-                                                                        <button class="btn-2" type="button">Glass Broken</button>
-                                                                        <button class="btn-2" type="button">Glass Broken</button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    
-                                                    <div class="service-accordion">
-                                                        <div class="accordion" role="tablist">
-                                                            <div class="card">
-                                                                <div class="card-header" role="tab" id="headingHardware" v-on:click="toggleHardware">
-                                                                    <h5 class="mb-0">
-                                                                        <a class="collapsed nice-select filter-input" :style="{'border':'none','height':'40px'}"  data-toggle="collapse" href="#collapseHardware"
-                                                                            aria-expanded="flase" aria-controls="collapseHardware">
-                                                                            Hardware
-                                                                        </a>
-                                                                    </h5>
-                                                                </div>
-                                                                <div  id="collapseHardware" class="collapse show"
-                                                                    role="tabpanel" aria-labelledby="headingHardware" v-show="showHardware">
-                                                                    <div class="card-body">
-                                                                        <button class="btn-2" type="button">Display Broken</button>
-                                                                        <button class="btn-2" type="button">Touch Broken</button>
-                                                                        <button class="btn-2" type="button">Glass Broken</button>
-                                                                        <button class="btn-2" type="button">Glass Broken</button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="service-accordion">
-                                                        <div class="accordion" role="tablist">
-                                                            <div class="card">
-                                                                <div class="card-header" role="tab" id="headingCamera" v-on:click="toggleCamera">
-                                                                    <h5 class="mb-0">
-                                                                        <a class="collapsed nice-select filter-input" :style="{'border':'none','height':'40px'}" data-toggle="collapse" href="#collapseCamera"
-                                                                            aria-expanded="false" aria-controls="collapseCamera">
-                                                                            Camera & Others
-                                                                        </a>
-                                                                    </h5>
-                                                                </div>
-                                                                <div cid="collapseCamera" class="collapse show"
-                                                                    role="tabpanel" aria-labelledby="headingCamera" v-show="showCamera">
-                                                                    <div class="card-body">
-                                                                        <button class="btn-2" type="button">Display Broken</button>
-                                                                        <button class="btn-2" type="button">Touch Broken</button>
-                                                                        <button class="btn-2" type="button">Glass Broken</button>
-                                                                        <button class="btn-2" type="button">Glass Broken</button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="service-accordion">
-                                                        <div class="accordion" role="tablist">
-                                                            <div class="card">
-                                                                <div class="card-header" role="tab" id="headingBattery" v-on:click="toggle">
-                                                                    <h5 class="mb-0">
-                                                                        <a class="collapsed nice-select filter-input" :style="{'border':'none','height':'40px'}" data-toggle="collapse" href="#collapseBattery"
-                                                                        aria-expanded="false" aria-controls="collapseBattery">
-                                                                            Battery
-                                                                        </a>
-                                                                    </h5>
-                                                                </div>
-                                                                <div  id="collapseBattery" class="collapse show"
-                                                                    role="tabpanel" aria-labelledby="headingBattery" v-show="showSection">
-                                                                    <div class="card-body">
-                                                                        <button class="btn-2" type="button">Display Broken</button>
-                                                                        <button class="btn-2" type="button">Touch Broken</button>
-                                                                        <button class="btn-2" type="button">Glass Broken</button>
-                                                                        <button class="btn-2" type="button">Glass Broken</button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <textarea placeholder="Note"></textarea>
-                                                </div>
-                                                <div class="col-12">
-                                                    <a class="add-device" data-toggle="modal" data-target="#addDevice" href="#">Add Device<i class="icofont-long-arrow-right"></i></a>
-                                                </div>
-                                            </div>
-                                            <!-- more end -->
-                                            <!-- add device modal start -->
-                                                  <div class="modal fade" id="addDevice" :style="{'z-index':'999999'}">
-                                                        <div class="modal-dialog modal-dialog-centered" role="document">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header modal-header-bg-color">
-                                                                    <h4 class="modal-title" style="color: white;" id="myModalLabel">Add Device</h4>
-                                                                    <!-- <button type="button" class="close close_modal" style="color: white;" data-dismiss="modal" aria-label="Close">
-                                                                        <span aria-hidden="true">
-                                                                            <i class="ion-ios-close-empty"></i>
-                                                                         </span>
-                                                                    </button> -->
-                                                    
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <form>
-                                                                        <div class="row">
-                                                                           <div class="col-4 pad-top-20" v-for="device in devices" :key="device.id">
-                                                                                <button :class="device.device_name == 'Phone'?'smartphone':'ipad'" class="btn v3  mar-right-5  filter-input" type="button"> {{device.device_name}}</button>
-                                                                            </div>                                          
-                                                                            <div class="coupon-bottom col-md-12 col-lg-12 pull-right">
-                                                                                <button  type="button" class="btn v1 float-right close_modal" @click="addMoreDevice" data-dismiss="modal">Add Device</button>
-                                                                                <button  type="button" class="btn v1 float-right close_modal" data-dismiss="modal">Close</button>
-                                                                            </div>
-                                                                        </div>
-                                                                    </form>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                            <!-- add device modal end -->
+                                       
                                     </div>
                                      
                                 </div>
@@ -579,6 +418,169 @@
         </div>
     </section>
 </template>
+<script>
+ import frmixin from '../../../src/frontend-mixin'
+export default {
+      mixins:[frmixin],
+     
+     data(){
+            return {
+                show    : false,
+                premises: false,
+                showSection: false,
+                showDisplay: false,
+                showHardware: false,
+                showCamera: false,
+                devices : [],
+               moreDevices:[{
+                    cars:'',
+                    model:'',
+               }],
+               current:1
+              
+              
+            }
+        },
+        created(){
+            axios.get(this.url+'/api/frontend-devices')
+                .then(res => {
+                    console.log('device',res.data);
+                    this.devices = res.data.data
+                })
+        },
+    //  <script>
+        // function showDiv() {
+        //       document.getElementById('welcomeDiv').style.display = "flex";
+        //       document.getElementById('welcomePremises').style.display = "none";
+        // }
+        // function showPremises() {
+        //       document.getElementById('welcomePremises').style.display = "flex";
+        //       document.getElementById('welcomeDiv').style.display = "none";
+        // }
+        mounted: function (){
+            $(document).ready(function(){
+
+            var current_fs, next_fs, previous_fs; //fieldsets
+            var opacity;
+            var current = 1;
+            var steps = $("fieldset").length;
+
+            setProgressBar(current);
+
+            $(".next").click(function(){
+
+            current_fs = $(this).parent();
+            next_fs = $(this).parent().next();
+
+            //Add Class Active
+            $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+
+            //show the next fieldset
+            next_fs.show();
+            //hide the current fieldset with style
+            current_fs.animate({opacity: 0}, {
+            step: function(now) {
+            // for making fielset appear animation
+            opacity = 1 - now;
+
+            current_fs.css({
+            'display': 'none',
+            'position': 'relative'
+            });
+            next_fs.css({'opacity': opacity});
+            },
+            duration: 500
+            });
+            setProgressBar(++current);
+            });
+
+            $(".previous").click(function(){
+
+            current_fs = $(this).parent();
+            previous_fs = $(this).parent().prev();
+
+            //Remove class active
+            $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+
+            //show the previous fieldset
+            previous_fs.show();
+
+            //hide the current fieldset with style
+            current_fs.animate({opacity: 0}, {
+            step: function(now) {
+            // for making fielset appear animation
+            opacity = 1 - now;
+
+            current_fs.css({
+            'display': 'none',
+            'position': 'relative'
+            });
+            previous_fs.css({'opacity': opacity});
+            },
+            duration: 500
+            });
+            setProgressBar(--current);
+            });
+
+            function setProgressBar(curStep){
+            var percent = parseFloat(100 / steps) * curStep;
+            percent = percent.toFixed();
+            $(".progress-bar")
+            .css("width",percent+"%")
+            }
+
+            $(".submit").click(function(){
+            return false;
+            })
+
+            })
+
+        },
+        methods:{
+             showDiv: function (event){
+
+                    this.show     = true
+                    this.premises = false
+             },
+            showPremises: function (event) {
+                this.premises = true
+                this.show     = false
+            },
+             toggleDisplay() {
+            this.showDisplay = !this.showDisplay
+            },
+             toggleHardware() {
+            this.showHardware = !this.showHardware
+            },
+             toggleCamera() {
+            this.showCamera = !this.showCamera
+            },
+           
+            toggle() {
+            this.showSection = !this.showSection
+            
+            },
+
+            
+
+            addMoreDevice(){
+               
+                this.moreDevices.push({})
+                
+            },
+               deleteDevice(counter){
+                this.moreDevices.splice(counter,1);
+            }
+
+        }
+}
+
+            
+    // </script>
+
+</script>
+
+
 <style scoped>
       /* query page */
 
@@ -1296,157 +1298,3 @@ p {
     object-fit: cover
 }
 </style>
-<script>
- import frmixin from '../../../src/frontend-mixin'
-export default {
-      mixins:[frmixin],
-     
-     data(){
-            return {
-                show    : false,
-                premises: false,
-                showSection: false,
-                showDisplay: false,
-                showHardware: false,
-                showCamera: false,
-                devices : [],
-               moreDevices:[]
-              
-              
-            }
-        },
-        created(){
-            axios.get(this.url+'/api/frontend-devices')
-                .then(res => {
-                    console.log('device',res.data);
-                    this.devices = res.data.data
-                })
-        },
-    //  <script>
-        // function showDiv() {
-        //       document.getElementById('welcomeDiv').style.display = "flex";
-        //       document.getElementById('welcomePremises').style.display = "none";
-        // }
-        // function showPremises() {
-        //       document.getElementById('welcomePremises').style.display = "flex";
-        //       document.getElementById('welcomeDiv').style.display = "none";
-        // }
-        mounted: function (){
-            $(document).ready(function(){
-
-            var current_fs, next_fs, previous_fs; //fieldsets
-            var opacity;
-            var current = 1;
-            var steps = $("fieldset").length;
-
-            setProgressBar(current);
-
-            $(".next").click(function(){
-
-            current_fs = $(this).parent();
-            next_fs = $(this).parent().next();
-
-            //Add Class Active
-            $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
-
-            //show the next fieldset
-            next_fs.show();
-            //hide the current fieldset with style
-            current_fs.animate({opacity: 0}, {
-            step: function(now) {
-            // for making fielset appear animation
-            opacity = 1 - now;
-
-            current_fs.css({
-            'display': 'none',
-            'position': 'relative'
-            });
-            next_fs.css({'opacity': opacity});
-            },
-            duration: 500
-            });
-            setProgressBar(++current);
-            });
-
-            $(".previous").click(function(){
-
-            current_fs = $(this).parent();
-            previous_fs = $(this).parent().prev();
-
-            //Remove class active
-            $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
-
-            //show the previous fieldset
-            previous_fs.show();
-
-            //hide the current fieldset with style
-            current_fs.animate({opacity: 0}, {
-            step: function(now) {
-            // for making fielset appear animation
-            opacity = 1 - now;
-
-            current_fs.css({
-            'display': 'none',
-            'position': 'relative'
-            });
-            previous_fs.css({'opacity': opacity});
-            },
-            duration: 500
-            });
-            setProgressBar(--current);
-            });
-
-            function setProgressBar(curStep){
-            var percent = parseFloat(100 / steps) * curStep;
-            percent = percent.toFixed();
-            $(".progress-bar")
-            .css("width",percent+"%")
-            }
-
-            $(".submit").click(function(){
-            return false;
-            })
-
-            })
-
-        },
-        methods:{
-             showDiv: function (event){
-
-                    this.show     = true
-                    this.premises = false
-             },
-            showPremises: function (event) {
-                this.premises = true
-                this.show     = false
-            },
-             toggleDisplay() {
-            this.showDisplay = !this.showDisplay
-            },
-             toggleHardware() {
-            this.showHardware = !this.showHardware
-            },
-             toggleCamera() {
-            this.showCamera = !this.showCamera
-            },
-           
-            toggle() {
-            this.showSection = !this.showSection
-            
-            },
-            addMoreDevice(){
-                this.moreDevices.push({})
-                
-        
-            },
-               deleteDevice(counter){
-                this.moreDevices.splice(counter,1);
-            }
-
-        }
-}
-
-            
-    // </script>
-
-</script>
