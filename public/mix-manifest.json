@@ -1,5 +1,6 @@
 {
     "/js/app-customer-support.js": "/js/app-customer-support.js",
+    "/js/app_administrator.js": "/js/app_administrator.js",
     "/js/app_backend.js": "/js/app_backend.js",
     "/css/app.css": "/css/app.css",
     "/js/app_frontend.js": "/js/app_frontend.js"

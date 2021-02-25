@@ -16,7 +16,7 @@
                                 
                             </div>
                             <div class="form-group">
-                                <label for="">Resource Name</label>
+                                <label for="">Model Name</label>
                                 <input type="text" name="resource_name" v-model="inputData.resource_name" class="form-control" placeholder="CustomerOrder">
                             </div>
                             <!-- <div class="form-group">

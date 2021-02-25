@@ -64237,7 +64237,7 @@ var render = function() {
                       _vm._v(" "),
                       _c("div", { staticClass: "form-group" }, [
                         _c("label", { attrs: { for: "" } }, [
-                          _vm._v("Resource Name")
+                          _vm._v("Model Name")
                         ]),
                         _vm._v(" "),
                         _c("input", {
@@ -86434,7 +86434,7 @@ axios__WEBPACK_IMPORTED_MODULE_2___default.a.defaults.baseURL = window.location.
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! E:\laragon\www\quickfix\resources\js\src\apps\administrator\app_administrator.js */"./resources/js/src/apps/administrator/app_administrator.js");
+module.exports = __webpack_require__(/*! E:\laragon\www\quickfix_web_v1\resources\js\src\apps\administrator\app_administrator.js */"./resources/js/src/apps/administrator/app_administrator.js");
 
 
 /***/ })
