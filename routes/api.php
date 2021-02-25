@@ -110,9 +110,12 @@ Route::group(['namespace' => 'API\Frontend', 'middleware' => 'api'],function(){
             'frontend-service-process' => 'OurServiceProcessController',
             'frontend-service-type'    => 'ServiceTypeController',
             'frontend-blog'            => 'BlogController',
+            
         ]);
     Route::post('otp-verify', 'InstantCallController@otpVerify');
     Route::post('otp-verify-quotation', 'QuotationController@otpVerify');
+    Route::get('frontend-service-partner', 'ServicePartnerController@division');
+    
 
     });
 });

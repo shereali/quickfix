@@ -38,7 +38,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Category</label>
+                                                <label>Division</label>
                                                 <div class="nice-select filter-input" tabindex="0"><span class="current">Select Categories</span>
                                                     <ul class="list">
                                                         <li class="option selected focus">Hotels</li>
@@ -53,30 +53,123 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Keywords</label>
-                                                <input type="text" class="form-control filter-input" placeholder="Keywords should be separated by commas">
+                                                <label>District</label>
+                                                <div class="nice-select filter-input" tabindex="0"><span class="current">Select Categories</span>
+                                                    <ul class="list">
+                                                        <li class="option selected focus">Hotels</li>
+                                                        <li class="option">Restaurants</li>
+                                                        <li class="option">Shopping</li>
+                                                        <li class="option">Eat &amp; Drink</li>
+                                                        <li class="option">Events</li>
+                                                        <li class="option">Fitness</li>
+                                                    </ul>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Address</label>
-                                                <input type="text" class="form-control filter-input" placeholder="Address of your hotel">
+                                                <label>Zone</label>
+                                                <div class="nice-select filter-input" tabindex="0"><span class="current">Select Categories</span>
+                                                    <ul class="list">
+                                                        <li class="option selected focus">Hotels</li>
+                                                        <li class="option">Restaurants</li>
+                                                        <li class="option">Shopping</li>
+                                                        <li class="option">Eat &amp; Drink</li>
+                                                        <li class="option">Events</li>
+                                                        <li class="option">Fitness</li>
+                                                    </ul>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-12">
-                                            <form>
-                                                <div class="form-group">
-                                                    <label for="list_info">Description</label>
-                                                    <textarea class="form-control" id="list_info" rows="4" placeholder="Enter your text here"></textarea>
-                                                </div>
-                                            </form>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Contact Name</label>
+                                                <input type="text" class="form-control filter-input" placeholder="e.g Sagor">
+                                            </div>
                                         </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Contact Number</label>
+                                                <input type="text" class="form-control filter-input" placeholder="e.g 01xxxxxxx">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Device Type</label>
+                                                <div class="nice-select filter-input" tabindex="0"><span class="current">Select Categories</span>
+                                                    <ul class="list">
+                                                        <li class="option selected focus">Hotels</li>
+                                                        <li class="option">Restaurants</li>
+                                                        <li class="option">Shopping</li>
+                                                        <li class="option">Eat &amp; Drink</li>
+                                                        <li class="option">Events</li>
+                                                        <li class="option">Fitness</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Work Experience</label>
+                                                <div class="nice-select filter-input" tabindex="0"><span class="current">Select Categories</span>
+                                                    <ul class="list">
+                                                        <li class="option selected focus">Hotels</li>
+                                                        <li class="option">Restaurants</li>
+                                                        <li class="option">Shopping</li>
+                                                        <li class="option">Eat &amp; Drink</li>
+                                                        <li class="option">Events</li>
+                                                        <li class="option">Fitness</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
                                     </div>
                                 </div>
                             </div>
                             <div class="db-add-list-wrap">
                                 <div class="act-title">
-                                    <h5><i class="ion-image"></i> Gallery :</h5>
+                                    <h5><i class="ion-image"></i> NID :</h5>
+                                </div>
+                                <div class="db-add-listing">
+                                    <div class="form-group">
+                                        <form class="photo-upload">
+                                            <div class="form-group">
+                                                <div class="add-listing__input-file-box">
+                                                    <input class="add-listing__input-file" type="file" name="file" id="file">
+                                                    <div class="add-listing__input-file-wrap">
+                                                        <i class="ion-ios-cloud-upload"></i>
+                                                        <p>Click here to upload your images</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="db-add-list-wrap">
+                                <div class="act-title">
+                                    <h5><i class="ion-image"></i> Trade license :</h5>
+                                </div>
+                                <div class="db-add-listing">
+                                    <div class="form-group">
+                                        <form class="photo-upload">
+                                            <div class="form-group">
+                                                <div class="add-listing__input-file-box">
+                                                    <input class="add-listing__input-file" type="file" name="file" id="file">
+                                                    <div class="add-listing__input-file-wrap">
+                                                        <i class="ion-ios-cloud-upload"></i>
+                                                        <p>Click here to upload your images</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="db-add-list-wrap">
+                                <div class="act-title">
+                                    <h5><i class="ion-image"></i> Working Place :</h5>
                                 </div>
                                 <div class="db-add-listing">
                                     <div class="form-group">
@@ -100,7 +193,7 @@
                                         <div class="col-md-6 text-left">
                                             <div class="res-box mar-top-10">
                                                 <input type="checkbox" tabindex="3" class="" name="remember" id="remember">
-                                                <label for="remember">I've read and accept <a href="terms.html">terms &amp; conditions</a></label>
+                                                <label for="remember" :style="{'font-size': '14px'}">I've read and accept terms &amp; conditions</label>
                                             </div>
                                         </div>
                                         <div class="col-md-6 text-right sm-left">
@@ -149,7 +242,23 @@
     </section>
 </template>
 <script>
+import frmixin from '../../../src/frontend-mixin'
 export default {
+    mixins:[frmixin],
+    data(){
+            return {
+              divisions:[]
+              
+              
+            }
+        },
+         created(){
+            axios.get(this.url+'/api/frontend-service-partner')
+                .then(res => {
+                    this.divisions = res.data
+                    
+                })
+        },
     
 }
 </script>

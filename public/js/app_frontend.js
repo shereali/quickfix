@@ -3869,6 +3869,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _src_frontend_mixin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../src/frontend-mixin */ "./resources/js/src/frontend-mixin.js");
 //
 //
 //
@@ -4019,7 +4020,115 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  mixins: [_src_frontend_mixin__WEBPACK_IMPORTED_MODULE_0__["default"]],
+  data: function data() {
+    return {
+      divisions: []
+    };
+  },
+  created: function created() {
+    var _this = this;
+
+    axios.get(this.url + '/api/frontend-service-partner').then(function (res) {
+      _this.divisions = res.data;
+    });
+  }
+});
 
 /***/ }),
 
@@ -66725,7 +66834,47 @@ var render = function() {
     _vm._v(" "),
     _c("div", { staticClass: "container" }, [
       _c("div", { staticClass: "row" }, [
-        _vm._m(0),
+        _c("div", { staticClass: "col-lg-8 col-md-12" }, [
+          _c("div", { staticClass: "dash-content" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _vm._m(1),
+            _vm._v(" "),
+            _vm._m(2),
+            _vm._v(" "),
+            _vm._m(3),
+            _vm._v(" "),
+            _c("div", { staticClass: "db-add-list-wrap" }, [
+              _c("div", { staticClass: "db-add-listing" }, [
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-md-6 text-left" }, [
+                    _c("div", { staticClass: "res-box mar-top-10" }, [
+                      _c("input", {
+                        attrs: {
+                          type: "checkbox",
+                          tabindex: "3",
+                          name: "remember",
+                          id: "remember"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          style: { "font-size": "14px" },
+                          attrs: { for: "remember" }
+                        },
+                        [_vm._v("I've read and accept terms & conditions")]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(4)
+                ])
+              ])
+            ])
+          ])
+        ]),
         _vm._v(" "),
         _c("div", { staticClass: "col-lg-4 col-md-12" }, [
           _c("div", { staticClass: "customer-review_wrap" }, [
@@ -66740,9 +66889,9 @@ var render = function() {
                   _c("h3", [_vm._v("Service Overview")]),
                   _vm._v(" "),
                   _c("div", { staticClass: "row" }, [
-                    _vm._m(1),
+                    _vm._m(5),
                     _vm._v(" "),
-                    _vm._m(2),
+                    _vm._m(6),
                     _vm._v(" "),
                     _c("div", { staticClass: "col-md-12 mar-bot-15" }, [
                       _c("span", { style: { "font-size": "30px" } }, [
@@ -66769,222 +66918,389 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-lg-8 col-md-12" }, [
-      _c("div", { staticClass: "dash-content" }, [
-        _c("div", { staticClass: "db-add-list-wrap" }, [
-          _c("div", { staticClass: "act-title" }, [
-            _c("h5", [
-              _c("i", { staticClass: "ion-ios-information" }),
-              _vm._v(" General Information :")
+    return _c("div", { staticClass: "db-add-list-wrap" }, [
+      _c("div", { staticClass: "act-title" }, [
+        _c("h5", [
+          _c("i", { staticClass: "ion-ios-information" }),
+          _vm._v(" General Information :")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "db-add-listing" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-md-6" }, [
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Name")]),
+              _vm._v(" "),
+              _c("input", {
+                staticClass: "form-control filter-input",
+                attrs: { type: "text", placeholder: "e.g: Borhan" }
+              })
             ])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "db-add-listing" }, [
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col-md-6" }, [
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", [_vm._v("Name")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control filter-input",
-                    attrs: { type: "text", placeholder: "e.g: Borhan" }
-                  })
-                ])
-              ]),
+          _c("div", { staticClass: "col-md-6" }, [
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Mobile")]),
               _vm._v(" "),
-              _c("div", { staticClass: "col-md-6" }, [
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", [_vm._v("Mobile")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control filter-input",
-                    attrs: { type: "text", placeholder: "e.g: 01xxxxxxx" }
-                  })
-                ])
-              ]),
+              _c("input", {
+                staticClass: "form-control filter-input",
+                attrs: { type: "text", placeholder: "e.g: 01xxxxxxx" }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-6" }, [
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Email")]),
               _vm._v(" "),
-              _c("div", { staticClass: "col-md-6" }, [
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", [_vm._v("Email")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control filter-input",
-                    attrs: {
-                      type: "email",
-                      placeholder: "e.g: borhan@gmail.com"
-                    }
-                  })
-                ])
-              ]),
+              _c("input", {
+                staticClass: "form-control filter-input",
+                attrs: { type: "email", placeholder: "e.g: borhan@gmail.com" }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-6" }, [
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Address")]),
               _vm._v(" "),
-              _c("div", { staticClass: "col-md-6" }, [
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", [_vm._v("Address")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control filter-input",
-                    attrs: {
-                      type: "text",
-                      placeholder: "e.g: house-36,road-4,Banani"
-                    }
-                  })
-                ])
-              ]),
+              _c("input", {
+                staticClass: "form-control filter-input",
+                attrs: {
+                  type: "text",
+                  placeholder: "e.g: house-36,road-4,Banani"
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-6" }, [
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Division")]),
               _vm._v(" "),
-              _c("div", { staticClass: "col-md-6" }, [
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", [_vm._v("Category")]),
+              _c(
+                "div",
+                {
+                  staticClass: "nice-select filter-input",
+                  attrs: { tabindex: "0" }
+                },
+                [
+                  _c("span", { staticClass: "current" }, [
+                    _vm._v("Select Categories")
+                  ]),
                   _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass: "nice-select filter-input",
-                      attrs: { tabindex: "0" }
-                    },
-                    [
-                      _c("span", { staticClass: "current" }, [
-                        _vm._v("Select Categories")
-                      ]),
-                      _vm._v(" "),
-                      _c("ul", { staticClass: "list" }, [
-                        _c("li", { staticClass: "option selected focus" }, [
-                          _vm._v("Hotels")
-                        ]),
-                        _vm._v(" "),
-                        _c("li", { staticClass: "option" }, [
-                          _vm._v("Restaurants")
-                        ]),
-                        _vm._v(" "),
-                        _c("li", { staticClass: "option" }, [
-                          _vm._v("Shopping")
-                        ]),
-                        _vm._v(" "),
-                        _c("li", { staticClass: "option" }, [
-                          _vm._v("Eat & Drink")
-                        ]),
-                        _vm._v(" "),
-                        _c("li", { staticClass: "option" }, [_vm._v("Events")]),
-                        _vm._v(" "),
-                        _c("li", { staticClass: "option" }, [_vm._v("Fitness")])
-                      ])
-                    ]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-md-6" }, [
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", [_vm._v("Keywords")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control filter-input",
-                    attrs: {
-                      type: "text",
-                      placeholder: "Keywords should be separated by commas"
-                    }
-                  })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-md-6" }, [
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", [_vm._v("Address")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control filter-input",
-                    attrs: {
-                      type: "text",
-                      placeholder: "Address of your hotel"
-                    }
-                  })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-md-12" }, [
-                _c("form", [
-                  _c("div", { staticClass: "form-group" }, [
-                    _c("label", { attrs: { for: "list_info" } }, [
-                      _vm._v("Description")
+                  _c("ul", { staticClass: "list" }, [
+                    _c("li", { staticClass: "option selected focus" }, [
+                      _vm._v("Hotels")
                     ]),
                     _vm._v(" "),
-                    _c("textarea", {
-                      staticClass: "form-control",
-                      attrs: {
-                        id: "list_info",
-                        rows: "4",
-                        placeholder: "Enter your text here"
-                      }
-                    })
+                    _c("li", { staticClass: "option" }, [
+                      _vm._v("Restaurants")
+                    ]),
+                    _vm._v(" "),
+                    _c("li", { staticClass: "option" }, [_vm._v("Shopping")]),
+                    _vm._v(" "),
+                    _c("li", { staticClass: "option" }, [
+                      _vm._v("Eat & Drink")
+                    ]),
+                    _vm._v(" "),
+                    _c("li", { staticClass: "option" }, [_vm._v("Events")]),
+                    _vm._v(" "),
+                    _c("li", { staticClass: "option" }, [_vm._v("Fitness")])
                   ])
-                ])
-              ])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "db-add-list-wrap" }, [
-          _c("div", { staticClass: "act-title" }, [
-            _c("h5", [
-              _c("i", { staticClass: "ion-image" }),
-              _vm._v(" Gallery :")
+                ]
+              )
             ])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "db-add-listing" }, [
+          _c("div", { staticClass: "col-md-6" }, [
             _c("div", { staticClass: "form-group" }, [
-              _c("form", { staticClass: "photo-upload" }, [
-                _c("div", { staticClass: "form-group" }, [
-                  _c("div", { staticClass: "add-listing__input-file-box" }, [
-                    _c("input", {
-                      staticClass: "add-listing__input-file",
-                      attrs: { type: "file", name: "file", id: "file" }
-                    }),
+              _c("label", [_vm._v("District")]),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "nice-select filter-input",
+                  attrs: { tabindex: "0" }
+                },
+                [
+                  _c("span", { staticClass: "current" }, [
+                    _vm._v("Select Categories")
+                  ]),
+                  _vm._v(" "),
+                  _c("ul", { staticClass: "list" }, [
+                    _c("li", { staticClass: "option selected focus" }, [
+                      _vm._v("Hotels")
+                    ]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "add-listing__input-file-wrap" }, [
-                      _c("i", { staticClass: "ion-ios-cloud-upload" }),
-                      _vm._v(" "),
-                      _c("p", [_vm._v("Click here to upload your images")])
-                    ])
+                    _c("li", { staticClass: "option" }, [
+                      _vm._v("Restaurants")
+                    ]),
+                    _vm._v(" "),
+                    _c("li", { staticClass: "option" }, [_vm._v("Shopping")]),
+                    _vm._v(" "),
+                    _c("li", { staticClass: "option" }, [
+                      _vm._v("Eat & Drink")
+                    ]),
+                    _vm._v(" "),
+                    _c("li", { staticClass: "option" }, [_vm._v("Events")]),
+                    _vm._v(" "),
+                    _c("li", { staticClass: "option" }, [_vm._v("Fitness")])
                   ])
-                ])
-              ])
+                ]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-6" }, [
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Zone")]),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "nice-select filter-input",
+                  attrs: { tabindex: "0" }
+                },
+                [
+                  _c("span", { staticClass: "current" }, [
+                    _vm._v("Select Categories")
+                  ]),
+                  _vm._v(" "),
+                  _c("ul", { staticClass: "list" }, [
+                    _c("li", { staticClass: "option selected focus" }, [
+                      _vm._v("Hotels")
+                    ]),
+                    _vm._v(" "),
+                    _c("li", { staticClass: "option" }, [
+                      _vm._v("Restaurants")
+                    ]),
+                    _vm._v(" "),
+                    _c("li", { staticClass: "option" }, [_vm._v("Shopping")]),
+                    _vm._v(" "),
+                    _c("li", { staticClass: "option" }, [
+                      _vm._v("Eat & Drink")
+                    ]),
+                    _vm._v(" "),
+                    _c("li", { staticClass: "option" }, [_vm._v("Events")]),
+                    _vm._v(" "),
+                    _c("li", { staticClass: "option" }, [_vm._v("Fitness")])
+                  ])
+                ]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-6" }, [
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Contact Name")]),
+              _vm._v(" "),
+              _c("input", {
+                staticClass: "form-control filter-input",
+                attrs: { type: "text", placeholder: "e.g Sagor" }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-6" }, [
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Contact Number")]),
+              _vm._v(" "),
+              _c("input", {
+                staticClass: "form-control filter-input",
+                attrs: { type: "text", placeholder: "e.g 01xxxxxxx" }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-6" }, [
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Device Type")]),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "nice-select filter-input",
+                  attrs: { tabindex: "0" }
+                },
+                [
+                  _c("span", { staticClass: "current" }, [
+                    _vm._v("Select Categories")
+                  ]),
+                  _vm._v(" "),
+                  _c("ul", { staticClass: "list" }, [
+                    _c("li", { staticClass: "option selected focus" }, [
+                      _vm._v("Hotels")
+                    ]),
+                    _vm._v(" "),
+                    _c("li", { staticClass: "option" }, [
+                      _vm._v("Restaurants")
+                    ]),
+                    _vm._v(" "),
+                    _c("li", { staticClass: "option" }, [_vm._v("Shopping")]),
+                    _vm._v(" "),
+                    _c("li", { staticClass: "option" }, [
+                      _vm._v("Eat & Drink")
+                    ]),
+                    _vm._v(" "),
+                    _c("li", { staticClass: "option" }, [_vm._v("Events")]),
+                    _vm._v(" "),
+                    _c("li", { staticClass: "option" }, [_vm._v("Fitness")])
+                  ])
+                ]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-6" }, [
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Work Experience")]),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "nice-select filter-input",
+                  attrs: { tabindex: "0" }
+                },
+                [
+                  _c("span", { staticClass: "current" }, [
+                    _vm._v("Select Categories")
+                  ]),
+                  _vm._v(" "),
+                  _c("ul", { staticClass: "list" }, [
+                    _c("li", { staticClass: "option selected focus" }, [
+                      _vm._v("Hotels")
+                    ]),
+                    _vm._v(" "),
+                    _c("li", { staticClass: "option" }, [
+                      _vm._v("Restaurants")
+                    ]),
+                    _vm._v(" "),
+                    _c("li", { staticClass: "option" }, [_vm._v("Shopping")]),
+                    _vm._v(" "),
+                    _c("li", { staticClass: "option" }, [
+                      _vm._v("Eat & Drink")
+                    ]),
+                    _vm._v(" "),
+                    _c("li", { staticClass: "option" }, [_vm._v("Events")]),
+                    _vm._v(" "),
+                    _c("li", { staticClass: "option" }, [_vm._v("Fitness")])
+                  ])
+                ]
+              )
             ])
           ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "db-add-list-wrap" }, [
-          _c("div", { staticClass: "db-add-listing" }, [
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col-md-6 text-left" }, [
-                _c("div", { staticClass: "res-box mar-top-10" }, [
-                  _c("input", {
-                    attrs: {
-                      type: "checkbox",
-                      tabindex: "3",
-                      name: "remember",
-                      id: "remember"
-                    }
-                  }),
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "db-add-list-wrap" }, [
+      _c("div", { staticClass: "act-title" }, [
+        _c("h5", [_c("i", { staticClass: "ion-image" }), _vm._v(" NID :")])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "db-add-listing" }, [
+        _c("div", { staticClass: "form-group" }, [
+          _c("form", { staticClass: "photo-upload" }, [
+            _c("div", { staticClass: "form-group" }, [
+              _c("div", { staticClass: "add-listing__input-file-box" }, [
+                _c("input", {
+                  staticClass: "add-listing__input-file",
+                  attrs: { type: "file", name: "file", id: "file" }
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "add-listing__input-file-wrap" }, [
+                  _c("i", { staticClass: "ion-ios-cloud-upload" }),
                   _vm._v(" "),
-                  _c("label", { attrs: { for: "remember" } }, [
-                    _vm._v("I've read and accept "),
-                    _c("a", { attrs: { href: "terms.html" } }, [
-                      _vm._v("terms & conditions")
-                    ])
-                  ])
+                  _c("p", [_vm._v("Click here to upload your images")])
                 ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-md-6 text-right sm-left" }, [
-                _c(
-                  "button",
-                  { staticClass: "btn v8", attrs: { type: "submit" } },
-                  [_vm._v("Submit")]
-                )
               ])
             ])
           ])
         ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "db-add-list-wrap" }, [
+      _c("div", { staticClass: "act-title" }, [
+        _c("h5", [
+          _c("i", { staticClass: "ion-image" }),
+          _vm._v(" Trade license :")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "db-add-listing" }, [
+        _c("div", { staticClass: "form-group" }, [
+          _c("form", { staticClass: "photo-upload" }, [
+            _c("div", { staticClass: "form-group" }, [
+              _c("div", { staticClass: "add-listing__input-file-box" }, [
+                _c("input", {
+                  staticClass: "add-listing__input-file",
+                  attrs: { type: "file", name: "file", id: "file" }
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "add-listing__input-file-wrap" }, [
+                  _c("i", { staticClass: "ion-ios-cloud-upload" }),
+                  _vm._v(" "),
+                  _c("p", [_vm._v("Click here to upload your images")])
+                ])
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "db-add-list-wrap" }, [
+      _c("div", { staticClass: "act-title" }, [
+        _c("h5", [
+          _c("i", { staticClass: "ion-image" }),
+          _vm._v(" Working Place :")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "db-add-listing" }, [
+        _c("div", { staticClass: "form-group" }, [
+          _c("form", { staticClass: "photo-upload" }, [
+            _c("div", { staticClass: "form-group" }, [
+              _c("div", { staticClass: "add-listing__input-file-box" }, [
+                _c("input", {
+                  staticClass: "add-listing__input-file",
+                  attrs: { type: "file", name: "file", id: "file" }
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "add-listing__input-file-wrap" }, [
+                  _c("i", { staticClass: "ion-ios-cloud-upload" }),
+                  _vm._v(" "),
+                  _c("p", [_vm._v("Click here to upload your images")])
+                ])
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-6 text-right sm-left" }, [
+      _c("button", { staticClass: "btn v8", attrs: { type: "submit" } }, [
+        _vm._v("Submit")
       ])
     ])
   },
