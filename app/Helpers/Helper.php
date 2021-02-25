@@ -1,12 +1,9 @@
 <?php
 
-<<<<<<< HEAD
 use App\Models\Backend\Module;
 use App\Models\Backend\Permission;
 use App\Models\Backend\Role;
-=======
 use App\Models\Backend\Day;
->>>>>>> 3fc3ce602173dc93b31d1b422af7702958ba69d5
 use Carbon\Carbon;
 use Symfony\Component\HttpFoundation\File\getClientOriginalName;
 
@@ -133,7 +130,6 @@ class Helper{
         return rand(pow(10, $limit-1), pow(10, $limit)-1);
     }
 
-<<<<<<< HEAD
     public static function permission($model){
 
         $module_id = Module::where('resource_name', $model)->first()->id;
@@ -163,7 +159,6 @@ class Helper{
         }
         return $out;
     }
-=======
     //TIME ADD
     // Example Value 
     // $startTime = '3:30';
@@ -212,7 +207,6 @@ class Helper{
         }
     }
 
->>>>>>> 3fc3ce602173dc93b31d1b422af7702958ba69d5
 
 
 }

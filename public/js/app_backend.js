@@ -109006,8 +109006,8 @@ axios__WEBPACK_IMPORTED_MODULE_2___default.a.defaults.baseURL = window.location.
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! E:\laragon\www\quickfix\resources\js\src\apps\backend\app_backend.js */"./resources/js/src/apps/backend/app_backend.js");
-module.exports = __webpack_require__(/*! E:\laragon\www\quickfix\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! E:\laragon\www\quickfix_web_v1\resources\js\src\apps\backend\app_backend.js */"./resources/js/src/apps/backend/app_backend.js");
+module.exports = __webpack_require__(/*! E:\laragon\www\quickfix_web_v1\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ }),

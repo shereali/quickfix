@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -87192,14 +87192,14 @@ axios__WEBPACK_IMPORTED_MODULE_2___default.a.defaults.baseURL = window.location.
 
 /***/ }),
 
-/***/ 3:
+/***/ 2:
 /*!**************************************************************************************!*\
   !*** multi ./resources/js/src/apps/backend/customer-support/app-customer-support.js ***!
   \**************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! E:\laragon\www\quickfix\resources\js\src\apps\backend\customer-support\app-customer-support.js */"./resources/js/src/apps/backend/customer-support/app-customer-support.js");
+module.exports = __webpack_require__(/*! E:\laragon\www\quickfix_web_v1\resources\js\src\apps\backend\customer-support\app-customer-support.js */"./resources/js/src/apps/backend/customer-support/app-customer-support.js");
 
 
 /***/ })

@@ -70,13 +70,9 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
             'work-experience'        => 'WorkExperienceController', 
             'corporate-clients'      => 'CorporateClientController', 
             'business-partners'      => 'BusinessPartnerController', 
-<<<<<<< HEAD
-            'module'                 => 'ModuleController', 
-=======
             'service-process'        => 'OurServiceProcessController', 
             'blog'                   => 'BlogController', 
             'premises-schedule'      => 'PremisesScheduleController', 
->>>>>>> 3fc3ce602173dc93b31d1b422af7702958ba69d5
 
             ]);
             Route::post('divisions-wise-districts', 'AdminCommonController@divisionWiseDistrict');
