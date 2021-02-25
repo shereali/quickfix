@@ -16,9 +16,8 @@ export default {
         this.columnsHead.push('Sn','Device Type','Device Name', 'Description', 'Photo','Status', 'Action')
         this.columnsBody.push('type_name', 'device_name', 'description','image','statusText')
         // this.columnsBodyExtra = 
-        this.isDownload = false; 
-
-       
+        this.isDownload = false
+           
         
     }
 }

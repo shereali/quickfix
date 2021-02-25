@@ -18,6 +18,17 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
+Route::group(['namespace' => 'API\Administrator', 'middleware' => 'api'], function(){
+
+});
+
+Route::group(['namespace' => 'API\Administrator', 'middleware' => 'auth:sanctum'], function(){
+    Route::apiResources([
+
+        'module-register' => 'ModuleRegister',
+
+    ]);
+});
 
 Route::group(['namespace' => 'API\Backend\Auth', 'middleware' => 'api'], function(){
     Route::post('/signin', 'AuthController@signIn');
@@ -59,9 +70,13 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
             'work-experience'        => 'WorkExperienceController', 
             'corporate-clients'      => 'CorporateClientController', 
             'business-partners'      => 'BusinessPartnerController', 
+<<<<<<< HEAD
+            'module'                 => 'ModuleController', 
+=======
             'service-process'        => 'OurServiceProcessController', 
             'blog'                   => 'BlogController', 
             'premises-schedule'      => 'PremisesScheduleController', 
+>>>>>>> 3fc3ce602173dc93b31d1b422af7702958ba69d5
 
             ]);
             Route::post('divisions-wise-districts', 'AdminCommonController@divisionWiseDistrict');
@@ -71,16 +86,6 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
 
     // for customer support
     Route::group(['namespace'  => 'API\Backend\CustomerSupport'], function(){
-    
-        Route::group(['namespace' => 'Auth'], function(){
-            Route::apiResources([
-
-            'users'       => 'UserController',
-            'roles'       => 'RoleController',
-            'permissions' => 'PermissionController', 
-
-            ]);
-        });
 
         Route::apiResources([
 

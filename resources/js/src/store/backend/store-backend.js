@@ -14,7 +14,7 @@ export default new Vuex.Store({
     mutations: {
         setUserData(state, userData) {
             state.user = userData
-        if(userData.user.status != 'false'){
+        if(userData.user.status != 'false' && userData.role == 'Admin'){
            localStorage.setItem('user', JSON.stringify(userData))
             axios.defaults.headers.common.Authorization = `Bearer ${userData.token}`  
         }
@@ -35,9 +35,11 @@ export default new Vuex.Store({
                     commit('setUserData', data)
                    
                     // let user = data.user 
-                //   if(data.status == 'true'){
+                  if(data.role == 'Admin'){
                      window.location.href = window.location.origin+'/admin' 
-                //   }
+                  }
+
+                console.log('data.user', data.role);
                       
                 })
         },

@@ -2,23 +2,16 @@
 
 namespace App\Http\Controllers\API\Backend\Auth;
 
+use DB;
+use App\Models\Backend\Role;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Spatie\Permission\Models\Role;
+use App\Models\Backend\Permission;
 use App\Http\Controllers\Controller;
-use Spatie\Permission\Models\Permission;
 use App\Http\Resources\Backend\Auth\RoleResource;
-use Symfony\Component\Console\Input\Input;
 
 class RoleController extends Controller
 {
-    function __construct()
-    {
-        //  $this->middleware('permission:role-list|role-create|role-edit|role-delete', ['only' => ['index','store']]);
-        //  $this->middleware('permission:role-create', ['only' => ['create','store']]);
-        //  $this->middleware('permission:role-edit', ['only' => ['edit','update']]);
-        //  $this->middleware('permission:role-delete', ['only' => ['destroy']]);
-    }
+
 
     /**
      * Display a listing of the resource.
@@ -29,9 +22,7 @@ class RoleController extends Controller
     {
         $roles = Role::orderBy('id','DESC')->paginate(5);
 
-        $permissions = Permission::all();
-
-        return RoleResource::collection($roles)->additional(['permissions' => $permissions]);
+        return RoleResource::collection($roles);
     }
 
     /**
@@ -46,11 +37,9 @@ class RoleController extends Controller
     //    return $request->all();
         $this->validate($request, [
             'name'       => 'required|unique:roles,name',
-            'permission' => 'required',
         ]);
     
         $role = Role::create(['name' => $request->input('name')]);
-        $role->syncPermissions($request->input('permission'));
 
         return response()->json([
             'status'  => 'success',
@@ -69,11 +58,6 @@ class RoleController extends Controller
     public function show($id)
     {
         $role = Role::find($id);
-        // $permission = Permission::get();
-        // $rolePermissions = DB::table("role_has_permissions")->where("role_has_permissions.role_id",$id)
-        //     ->pluck('role_has_permissions.permission_id','role_has_permissions.permission_id')
-        //     ->all();
-
         return new RoleResource($role);
 
     
@@ -90,14 +74,11 @@ class RoleController extends Controller
     {
         $this->validate($request, [
             'name'       => 'required',
-            'permission' => 'required',
         ]);
     
         $role = Role::find($id);
         $role->name = $request->input('name');
         $role->save();
-
-        $role->syncPermissions($request->input('permission'));
 
         return response()->json([
             'status'  => 'success',

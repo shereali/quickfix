@@ -20,6 +20,13 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 
+Route::group(['namespace' => 'Administrator'], function(){
+
+    Route::get('/administrator', 'HomeController@index');
+    Route::get('/administrator/{anyadministrator}', 'HomeController@index')->where('anyadministrator', '.*');
+
+});
+
 Route::group(['namespace' => 'Backend'], function(){
 
     Route::get('/admin', 'HomeController@index');

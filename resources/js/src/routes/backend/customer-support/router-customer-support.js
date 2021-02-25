@@ -8,7 +8,8 @@ import CorporateClient from '../../../../components/backend/customer-support/cor
 import CreateCorporateClient from '../../../../components/backend/customer-support/corporate-client/Create'
 import BusinessPartner from '../../../../components/backend/customer-support/business-partner/Index'
 import CreateBusinessPartner from '../../../../components/backend/customer-support/business-partner/Create'
-
+import User from '../../../../components/backend/customer-support/auth/users/Index.vue'
+import UserCreate from '../../../../components/backend/customer-support/auth/users/Create.vue'
 
 
 
@@ -22,6 +23,49 @@ let routeCustomerSupport = [
             auth: true,
             breadcrumb: {
                 label: 'Home',
+                
+              }
+          }
+
+    },
+
+    {
+        name:'User',
+        path:'/user',
+        component:User,
+        
+        meta: {
+            auth: true,
+            breadcrumb: {
+                label: 'User',
+                
+              }
+          }
+
+    },
+    {
+        name:'UserCreate',
+        path:'/user/create',
+        component:UserCreate,
+        
+        meta: {
+            auth: true,
+            breadcrumb: {
+                label: 'UserCreate',
+                
+              }
+          }
+
+    },
+    {
+        name:'UserCreate',
+        path:'/user/:id',
+        component:UserCreate,
+        
+        meta: {
+            auth: true,
+            breadcrumb: {
+                label: 'UserCreate',
                 
               }
           }

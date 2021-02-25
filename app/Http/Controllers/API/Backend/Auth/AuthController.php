@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\Backend\UserRequest;
+use Helper;
 use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
@@ -31,8 +32,11 @@ class AuthController extends Controller
         $user = Auth::user();
         $token = $user->createToken('nbyvirtualexpo')->plainTextToken;
 
+        $role = Helper::role($user->role_id);
+
         $response = [
             'user'              => $user,
+            'role'              => $role,
             'token'             => $token,
             'status'            => true,
             'message'           => 'Login successful!'

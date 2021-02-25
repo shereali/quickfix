@@ -1,11 +1,14 @@
 <template>
-    <div class="row py-5">
+    <div class="row py-5" v-if="dataList.permissions != 'undefined' && dataList.permissions.read != null">
         <div class="col-md-12 col-lg-12 col-sm-12 col-xs-4">
             <div class="card">
                 <div class="card-header"> 
-                    <!-- <h3 class="card-title">{{ cardTitle }}</h3> -->
-                   
-                    <router-link :to="this.$route.path+'/create'" class="btn btn-sm btn-primary float-right m-1" v-if="isAddItem">Add New</router-link>
+                    <div class="row py-1">
+                        <div class="col-md-12 col-lg-12 col-sm-12">
+                            <h3 class="card-title">{{ cardTitle }}</h3>
+                        </div>
+                    </div>
+                    <router-link  :to="this.$route.path+'/create'" class="btn btn-sm btn-primary float-right m-1" v-if="isAddItem && dataList.permissions.write !=null">Add New</router-link>
                      
                      <v-select @input="getDataList" :isSorting="isSorting" v-model="sortingForm.sorting_item" class="col-md-2 float-right m-1" :options="sortingData" :reduce="sorting => sorting.count_num" label="count_num" placeholder="Sort Item"></v-select>
 
@@ -30,11 +33,11 @@
                                    
                                 </td>
                                 <td class="text-center" v-if="isActionBtn">
-                                    <a href="#" v-if="isEditBtn" @click.prevent="showEditForm(item.id)"
+                                    <a href="#" v-if="isEditBtn && dataList.permissions.update !=null" @click.prevent="showEditForm(item.id)"
                                         class="btn btn-success btn-circle btn-xs">
                                         <i class="fas fa-edit"></i>
                                     </a>
-                                    <a href="#" v-if="isDelBtn" @click.prevent="deleteItem(item.id)"
+                                    <a href="#" v-if="isDelBtn && dataList.permissions.delete !=null" @click.prevent="deleteItem(item.id)"
                                         class="btn btn-danger btn-circle btn-xs">
                                         <i class="fas fa-trash"></i>
                                     </a>
@@ -53,6 +56,9 @@
             <!-- /.card -->
         </div>
     </div>
+    <div class="py-5" v-else>
+        <h1 class="text-danger text-center">Access Denied!</h1>
+    </div>
 </template>
 
 <script>
@@ -70,9 +76,22 @@
                     {count_num:100},
                     {count_num:500},
                     {count_num:1000},
-                ]
+                ],
+               
             }
-        }
+        },
+        created(){
+            
+        },
+        // computed:{
+        //     permissions:function(){
+        //         setTimeout(()=>{
+        //         console.log('this.dataList.permissions', this.dataList.permissions.read);
+        //         return this.dataList.permission
+
+        //     }, 2000)
+        //     }
+        // },
     }
 
 </script>

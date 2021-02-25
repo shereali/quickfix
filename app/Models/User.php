@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
+use App\Models\Backend\Role;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\Auth;
-use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -13,7 +13,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, HasRoles;
+    use HasApiTokens, HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -23,6 +23,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'role_id',
         'password',
     ];
 
@@ -45,15 +46,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-
-    public function getAllPermissionsAttribute() 
+    public function role()
     {
-        $permissions = [];
-          foreach (Permission::all() as $permission) {
-            if (Auth::user()->can($permission->name)) {
-              $permissions[] = $permission->name;
-            }
-          }
-          return $permissions;
-      }
+      return $this->belongsTo(Role::class);
+    }
+
 }

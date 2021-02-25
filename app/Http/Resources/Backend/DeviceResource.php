@@ -27,7 +27,8 @@ class DeviceResource extends JsonResource
             'status'         => $this->status,
             'statusText'     => $this->status == 1?'Active':'Inactive',
             'image'          => '<img style="width:60px; height:60px;" class="img-fluid" src="'.Helper::publicUrl('/images/device').'/'.$this->image.'">',
-            'image_path'     => Helper::publicUrl('/images/device').'/'.$this->image
+            'image_path'     => Helper::publicUrl('/images/device').'/'.$this->image,
+            'permissions'    => $this->permissions
         ];
     }
 }

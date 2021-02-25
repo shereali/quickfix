@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -86061,14 +86061,14 @@ var routeFrontend = [{
 
 /***/ }),
 
-/***/ 3:
+/***/ 4:
 /*!**************************************************************!*\
   !*** multi ./resources/js/src/apps/frontend/app_frontend.js ***!
   \**************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! E:\laragon\www\quickfix_web_v1\resources\js\src\apps\frontend\app_frontend.js */"./resources/js/src/apps/frontend/app_frontend.js");
+module.exports = __webpack_require__(/*! E:\laragon\www\quickfix\resources\js\src\apps\frontend\app_frontend.js */"./resources/js/src/apps/frontend/app_frontend.js");
 
 
 /***/ })

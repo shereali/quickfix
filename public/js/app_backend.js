@@ -5237,6 +5237,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['isAddItem', 'isEditBtn', 'isDelBtn', 'isActionBtn', 'cardTitle', 'columnsHead', 'columnsBody', 'dataList', 'showEditForm', 'deleteItem', 'getDataList', 'excelFields', 'excelTitle', 'isDownload', 'isSorting', 'isSearchBox', 'searchForm', 'sortingForm'],
   data: function data() {
@@ -5255,7 +5261,16 @@ __webpack_require__.r(__webpack_exports__);
         count_num: 1000
       }]
     };
-  }
+  },
+  created: function created() {} // computed:{
+  //     permissions:function(){
+  //         setTimeout(()=>{
+  //         console.log('this.dataList.permissions', this.dataList.permissions.read);
+  //         return this.dataList.permission
+  //     }, 2000)
+  //     }
+  // },
+
 });
 
 /***/ }),
@@ -74641,208 +74656,246 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "row py-5" }, [
-    _c("div", { staticClass: "col-md-12 col-lg-12 col-sm-12 col-xs-4" }, [
-      _c("div", { staticClass: "card" }, [
-        _c(
-          "div",
-          { staticClass: "card-header" },
-          [
-            _vm.isAddItem
-              ? _c(
-                  "router-link",
-                  {
-                    staticClass: "btn btn-sm btn-primary float-right m-1",
-                    attrs: { to: this.$route.path + "/create" }
-                  },
-                  [_vm._v("Add New")]
-                )
-              : _vm._e(),
-            _vm._v(" "),
-            _c("v-select", {
-              staticClass: "col-md-2 float-right m-1",
-              attrs: {
-                isSorting: _vm.isSorting,
-                options: _vm.sortingData,
-                reduce: function(sorting) {
-                  return sorting.count_num
-                },
-                label: "count_num",
-                placeholder: "Sort Item"
-              },
-              on: { input: _vm.getDataList },
-              model: {
-                value: _vm.sortingForm.sorting_item,
-                callback: function($$v) {
-                  _vm.$set(_vm.sortingForm, "sorting_item", $$v)
-                },
-                expression: "sortingForm.sorting_item"
-              }
-            }),
-            _vm._v(" "),
-            _c("downloadExcel", {
-              staticClass: "btn btn-sm btn-success float-right m-1",
-              style: _vm.isDownload == false ? "display:none" : "",
-              attrs: {
-                data: _vm.dataList.data,
-                fields: _vm.excelFields,
-                name: _vm.cardTitle
-              }
-            }),
-            _vm._v(" "),
-            _vm.isSearchBox
-              ? _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.searchForm.search,
-                      expression: "searchForm.search"
-                    }
-                  ],
-                  staticClass: "col-md-2 form-control",
-                  staticStyle: {
-                    padding: "0 7px!important",
-                    height: "calc(2.25rem + 1px)!important"
-                  },
-                  attrs: {
-                    type: "text",
-                    name: "search",
-                    placeholder: "Search here…"
-                  },
-                  domProps: { value: _vm.searchForm.search },
-                  on: {
-                    input: [
-                      function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.searchForm, "search", $event.target.value)
+  return _vm.dataList.permissions != "undefined" &&
+    _vm.dataList.permissions.read != null
+    ? _c("div", { staticClass: "row py-5" }, [
+        _c("div", { staticClass: "col-md-12 col-lg-12 col-sm-12 col-xs-4" }, [
+          _c("div", { staticClass: "card" }, [
+            _c(
+              "div",
+              { staticClass: "card-header" },
+              [
+                _c("div", { staticClass: "row py-1" }, [
+                  _c("div", { staticClass: "col-md-12 col-lg-12 col-sm-12" }, [
+                    _c("h3", { staticClass: "card-title" }, [
+                      _vm._v(_vm._s(_vm.cardTitle))
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm.isAddItem && _vm.dataList.permissions.write != null
+                  ? _c(
+                      "router-link",
+                      {
+                        staticClass: "btn btn-sm btn-primary float-right m-1",
+                        attrs: { to: this.$route.path + "/create" }
                       },
-                      function($event) {
-                        return _vm.getDataList()
-                      }
-                    ]
+                      [_vm._v("Add New")]
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                _c("v-select", {
+                  staticClass: "col-md-2 float-right m-1",
+                  attrs: {
+                    isSorting: _vm.isSorting,
+                    options: _vm.sortingData,
+                    reduce: function(sorting) {
+                      return sorting.count_num
+                    },
+                    label: "count_num",
+                    placeholder: "Sort Item"
+                  },
+                  on: { input: _vm.getDataList },
+                  model: {
+                    value: _vm.sortingForm.sorting_item,
+                    callback: function($$v) {
+                      _vm.$set(_vm.sortingForm, "sorting_item", $$v)
+                    },
+                    expression: "sortingForm.sorting_item"
                   }
-                })
-              : _vm._e()
-          ],
-          1
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "card-body" }, [
-          _c("table", { staticClass: "table table-bordered table-response" }, [
-            _c("thead", [
-              _c(
-                "tr",
-                { staticClass: "table-secondary" },
-                _vm._l(_vm.columnsHead, function(thead, i) {
-                  return _c(
-                    "td",
-                    { key: i, staticStyle: { "text-align": "center" } },
-                    [_vm._v(_vm._s(thead))]
-                  )
                 }),
-                0
+                _vm._v(" "),
+                _c("downloadExcel", {
+                  staticClass: "btn btn-sm btn-success float-right m-1",
+                  style: _vm.isDownload == false ? "display:none" : "",
+                  attrs: {
+                    data: _vm.dataList.data,
+                    fields: _vm.excelFields,
+                    name: _vm.cardTitle
+                  }
+                }),
+                _vm._v(" "),
+                _vm.isSearchBox
+                  ? _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.searchForm.search,
+                          expression: "searchForm.search"
+                        }
+                      ],
+                      staticClass: "col-md-2 form-control",
+                      staticStyle: {
+                        padding: "0 7px!important",
+                        height: "calc(2.25rem + 1px)!important"
+                      },
+                      attrs: {
+                        type: "text",
+                        name: "search",
+                        placeholder: "Search here…"
+                      },
+                      domProps: { value: _vm.searchForm.search },
+                      on: {
+                        input: [
+                          function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.searchForm,
+                              "search",
+                              $event.target.value
+                            )
+                          },
+                          function($event) {
+                            return _vm.getDataList()
+                          }
+                        ]
+                      }
+                    })
+                  : _vm._e()
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-body" }, [
+              _c(
+                "table",
+                { staticClass: "table table-bordered table-response" },
+                [
+                  _c("thead", [
+                    _c(
+                      "tr",
+                      { staticClass: "table-secondary" },
+                      _vm._l(_vm.columnsHead, function(thead, i) {
+                        return _c(
+                          "td",
+                          { key: i, staticStyle: { "text-align": "center" } },
+                          [_vm._v(_vm._s(thead))]
+                        )
+                      }),
+                      0
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "tbody",
+                    _vm._l(_vm.dataList.data, function(item, index) {
+                      return !item.isComplete
+                        ? _c(
+                            "tr",
+                            { key: index },
+                            [
+                              _c(
+                                "td",
+                                { staticStyle: { "text-align": "center" } },
+                                [_vm._v(_vm._s(_vm.dataList.meta.from + index))]
+                              ),
+                              _vm._v(" "),
+                              _vm._l(
+                                _vm.columnsBody.slice(
+                                  0,
+                                  _vm.columnsBody.length
+                                ),
+                                function(tbody, i) {
+                                  return _c("td", {
+                                    key: i,
+                                    staticStyle: { "text-align": "center" },
+                                    domProps: { innerHTML: _vm._s(item[tbody]) }
+                                  })
+                                }
+                              ),
+                              _vm._v(" "),
+                              _vm.isActionBtn
+                                ? _c("td", { staticClass: "text-center" }, [
+                                    _vm.isEditBtn &&
+                                    _vm.dataList.permissions.update != null
+                                      ? _c(
+                                          "a",
+                                          {
+                                            staticClass:
+                                              "btn btn-success btn-circle btn-xs",
+                                            attrs: { href: "#" },
+                                            on: {
+                                              click: function($event) {
+                                                $event.preventDefault()
+                                                return _vm.showEditForm(item.id)
+                                              }
+                                            }
+                                          },
+                                          [
+                                            _c("i", {
+                                              staticClass: "fas fa-edit"
+                                            })
+                                          ]
+                                        )
+                                      : _vm._e(),
+                                    _vm._v(" "),
+                                    _vm.isDelBtn &&
+                                    _vm.dataList.permissions.delete != null
+                                      ? _c(
+                                          "a",
+                                          {
+                                            staticClass:
+                                              "btn btn-danger btn-circle btn-xs",
+                                            attrs: { href: "#" },
+                                            on: {
+                                              click: function($event) {
+                                                $event.preventDefault()
+                                                return _vm.deleteItem(item.id)
+                                              }
+                                            }
+                                          },
+                                          [
+                                            _c("i", {
+                                              staticClass: "fas fa-trash"
+                                            })
+                                          ]
+                                        )
+                                      : _vm._e()
+                                  ])
+                                : _vm._e()
+                            ],
+                            2
+                          )
+                        : _c("tr", [
+                            _c(
+                              "td",
+                              {
+                                staticClass: "text-danger text-center",
+                                attrs: { colspan: _vm.columnsHead.length }
+                              },
+                              [_vm._v("There is no record available!")]
+                            )
+                          ])
+                    }),
+                    0
+                  )
+                ]
               )
             ]),
             _vm._v(" "),
             _c(
-              "tbody",
-              _vm._l(_vm.dataList.data, function(item, index) {
-                return !item.isComplete
-                  ? _c(
-                      "tr",
-                      { key: index },
-                      [
-                        _c("td", { staticStyle: { "text-align": "center" } }, [
-                          _vm._v(_vm._s(_vm.dataList.meta.from + index))
-                        ]),
-                        _vm._v(" "),
-                        _vm._l(
-                          _vm.columnsBody.slice(0, _vm.columnsBody.length),
-                          function(tbody, i) {
-                            return _c("td", {
-                              key: i,
-                              staticStyle: { "text-align": "center" },
-                              domProps: { innerHTML: _vm._s(item[tbody]) }
-                            })
-                          }
-                        ),
-                        _vm._v(" "),
-                        _vm.isActionBtn
-                          ? _c("td", { staticClass: "text-center" }, [
-                              _vm.isEditBtn
-                                ? _c(
-                                    "a",
-                                    {
-                                      staticClass:
-                                        "btn btn-success btn-circle btn-xs",
-                                      attrs: { href: "#" },
-                                      on: {
-                                        click: function($event) {
-                                          $event.preventDefault()
-                                          return _vm.showEditForm(item.id)
-                                        }
-                                      }
-                                    },
-                                    [_c("i", { staticClass: "fas fa-edit" })]
-                                  )
-                                : _vm._e(),
-                              _vm._v(" "),
-                              _vm.isDelBtn
-                                ? _c(
-                                    "a",
-                                    {
-                                      staticClass:
-                                        "btn btn-danger btn-circle btn-xs",
-                                      attrs: { href: "#" },
-                                      on: {
-                                        click: function($event) {
-                                          $event.preventDefault()
-                                          return _vm.deleteItem(item.id)
-                                        }
-                                      }
-                                    },
-                                    [_c("i", { staticClass: "fas fa-trash" })]
-                                  )
-                                : _vm._e()
-                            ])
-                          : _vm._e()
-                      ],
-                      2
-                    )
-                  : _c("tr", [
-                      _c(
-                        "td",
-                        {
-                          staticClass: "text-danger text-center",
-                          attrs: { colspan: _vm.columnsHead.length }
-                        },
-                        [_vm._v("There is no record available!")]
-                      )
-                    ])
-              }),
-              0
+              "div",
+              { staticClass: "card-footer clearfix" },
+              [
+                _c("pagination", {
+                  staticClass: "pagination pagination-sm m-0 float-right",
+                  attrs: { data: _vm.dataList },
+                  on: { "pagination-change-page": _vm.getDataList }
+                })
+              ],
+              1
             )
           ])
-        ]),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "card-footer clearfix" },
-          [
-            _c("pagination", {
-              staticClass: "pagination pagination-sm m-0 float-right",
-              attrs: { data: _vm.dataList },
-              on: { "pagination-change-page": _vm.getDataList }
-            })
-          ],
-          1
-        )
+        ])
       ])
-    ])
-  ])
+    : _c("div", { staticClass: "py-5" }, [
+        _c("h1", { staticClass: "text-danger text-center" }, [
+          _vm._v("Access Denied!")
+        ])
+      ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -107821,6 +107874,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       axios.get(api_path).then(function (response) {
         if (response.status == 200) {
           _this4.dataList = response.data;
+
+          if (_this4.isEdit == false && response.data.permissions.write == null) {
+            // let path = window.location.pathname.split('/')
+            //        window.location.href = this.url+window.location.pathname
+            $('.form').css({
+              'display': 'none'
+            });
+          }
         }
       })["catch"](function (error) {
         if (error.response.status == 422) {
@@ -108886,7 +108947,7 @@ axios__WEBPACK_IMPORTED_MODULE_2___default.a.defaults.baseURL = window.location.
     setUserData: function setUserData(state, userData) {
       state.user = userData;
 
-      if (userData.user.status != 'false') {
+      if (userData.user.status != 'false' && userData.role == 'Admin') {
         localStorage.setItem('user', JSON.stringify(userData));
         axios__WEBPACK_IMPORTED_MODULE_2___default.a.defaults.headers.common.Authorization = "Bearer ".concat(userData.token);
       }
@@ -108902,9 +108963,12 @@ axios__WEBPACK_IMPORTED_MODULE_2___default.a.defaults.baseURL = window.location.
       return axios__WEBPACK_IMPORTED_MODULE_2___default.a.post('/signin', credentials).then(function (_ref2) {
         var data = _ref2.data;
         commit('setUserData', data); // let user = data.user 
-        //   if(data.status == 'true'){
 
-        window.location.href = window.location.origin + '/admin'; //   }
+        if (data.role == 'Admin') {
+          window.location.href = window.location.origin + '/admin';
+        }
+
+        console.log('data.user', data.role);
       });
     },
     signOut: function signOut(_ref3) {
@@ -108942,8 +109006,8 @@ axios__WEBPACK_IMPORTED_MODULE_2___default.a.defaults.baseURL = window.location.
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! E:\laragon\www\quickfix_web_v1\resources\js\src\apps\backend\app_backend.js */"./resources/js/src/apps/backend/app_backend.js");
-module.exports = __webpack_require__(/*! E:\laragon\www\quickfix_web_v1\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! E:\laragon\www\quickfix\resources\js\src\apps\backend\app_backend.js */"./resources/js/src/apps/backend/app_backend.js");
+module.exports = __webpack_require__(/*! E:\laragon\www\quickfix\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ }),

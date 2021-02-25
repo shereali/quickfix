@@ -45,7 +45,8 @@ export default {
             isDataSearching:false,
             dataSearchingApi:null,
             searchForm:{},
-            sortingForm:{}
+            sortingForm:{},
+           
         }
     },
  
@@ -219,6 +220,15 @@ export default {
                 if(response.status == 200){
                     
                     this.dataList = response.data
+
+                    if(this.isEdit == false && response.data.permissions.write == null){
+
+                    // let path = window.location.pathname.split('/')
+                    //        window.location.href = this.url+window.location.pathname
+                  
+                    $('.form').css({'display':'none'})
+                    
+                    }
                    
                 }
                

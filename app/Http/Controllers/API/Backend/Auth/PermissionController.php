@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\API\Backend\Auth;
 
+use App\Models\Backend\Role;
 use Illuminate\Http\Request;
+use App\Models\Backend\Module;
+use App\Models\Backend\Permission;
 use App\Http\Controllers\Controller;
-use Spatie\Permission\Models\Permission;
 use App\Http\Resources\Backend\Auth\PermissionResource;
+use Carbon\Carbon;
 
 class PermissionController extends Controller
 {
@@ -17,7 +20,13 @@ class PermissionController extends Controller
     public function index()
     {
         $permission = Permission::paginate(10);
-        return PermissionResource::collection($permission);
+        $role = Role::all();
+        $permission = Module::all();
+        return PermissionResource::collection($permission)->additional([
+            'roles'       => $role,
+            'modules'     => $role,
+            'permissions' => $permission
+        ]);
     }
 
     /**
@@ -28,11 +37,87 @@ class PermissionController extends Controller
      */
     public function store(Request $request)
     {
+        
         $input = $request->all();
-        Permission::create([
-            'name' => $input['name'],
-            'guard_name' => 'sanctum',
-        ]);
+        $read   = $request->read;
+        $write  = $request->write;
+        $update = $request->update;
+        $delete = $request->delete;
+
+        $readIndex = [];
+        $writeIndex = [];
+        $updateIndex = [];
+        $deleteIndex = [];
+
+
+         $permission = [];
+
+
+
+        if($request->read != null){
+            foreach ($read as $key => $value) {
+
+                $readIndex[$value] = $value;
+            }
+        }
+
+        if($request->write != null)
+
+        foreach ($write as $key => $value) {
+
+            $writeIndex[$value] = $value;
+        }
+
+        if($request->update != null)
+
+        foreach ($update as $key => $value) {
+
+            $updateIndex[$value] = $value;
+        }
+
+        if($request->delete != null)
+
+        foreach ($delete as $key => $value) {
+
+            $deleteIndex[$value] = $value;
+        }
+
+
+    // return $deleteIndex ;
+
+       
+    
+    foreach ($input['module_id'] as $key => $value) {
+        
+        $check = Permission::where('module_id', $value)->where('role_id', $request->role_id)->exists();
+         
+
+         if($check == true){
+
+            Permission::where('module_id', $value)->where('role_id', $request->role_id)->update([
+                'read'      => @$readIndex[$key],
+                'write'     => @$writeIndex[$key],
+                'update'    => @$updateIndex[$key],
+                'delete'    => @$deleteIndex[$key],
+                'created_at'=> Carbon::now()
+            ]);
+
+          } else {
+
+            Permission::insert([
+                'module_id' => $value,
+                'role_id'   => $request->role_id,
+                'read'      => @$readIndex[$key],
+                'write'     => @$writeIndex[$key],
+                'update'    => @$updateIndex[$key],
+                'delete'    => @$deleteIndex[$key],
+                'updated_at'=> Carbon::now()
+            ]);   
+
+          }
+
+       }     
+        
 
         return response()->json([
             'status'  => 'success',
@@ -49,8 +134,9 @@ class PermissionController extends Controller
      */
     public function show($id)
     {
-        $data = Permission::find($id);
-        return new PermissionResource($data);
+        
+        $data = Permission::where('role_id', $id)->get();
+        return  response()->json($data);
     }
 
     /**
